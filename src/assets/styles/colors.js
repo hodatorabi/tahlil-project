@@ -17,3 +17,5 @@ export const COLOR_ORANGE = '#f57c00'
 export const COLOR_YELLOW = '#ffb300'
 export const COLOR_BLACK = '#000000'
 export const COLOR_BLACK_CAMERA = '#0d1214'
+
+export const COLOR_BLUE_DEFAULT = '#1B7C83'
