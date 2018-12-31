@@ -10,7 +10,7 @@ import NavigationService from 'src/utils/navigationService'
 class Launch extends React.Component<Props, State> {
 
   componentDidMount() {
-    setTimeout(() => NavigationService.reset(['AuthNavigator']), 5000)
+    setTimeout(() => NavigationService.reset(['AuthNavigator']), 2000)
   }
 
   render() {
