@@ -1,14 +1,14 @@
 import {createStackNavigator} from 'react-navigation'
 import Launch from 'src/components/init/Launch'
 import {COLOR_WHITE} from 'src/assets/styles/colors'
+import AuthNavigator from 'src/navigators/AuthNavigator'
 
 
 const MainNavigator = createStackNavigator(
   {
     Launch: {screen: Launch},
-    // AuthNavigator: {screen: AuthNavigator},
+    AuthNavigator: {screen: AuthNavigator},
     // MainTabNavigator: {screen: MainTabNavigator},
-    // NewUserNavigator: {screen: NewUserNavigator},
   },
   {
     initialRouteName: 'Launch',
