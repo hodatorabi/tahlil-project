@@ -6,6 +6,7 @@ import Label from 'src/components/common/Label'
 import Spinner from 'react-native-spinkit'
 import {COLOR_BLUE_DEFAULT} from 'src/assets/styles/colors'
 import NavigationService from 'src/utils/navigationService'
+import {messages} from 'src/utils/messages'
 
 class Launch extends React.Component<Props, State> {
 
@@ -17,7 +18,7 @@ class Launch extends React.Component<Props, State> {
     return (
       <View style={style.launchContainer}>
         <Image source={SPLASH_LOGO} style={style.splashImageStyle}/>
-        <Label text={'سامانه ارائه خدمات داوطلبانه'}/>
+        <Label text={messages.APP_DESCRIPTION}/>
         <Spinner style={{position: 'absolute', bottom: 60}} isVisible={true} color={COLOR_BLUE_DEFAULT}
                  type={'Circle'}/>
       </View>
