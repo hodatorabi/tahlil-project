@@ -2,7 +2,7 @@ import React from 'react'
 import HeaderWithLogo from 'src/components/common/HeaderWithLogo'
 import {StyleSheet, TouchableOpacity, View} from 'react-native'
 import Label from 'src/components/common/Label'
-import {COLOR_BLUE_DEFAULT} from 'src/assets/styles/colors'
+import {COLOR_BLUE_DEFAULT, COLOR_DEFAULT_ORANGE} from 'src/assets/styles/colors'
 import {messages} from 'src/utils/messages'
 import {SCREEN_HEIGHT, SCREEN_WIDTH} from 'src/assets/styles/style'
 import CustomInput from 'src/components/common/CustomInput'
@@ -10,6 +10,33 @@ import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view'
 import CustomButton from 'src/components/common/CustomButton'
 
 class Login extends React.Component<Props, State> {
+
+  constructor(props) {
+    super(props)
+    this.state = {
+      username: '',
+      password: '',
+      errorMessage: ' ',
+    }
+
+    this.onPasswordChange = this.onPasswordChange.bind(this)
+    this.onUsernameChange = this.onUsernameChange.bind(this)
+    this.onLogin = this.onLogin.bind(this)
+  }
+
+  onUsernameChange(value) {
+    this.setState({username: value})
+  }
+
+  onPasswordChange(value) {
+    this.setState({password: value})
+  }
+
+  onLogin() {
+    if (this.state.username.length === 0 || this.state.password.length === 0) {
+      this.setState({errorMessage: 'نام کاربری یا رمز عبور نمی‌توانند خالی باشند'})
+    }
+  }
 
   render() {
     return (
@@ -23,11 +50,16 @@ class Login extends React.Component<Props, State> {
           showsVerticalScrollIndicator={false}
           contentContainerStyle={style.loginForm}
         >
-          <CustomInput autoFocus={true} label={messages.USERNAME}/>
-          <CustomInput customInputContainerStyle={{marginTop: 20}} label={messages.PASSWORD}/>
+          <CustomInput onFocus={() => this.setState({errorMessage: ' '})} autoFocus={true} label={messages.USERNAME}
+                       onChangeText={this.onUsernameChange}/>
+          <CustomInput onFocus={() => this.setState({errorMessage: ' '})} onChangeText={this.onPasswordChange}
+                       customInputContainerStyle={{marginTop: 20}}
+                       label={messages.PASSWORD}/>
+          <Label style={{marginTop: 10}} text={this.state.errorMessage}
+                 textStyle={{color: COLOR_DEFAULT_ORANGE, fontSize: 16}}/>
           <View style={style.buttonContainer}>
-            <CustomButton label={messages.LOGIN}/>
-            <TouchableOpacity>
+            <CustomButton label={messages.LOGIN} onPress={this.onLogin}/>
+            <TouchableOpacity onPress={() => this.props.navigation.navigate('Join')}>
               <Label textStyle={{fontSize: 16, color: COLOR_BLUE_DEFAULT}} text={messages.NOT_A_MEMBER}/>
             </TouchableOpacity>
           </View>

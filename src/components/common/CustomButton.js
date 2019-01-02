@@ -7,10 +7,12 @@ class CustomButton extends React.Component<Props, void> {
 
   render() {
     return (
-      <Button label={this.props.label}
-              backgroundColor={COLOR_BLUE_DEFAULT}
-              style={{width: 150}}
-              labelStyle={{fontFamily: 'IRANSansMobile'}}
+      <Button
+        {...this.props}
+        label={this.props.label}
+        backgroundColor={COLOR_BLUE_DEFAULT}
+        style={{width: 150}}
+        labelStyle={{fontFamily: 'IRANSansMobile'}}
       />
     )
   }
