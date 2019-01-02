@@ -1,7 +1,7 @@
 import React from 'react'
 import {Keyboard, StyleSheet, Text, View} from 'react-native'
 import {commonHeaderHeight, SCREEN_WIDTH} from 'src/assets/styles/style'
-import {COLOR_DARK_BLUE} from 'src/assets/styles/colors'
+import {COLOR_DARK_BLUE, COLOR_WHITE} from 'src/assets/styles/colors'
 import Back from 'src/components/common/Back'
 
 
@@ -10,11 +10,11 @@ class CommonHeader extends React.PureComponent<Props> {
     return (
       <View style={[style.commonHeader]}>
         <Text style={style.commonHeaderTitle}>{this.props.title}</Text>
-        <Back onPress={() => {
+        {this.props.hasBack && <Back onPress={() => {
           Keyboard.dismiss()
           this.props.onPress()
         }}
-        />
+        />}
       </View>
     )
   }
@@ -29,6 +29,7 @@ const style = StyleSheet.create({
     width: SCREEN_WIDTH,
     justifyContent: 'center',
     alignItems: 'center',
+    backgroundColor: COLOR_WHITE,
   },
   commonHeaderTitle: {
     fontSize: 15,

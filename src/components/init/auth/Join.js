@@ -27,7 +27,7 @@ export default class Join extends React.Component {
   render() {
     return (
       <View style={{flex: 1, justifyContent: 'flex-start'}}>
-        <CommonHeader title={messages.SIGN_UP} onPress={() => this.props.navigation.goBack()}/>
+        <CommonHeader hasBack={true} title={messages.SIGN_UP} onPress={() => this.props.navigation.goBack()}/>
         <TabView
           navigationState={this.state}
           renderScene={SceneMap({
