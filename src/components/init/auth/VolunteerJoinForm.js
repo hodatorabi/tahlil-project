@@ -71,11 +71,13 @@ class VolunteerJoinForm extends React.Component<Props, State> {
           <CustomInput onFocus={() => this.setState({errorMessage: ' '})}
                        onChangeText={this.onPasswordChange}
                        customInputContainerStyle={{marginTop: 25}}
+                       secureTextEntry
                        label={messages.PASSWORD}/>
 
           <CustomInput onFocus={() => this.setState({errorMessage: ' '})}
                        onChangeText={this.onConfirmPasswordChange}
                        customInputContainerStyle={{marginTop: 25}}
+                       secureTextEntry
                        label={messages.CONFIRM_PASS}/>
 
           <Label style={{marginTop: 10, marginBottom: 0.03 * SCREEN_HEIGHT}} text={this.state.errorMessage}

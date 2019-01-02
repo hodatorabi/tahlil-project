@@ -54,7 +54,8 @@ class Login extends React.Component<Props, State> {
                        onChangeText={this.onUsernameChange}/>
           <CustomInput onFocus={() => this.setState({errorMessage: ' '})} onChangeText={this.onPasswordChange}
                        customInputContainerStyle={{marginTop: 20}}
-                       label={messages.PASSWORD}/>
+                       label={messages.PASSWORD}
+                       secureTextEntry/>
           <Label style={{marginTop: 10}} text={this.state.errorMessage}
                  textStyle={{color: COLOR_DEFAULT_ORANGE, fontSize: 16}}/>
           <View style={style.buttonContainer}>
