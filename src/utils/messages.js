@@ -9,4 +9,5 @@ export const messages = {
   SIGN_UP: 'عضویت',
   CHARITY: 'موسسه خیریه',
   VOLUNTEER: 'داوطلب',
+  CHARITY_NAME: 'نام موسسه:',
 }

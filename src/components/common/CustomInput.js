@@ -28,7 +28,7 @@ export default CustomInput
 
 const style = StyleSheet.create({
   containerStyle: {
-    width: 0.75 * SCREEN_WIDTH,
+    width: 0.85 * SCREEN_WIDTH,
     justifyContent: 'center',
     alignItems: 'center',
     borderBottomColor: COLOR_DARK,
@@ -36,7 +36,7 @@ const style = StyleSheet.create({
   },
   inputStyle: {
     height: 50,
-    width: 0.65 * SCREEN_WIDTH,
+    width: 0.8 * SCREEN_WIDTH,
     color: COLOR_DARK_BLUE,
     fontSize: 18,
     fontFamily: 'IRANSansMobile',

@@ -8,7 +8,7 @@ import CustomInput from 'src/components/common/CustomInput'
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view'
 import CustomButton from 'src/components/common/CustomButton'
 
-class VolunteerJoinForm extends React.Component<Props, State> {
+class CharityJoinForm extends React.Component<Props, State> {
 
   constructor(props) {
     super(props)
@@ -67,6 +67,11 @@ class VolunteerJoinForm extends React.Component<Props, State> {
                        customInputContainerStyle={{marginTop: 25}}
                        label={messages.CONFIRM_PASS}/>
 
+          <CustomInput onFocus={() => this.setState({errorMessage: ' '})}
+                       onChangeText={this.onConfirmPasswordChange}
+                       customInputContainerStyle={{marginTop: 25}}
+                       label={messages.CHARITY_NAME}/>
+
           <Label style={{marginTop: 10, marginBottom: 0.03 * SCREEN_HEIGHT}} text={this.state.errorMessage}
                  textStyle={{color: COLOR_DEFAULT_ORANGE, fontSize: 16}}/>
 
@@ -78,7 +83,7 @@ class VolunteerJoinForm extends React.Component<Props, State> {
   }
 }
 
-export default VolunteerJoinForm
+export default CharityJoinForm
 
 const style = StyleSheet.create({
   login: {

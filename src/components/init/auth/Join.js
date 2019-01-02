@@ -6,9 +6,10 @@ import {messages} from 'src/utils/messages'
 import {COLOR_BLUE_DEFAULT, COLOR_DARK_BLUE, COLOR_WHITE} from 'src/assets/styles/colors'
 import {SCREEN_WIDTH} from 'src/assets/styles/style'
 import VolunteerJoinForm from 'src/components/init/auth/VolunteerJoinForm'
+import CharityJoinForm from 'src/components/init/auth/CharityJoinForm'
 
 const FirstRoute = () => (
-  <View style={[styles.scene, {backgroundColor: COLOR_WHITE}]}/>
+  <CharityJoinForm/>
 )
 const SecondRoute = () => (
   <VolunteerJoinForm/>
