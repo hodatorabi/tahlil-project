@@ -5,12 +5,13 @@ import CommonHeader from 'src/components/common/CommonHeader'
 import {messages} from 'src/utils/messages'
 import {COLOR_BLUE_DEFAULT, COLOR_DARK_BLUE, COLOR_WHITE} from 'src/assets/styles/colors'
 import {SCREEN_WIDTH} from 'src/assets/styles/style'
+import VolunteerJoinForm from 'src/components/init/auth/VolunteerJoinForm'
 
 const FirstRoute = () => (
   <View style={[styles.scene, {backgroundColor: COLOR_WHITE}]}/>
 )
 const SecondRoute = () => (
-  <View style={[styles.scene, {backgroundColor: COLOR_WHITE}]}/>
+  <VolunteerJoinForm/>
 )
 
 export default class Join extends React.Component {
