@@ -1,7 +1,7 @@
 import React from 'react'
 import {StyleSheet, TextInput, View} from 'react-native'
 import {SCREEN_WIDTH} from 'src/assets/styles/style'
-import {COLOR_BLUE_DEFAULT, COLOR_DARK, COLOR_DARK_BLUE} from 'src/assets/styles/colors'
+import {COLOR_DARK, COLOR_DARK_BLUE} from 'src/assets/styles/colors'
 
 
 class CustomInput extends React.Component<Props, void> {
@@ -17,6 +17,7 @@ class CustomInput extends React.Component<Props, void> {
           style={[style.inputStyle, customInputStyle]}
           onChangeText={(text) => onChangeText(text)}
           placeholder={this.props.label}
+          placeholderTextColor={COLOR_DARK_BLUE}
         />
       </View>
     )

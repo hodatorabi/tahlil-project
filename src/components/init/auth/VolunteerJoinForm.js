@@ -15,11 +15,13 @@ class VolunteerJoinForm extends React.Component<Props, State> {
     this.state = {
       username: '',
       password: '',
+      confirmPass: '',
       errorMessage: ' ',
     }
 
     this.onPasswordChange = this.onPasswordChange.bind(this)
     this.onUsernameChange = this.onUsernameChange.bind(this)
+    this.onConfirmPasswordChange = this.onConfirmPasswordChange.bind(this)
     this.onLogin = this.onLogin.bind(this)
   }
 
@@ -31,9 +33,15 @@ class VolunteerJoinForm extends React.Component<Props, State> {
     this.setState({password: value})
   }
 
+  onConfirmPasswordChange(value) {
+    this.setState({confirmPass: value})
+  }
+
   onLogin() {
     if (this.state.username.length === 0 || this.state.password.length === 0) {
       this.setState({errorMessage: 'نام کاربری یا رمز عبور نمی‌توانند خالی باشند'})
+    } else if (this.state.password !== this.state.confirmPass) {
+      this.setState({errorMessage: 'تکرار رمز مطابقت ندارد'})
     }
   }
 
@@ -59,7 +67,7 @@ class VolunteerJoinForm extends React.Component<Props, State> {
                        customInputContainerStyle={{marginTop: 20}}
                        label={messages.CONFIRM_PASS}/>
 
-          <Label style={{marginTop: 10, marginBottom: 0.02 * SCREEN_HEIGHT}} text={this.state.errorMessage}
+          <Label style={{marginTop: 10, marginBottom: 0.03 * SCREEN_HEIGHT}} text={this.state.errorMessage}
                  textStyle={{color: COLOR_DEFAULT_ORANGE, fontSize: 16}}/>
 
           <CustomButton label={messages.SIGN_UP} onPress={this.onLogin}/>
