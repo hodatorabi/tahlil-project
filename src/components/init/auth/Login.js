@@ -5,6 +5,7 @@ import Label from 'src/components/common/Label'
 import {COLOR_BLUE_DEFAULT} from 'src/assets/styles/colors'
 import {messages} from 'src/utils/messages'
 import {SCREEN_HEIGHT} from 'src/assets/styles/style'
+import CustomInput from 'src/components/common/CustomInput'
 
 class Login extends React.Component<Props, State> {
 
@@ -15,6 +16,7 @@ class Login extends React.Component<Props, State> {
         <Label text={messages.WELCOME_MESSAGE}
                textStyle={style.welcomeTextStyle}
                style={style.welcomeContainer}/>
+        <CustomInput/>
       </View>
     )
   }
