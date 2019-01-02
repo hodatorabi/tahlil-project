@@ -5,4 +5,7 @@ export const messages = {
   PASSWORD: 'رمز عبور:',
   LOGIN: 'ورود',
   NOT_A_MEMBER: 'عضو ترابیکا نیستم!',
+  SIGN_UP: 'عضویت',
+  CHARITY: 'موسسه خیریه',
+  VOLUNTEER: 'داوطلب',
 }
