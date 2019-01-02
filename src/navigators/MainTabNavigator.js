@@ -4,14 +4,11 @@ import {createBottomTabNavigator} from 'react-navigation'
 import Projects from 'src/components/projects/Projects'
 import Home from 'src/components/home/Home'
 import {SCREEN_WIDTH} from 'src/assets/styles/style'
-import {
-  COLOR_BLUE_DEFAULT, COLOR_DARK_GRAY, COLOR_DEFAULT_GRAY,
-  COLOR_MEDIUM_TURQUOISE, COLOR_WHITE,
-} from 'src/assets/styles/colors'
+import {COLOR_BLUE_DEFAULT, COLOR_DARK_GRAY, COLOR_MEDIUM_TURQUOISE, COLOR_WHITE,} from 'src/assets/styles/colors'
 import {ICON_PROFILE, ICON_PROJECT_STATUS, ICON_SEARCH} from 'src/assets/styles/icons'
 import Profile from 'src/components/profile/Profile'
 
-const iconSize = 22
+const iconSize = 30
 const iconContainerSize = 40
 const bulletSize = 16
 
