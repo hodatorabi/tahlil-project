@@ -10,4 +10,6 @@ export const messages = {
   CHARITY: 'موسسه خیریه',
   VOLUNTEER: 'داوطلب',
   CHARITY_NAME: 'نام موسسه:',
+  RULES: 'قوانین و مقررات ',
+  AGREEMENT_STATEMENT: 'را مطالعه کرده و قبول دارم.'
 }

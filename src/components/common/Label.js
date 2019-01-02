@@ -23,7 +23,7 @@ const style = StyleSheet.create({
     alignItems: 'center',
   },
   labelTextStyle: {
-    fontSize: 20,
+    fontSize: 18,
     color: COLOR_DARK_BLUE,
     textAlign: 'center',
     fontFamily: 'IRANSansMobile',

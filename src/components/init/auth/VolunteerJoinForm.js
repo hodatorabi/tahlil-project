@@ -7,6 +7,7 @@ import {SCREEN_HEIGHT} from 'src/assets/styles/style'
 import CustomInput from 'src/components/common/CustomInput'
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view'
 import CustomButton from 'src/components/common/CustomButton'
+import AgreementCheckBox from 'src/components/common/AgreementCheckBox'
 
 class VolunteerJoinForm extends React.Component<Props, State> {
 
@@ -17,11 +18,13 @@ class VolunteerJoinForm extends React.Component<Props, State> {
       password: '',
       confirmPass: '',
       errorMessage: ' ',
+      checked: false,
     }
 
     this.onPasswordChange = this.onPasswordChange.bind(this)
     this.onUsernameChange = this.onUsernameChange.bind(this)
     this.onConfirmPasswordChange = this.onConfirmPasswordChange.bind(this)
+    this.onCheckBoxChange = this.onCheckBoxChange.bind(this)
     this.onLogin = this.onLogin.bind(this)
   }
 
@@ -42,7 +45,15 @@ class VolunteerJoinForm extends React.Component<Props, State> {
       this.setState({errorMessage: 'نام کاربری یا رمز عبور نمی‌توانند خالی باشند'})
     } else if (this.state.password !== this.state.confirmPass) {
       this.setState({errorMessage: 'تکرار رمز مطابقت ندارد'})
+    } else if (this.state.checked === false) {
+      this.setState({errorMessage: 'برای عضویت در سامانه باید با قوانین موافقت کرده باشید'})
     }
+  }
+
+  onCheckBoxChange() {
+    this.setState((prevState) => ({
+      checked: !prevState.checked,
+    }))
   }
 
   render() {
@@ -69,6 +80,9 @@ class VolunteerJoinForm extends React.Component<Props, State> {
 
           <Label style={{marginTop: 10, marginBottom: 0.03 * SCREEN_HEIGHT}} text={this.state.errorMessage}
                  textStyle={{color: COLOR_DEFAULT_ORANGE, fontSize: 16}}/>
+
+          <AgreementCheckBox style={{marginBottom: 0.06 * SCREEN_HEIGHT}} checked={this.state.checked}
+                             onValueChange={this.onCheckBoxChange}/>
 
           <CustomButton label={messages.SIGN_UP} onPress={this.onLogin}/>
 
