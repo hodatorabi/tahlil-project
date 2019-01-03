@@ -1,54 +1,51 @@
 import React from 'react'
-import {StyleSheet, View} from 'react-native'
-import {messages} from 'src/utils/messages'
-import {SCREEN_WIDTH} from 'src/assets/styles/style'
-import {SceneMap, TabBar, TabView} from 'react-native-tab-view'
-import {COLOR_BLUE_DEFAULT, COLOR_DARK_BLUE, COLOR_WHITE} from 'src/assets/styles/colors'
-import CommonHeader from 'src/components/common/CommonHeader'
+import {ScrollView, StyleSheet, View} from 'react-native'
+import ProfileRow from 'src/components/profile/ProfileRow'
+import {SCREEN_HEIGHT, SCREEN_WIDTH} from 'src/assets/styles/style'
+import {COLOR_BLUE_DEFAULT, COLOR_WHITE} from 'src/assets/styles/colors'
+import Label from 'src/components/common/Label'
+import CustomButton from 'src/components/common/CustomButton'
 
-const FirstRoute = () => (
-  <View/>
-)
-const SecondRoute = () => (
-  <View/>
-)
-const ThirdRoute = () => (
-  <View/>
-)
 
 class Profile extends React.Component<Props, State> {
 
-  state = {
-    index: 0,
-    routes: [
-      {key: 'first', title: messages.CHARITY},
-      {key: 'second', title: messages.VOLUNTEER},
-      {key: 'third', title: messages.VOLUNTEER},
-    ],
-  }
-
   render() {
     return (
-      <View style={{flex: 1, justifyContent: 'flex-start'}}>
-        <CommonHeader hasBack={false} title={'ویرایش مشخصات و توانمندی‌ها'}/>
-        <TabView
-          navigationState={this.state}
-          renderScene={SceneMap({
-            first: FirstRoute,
-            second: SecondRoute,
-            third: ThirdRoute,
-          })}
-          onIndexChange={index => this.setState({index})}
-          initialLayout={{width: SCREEN_WIDTH}}
-          renderTabBar={props =>
-            <TabBar
-              {...props}
-              style={{backgroundColor: COLOR_WHITE}}
-              indicatorStyle={{backgroundColor: COLOR_BLUE_DEFAULT}}
-              labelStyle={{color: COLOR_DARK_BLUE, fontFamily: 'IRANSansMobile'}}
-            />
-          }
-        />
+      <View style={style.profileContainer}>
+
+        <View style={style.profilePicContainer}>
+          <View style={style.profileAvatar}/>
+        </View>
+
+        <ScrollView contentContainerStyle={style.scrollContainer}>
+
+          <View style={style.personalInfoContainer}>
+            <View style={{
+              flexDirection: 'row',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              marginBottom: 0.03 * SCREEN_HEIGHT,
+              width: SCREEN_WIDTH,
+              paddingHorizontal: 0.03 * SCREEN_WIDTH,
+            }}>
+              <CustomButton label={'ویرایش'}/>
+              <Label textStyle={{color: COLOR_BLUE_DEFAULT, fontSize: 20}}
+                     text={'مشخصات فردی'}/>
+            </View>
+
+            <ProfileRow description={'هدی'} title={'نام و نام خانوادگی: '}/>
+            <ProfileRow description={'تهران'} title={'شهر سکونت: '}/>
+            <ProfileRow description={'09394222978'} title={'شماره تماس: '}/>
+            <ProfileRow description={'زن'} title={'جنسیت: '}/>
+          </View>
+          <View style={style.abilitiesContainer}>
+            <Label textStyle={{color: COLOR_BLUE_DEFAULT, fontSize: 20}}
+                   style={{alignSelf: 'flex-end', marginBottom: 0.03 * SCREEN_HEIGHT}}
+                   text={'توانمندی‌ها'}/>
+            <ProfileRow title={'پرستاری'}/>
+            <ProfileRow title={'آموزش'}/>
+          </View>
+        </ScrollView>
       </View>
     )
   }
@@ -56,4 +53,41 @@ class Profile extends React.Component<Props, State> {
 
 export default Profile
 
-const style = StyleSheet.create({})
+const style = StyleSheet.create({
+  profileContainer: {
+    flex: 1, justifyContent: 'flex-start', alignItems: 'center',
+  },
+  profilePicContainer: {
+    width: SCREEN_WIDTH,
+    height: 0.3 * SCREEN_HEIGHT,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: COLOR_WHITE,
+    elevation: 1,
+  },
+  profileAvatar: {
+    width: 0.2 * SCREEN_HEIGHT,
+    height: 0.2 * SCREEN_HEIGHT,
+    borderRadius: 0.2 * SCREEN_HEIGHT / 2,
+    borderColor: COLOR_BLUE_DEFAULT,
+    borderWidth: 2,
+  },
+  scrollContainer: {paddingVertical: 0.03 * SCREEN_HEIGHT,},
+  personalInfoContainer: {
+    width: SCREEN_WIDTH,
+    backgroundColor: COLOR_WHITE,
+    alignItems: 'center',
+    paddingTop: 0.03 * SCREEN_HEIGHT,
+    elevation: 1,
+    paddingHorizontal: 0.03 * SCREEN_WIDTH,
+  },
+  abilitiesContainer: {
+    width: SCREEN_WIDTH,
+    backgroundColor: COLOR_WHITE,
+    alignItems: 'center',
+    marginTop: 0.03 * SCREEN_HEIGHT,
+    paddingTop: 0.03 * SCREEN_HEIGHT,
+    elevation: 1,
+    paddingHorizontal: 0.03 * SCREEN_WIDTH,
+  },
+})

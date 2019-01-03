@@ -11,5 +11,8 @@ export const messages = {
   VOLUNTEER: 'داوطلب',
   CHARITY_NAME: 'نام موسسه',
   RULES: 'قوانین و مقررات ',
-  AGREEMENT_STATEMENT: 'را مطالعه کرده و قبول دارم.'
+  AGREEMENT_STATEMENT: 'را مطالعه کرده و قبول دارم.',
+  PERSONAL_INFO: 'مشخصات فردی',
+  TIME_SCHEDULE: 'برنامه زمانی',
+  ABILITIES: 'توانمندی‌ها',
 }
