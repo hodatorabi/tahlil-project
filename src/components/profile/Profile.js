@@ -1,14 +1,12 @@
 import React from 'react'
 import {ScrollView, StyleSheet, View} from 'react-native'
-import PersonalInfoRow from 'src/components/profile/PersonalInfoRow'
+import PersonalInfoRow from 'src/components/profile/ProfileRow/PersonalInfoRow'
 import {SCREEN_HEIGHT, SCREEN_WIDTH} from 'src/assets/styles/style'
-import {
-  COLOR_BLUE_DEFAULT, COLOR_DEFAULT_GRAY, COLOR_GRAY, COLOR_LIGHT_GRAY,
-  COLOR_WHITE,
-} from 'src/assets/styles/colors'
+import {COLOR_BLUE_DEFAULT, COLOR_DEFAULT_GRAY, COLOR_WHITE,} from 'src/assets/styles/colors'
 import Label from 'src/components/common/Label'
 import CustomButton from 'src/components/common/CustomButton'
 import ButtonPlus from 'src/components/common/ButtonPlus'
+import AbilityRow from 'src/components/profile/ProfileRow/AbilityRow'
 
 
 class Profile extends React.Component<Props, State> {
@@ -42,8 +40,8 @@ class Profile extends React.Component<Props, State> {
               <Label textStyle={{color: COLOR_BLUE_DEFAULT, fontSize: 20}}
                      text={'توانمندی‌ها'}/>
             </View>
-            <PersonalInfoRow title={'پرستاری'}/>
-            <PersonalInfoRow title={'آموزش'}/>
+            <AbilityRow title={'پرستاری'}/>
+            <AbilityRow title={'آموزش'}/>
           </View>
         </ScrollView>
       </View>
