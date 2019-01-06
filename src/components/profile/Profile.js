@@ -1,5 +1,5 @@
 import React from 'react'
-import {ScrollView, StyleSheet, View} from 'react-native'
+import {Image, ScrollView, StyleSheet, View} from 'react-native'
 import PersonalInfoRow from 'src/components/profile/ProfileRow/PersonalInfoRow'
 import {SCREEN_HEIGHT, SCREEN_WIDTH} from 'src/assets/styles/style'
 import {COLOR_BLUE_DEFAULT, COLOR_DEFAULT_GRAY, COLOR_WHITE,} from 'src/assets/styles/colors'
@@ -7,6 +7,7 @@ import Label from 'src/components/common/Label'
 import CustomButton from 'src/components/common/CustomButton'
 import ButtonPlus from 'src/components/common/ButtonPlus'
 import AbilityRow from 'src/components/profile/ProfileRow/AbilityRow'
+import {DEFAULT_PROFILE_PIC, ICON_STAR} from 'src/assets/styles/icons'
 
 
 class Profile extends React.Component<Props, State> {
@@ -16,7 +17,21 @@ class Profile extends React.Component<Props, State> {
       <View style={style.profileContainer}>
 
         <View style={style.profilePicContainer}>
-          <View style={style.profileAvatar}/>
+          <View style={style.profileAvatar}>
+            <Image source={DEFAULT_PROFILE_PIC} style={{
+              height: 0.178 * SCREEN_HEIGHT,
+              width: 0.178 * SCREEN_HEIGHT,
+              borderRadius: 0.178 * SCREEN_HEIGHT / 2,
+            }}/>
+          </View>
+          <View style={{flexDirection: 'row', marginTop: 15, justifyContent: 'center', alignItems: 'center'}}>
+            <Image source={ICON_STAR} style={{width: 25, height: 25, resizeMode: 'contain'}}/>
+            <Image source={ICON_STAR} style={{width: 25, height: 25, resizeMode: 'contain'}}/>
+            <Image source={ICON_STAR} style={{width: 25, height: 25, resizeMode: 'contain'}}/>
+            <Image source={ICON_STAR} style={{width: 25, height: 25, resizeMode: 'contain'}}/>
+            <Image source={ICON_STAR} style={{width: 25, height: 25, resizeMode: 'contain'}}/>
+            <Label style={{marginLeft: 5}} textStyle={{fontSize: 16}} text={'امتیاز شما:'}/>
+          </View>
         </View>
 
         <ScrollView contentContainerStyle={style.scrollContainer}>
@@ -58,10 +73,12 @@ const style = StyleSheet.create({
   profilePicContainer: {
     width: SCREEN_WIDTH,
     height: 0.3 * SCREEN_HEIGHT,
-    justifyContent: 'center',
     alignItems: 'center',
+    // flexDirection: 'row',
+    justifyContent: 'center',
     backgroundColor: COLOR_WHITE,
     elevation: 1,
+    paddingHorizontal: 0.07 * SCREEN_WIDTH,
   },
   profileAvatar: {
     width: 0.2 * SCREEN_HEIGHT,
@@ -69,6 +86,8 @@ const style = StyleSheet.create({
     borderRadius: 0.2 * SCREEN_HEIGHT / 2,
     borderColor: COLOR_BLUE_DEFAULT,
     borderWidth: 2,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   scrollContainer: {paddingVertical: 0.03 * SCREEN_HEIGHT,},
   personalInfoContainer: {
