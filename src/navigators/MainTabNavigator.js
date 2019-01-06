@@ -18,7 +18,7 @@ const MainTabNavigator = createBottomTabNavigator({
   ProjectNavigator: {screen: Projects},
 
 }, {
-  initialRouteName: 'HomeNavigator',
+  initialRouteName: 'ProfileNavigator',
   swipeEnabled: false,
   animationEnabled: false,
 
