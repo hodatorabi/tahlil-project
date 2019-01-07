@@ -1,8 +1,7 @@
 import React from 'react'
-import {StyleSheet, View} from 'react-native'
-import {SCREEN_HEIGHT, SCREEN_WIDTH} from 'src/assets/styles/style'
-import {COLOR_DARK_BLUE} from 'src/assets/styles/colors'
+import {ScrollView, StyleSheet, View} from 'react-native'
 import IncomingRequest from 'src/components/requests/IncomingRequest'
+import {PROJECT_SAMPLE_PIC1, PROJECT_SAMPLE_PIC2} from 'src/assets/styles/icons'
 
 
 class IncomingRequests extends React.Component<Props, void> {
@@ -10,7 +9,11 @@ class IncomingRequests extends React.Component<Props, void> {
   render() {
     return (
       <View>
-        <IncomingRequest/>
+        <ScrollView contentContainerStyle={{paddingTop: 20, alignItems: 'center'}}>
+          <IncomingRequest projectPicture={PROJECT_SAMPLE_PIC1}/>
+          <IncomingRequest projectPicture={PROJECT_SAMPLE_PIC2}/>
+          <IncomingRequest projectPicture={PROJECT_SAMPLE_PIC1}/>
+        </ScrollView>
       </View>
     )
   }
@@ -18,26 +21,4 @@ class IncomingRequests extends React.Component<Props, void> {
 
 export default IncomingRequests
 
-const style = StyleSheet.create({
-  containerStyle: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    width: SCREEN_WIDTH,
-    paddingHorizontal: 0.03 * SCREEN_WIDTH,
-    paddingVertical: 0.02 * SCREEN_HEIGHT,
-  },
-  inputStyle: {
-    height: 50,
-    width: 0.95 * SCREEN_WIDTH,
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'flex-end',
-  },
-  textStyle: {
-    color: COLOR_DARK_BLUE,
-    fontSize: 16,
-    fontFamily: 'IRANSansMobile',
-    textAlign: 'right',
-  },
-})
+const style = StyleSheet.create({})

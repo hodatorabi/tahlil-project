@@ -15,4 +15,6 @@ export const messages = {
   PERSONAL_INFO: 'مشخصات فردی',
   TIME_SCHEDULE: 'برنامه زمانی',
   ABILITIES: 'توانمندی‌ها',
+  INCOMING_REQUESTS: 'درخواست‌های موسسات',
+  OUTGOING_REQUESTS: 'درخواست‌های من',
 }

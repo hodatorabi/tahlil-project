@@ -1,5 +1,5 @@
 import React from 'react'
-import {StyleSheet, View} from 'react-native'
+import {Image, StyleSheet, View} from 'react-native'
 import {SCREEN_HEIGHT, SCREEN_WIDTH} from 'src/assets/styles/style'
 import {COLOR_WHITE} from 'src/assets/styles/colors'
 
@@ -8,7 +8,9 @@ class IncomingRequest extends React.Component<Props, void> {
 
   render() {
     return (
-      <View style={style.containerStyle}/>
+      <View style={style.containerStyle}>
+        <Image source={this.props.projectPicture} style={style.projectPictureStyle}/>
+      </View>
     )
   }
 }
@@ -22,5 +24,12 @@ const style = StyleSheet.create({
     borderRadius: 20,
     backgroundColor: COLOR_WHITE,
     alignSelf: 'center',
+    marginBottom: 0.02 * SCREEN_HEIGHT,
+  },
+  projectPictureStyle: {
+    height: SCREEN_HEIGHT * 0.17,
+    borderTopLeftRadius: 20,
+    borderTopRightRadius: 20,
+    width: '100%',
   },
 })
