@@ -6,8 +6,8 @@ import {SCREEN_WIDTH} from 'src/assets/styles/style'
 import IncomingRequests from 'src/components/requests/IncomingRequests'
 import {messages} from 'src/utils/messages'
 
-const FirstRoute = () => (
-  <IncomingRequests/>
+const FirstRoute = (navigation) => (
+  <IncomingRequests navigation={navigation}/>
 )
 const SecondRoute = () => (
   <View/>
@@ -28,7 +28,7 @@ export default class Requests extends React.Component {
         <TabView
           navigationState={this.state}
           renderScene={SceneMap({
-            first: FirstRoute,
+            first: (navigation) => FirstRoute(navigation),
             second: SecondRoute,
           })}
           onIndexChange={index => this.setState({index})}
