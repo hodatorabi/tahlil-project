@@ -17,4 +17,6 @@ export const messages = {
   ABILITIES: 'توانمندی‌ها',
   INCOMING_REQUESTS: 'درخواست‌های موسسات',
   OUTGOING_REQUESTS: 'درخواست‌های من',
+  CHARITY_MESSAGE: 'پیام موسسه',
+  CHARITY_NEEDS_HELP: 'خیریه {} برای پروژه {} به کمک شما نیاز دارد.',
 }

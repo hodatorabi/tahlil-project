@@ -10,7 +10,7 @@ class IncomingRequests extends React.Component<Props, void> {
     return (
       <View>
         <ScrollView contentContainerStyle={{paddingTop: 20, alignItems: 'center'}}>
-          <IncomingRequest projectPicture={PROJECT_SAMPLE_PIC1}/>
+          <IncomingRequest projectPicture={PROJECT_SAMPLE_PIC1} charityName={'رعد'} projectName={'بازی با کودکان'}/>
           <IncomingRequest projectPicture={PROJECT_SAMPLE_PIC2}/>
           <IncomingRequest projectPicture={PROJECT_SAMPLE_PIC1}/>
         </ScrollView>
