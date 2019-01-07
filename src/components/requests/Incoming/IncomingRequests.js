@@ -1,6 +1,6 @@
 import React from 'react'
 import {ScrollView, StyleSheet, View} from 'react-native'
-import IncomingRequest from 'src/components/requests/IncomingRequest'
+import IncomingRequest from 'src/components/requests/Incoming/IncomingRequest'
 import {PROJECT_SAMPLE_PIC1, PROJECT_SAMPLE_PIC2} from 'src/assets/styles/icons'
 
 
