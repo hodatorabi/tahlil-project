@@ -1,7 +1,7 @@
 import React from 'react'
 import {Image, StyleSheet,} from 'react-native'
 import {createBottomTabNavigator} from 'react-navigation'
-import Projects from 'src/components/projects/Projects'
+import Requests from 'src/components/requests/Requests'
 import Home from 'src/components/home/Home'
 import {SCREEN_WIDTH} from 'src/assets/styles/style'
 import {COLOR_BLUE_DEFAULT, COLOR_DARK_GRAY, COLOR_MEDIUM_TURQUOISE, COLOR_WHITE,} from 'src/assets/styles/colors'
@@ -15,7 +15,7 @@ const bulletSize = 16
 const MainTabNavigator = createBottomTabNavigator({
   ProfileNavigator: {screen: Profile},
   HomeNavigator: {screen: Home},
-  ProjectNavigator: {screen: Projects},
+  RequestNavigator: {screen: Requests},
 
 }, {
   initialRouteName: 'ProfileNavigator',
@@ -52,7 +52,7 @@ const MainTabNavigator = createBottomTabNavigator({
       const iconStyle = focused ? styles.focused : styles.icon
 
       switch (routeName) {
-        case 'ProjectNavigator':
+        case 'RequestNavigator':
           return (
             <Image
               source={ICON_PROJECT_STATUS}
