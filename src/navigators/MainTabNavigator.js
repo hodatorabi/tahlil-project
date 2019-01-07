@@ -18,7 +18,7 @@ const MainTabNavigator = createBottomTabNavigator({
   RequestNavigator: {screen: Requests},
 
 }, {
-  initialRouteName: 'ProfileNavigator',
+  initialRouteName: 'RequestNavigator',
   swipeEnabled: false,
   animationEnabled: false,
 

@@ -3,9 +3,10 @@ import {StyleSheet, View} from 'react-native'
 import {SceneMap, TabBar, TabView} from 'react-native-tab-view'
 import {COLOR_BLUE_DEFAULT, COLOR_DARK_BLUE, COLOR_WHITE} from 'src/assets/styles/colors'
 import {SCREEN_WIDTH} from 'src/assets/styles/style'
+import IncomingRequests from 'src/components/requests/IncomingRequests'
 
 const FirstRoute = () => (
-  <View/>
+  <IncomingRequests/>
 )
 const SecondRoute = () => (
   <View/>

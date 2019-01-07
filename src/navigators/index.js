@@ -1,6 +1,6 @@
 import {createStackNavigator} from 'react-navigation'
 import Launch from 'src/components/init/Launch'
-import {COLOR_BLUE_DEFAULT, COLOR_LIGHT_GRAY, COLOR_WHITE} from 'src/assets/styles/colors'
+import {COLOR_LIGHT_GRAY} from 'src/assets/styles/colors'
 import AuthNavigator from 'src/navigators/AuthNavigator'
 import MainTabNavigator from 'src/navigators/MainTabNavigator'
 
