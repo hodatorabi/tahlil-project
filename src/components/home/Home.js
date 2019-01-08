@@ -3,7 +3,7 @@ import {ScrollView, StyleSheet, View} from 'react-native'
 import HeaderWithLogo from 'src/components/common/HeaderWithLogo'
 import ProjectOverview from 'src/components/home/project/ProjectOverview'
 import {messages} from 'src/utils/messages'
-import {PROJECT_SAMPLE_PIC4} from 'src/assets/styles/icons'
+import {PROJECT_SAMPLE_PIC4, PROJECT_SAMPLE_PIC5} from 'src/assets/styles/icons'
 
 class Home extends React.Component<Props, State> {
 
@@ -18,6 +18,11 @@ class Home extends React.Component<Props, State> {
                            charityName={'پناهگاه وفا'}
                            projectStartDate={'۱۲ مهر ۱۳۹۷'}
                            projectEndDate={'۱۲ آذر ۱۳۹۷'}/>
+          <ProjectOverview projectPicture={PROJECT_SAMPLE_PIC5} type={messages.CASH}
+                           projectName={'تامین کمک هزینه دانش‌آموزان'}
+                           charityName={'خیریه حکمت'}
+                           projectStartDate={'۱ مهر ۱۳۹۷'}
+                           projectEndDate={'۱۰ مهر ۱۳۹۷'}/>
         </ScrollView>
       </View>
     )
