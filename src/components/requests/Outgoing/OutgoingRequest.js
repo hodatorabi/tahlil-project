@@ -5,9 +5,8 @@ import {COLOR_BLACK, COLOR_BLUE_DEFAULT, COLOR_WHITE,} from 'src/assets/styles/c
 import Label from 'src/components/common/Label'
 import format from 'string-format'
 import {ICON_ENVELOPE} from 'src/assets/styles/icons'
-import ButtonAccept from 'src/components/common/Buttons/ButtonAccept'
-import ButtonReject from 'src/components/common/Buttons/ButtonReject'
 import {messages} from 'src/utils/messages'
+import RequestStatus from 'src/components/common/Buttons/RequestStatus'
 
 
 class OutgoingRequest extends React.Component<Props, void> {
@@ -23,8 +22,7 @@ class OutgoingRequest extends React.Component<Props, void> {
             text={format(messages.YOUR_REQUEST_FOR_PROJECT, this.props.projectName, this.props.charityName)}/>
           <View style={style.footerStyle}>
             <View style={style.buttonContainer}>
-              <ButtonAccept style={{marginRight: 20}}/>
-              <ButtonReject/>
+              <RequestStatus status={this.props.status}/>
             </View>
             <TouchableOpacity style={style.messagesButtonContainer}>
               <Label text={messages.YOUR_EXPLANATION} textStyle={{fontSize: 16, color: COLOR_BLUE_DEFAULT}}/>

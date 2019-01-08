@@ -1,12 +1,14 @@
 import React from 'react'
-import {StyleSheet, View} from 'react-native'
+import {StyleSheet} from 'react-native'
+import OutgoingRequest from 'src/components/requests/Outgoing/OutgoingRequest'
+import {messages} from 'src/utils/messages'
 
 
 class OutgoingRequests extends React.Component<Props, void> {
 
   render() {
     return (
-      <View/>
+      <OutgoingRequest status={messages.ACCEPTED}/>
     )
   }
 }

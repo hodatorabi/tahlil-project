@@ -21,4 +21,7 @@ export const messages = {
   CHARITY_NEEDS_HELP: 'خیریه {} برای پروژه {} به کمک شما نیاز دارد.',
   YOUR_REQUEST_FOR_PROJECT: 'درخواست شما برای پروژه {} خیریه {} فرستاده شد.',
   YOUR_EXPLANATION: 'توضیحات من',
+  REJECTED: 'رد شده',
+  PENDING: 'در دست بررسی',
+  ACCEPTED: 'قبول شده',
 }

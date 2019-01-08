@@ -22,3 +22,8 @@ export const COLOR_DARK_BLUE = '#37474F'
 export const COLOR_MEDIUM_BLUE = '#607D8b'
 export const COLOR_DEFAULT_GRAY = '#cccccc'
 export const COLOR_DEFAULT_ORANGE = '#FF8F00'
+
+export const COLOR_BLUE_TRANSPARENT = 'rgba(0,131,143, .1)'
+export const COLOR_RED_TRANSPARENT = 'rgba(190,0,0, .1)'
+export const COLOR_ORANGE_TRANSPARENT = 'rgba(225,143,0, .1)'
+
