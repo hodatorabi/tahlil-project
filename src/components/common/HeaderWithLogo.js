@@ -2,6 +2,7 @@ import React from 'react'
 import {Image, StyleSheet, View} from 'react-native'
 import {LOGO_HEADER} from 'src/assets/styles/icons'
 import {commonHeaderHeight, SCREEN_WIDTH} from 'src/assets/styles/style'
+import {COLOR_WHITE} from 'src/assets/styles/colors'
 
 
 class HeaderWithLogo extends React.PureComponent<Props> {
@@ -22,6 +23,7 @@ const style = StyleSheet.create({
     width: SCREEN_WIDTH,
     justifyContent: 'center',
     alignItems: 'center',
+    backgroundColor: COLOR_WHITE,
   },
   headerLogo: {
     width: 0.33 * SCREEN_WIDTH,

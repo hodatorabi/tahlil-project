@@ -6,7 +6,7 @@ import Label from 'src/components/common/Label'
 import format from 'string-format'
 import {ICON_ENVELOPE} from 'src/assets/styles/icons'
 import {messages} from 'src/utils/messages'
-import RequestStatus from 'src/components/common/Buttons/RequestStatus'
+import RequestStatus from 'src/components/common/RequestStatus'
 
 
 class OutgoingRequest extends React.Component<Props, void> {

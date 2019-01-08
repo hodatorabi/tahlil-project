@@ -24,4 +24,6 @@ export const messages = {
   REJECTED: 'رد شده',
   PENDING: 'در دست بررسی',
   ACCEPTED: 'قبول شده',
+  CASH: 'نقدی',
+  NON_CASH: 'غیرنقدی',
 }
