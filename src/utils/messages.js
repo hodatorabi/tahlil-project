@@ -26,4 +26,5 @@ export const messages = {
   ACCEPTED: 'قبول شده',
   CASH: 'نقدی',
   NON_CASH: 'غیرنقدی',
+  MY_PROJECTS: 'پروژه‌های من',
 }
