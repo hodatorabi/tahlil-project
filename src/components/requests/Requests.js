@@ -5,12 +5,13 @@ import {COLOR_BLUE_DEFAULT, COLOR_DARK_BLUE, COLOR_WHITE} from 'src/assets/style
 import {SCREEN_WIDTH} from 'src/assets/styles/style'
 import IncomingRequests from 'src/components/requests/Incoming/IncomingRequests'
 import {messages} from 'src/utils/messages'
+import OutgoingRequests from 'src/components/requests/Outgoing/OutgoingRequests'
 
 const FirstRoute = (navigation) => (
   <IncomingRequests navigation={navigation}/>
 )
 const SecondRoute = () => (
-  <View/>
+  <OutgoingRequests/>
 )
 
 export default class Requests extends React.Component {

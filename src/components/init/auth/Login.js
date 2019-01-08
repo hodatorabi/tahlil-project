@@ -7,7 +7,7 @@ import {messages} from 'src/utils/messages'
 import {SCREEN_HEIGHT, SCREEN_WIDTH} from 'src/assets/styles/style'
 import CustomInput from 'src/components/common/CustomInput'
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view'
-import CustomButton from 'src/components/common/CustomButton'
+import CustomButton from 'src/components/common/Buttons/CustomButton'
 import NavigationService from 'src/utils/navigationService'
 
 class Login extends React.Component<Props, State> {

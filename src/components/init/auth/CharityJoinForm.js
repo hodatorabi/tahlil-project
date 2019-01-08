@@ -6,7 +6,7 @@ import {messages} from 'src/utils/messages'
 import {SCREEN_HEIGHT} from 'src/assets/styles/style'
 import CustomInput from 'src/components/common/CustomInput'
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view'
-import CustomButton from 'src/components/common/CustomButton'
+import CustomButton from 'src/components/common/Buttons/CustomButton'
 import AgreementCheckBox from 'src/components/common/AgreementCheckBox'
 
 class CharityJoinForm extends React.Component<Props, State> {

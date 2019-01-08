@@ -3,7 +3,7 @@ import {StyleSheet, View} from 'react-native'
 import {SCREEN_HEIGHT, SCREEN_WIDTH} from 'src/assets/styles/style'
 import {COLOR_DARK_BLUE} from 'src/assets/styles/colors'
 import Label from 'src/components/common/Label'
-import ButtonMinus from 'src/components/common/ButtonMinus'
+import ButtonMinus from 'src/components/common/Buttons/ButtonMinus'
 
 
 class AbilityRow extends React.Component<Props, void> {

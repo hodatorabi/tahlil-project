@@ -10,7 +10,7 @@ import ButtonReject from 'src/components/common/Buttons/ButtonReject'
 import {messages} from 'src/utils/messages'
 
 
-class IncomingRequest extends React.Component<Props, void> {
+class OutgoingRequest extends React.Component<Props, void> {
 
   render() {
     return (
@@ -20,14 +20,14 @@ class IncomingRequest extends React.Component<Props, void> {
           <Label
             style={{width: '95%'}}
             textStyle={style.bodyTextStyle}
-            text={format(messages.CHARITY_NEEDS_HELP, this.props.charityName, this.props.projectName)}/>
+            text={format(messages.YOUR_REQUEST_FOR_PROJECT, this.props.projectName, this.props.charityName)}/>
           <View style={style.footerStyle}>
             <View style={style.buttonContainer}>
               <ButtonAccept style={{marginRight: 20}}/>
               <ButtonReject/>
             </View>
             <TouchableOpacity style={style.messagesButtonContainer}>
-              <Label text={messages.CHARITY_MESSAGE} textStyle={{fontSize: 16, color: COLOR_BLUE_DEFAULT}}/>
+              <Label text={messages.YOUR_EXPLANATION} textStyle={{fontSize: 16, color: COLOR_BLUE_DEFAULT}}/>
               <Image source={ICON_ENVELOPE} style={{width: 25, height: 25, marginLeft: 8}}
                      tintColor={COLOR_BLUE_DEFAULT}/>
             </TouchableOpacity>
@@ -38,7 +38,7 @@ class IncomingRequest extends React.Component<Props, void> {
   }
 }
 
-export default IncomingRequest
+export default OutgoingRequest
 
 const style = StyleSheet.create({
   containerStyle: {
