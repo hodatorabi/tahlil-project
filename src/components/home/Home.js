@@ -1,9 +1,9 @@
 import React from 'react'
 import {ScrollView, StyleSheet, View} from 'react-native'
-import HeaderWithLogo from 'src/components/common/HeaderWithLogo'
 import ProjectOverview from 'src/components/home/project/ProjectOverview'
 import {messages} from 'src/utils/messages'
 import {PROJECT_SAMPLE_PIC4, PROJECT_SAMPLE_PIC5} from 'src/assets/styles/icons'
+import HomeHeader from 'src/components/home/HomeHeader'
 
 class Home extends React.Component<Props, State> {
 
@@ -11,7 +11,7 @@ class Home extends React.Component<Props, State> {
   render() {
     return (
       <View style={{justifyContent: 'flex-start', flex: 1}}>
-        <HeaderWithLogo/>
+        <HomeHeader navigation={this.props.navigation}/>
         <ScrollView contentContainerStyle={{paddingTop: 20, alignItems: 'center'}}>
           <ProjectOverview projectPicture={PROJECT_SAMPLE_PIC4} type={messages.NON_CASH}
                            projectName={'غذارسانی حیوانات'}

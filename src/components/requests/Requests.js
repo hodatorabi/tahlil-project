@@ -10,8 +10,8 @@ import OutgoingRequests from 'src/components/requests/Outgoing/OutgoingRequests'
 const FirstRoute = (navigation) => (
   <IncomingRequests navigation={navigation}/>
 )
-const SecondRoute = () => (
-  <OutgoingRequests/>
+const SecondRoute = (navigation) => (
+  <OutgoingRequests navigation={navigation}/>
 )
 
 export default class Requests extends React.Component {
@@ -30,7 +30,7 @@ export default class Requests extends React.Component {
           navigationState={this.state}
           renderScene={SceneMap({
             first: (navigation) => FirstRoute(navigation),
-            second: SecondRoute,
+            second: (navigation) => SecondRoute(navigation),
           })}
           onIndexChange={index => this.setState({index})}
           initialLayout={{width: SCREEN_WIDTH}}
