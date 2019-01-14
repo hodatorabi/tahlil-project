@@ -6,6 +6,7 @@ import Label from 'src/components/common/Label'
 import ProjectTypeTag from 'src/components/home/project/ProjectTypeTag'
 import CustomButton from 'src/components/common/Buttons/CustomButton'
 import format from 'string-format'
+import {messages} from 'src/utils/messages'
 
 
 class ProjectOverview extends React.Component<Props, void> {
@@ -25,11 +26,11 @@ class ProjectOverview extends React.Component<Props, void> {
                    text={this.props.charityName}/>
           </View>
           <View style={style.bottomBodyStyle}>
-            <CustomButton label={'مشاهده'} onPress={this.props.onPress}/>
+            <CustomButton label={messages.SHOW} onPress={this.props.onPress}/>
             <View style={style.dateContainer}>
-              <Label text={format('تاریخ ایجاد درخواست: {}', this.props.projectStartDate)}
+              <Label text={format(messages.CREATION_DATE, this.props.projectStartDate)}
                      textStyle={{color: COLOR_DARK_GRAY, fontSize: 14}}/>
-              <Label text={format('تاریخ انقضا: {}', this.props.projectEndDate)}
+              <Label text={format(messages.EXPIRATION_DATE, this.props.projectEndDate)}
                      textStyle={{color: COLOR_DARK_GRAY, fontSize: 14}}/>
             </View>
           </View>

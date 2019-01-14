@@ -17,7 +17,13 @@ class Home extends React.Component<Props, State> {
                            projectName={'غذارسانی حیوانات'}
                            charityName={'پناهگاه وفا'}
                            projectStartDate={'۱۲ مهر ۱۳۹۷'}
-                           projectEndDate={'۱۲ آذر ۱۳۹۷'}/>
+                           projectEndDate={'۱۲ آذر ۱۳۹۷'}
+                           onPress={() => {
+                             this.props.navigation.navigate({
+                               routeName: 'ProjectProfile',
+                               // params: {transaction: item}
+                             })
+                           }}/>
           <ProjectOverview projectPicture={PROJECT_SAMPLE_PIC5} type={messages.CASH}
                            projectName={'تامین کمک هزینه دانش‌آموزان'}
                            charityName={'خیریه حکمت'}

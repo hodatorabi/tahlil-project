@@ -27,4 +27,7 @@ export const messages = {
   CASH: 'نقدی',
   NON_CASH: 'غیرنقدی',
   MY_PROJECTS: 'پروژه‌های من',
+  SHOW: 'مشاهده',
+  EXPIRATION_DATE: 'تاریخ انقضا: {}',
+  CREATION_DATE: 'تاریخ ایجاد درخواست: {}',
 }
