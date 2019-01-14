@@ -1,14 +1,39 @@
 import React from 'react'
-import {StyleSheet, View} from 'react-native'
+import {Image, StyleSheet, View} from 'react-native'
+import CommonHeader from 'src/components/common/CommonHeader'
 import {SCREEN_HEIGHT, SCREEN_WIDTH} from 'src/assets/styles/style'
-import {COLOR_WHITE,} from 'src/assets/styles/colors'
+import {COLOR_BLACK, COLOR_BLUE_DEFAULT, COLOR_WHITE} from 'src/assets/styles/colors'
+import ProjectTypeTag from 'src/components/home/project/ProjectTypeTag'
+import Label from 'src/components/common/Label'
 
 
 class ProjectProfile extends React.Component<Props, void> {
 
   render() {
+    const project = this.props.navigation.getParam('project', null)
     return (
-      <View/>
+      <View style={style.projectPage}>
+
+        <CommonHeader hasBack={true} onPress={this.props.navigation.goBack} title={project.projectName}/>
+
+        <View style={style.projectTopContainer}>
+          <Image source={project.projectPicture} style={style.pictureStyle}/>
+          <View style={style.projectBasicInfoContainer}>
+            <View style={{flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between'}}>
+              <ProjectTypeTag type={project.projectType}/>
+              <Label textStyle={{color: COLOR_BLUE_DEFAULT, fontFamily: 'IRANSansMobile_Bold', fontSize: 20}}
+                     text={project.projectName}/>
+            </View>
+            <Label style={{alignSelf: 'flex-end'}} textStyle={{color: COLOR_BLACK, fontSize: 18}}
+                   text={project.charityName}/>
+          </View>
+        </View>
+
+        <View>
+          
+        </View>
+
+      </View>
     )
   }
 }
@@ -16,42 +41,24 @@ class ProjectProfile extends React.Component<Props, void> {
 export default ProjectProfile
 
 const style = StyleSheet.create({
-  containerStyle: {
-    height: SCREEN_HEIGHT * 0.35,
-    width: SCREEN_WIDTH * 0.92,
-    borderRadius: 20,
+  projectPage: {
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+  },
+  projectTopContainer: {
+    height: 0.4 * SCREEN_HEIGHT,
     backgroundColor: COLOR_WHITE,
-    alignSelf: 'center',
-    marginBottom: 0.02 * SCREEN_HEIGHT,
-    elevation: 1,
+    width: SCREEN_WIDTH,
+    marginTop: 15,
   },
-  projectPictureStyle: {
-    height: SCREEN_HEIGHT * 0.17,
-    borderTopLeftRadius: 20,
-    borderTopRightRadius: 20,
+  pictureStyle: {
+    height: 0.3 * SCREEN_HEIGHT,
     width: '100%',
   },
-  bodyStyle: {
-    width: '100%',
-    height: 0.18 * SCREEN_HEIGHT,
+  projectBasicInfoContainer: {
+    width: SCREEN_WIDTH,
+    height: 0.1 * SCREEN_HEIGHT - 5,
     paddingHorizontal: 10,
-    marginTop: 10,
-    alignItems: 'center',
+    marginTop: 5,
   },
-  topBodyStyle: {
-    width: '100%',
-    height: '50%',
-  },
-  bottomBodyStyle: {
-    flexDirection: 'row',
-    width: '100%',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-  },
-  dateContainer: {
-    flexDirection: 'column',
-    justifyContent: 'center',
-    alignItems: 'flex-end',
-  },
-
 })
