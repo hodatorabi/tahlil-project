@@ -8,9 +8,15 @@ import CustomButton from 'src/components/common/Buttons/CustomButton'
 import ButtonPlus from 'src/components/common/Buttons/ButtonPlus'
 import AbilityRow from 'src/components/profile/ProfileRow/AbilityRow'
 import {DEFAULT_PROFILE_PIC, ICON_STAR} from 'src/assets/styles/icons'
+import {messages} from 'src/utils/messages'
+import AbilityPopUp from 'src/components/common/popUps/AbilityPopUp'
 
 
 class Profile extends React.Component<Props, State> {
+
+  state = {
+    popUpVisible: false,
+  }
 
   render() {
     return (
@@ -38,27 +44,29 @@ class Profile extends React.Component<Props, State> {
 
           <View style={style.personalInfoContainer}>
             <View style={style.labelStyle}>
-              <CustomButton label={'ویرایش'}/>
+              <CustomButton label={messages.EDIT}/>
               <Label textStyle={{color: COLOR_BLUE_DEFAULT, fontSize: 20}}
-                     text={'مشخصات فردی'}/>
+                     text={messages.PERSONAL_INFO}/>
             </View>
 
-            <PersonalInfoRow description={'هدی'} title={'نام و نام خانوادگی: '}/>
-            <PersonalInfoRow description={'تهران'} title={'شهر سکونت: '}/>
-            <PersonalInfoRow description={'09394222978'} title={'شماره تماس: '}/>
-            <PersonalInfoRow description={'زن'} title={'جنسیت: '}/>
+            <PersonalInfoRow description={'هدی'} title={messages.FULL_NAME}/>
+            <PersonalInfoRow description={'تهران'} title={messages.CITY}/>
+            <PersonalInfoRow description={'09394222978'} title={messages.PHONE_NUMBER}/>
+            <PersonalInfoRow description={'زن'} title={messages.GENDER}/>
           </View>
 
           <View style={style.abilitiesContainer}>
             <View style={style.labelStyle}>
-              <ButtonPlus/>
+              <ButtonPlus onPress={() => this.setState({popUpVisible: true})}/>
               <Label textStyle={{color: COLOR_BLUE_DEFAULT, fontSize: 20}}
-                     text={'توانمندی‌ها'}/>
+                     text={messages.ABILITIES}/>
             </View>
             <AbilityRow title={'پرستاری'}/>
             <AbilityRow title={'آموزش'}/>
           </View>
         </ScrollView>
+
+        <AbilityPopUp visible={this.state.popUpVisible} onDismiss={() => this.setState({popUpVisible: false})}/>
       </View>
     )
   }
@@ -77,7 +85,7 @@ const style = StyleSheet.create({
     // flexDirection: 'row',
     justifyContent: 'center',
     backgroundColor: COLOR_WHITE,
-    elevation: 1,
+    // elevation: 1,
     paddingHorizontal: 0.07 * SCREEN_WIDTH,
   },
   profileAvatar: {

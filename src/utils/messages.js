@@ -13,6 +13,7 @@ export const messages = {
   RULES: 'قوانین و مقررات ',
   AGREEMENT_STATEMENT: 'را مطالعه کرده و قبول دارم.',
   PERSONAL_INFO: 'مشخصات فردی',
+  EDIT: 'ویرایش',
   TIME_SCHEDULE: 'برنامه زمانی',
   ABILITIES: 'توانمندی‌ها',
   INCOMING_REQUESTS: 'درخواست‌های موسسات',
@@ -43,4 +44,11 @@ export const messages = {
   FUNDED_AMOUNT: 'مبلغ تامین شده: ',
 
   TOMAN: ' تومان',
+
+  FULL_NAME: 'نام و نام خانوادگی: ',
+  CITY: 'شهر سکونت: ',
+  PHONE_NUMBER: 'شماره تماس: ',
+  GENDER: 'شماره تماس: ',
+
+  CHOOSE_ABILITY: 'توانمندی موردنظر خود را انتخاب کنید.',
 }
