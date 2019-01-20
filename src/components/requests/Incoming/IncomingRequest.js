@@ -24,7 +24,7 @@ class IncomingRequest extends React.Component<Props, void> {
           <View style={style.footerStyle}>
             <View style={style.buttonContainer}>
               <ButtonAccept style={{marginRight: 20}}/>
-              <ButtonReject/>
+              <ButtonReject onPress={this.props.onReject}/>
             </View>
             <TouchableOpacity onPress={this.props.onMessagePress} style={style.messagesButtonContainer}>
               <Label text={messages.CHARITY_MESSAGE} textStyle={{fontSize: 16, color: COLOR_BLUE_DEFAULT}}/>

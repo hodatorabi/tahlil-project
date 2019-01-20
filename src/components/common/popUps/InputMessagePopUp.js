@@ -16,7 +16,7 @@ class InputMessagePopUp extends React.Component<Props, void> {
         rounded
         dialogTitle={
           <DialogTitle
-            title={messages.SEND_REQUEST}
+            title={this.props.title}
             textStyle={{fontFamily: 'IRANSansMobile_Bold', color: COLOR_BLUE_DEFAULT}}
             style={{
               backgroundColor: '#ffffff',
@@ -47,7 +47,7 @@ class InputMessagePopUp extends React.Component<Props, void> {
         >
           <Label style={{marginTop: -10, marginBottom: 20, width: '80%', alignSelf: 'center'}}
                  textStyle={{fontSize: 16, color: COLOR_BLACK}}
-                 text={messages.REQUEST_MESSAGE}/>
+                 text={this.props.text}/>
           <TextInput multiline={true}
                      style={{
                        backgroundColor: COLOR_WHITE,

@@ -90,6 +90,8 @@ class ProjectProfile extends React.Component<Props, void> {
 
         </ScrollView>
         <InputMessagePopUp visible={this.state.messagePopUpVisible}
+                           title={messages.SEND_REQUEST}
+                           text={messages.REQUEST_MESSAGE}
                            onDismiss={() => {
                              Keyboard.dismiss()
                              this.setState({messagePopUpVisible: false})

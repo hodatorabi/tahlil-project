@@ -59,4 +59,6 @@ export const messages = {
   REMOVE_ABILITY: 'آیا از حذف این توانمندی مطمئنید؟',
 
   REQUEST_MESSAGE: 'در صورتی که توضیحی دارید، در فیلد پایین وارد کنید.',
+  REJECT_REQUEST: 'رد درخواست',
+  REJECT_REASON: 'در صورت تمایل، دلیل خود را برای رد درخواست وارد کنید.',
 }
