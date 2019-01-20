@@ -15,7 +15,7 @@ class MessagePopUp extends React.Component<Props, void> {
         rounded
         dialogTitle={
           <DialogTitle
-            title={messages.CHARITY_MESSAGE}
+            title={this.props.title}
             textStyle={{fontFamily: 'IRANSansMobile_Bold', color: COLOR_BLUE_DEFAULT}}
             style={{
               backgroundColor: '#ffffff',

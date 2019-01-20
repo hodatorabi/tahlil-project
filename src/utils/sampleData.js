@@ -1,6 +1,6 @@
 import {
   PROJECT_SAMPLE_PIC1, PROJECT_SAMPLE_PIC2, PROJECT_SAMPLE_PIC3, PROJECT_SAMPLE_PIC4, PROJECT_SAMPLE_PIC5,
-  PROJECT_SAMPLE_PIC6,
+  PROJECT_SAMPLE_PIC6, PROJECT_SAMPLE_PIC7,
 } from 'src/assets/styles/icons'
 import {messages} from 'src/utils/messages'
 
@@ -99,7 +99,7 @@ export const project6 = {
 }
 
 export const project7 = {
-  projectPicture: PROJECT_SAMPLE_PIC6,
+  projectPicture: PROJECT_SAMPLE_PIC7,
   projectName: 'جمع‌آوری لباس برای بی‌خانمان‌ها',
   charityName: 'موسسه شاپرک',
   projectStartDate: '۱۴ مهر ۱۳۹۷',
@@ -130,4 +130,17 @@ export const request3 = {
   project: project5,
   status: messages.PENDING,
   message: 'با توجه به پروفایل شما، شما فرد مناسبی برای این امر خیر هستید!',
+}
+
+export const request4 = {
+  project: project6,
+  status: messages.PENDING,
+  message: 'با توجه به پروفایل شما، شما فرد مناسبی برای این امر خیر هستید!',
+}
+
+export const request5 = {
+  project: project7,
+  status: messages.REJECTED,
+  message: 'با توجه به پروفایل شما، شما فرد مناسبی برای این امر خیر هستید!',
+  reason: 'متاسفانه توانمندی‌های شما مطابق توانمندی‌های موردنیاز نبود.',
 }

@@ -12,23 +12,26 @@ import RequestStatus from 'src/components/common/RequestStatus'
 class OutgoingRequest extends React.Component<Props, void> {
 
   render() {
+    const request = this.props.request
+    const project = request.project
     return (
       <View style={style.containerStyle}>
-        <Image source={this.props.projectPicture} style={style.projectPictureStyle}/>
+        <Image source={project.projectPicture} style={style.projectPictureStyle}/>
         <View style={style.bodyStyle}>
           <Label
             style={{width: '95%'}}
             textStyle={style.bodyTextStyle}
-            text={format(messages.YOUR_REQUEST_FOR_PROJECT, this.props.projectName, this.props.charityName)}/>
+            text={format(messages.YOUR_REQUEST_FOR_PROJECT, project.projectName, project.charityName)}/>
           <View style={style.footerStyle}>
             <View style={style.buttonContainer}>
-              <RequestStatus status={this.props.status}/>
+              <RequestStatus status={request.status}/>
             </View>
-            <TouchableOpacity style={style.messagesButtonContainer}>
-              <Label text={messages.YOUR_EXPLANATION} textStyle={{fontSize: 16, color: COLOR_BLUE_DEFAULT}}/>
-              <Image source={ICON_ENVELOPE} style={{width: 25, height: 25, marginLeft: 8}}
-                     tintColor={COLOR_BLUE_DEFAULT}/>
-            </TouchableOpacity>
+            {request.status === messages.REJECTED ?
+              <TouchableOpacity onPress={this.props.onReasonPress} style={style.messagesButtonContainer}>
+                <Label text={messages.CHARITY_REASON} textStyle={{fontSize: 16, color: COLOR_BLUE_DEFAULT}}/>
+                <Image source={ICON_ENVELOPE} style={{width: 25, height: 25, marginLeft: 8}}
+                       tintColor={COLOR_BLUE_DEFAULT}/>
+              </TouchableOpacity> : <View style={style.messagesButtonContainer}/>}
           </View>
         </View>
       </View>

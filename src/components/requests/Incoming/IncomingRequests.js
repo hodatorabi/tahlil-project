@@ -13,6 +13,7 @@ class IncomingRequests extends React.Component<Props, void> {
     super(props)
 
     this.onMessagePress = this.onMessagePress.bind(this)
+    this.onReject = this.onReject.bind(this)
   }
 
   state = {
@@ -40,12 +41,12 @@ class IncomingRequests extends React.Component<Props, void> {
           <IncomingRequest onReject={this.onReject} onMessagePress={() => this.onMessagePress(request3)}
                            project={request3.project}/>
         </ScrollView>
-        <MessagePopUp
-          onDismiss={() => {
-            this.setState({messagePopUpVisible: false})
-          }}
-          visible={this.state.messagePopUpVisible}
-          message={this.state.message}/>
+        <MessagePopUp visible={this.state.messagePopUpVisible}
+                      title={messages.CHARITY_MESSAGE}
+                      message={this.state.message}
+                      onDismiss={() => {
+                        this.setState({messagePopUpVisible: false})
+                      }}/>
         <InputMessagePopUp visible={this.state.inputMessagePopUpVisible} title={messages.REJECT_REQUEST}
                            text={messages.REJECT_REASON}
                            onDismiss={() => {
