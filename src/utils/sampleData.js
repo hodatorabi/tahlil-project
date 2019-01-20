@@ -9,6 +9,12 @@ export const project1 = {
   projectEndDate: '۱۲ آذر ',
   projectType: messages.NON_CASH,
   projectDescription: 'این پروژه برای غذارسانی به حیوانات ولگرد مشادهده شده در اطراف باغ‌های هشتگرد است که بسیار ضعیف و رنجور شده‌اند. سرمای هوا باعث شده که این حیوانات حتی از قبل نیز ضعیف‌تر شوند.',
+  info: {
+    age: '۲۰ تا ۳۰ سال',
+    location: 'هشتگرد',
+    gender: 'زن - مرد',
+    abilities: ['دامپزشکی', 'روحیه گروهی'],
+  },
 }
 
 export const project2 = {

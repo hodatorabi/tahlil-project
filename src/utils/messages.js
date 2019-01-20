@@ -30,4 +30,11 @@ export const messages = {
   SHOW: 'مشاهده',
   EXPIRATION_DATE: 'تاریخ انقضا: {}',
   CREATION_DATE: 'تاریخ ایجاد درخواست: {}',
+
+  VOLUNTEER_AGE: 'محدوده سنی مورد نیاز: ',
+  VOLUNTEER_GENDER: 'جنسیت متقاضیان: ',
+  PROJECT_LOCATION: 'موقعیت مکانی: ',
+  VOLUNTEER_ABILITIES: 'توانمندی‌های مورد نیاز: ',
+
+  SEND_REQUEST: 'ارسال درخواست',
 }

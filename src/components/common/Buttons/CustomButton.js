@@ -11,7 +11,7 @@ class CustomButton extends React.Component<Props, void> {
         {...this.props}
         label={this.props.label}
         backgroundColor={COLOR_BLUE_DEFAULT}
-        labelStyle={{fontFamily: 'IRANSansMobile'}}
+        labelStyle={[{fontFamily: 'IRANSansMobile'}, this.props.labelStyle]}
       />
     )
   }

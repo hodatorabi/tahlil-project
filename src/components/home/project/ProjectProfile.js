@@ -8,6 +8,7 @@ import Label from 'src/components/common/Label'
 import {messages} from 'src/utils/messages'
 import format from 'string-format'
 import ProjectInfoRow from 'src/components/home/project/ProjectInfoRow'
+import CustomButton from 'src/components/common/Buttons/CustomButton'
 
 
 class ProjectProfile extends React.Component<Props, void> {
@@ -20,7 +21,7 @@ class ProjectProfile extends React.Component<Props, void> {
 
         <CommonHeader hasBack={true} onPress={this.props.navigation.goBack} title={project.projectName}/>
 
-        <ScrollView contentContainerStyle={{paddingTop: 20, alignItems: 'center'}}>
+        <ScrollView contentContainerStyle={{paddingTop: 20, alignItems: 'center', paddingBottom: 20}}>
           <View style={style.projectTopContainer}>
             <Image source={project.projectPicture} style={style.pictureStyle}/>
             <View style={style.projectBasicInfoContainer}>
@@ -47,15 +48,17 @@ class ProjectProfile extends React.Component<Props, void> {
           </View>
 
           <View style={style.projectInfoContainer}>
-            <ProjectInfoRow title={'محدوده سنی مورد نیاز: '} description={['۲۰ تا ۳۰ سال']}/>
-            <ProjectInfoRow title={'جنسیت متقاضیان: '} description={['زن - مرد']}/>
-            <ProjectInfoRow title={'موقعیت مکانی: '} description={['هشتگرد']}/>
-            <ProjectInfoRow title={'توانمندی‌های مورد نیاز: '}
-                            description={['دامپزشکی', 'روحیه گروهی']}/>
+            <ProjectInfoRow title={messages.VOLUNTEER_AGE} description={[project.info.age]}/>
+            <ProjectInfoRow title={messages.VOLUNTEER_GENDER} description={[project.info.gender]}/>
+            <ProjectInfoRow title={messages.PROJECT_LOCATION} description={[project.info.location]}/>
+            <ProjectInfoRow title={messages.VOLUNTEER_ABILITIES}
+                            description={project.info.abilities}/>
           </View>
 
-        </ScrollView>
+          <CustomButton style={{width: 0.8 * SCREEN_WIDTH, height: 50}} label={messages.SEND_REQUEST}
+                        labelStyle={{fontSize: 20}}/>
 
+        </ScrollView>
       </View>
     )
   }
