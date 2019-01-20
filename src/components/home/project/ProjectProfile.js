@@ -9,12 +9,15 @@ import {messages} from 'src/utils/messages'
 import format from 'string-format'
 import ProjectInfoRow from 'src/components/home/project/ProjectInfoRow'
 import CustomButton from 'src/components/common/Buttons/CustomButton'
+import ProgressBar from 'react-native-progress/Bar'
 
 
 class ProjectProfile extends React.Component<Props, void> {
 
   render() {
     const project = this.props.navigation.getParam('project', null)
+    const neededAmount = project.info.neededAmount
+    const fundedAmount = project.info.fundedAmount
     return (
 
       <View style={style.projectPage}>
@@ -33,6 +36,23 @@ class ProjectProfile extends React.Component<Props, void> {
               <Label style={{alignSelf: 'flex-end'}} textStyle={{color: COLOR_BLACK, fontSize: 18}}
                      text={project.charityName}/>
             </View>
+            {project.projectType === messages.CASH &&
+            <View style={style.projectCompletionStyle}>
+              <ProgressBar progress={1 - fundedAmount / neededAmount} width={0.8 * SCREEN_WIDTH} color={COLOR_WHITE}
+                           borderColor={COLOR_BLUE_DEFAULT} unfilledColor={COLOR_BLUE_DEFAULT}/>
+              <View style={style.projectBudgetInfo}>
+                <View style={{flexDirection: 'row'}}>
+                  <Label textStyle={{color: COLOR_BLUE_DEFAULT, fontFamily: 'IRANSansMobile_Bold'}}
+                         text={fundedAmount + messages.TOMAN}/>
+                  <Label textStyle={{fontSize: 16}} text={messages.FUNDED_AMOUNT}/>
+                </View>
+                <View style={{flexDirection: 'row'}}>
+                  <Label textStyle={{color: COLOR_BLUE_DEFAULT, fontFamily: 'IRANSansMobile_Bold'}}
+                         text={neededAmount + messages.TOMAN}/>
+                  <Label textStyle={{fontSize: 16}} text={messages.NEEDED_AMOUNT}/>
+                </View>
+              </View>
+            </View>}
           </View>
 
           <View style={style.projectDescriptionStyle}>
@@ -47,15 +67,17 @@ class ProjectProfile extends React.Component<Props, void> {
             </View>
           </View>
 
+          {project.projectType === messages.NON_CASH &&
           <View style={style.projectInfoContainer}>
             <ProjectInfoRow title={messages.VOLUNTEER_AGE} description={[project.info.age]}/>
             <ProjectInfoRow title={messages.VOLUNTEER_GENDER} description={[project.info.gender]}/>
             <ProjectInfoRow title={messages.PROJECT_LOCATION} description={[project.info.location]}/>
             <ProjectInfoRow title={messages.VOLUNTEER_ABILITIES}
                             description={project.info.abilities}/>
-          </View>
+          </View>}
 
-          <CustomButton style={{width: 0.8 * SCREEN_WIDTH, height: 50}} label={messages.SEND_REQUEST}
+          <CustomButton style={{width: 0.8 * SCREEN_WIDTH, height: 50}}
+                        label={project.projectType === messages.NON_CASH ? messages.SEND_REQUEST : messages.PAY}
                         labelStyle={{fontSize: 20}}/>
 
         </ScrollView>
@@ -93,6 +115,7 @@ const style = StyleSheet.create({
     marginTop: 20,
     paddingHorizontal: 25,
     paddingVertical: 0.03 * SCREEN_HEIGHT,
+    marginBottom: 20,
   },
   dateContainer: {
     flexDirection: 'column',
@@ -105,7 +128,18 @@ const style = StyleSheet.create({
     paddingVertical: 0.01 * SCREEN_HEIGHT,
     backgroundColor: COLOR_WHITE,
     width: SCREEN_WIDTH,
-    marginTop: 20,
     marginBottom: 20,
+  },
+  projectCompletionStyle: {
+    width: SCREEN_WIDTH,
+    alignItems: 'center',
+    marginTop: 10,
+  },
+  projectBudgetInfo: {
+    alignSelf: 'flex-end',
+    alignItems: 'flex-end',
+    marginTop: 10,
+    marginBottom: 10,
+    marginRight: 0.1 * SCREEN_WIDTH,
   },
 })

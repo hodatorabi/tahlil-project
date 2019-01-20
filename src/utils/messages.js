@@ -37,4 +37,10 @@ export const messages = {
   VOLUNTEER_ABILITIES: 'توانمندی‌های مورد نیاز: ',
 
   SEND_REQUEST: 'ارسال درخواست',
+  PAY: 'پرداخت وجه',
+
+  NEEDED_AMOUNT: 'مبلغ درخواستی: ',
+  FUNDED_AMOUNT: 'مبلغ تامین شده: ',
+
+  TOMAN: ' تومان',
 }
