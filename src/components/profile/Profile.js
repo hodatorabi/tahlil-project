@@ -7,10 +7,10 @@ import Label from 'src/components/common/Label'
 import CustomButton from 'src/components/common/Buttons/CustomButton'
 import ButtonPlus from 'src/components/common/Buttons/ButtonPlus'
 import AbilityRow from 'src/components/profile/ProfileRow/AbilityRow'
-import {DEFAULT_PROFILE_PIC, ICON_STAR} from 'src/assets/styles/icons'
 import {messages} from 'src/utils/messages'
 import AbilityPopUp from 'src/components/common/popUps/AbilityPopUp'
 import VerifyPopUp from 'src/components/common/popUps/VerifyPopUp'
+import {DEFAULT_PROFILE_PIC} from 'src/assets/styles/icons'
 
 
 class Profile extends React.Component<Props, State> {
@@ -24,22 +24,11 @@ class Profile extends React.Component<Props, State> {
     return (
       <View style={style.profileContainer}>
 
-        <View style={style.profilePicContainer}>
-          <View style={style.profileAvatar}>
-            <Image source={DEFAULT_PROFILE_PIC} style={{
-              height: 0.178 * SCREEN_HEIGHT,
-              width: 0.178 * SCREEN_HEIGHT,
-              borderRadius: 0.178 * SCREEN_HEIGHT / 2,
-            }}/>
+        <View style={style.profileHeaderStyle}>
+          <View style={{width: 0.5 * SCREEN_WIDTH, borderWidth: 1}}>
+            <Image source={DEFAULT_PROFILE_PIC} style={style.profileAvatar}/>
           </View>
-          <View style={{flexDirection: 'row', marginTop: 15, justifyContent: 'center', alignItems: 'center'}}>
-            <Image source={ICON_STAR} style={{width: 25, height: 25, resizeMode: 'contain'}}/>
-            <Image source={ICON_STAR} style={{width: 25, height: 25, resizeMode: 'contain'}}/>
-            <Image source={ICON_STAR} style={{width: 25, height: 25, resizeMode: 'contain'}}/>
-            <Image source={ICON_STAR} style={{width: 25, height: 25, resizeMode: 'contain'}}/>
-            <Image source={ICON_STAR} style={{width: 25, height: 25, resizeMode: 'contain'}}/>
-            <Label style={{marginLeft: 5}} textStyle={{fontSize: 16}} text={'امتیاز شما:'}/>
-          </View>
+          <View style={{width: 0.5 * SCREEN_WIDTH, borderWidth: 1}}/>
         </View>
 
         <ScrollView contentContainerStyle={style.scrollContainer}>
@@ -84,24 +73,17 @@ const style = StyleSheet.create({
   profileContainer: {
     flex: 1, justifyContent: 'flex-start', alignItems: 'center',
   },
-  profilePicContainer: {
+  profileHeaderStyle: {
     width: SCREEN_WIDTH,
-    height: 0.3 * SCREEN_HEIGHT,
-    alignItems: 'center',
-    // flexDirection: 'row',
-    justifyContent: 'center',
     backgroundColor: COLOR_WHITE,
-    // elevation: 1,
-    paddingHorizontal: 0.07 * SCREEN_WIDTH,
+    height: 0.3 * SCREEN_HEIGHT,
+    flexDirection: 'row',
+    justifyContent: 'center',
   },
   profileAvatar: {
-    width: 0.2 * SCREEN_HEIGHT,
     height: 0.2 * SCREEN_HEIGHT,
-    borderRadius: 0.2 * SCREEN_HEIGHT / 2,
-    borderColor: COLOR_BLUE_DEFAULT,
-    borderWidth: 2,
-    alignItems: 'center',
-    justifyContent: 'center',
+    width: 0.2 * SCREEN_HEIGHT,
+    borderRadius: 20,
   },
   scrollContainer: {paddingVertical: 0.03 * SCREEN_HEIGHT,},
   personalInfoContainer: {

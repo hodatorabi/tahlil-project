@@ -30,13 +30,13 @@ class AbilityPopUp extends React.Component<Props, void> {
         }
         actions={[
           <DialogButton
-            text="انصراف"
+            text={messages.CANCEL}
             onPress={this.props.onDismiss}
             key="button-1"
             textStyle={{color: COLOR_DARK_GRAY, fontFamily: 'IRANSansMobile_Bold'}}
           />,
           <DialogButton
-            text="تایید"
+            text={messages.VERIFY}
             onPress={this.props.onDismiss}
             key="button-2"
             textStyle={{color: COLOR_BLUE_DEFAULT, fontFamily: 'IRANSansMobile_Bold'}}

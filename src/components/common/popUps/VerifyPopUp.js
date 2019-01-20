@@ -2,6 +2,7 @@ import React from 'react'
 import {Dialog, DialogButton, DialogContent} from 'react-native-popup-dialog'
 import {COLOR_BLUE_DEFAULT, COLOR_DARK_GRAY} from 'src/assets/styles/colors'
 import {Text} from 'react-native'
+import {messages} from 'src/utils/messages'
 
 
 class VerifyPopUp extends React.Component<Props, void> {
@@ -14,13 +15,13 @@ class VerifyPopUp extends React.Component<Props, void> {
         rounded
         actions={[
           <DialogButton
-            text="انصراف"
+            text={messages.CANCEL}
             onPress={this.props.onDismiss}
             key="button-1"
             textStyle={{color: COLOR_DARK_GRAY, fontFamily: 'IRANSansMobile_Bold'}}
           />,
           <DialogButton
-            text="تایید"
+            text={messages.VERIFY}
             onPress={this.props.onDismiss}
             key="button-2"
             textStyle={{color: COLOR_BLUE_DEFAULT, fontFamily: 'IRANSansMobile_Bold'}}

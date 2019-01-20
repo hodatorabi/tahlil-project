@@ -45,11 +45,17 @@ export const messages = {
 
   TOMAN: ' تومان',
 
+  CANCEL: 'انصراف',
+  SEND: 'ارسال',
+  VERIFY: 'تایید',
+
   FULL_NAME: 'نام و نام خانوادگی: ',
   CITY: 'شهر سکونت: ',
   PHONE_NUMBER: 'شماره تماس: ',
-  GENDER: 'شماره تماس: ',
+  GENDER: 'جنسیت: ',
 
   CHOOSE_ABILITY: 'توانمندی موردنظر خود را انتخاب کنید.',
   REMOVE_ABILITY: 'آیا از حذف این توانمندی مطمئنید؟',
+
+  REQUEST_MESSAGE: 'در صورتی که توضیحی دارید، در فیلد پایین وارد کنید.',
 }

@@ -1,5 +1,5 @@
 import React from 'react'
-import {Image, ScrollView, StyleSheet, View} from 'react-native'
+import {Image, Keyboard, ScrollView, StyleSheet, View} from 'react-native'
 import CommonHeader from 'src/components/common/CommonHeader'
 import {SCREEN_HEIGHT, SCREEN_WIDTH} from 'src/assets/styles/style'
 import {COLOR_BLACK, COLOR_BLUE_DEFAULT, COLOR_DARK_GRAY, COLOR_WHITE} from 'src/assets/styles/colors'
@@ -10,9 +10,14 @@ import format from 'string-format'
 import ProjectInfoRow from 'src/components/home/project/ProjectInfoRow'
 import CustomButton from 'src/components/common/Buttons/CustomButton'
 import ProgressBar from 'react-native-progress/Bar'
+import MessagePopUp from 'src/components/common/popUps/MessagePopUp'
 
 
 class ProjectProfile extends React.Component<Props, void> {
+
+  state = {
+    messagePopUpVisible: false,
+  }
 
   render() {
     const project = this.props.navigation.getParam('project', null)
@@ -78,9 +83,17 @@ class ProjectProfile extends React.Component<Props, void> {
 
           <CustomButton style={{width: 0.8 * SCREEN_WIDTH, height: 50}}
                         label={project.projectType === messages.NON_CASH ? messages.SEND_REQUEST : messages.PAY}
-                        labelStyle={{fontSize: 20}}/>
+                        labelStyle={{fontSize: 20}}
+                        onPress={() => {
+                          this.setState({messagePopUpVisible: true})
+                        }}/>
 
         </ScrollView>
+        <MessagePopUp visible={this.state.messagePopUpVisible}
+                      onDismiss={() => {
+                        Keyboard.dismiss()
+                        this.setState({messagePopUpVisible: false})
+                      }}/>
       </View>
     )
   }
@@ -97,7 +110,6 @@ const style = StyleSheet.create({
   projectTopContainer: {
     backgroundColor: COLOR_WHITE,
     width: SCREEN_WIDTH,
-    // marginTop: 15,
   },
   pictureStyle: {
     height: 0.3 * SCREEN_HEIGHT,
