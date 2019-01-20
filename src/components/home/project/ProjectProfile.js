@@ -47,11 +47,11 @@ class ProjectProfile extends React.Component<Props, void> {
           </View>
 
           <View style={style.projectInfoContainer}>
-            <ProjectInfoRow title={'محدوده سنی مورد نیاز: '} description={'۲۰ تا ۳۰ سال'}/>
-            <ProjectInfoRow title={'جنسیت متقاضیان: '} description={'زن - مرد'}/>
-            <ProjectInfoRow title={'موقعیت مکانی: '} description={'هشتگرد'}/>
+            <ProjectInfoRow title={'محدوده سنی مورد نیاز: '} description={['۲۰ تا ۳۰ سال']}/>
+            <ProjectInfoRow title={'جنسیت متقاضیان: '} description={['زن - مرد']}/>
+            <ProjectInfoRow title={'موقعیت مکانی: '} description={['هشتگرد']}/>
             <ProjectInfoRow title={'توانمندی‌های مورد نیاز: '}
-                            description={'دامپزشکی'}/>
+                            description={['دامپزشکی', 'روحیه گروهی']}/>
           </View>
 
         </ScrollView>
@@ -103,5 +103,6 @@ const style = StyleSheet.create({
     backgroundColor: COLOR_WHITE,
     width: SCREEN_WIDTH,
     marginTop: 20,
+    marginBottom: 20,
   },
 })
