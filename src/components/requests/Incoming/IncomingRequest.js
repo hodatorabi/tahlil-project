@@ -11,22 +11,22 @@ import {messages} from 'src/utils/messages'
 
 
 class IncomingRequest extends React.Component<Props, void> {
-
   render() {
+    const project = this.props.project
     return (
       <View style={style.containerStyle}>
-        <Image source={this.props.projectPicture} style={style.projectPictureStyle}/>
+        <Image source={project.projectPicture} style={style.projectPictureStyle}/>
         <View style={style.bodyStyle}>
           <Label
             style={{width: '95%'}}
             textStyle={style.bodyTextStyle}
-            text={format(messages.CHARITY_NEEDS_HELP, this.props.charityName, this.props.projectName)}/>
+            text={format(messages.CHARITY_NEEDS_HELP, project.charityName, project.projectName)}/>
           <View style={style.footerStyle}>
             <View style={style.buttonContainer}>
               <ButtonAccept style={{marginRight: 20}}/>
               <ButtonReject/>
             </View>
-            <TouchableOpacity style={style.messagesButtonContainer}>
+            <TouchableOpacity onPress={this.props.onMessagePress} style={style.messagesButtonContainer}>
               <Label text={messages.CHARITY_MESSAGE} textStyle={{fontSize: 16, color: COLOR_BLUE_DEFAULT}}/>
               <Image source={ICON_ENVELOPE} style={{width: 25, height: 25, marginLeft: 8}}
                      tintColor={COLOR_BLUE_DEFAULT}/>

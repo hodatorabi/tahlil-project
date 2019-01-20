@@ -1,4 +1,7 @@
-import {PROJECT_SAMPLE_PIC4, PROJECT_SAMPLE_PIC5} from 'src/assets/styles/icons'
+import {
+  PROJECT_SAMPLE_PIC1, PROJECT_SAMPLE_PIC2, PROJECT_SAMPLE_PIC3, PROJECT_SAMPLE_PIC4, PROJECT_SAMPLE_PIC5,
+  PROJECT_SAMPLE_PIC6,
+} from 'src/assets/styles/icons'
 import {messages} from 'src/utils/messages'
 
 export const project1 = {
@@ -29,4 +32,102 @@ export const project2 = {
     neededAmount: '2000000',
     fundedAmount: '500000',
   },
+}
+
+export const project3 = {
+  projectPicture: PROJECT_SAMPLE_PIC1,
+  projectName: 'کمک به دامداری',
+  charityName: 'پناهگاه وفا',
+  projectStartDate: '۱۲ مهر ۱۳۹۷',
+  projectEndDate: '۱۲ آذر ',
+  projectType: messages.NON_CASH,
+  projectDescription: 'ربات ها می توانند در کشاورزی و دامداری کمک های بسیاری را برای تولید کننده انجام داشته باشند و کار را برایش آسان کنند . مثلا دستگاه های خودکار شیر دوش ، ربات های تمیز کننده اصطبل و یا ربا ت هایی که می توانند به طور شبانه روزی و با دقت تمام وضعیت دام ها را زیر نظر داشته باشند . همگی دستگاه هایی هستند که بشر برای آسان تر کردن کارهای خود آنها را ساخته است.',
+  info: {
+    age: '۲۰ تا ۳۰ سال',
+    location: 'فرحزاد',
+    gender: 'مرد',
+    abilities: ['دامپزشکی'],
+  },
+}
+
+export const project4 = {
+  projectPicture: PROJECT_SAMPLE_PIC2,
+  projectName: 'ایونت خیریه کویری',
+  charityName: 'موسسه مهر',
+  projectStartDate: '۱۴ مهر ۱۳۹۷',
+  projectEndDate: '۱۰ آذر ',
+  projectType: messages.NON_CASH,
+  projectDescription: '٤و٥و٦ شهريور ماه امسال بازارچه خيريه پيام اميد در سالن تلاش چهارراه پارك وي برگزار مي شود! قراره كه باز همگي دور هم جمع بشيم تا لبخند هامونو به اشتراك بذاريم! قراره همه با هم خوشحال باشيم! قراره كه شادي هامون فقط براي خودمون نباشه!',
+  info: {
+    age: '۱۰ تا ۹۰ سال',
+    location: 'کویر مرنجاب',
+    gender: 'زن - مرد',
+    abilities: ['روحیه گروهی'],
+  },
+}
+
+export const project5 = {
+  projectPicture: PROJECT_SAMPLE_PIC3,
+  projectName: 'کمک به مادران خیاط',
+  charityName: 'موسسه رعد',
+  projectStartDate: '۱۴ مهر ۱۳۹۷',
+  projectEndDate: '۱۰ آذر ',
+  projectType: messages.NON_CASH,
+  projectDescription: '٤و٥و٦ شهريور ماه امسال بازارچه خيريه پيام اميد در سالن تلاش چهارراه پارك وي برگزار مي شود! قراره كه باز همگي دور هم جمع بشيم تا لبخند هامونو به اشتراك بذاريم! قراره همه با هم خوشحال باشيم! قراره كه شادي هامون فقط براي خودمون نباشه!',
+  info: {
+    age: '۳۰ تا ۵۰ سال',
+    location: 'تهران',
+    gender: 'زن',
+    abilities: ['خیاطی'],
+  },
+}
+
+export const project6 = {
+  projectPicture: PROJECT_SAMPLE_PIC6,
+  projectName: 'تهیه غذا برای بی‌خانمان‌ها',
+  charityName: 'موسسه شاپرک',
+  projectStartDate: '۱۴ مهر ۱۳۹۷',
+  projectEndDate: '۱۰ آذر ',
+  projectType: messages.NON_CASH,
+  projectDescription: '٤و٥و٦ شهريور ماه امسال بازارچه خيريه پيام اميد در سالن تلاش چهارراه پارك وي برگزار مي شود! قراره كه باز همگي دور هم جمع بشيم تا لبخند هامونو به اشتراك بذاريم! قراره همه با هم خوشحال باشيم! قراره كه شادي هامون فقط براي خودمون نباشه!',
+  info: {
+    age: '۲۰ تا ۵۰ سال',
+    location: 'تهران',
+    gender: 'زن - مرد',
+    abilities: ['آشپزی'],
+  },
+}
+
+export const project7 = {
+  projectPicture: PROJECT_SAMPLE_PIC6,
+  projectName: 'جمع‌آوری لباس برای بی‌خانمان‌ها',
+  charityName: 'موسسه شاپرک',
+  projectStartDate: '۱۴ مهر ۱۳۹۷',
+  projectEndDate: '۱۰ آذر ',
+  projectType: messages.NON_CASH,
+  projectDescription: '٤و٥و٦ شهريور ماه امسال بازارچه خيريه پيام اميد در سالن تلاش چهارراه پارك وي برگزار مي شود! قراره كه باز همگي دور هم جمع بشيم تا لبخند هامونو به اشتراك بذاريم! قراره همه با هم خوشحال باشيم! قراره كه شادي هامون فقط براي خودمون نباشه!',
+  info: {
+    age: '۲۰ تا ۵۰ سال',
+    location: 'تهران',
+    gender: 'زن - مرد',
+    abilities: ['روحیه گروهی'],
+  },
+}
+
+export const request1 = {
+  project: project3,
+  status: messages.PENDING,
+  message: 'خوشحال میشیم با ما همکاری کنید!',
+}
+
+export const request2 = {
+  project: project4,
+  status: messages.PENDING,
+  message: 'توانایی‌های شما در راستای پروژه ماست. لطفا درخواست ما را بررسی کنید!',
+}
+
+export const request3 = {
+  project: project5,
+  status: messages.PENDING,
+  message: 'با توجه به پروفایل شما، شما فرد مناسبی برای این امر خیر هستید!',
 }

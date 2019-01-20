@@ -10,7 +10,7 @@ import format from 'string-format'
 import ProjectInfoRow from 'src/components/home/project/ProjectInfoRow'
 import CustomButton from 'src/components/common/Buttons/CustomButton'
 import ProgressBar from 'react-native-progress/Bar'
-import MessagePopUp from 'src/components/common/popUps/MessagePopUp'
+import InputMessagePopUp from 'src/components/common/popUps/InputMessagePopUp'
 
 
 class ProjectProfile extends React.Component<Props, void> {
@@ -89,11 +89,11 @@ class ProjectProfile extends React.Component<Props, void> {
                         }}/>
 
         </ScrollView>
-        <MessagePopUp visible={this.state.messagePopUpVisible}
-                      onDismiss={() => {
-                        Keyboard.dismiss()
-                        this.setState({messagePopUpVisible: false})
-                      }}/>
+        <InputMessagePopUp visible={this.state.messagePopUpVisible}
+                           onDismiss={() => {
+                             Keyboard.dismiss()
+                             this.setState({messagePopUpVisible: false})
+                           }}/>
       </View>
     )
   }

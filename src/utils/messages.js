@@ -48,6 +48,7 @@ export const messages = {
   CANCEL: 'انصراف',
   SEND: 'ارسال',
   VERIFY: 'تایید',
+  OK: 'باشه',
 
   FULL_NAME: 'نام و نام خانوادگی: ',
   CITY: 'شهر سکونت: ',
