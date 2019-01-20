@@ -10,12 +10,14 @@ import AbilityRow from 'src/components/profile/ProfileRow/AbilityRow'
 import {DEFAULT_PROFILE_PIC, ICON_STAR} from 'src/assets/styles/icons'
 import {messages} from 'src/utils/messages'
 import AbilityPopUp from 'src/components/common/popUps/AbilityPopUp'
+import VerifyPopUp from 'src/components/common/popUps/VerifyPopUp'
 
 
 class Profile extends React.Component<Props, State> {
 
   state = {
-    popUpVisible: false,
+    addAbilityPopUpVisible: false,
+    removeAbilityPopUpVisible: false,
   }
 
   render() {
@@ -57,16 +59,20 @@ class Profile extends React.Component<Props, State> {
 
           <View style={style.abilitiesContainer}>
             <View style={style.labelStyle}>
-              <ButtonPlus onPress={() => this.setState({popUpVisible: true})}/>
+              <ButtonPlus onPress={() => this.setState({addAbilityPopUpVisible: true})}/>
               <Label textStyle={{color: COLOR_BLUE_DEFAULT, fontSize: 20}}
                      text={messages.ABILITIES}/>
             </View>
-            <AbilityRow title={'پرستاری'}/>
-            <AbilityRow title={'آموزش'}/>
+            <AbilityRow onPress={() => this.setState({removeAbilityPopUpVisible: true})} title={'پرستاری'}/>
+            <AbilityRow onPress={() => this.setState({removeAbilityPopUpVisible: true})} title={'آموزش'}/>
           </View>
         </ScrollView>
 
-        <AbilityPopUp visible={this.state.popUpVisible} onDismiss={() => this.setState({popUpVisible: false})}/>
+        <AbilityPopUp visible={this.state.addAbilityPopUpVisible}
+                      onDismiss={() => this.setState({addAbilityPopUpVisible: false})}/>
+        <VerifyPopUp visible={this.state.removeAbilityPopUpVisible}
+                     verifyText={messages.REMOVE_ABILITY}
+                     onDismiss={() => this.setState({removeAbilityPopUpVisible: false})}/>
       </View>
     )
   }

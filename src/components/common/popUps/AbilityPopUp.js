@@ -55,10 +55,10 @@ class AbilityPopUp extends React.Component<Props, void> {
               style={{height: 100, width: '90%', borderWidth: 1, borderColor: COLOR_BLUE_DEFAULT}}
               onValueChange={(itemValue, itemIndex) => this.setState({selectedAbility: itemValue})}
               itemStyle={{fontFamily: 'IRANSansMobile', fontSize: 25}}>
-              <Picker.Item label='پرستاری' value='پرستاری'/>
-              <Picker.Item label='آموزش' value='آموزش'/>
-              <Picker.Item label='دامپزشکی' value='دامپزشکی'/>
-              <Picker.Item label='روحیه تیمی' value='روحیه تیمی'/>
+              <Picker.Item label=' پرستاری' value='پرستاری'/>
+              <Picker.Item label=' آموزش' value='آموزش'/>
+              <Picker.Item label=' دامپزشکی' value='دامپزشکی'/>
+              <Picker.Item label=' روحیه تیمی' value='روحیه تیمی'/>
             </Picker>
           </View>
         </DialogContent>

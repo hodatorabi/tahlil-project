@@ -51,4 +51,5 @@ export const messages = {
   GENDER: 'شماره تماس: ',
 
   CHOOSE_ABILITY: 'توانمندی موردنظر خود را انتخاب کنید.',
+  REMOVE_ABILITY: 'آیا از حذف این توانمندی مطمئنید؟',
 }
