@@ -24,7 +24,7 @@ class Profile extends React.Component<Props, State> {
     state = {
         addAbilityPopUpVisible: false,
         removeAbilityPopUpVisible: false,
-        index: 0,
+        index: 2,
         routes: [
             {key: 'first', title: messages.INFO},
             {key: 'second', title: messages.FEEDBACK},
@@ -53,16 +53,21 @@ class Profile extends React.Component<Props, State> {
                 <TabView
                     navigationState={this.state}
                     renderScene={SceneMap({
-                        first: () => FirstRoute(this.onPressAddAbility, this.onPressRemoveAbility),
+                        first: ThirdRoute,
                         second: SecondRoute,
-                        third: ThirdRoute,
+                        third: () => FirstRoute(this.onPressAddAbility, this.onPressRemoveAbility),
                     })}
                     onIndexChange={index => this.setState({index})}
                     initialLayout={{width: SCREEN_WIDTH}}
                     renderTabBar={props =>
                         <TabBar
                             {...props}
-                            style={{backgroundColor: COLOR_WHITE}}
+                            style={{
+                                backgroundColor: COLOR_WHITE,
+                                elevation: 0,
+                                borderBottomColor: COLOR_DEFAULT_GRAY,
+                                borderBottomWidth: 0.5
+                            }}
                             indicatorStyle={{backgroundColor: COLOR_BLUE_DEFAULT}}
                             labelStyle={{color: COLOR_DARK_BLUE, fontFamily: 'IRANSansMobile'}}
                         />
