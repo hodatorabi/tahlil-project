@@ -1,13 +1,19 @@
 import React from 'react'
-import {StyleSheet, View} from 'react-native'
+import {Image, StyleSheet, TouchableOpacity, View} from 'react-native'
 import {SCREEN_HEIGHT, SCREEN_WIDTH} from 'src/assets/styles/style'
-import {COLOR_BLUE_DEFAULT, COLOR_DARK_BLUE, COLOR_DEFAULT_GRAY, COLOR_WHITE,} from 'src/assets/styles/colors'
+import {
+  COLOR_BLACK, COLOR_BLUE_DEFAULT, COLOR_DARK_BLUE, COLOR_DARK_GRAY, COLOR_DEFAULT_GRAY,
+  COLOR_WHITE,
+} from 'src/assets/styles/colors'
 import {SceneMap, TabBar, TabView} from 'react-native-tab-view'
 import {messages} from 'src/utils/messages'
 import PersonalInfo from 'src/components/profile/PersonalInfo'
 import AbilityPopUp from 'src/components/common/popUps/AbilityPopUp'
 import VerifyPopUp from 'src/components/common/popUps/VerifyPopUp'
 import Feedbacks from 'src/components/profile/feedback/Feedbacks'
+import Label from 'src/components/common/Label'
+import {DEFAULT_PROFILE_PIC, ICON_LOG_OUT} from 'src/assets/styles/icons'
+import NavigationService from 'src/utils/navigationService'
 
 const ThirdRoute = (onAddPress, onRemovePress) => (
   <PersonalInfo onAddPress={onAddPress} onRemovePress={onRemovePress}/>
@@ -25,19 +31,13 @@ class Profile extends React.Component<Props, State> {
   state = {
     addAbilityPopUpVisible: false,
     removeAbilityPopUpVisible: false,
+    logoutPopup: false,
     index: 2,
     routes: [
       {key: 'first', title: messages.SCHEDULE},
       {key: 'second', title: messages.FEEDBACK},
       {key: 'third', title: messages.INFO},
     ],
-  }
-  onPressAddAbility = () => {
-    this.setState({addAbilityPopUpVisible: true})
-  }
-  onPressRemoveAbility = (item) => {
-    console.log(item)
-    this.setState({removeAbilityPopUpVisible: true})
   }
 
   constructor(props) {
@@ -47,10 +47,37 @@ class Profile extends React.Component<Props, State> {
     this.onPressRemoveAbility = this.onPressRemoveAbility.bind(this)
   }
 
+  onPressAddAbility = () => {
+    this.setState({addAbilityPopUpVisible: true})
+  }
+  onPressRemoveAbility = (item) => {
+    console.log(item)
+    this.setState({removeAbilityPopUpVisible: true})
+  }
+
+  onLogout = () => {
+    NavigationService.reset(['AuthNavigator'])
+  }
+
   render() {
     return (
       <View style={{flex: 1, justifyContent: 'flex-start'}}>
-        <View style={{width: SCREEN_WIDTH, height: 0.2 * SCREEN_HEIGHT, borderWidth: 1}}/>
+        <View style={style.profileHeaderStyle}>
+          <TouchableOpacity
+            onPress={() => this.setState({logoutPopup: true})}
+            style={style.logoutButton}>
+            <Image source={ICON_LOG_OUT} style={{width: 25, height: 25, marginLeft: 7}}
+                   tintColor={COLOR_BLUE_DEFAULT}/>
+          </TouchableOpacity>
+
+          <View style={{flexDirection: 'column', alignItems: 'flex-end'}}>
+            <Label text={'هدهد'} textStyle={{fontSize: 18, color: COLOR_BLACK}}/>
+            <Label text={'عضویت از مهر ماه'}
+                   textStyle={{fontSize: 14, color: COLOR_DARK_GRAY, textAlign: 'right'}}/>
+          </View>
+
+          <Image source={DEFAULT_PROFILE_PIC} style={style.profileAvatar}/>
+        </View>
         <TabView
           navigationState={this.state}
           renderScene={SceneMap({
@@ -78,7 +105,12 @@ class Profile extends React.Component<Props, State> {
                       onDismiss={() => this.setState({addAbilityPopUpVisible: false})}/>
         <VerifyPopUp visible={this.state.removeAbilityPopUpVisible}
                      verifyText={messages.REMOVE_ABILITY}
+                     onVerify={() => this.setState({removeAbilityPopUpVisible: false})}
                      onDismiss={() => this.setState({removeAbilityPopUpVisible: false})}/>
+        <VerifyPopUp visible={this.state.logoutPopup}
+                     verifyText={messages.LOGOUT_MESSAGE}
+                     onVerify={this.onLogout}
+                     onDismiss={() => this.setState({logoutPopup: false})}/>
       </View>
     )
   }
@@ -94,40 +126,14 @@ const style = StyleSheet.create({
   },
   profileHeaderStyle: {
     width: SCREEN_WIDTH,
+    paddingHorizontal: 20,
+    paddingVertical: 0.03 * SCREEN_HEIGHT,
     backgroundColor: COLOR_WHITE,
-    height: 0.3 * SCREEN_HEIGHT,
     flexDirection: 'row',
-    justifyContent: 'center',
-  },
-  profileAvatar: {
-    height: 0.2 * SCREEN_HEIGHT,
-    width: 0.2 * SCREEN_HEIGHT,
-    borderRadius: 20,
-  },
-  scrollContainer: {paddingVertical: 0.03 * SCREEN_HEIGHT,},
-  personalInfoContainer: {
-    width: SCREEN_WIDTH,
-    backgroundColor: COLOR_WHITE,
-    alignItems: 'center',
-    elevation: 1,
-    paddingHorizontal: 0.03 * SCREEN_WIDTH,
-  },
-  abilitiesContainer: {
-    width: SCREEN_WIDTH,
-    backgroundColor: COLOR_WHITE,
-    alignItems: 'center',
-    marginTop: 0.03 * SCREEN_HEIGHT,
-    elevation: 1,
-    paddingHorizontal: 0.03 * SCREEN_WIDTH,
-  },
-  labelStyle: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    width: SCREEN_WIDTH,
-    paddingHorizontal: 0.03 * SCREEN_WIDTH,
-    paddingVertical: 0.02 * SCREEN_HEIGHT,
+    justifyContent: 'flex-end',
     borderBottomColor: COLOR_DEFAULT_GRAY,
-    borderBottomWidth: 1,
+    borderBottomWidth: 0.5,
   },
+  profileAvatar: {width: 60, height: 60, borderRadius: 30, marginLeft: 20},
+  logoutButton: {position: 'absolute', top: 15, left: 10, flexDirection: 'row', alignItems: 'center'},
 })

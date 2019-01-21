@@ -1,8 +1,8 @@
 import React from 'react'
 import {Dialog, DialogButton, DialogContent} from 'react-native-popup-dialog'
-import {COLOR_BLUE_DEFAULT, COLOR_DARK_GRAY} from 'src/assets/styles/colors'
-import {Text} from 'react-native'
+import {COLOR_BLUE_DEFAULT, COLOR_DARK_GRAY, COLOR_WHITE} from 'src/assets/styles/colors'
 import {messages} from 'src/utils/messages'
+import Label from 'src/components/common/Label'
 
 
 class VerifyPopUp extends React.Component<Props, void> {
@@ -22,7 +22,7 @@ class VerifyPopUp extends React.Component<Props, void> {
           />,
           <DialogButton
             text={messages.VERIFY}
-            onPress={this.props.onDismiss}
+            onPress={this.props.onVerify}
             key="button-2"
             textStyle={{color: COLOR_BLUE_DEFAULT, fontFamily: 'IRANSansMobile_Bold'}}
           />,
@@ -30,16 +30,19 @@ class VerifyPopUp extends React.Component<Props, void> {
       >
         <DialogContent
           style={{
-            backgroundColor: '#F7F7F8',
+            backgroundColor: COLOR_WHITE,
             alignItems: 'center',
             justifyContent: 'center',
             paddingVertical: 30,
           }}
         >
-          <Text style={{
-            fontFamily: 'IRANSansMobile',
-            fontSize: 18,
-          }}>{this.props.verifyText}</Text>
+          <Label text={this.props.verifyText}
+                 textStyle={{
+                   fontFamily: 'IRANSansMobile',
+                   fontSize: 18,
+                   textAlign: 'center',
+                   lineHeight: 30,
+                 }}/>
         </DialogContent>
       </Dialog>
     )

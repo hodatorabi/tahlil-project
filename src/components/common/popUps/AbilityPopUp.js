@@ -1,7 +1,7 @@
 import React from 'react'
 import {Dialog, DialogButton, DialogContent, DialogTitle} from 'react-native-popup-dialog'
 import {Picker, View} from 'react-native'
-import {COLOR_BLUE_DEFAULT, COLOR_DARK_GRAY} from 'src/assets/styles/colors'
+import {COLOR_BLUE_DEFAULT, COLOR_DARK_GRAY, COLOR_WHITE} from 'src/assets/styles/colors'
 import {messages} from 'src/utils/messages'
 
 
@@ -22,7 +22,7 @@ class AbilityPopUp extends React.Component<Props, void> {
             title={messages.CHOOSE_ABILITY}
             textStyle={{fontFamily: 'IRANSansMobile'}}
             style={{
-              backgroundColor: '#F7F7F8',
+              backgroundColor: COLOR_WHITE,
             }}
             hasTitleBar={false}
             align="center"
@@ -45,7 +45,7 @@ class AbilityPopUp extends React.Component<Props, void> {
       >
         <DialogContent
           style={{
-            backgroundColor: '#F7F7F8',
+            backgroundColor: COLOR_WHITE,
           }}
         >
           <View style={{width: '100%', justifyContent: 'center', alignItems: 'center', fontFamily: 'IRANSansMobile'}}>
