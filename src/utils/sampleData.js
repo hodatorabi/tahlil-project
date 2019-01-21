@@ -144,3 +144,27 @@ export const request5 = {
   message: 'با توجه به پروفایل شما، شما فرد مناسبی برای این امر خیر هستید!',
   reason: 'متاسفانه توانمندی‌های شما مطابق توانمندی‌های موردنیاز نبود.',
 }
+
+export const feedback1 = {
+  charityName: 'موسسه سما',
+  rating: 4,
+  comment: 'بسیار عالی و وقت‌شناس. تمام جلسات وعده داده حضور پیدا کردند.',
+}
+
+export const feedback2 = {
+  charityName: 'موسسه حکمت',
+  rating: 2,
+  comment: 'متاسفانه توانمند‌های ایشان مطابق با پروفایل نبود و در نتیجه نتوانستیم استفاده‌ای از حضور ایشان بکنیم.',
+}
+
+export const feedback3 = {
+  charityName: 'پناهگاه وفا',
+  rating: 5,
+  comment: 'عالی عالی عالی!!',
+}
+
+export const feedback4 = {
+  charityName: 'موسسه امیر',
+  rating: 3,
+  comment: 'خدمات متوسط اما شخصیت عالی',
+}

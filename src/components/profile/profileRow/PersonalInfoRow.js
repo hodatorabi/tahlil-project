@@ -25,11 +25,11 @@ const style = StyleSheet.create({
   containerStyle: {
     width: SCREEN_WIDTH,
     justifyContent: 'center',
-    alignItems: 'center',
+    alignItems: 'flex-end',
+    paddingHorizontal: 0.03 * SCREEN_WIDTH,
   },
   inputStyle: {
     height: 50,
-    width: 0.95 * SCREEN_WIDTH,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'flex-end',

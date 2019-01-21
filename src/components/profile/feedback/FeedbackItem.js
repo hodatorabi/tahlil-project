@@ -10,16 +10,21 @@ import RateItem from 'src/components/profile/feedback/RateItem'
 class FeedbackItem extends React.Component<Props, State> {
 
   render() {
+    const feedback = this.props.feedback
     return (
       <View style={style.feedbackContainer}>
-        <View style={{flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center'}}>
-          <RateItem rating={this.props.rating}/>
+        <View style={{flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 20}}>
+          <RateItem rating={feedback.rating}/>
           <View style={{flexDirection: 'row', alignItems: 'center'}}>
-            <Label text={this.props.charityName} textStyle={{fontSize: 16, color: COLOR_BLACK}}
+            <Label text={feedback.charityName} textStyle={{fontSize: 16, color: COLOR_BLACK}}
                    style={{marginRight: 10}}/>
             <Image source={CHARITY_PROFILE_PIC} style={{width: 45, height: 45, borderRadius: 22.5}}/>
           </View>
         </View>
+        {feedback.comment &&
+        <Label text={feedback.comment}
+               style={{alignSelf: 'flex-end'}}
+               textStyle={{fontSize: 16, color: COLOR_BLACK, textAlign: 'right', lineHeight: 30}}/>}
       </View>
     )
   }

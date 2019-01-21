@@ -1,7 +1,8 @@
 import React from 'react'
-import {StyleSheet, View} from 'react-native'
+import {ScrollView, StyleSheet, View} from 'react-native'
 import FeedbackItem from 'src/components/profile/feedback/FeedbackItem'
 import {SCREEN_HEIGHT} from 'src/assets/styles/style'
+import {feedback1, feedback2, feedback3, feedback4} from 'src/utils/sampleData'
 
 
 class Feedbacks extends React.Component<Props, State> {
@@ -9,10 +10,12 @@ class Feedbacks extends React.Component<Props, State> {
   render() {
     return (
       <View style={{flex: 1}}>
-        <View style={{flex: 1, paddingTop: 0.02 * SCREEN_HEIGHT}}>
-          <FeedbackItem charityName={'خیریه پگاه'} rating={2}/>
-          <FeedbackItem charityName={'خیریه حکمت'} rating={4}/>
-        </View>
+        <ScrollView contentContainerStyle={{paddingTop: 0.02 * SCREEN_HEIGHT}}>
+          <FeedbackItem feedback={feedback1}/>
+          <FeedbackItem feedback={feedback2}/>
+          <FeedbackItem feedback={feedback3}/>
+          <FeedbackItem feedback={feedback4}/>
+        </ScrollView>
       </View>
     )
   }
