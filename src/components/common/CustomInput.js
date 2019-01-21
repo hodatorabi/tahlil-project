@@ -1,7 +1,7 @@
 import React from 'react'
 import {StyleSheet, TextInput, View} from 'react-native'
 import {SCREEN_WIDTH} from 'src/assets/styles/style'
-import {COLOR_DARK, COLOR_DARK_BLUE} from 'src/assets/styles/colors'
+import {COLOR_DARK, COLOR_MEDIUM_BLUE} from 'src/assets/styles/colors'
 
 
 class CustomInput extends React.Component<Props, void> {
@@ -17,7 +17,7 @@ class CustomInput extends React.Component<Props, void> {
           style={[style.inputStyle, customInputStyle]}
           onChangeText={(text) => onChangeText(text)}
           placeholder={this.props.label}
-          placeholderTextColor={COLOR_DARK_BLUE}
+          placeholderTextColor={COLOR_MEDIUM_BLUE}
         />
       </View>
     )
@@ -31,13 +31,13 @@ const style = StyleSheet.create({
     width: 0.85 * SCREEN_WIDTH,
     justifyContent: 'center',
     alignItems: 'center',
-    borderBottomColor: COLOR_DARK,
+    borderBottomColor: COLOR_MEDIUM_BLUE,
     borderBottomWidth: 2,
   },
   inputStyle: {
     height: 50,
     width: 0.8 * SCREEN_WIDTH,
-    color: COLOR_DARK_BLUE,
+    color: COLOR_DARK,
     fontSize: 18,
     fontFamily: 'IRANSansMobile',
     textAlign: 'right',

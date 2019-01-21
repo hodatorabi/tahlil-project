@@ -19,5 +19,6 @@ export const PROJECT_SAMPLE_PIC4 = require('src/assets/images/projectSamplePhoto
 export const PROJECT_SAMPLE_PIC5 = require('src/assets/images/projectSamplePhoto5.jpg')
 export const PROJECT_SAMPLE_PIC6 = require('src/assets/images/projectSamplePhoto6.jpg')
 export const PROJECT_SAMPLE_PIC7 = require('src/assets/images/projectSamplePhoto7.jpg')
+export const CHARITY_PROFILE_PIC = require('src/assets/images/charityProfilePic.png')
 export const ICON_EDIT_PROFILE = require('src/assets/images/editProfile.png')
 export const LOADING_MOTION = require('src/assets/motions/loading')

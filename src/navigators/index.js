@@ -1,6 +1,5 @@
 import {createStackNavigator} from 'react-navigation'
 import Launch from 'src/components/init/Launch'
-import {COLOR_LIGHT_GRAY} from 'src/assets/styles/colors'
 import AuthNavigator from 'src/navigators/AuthNavigator'
 import MainTabNavigator from 'src/navigators/MainTabNavigator'
 import ProjectProfile from 'src/components/home/project/ProjectProfile'
@@ -16,7 +15,7 @@ const MainNavigator = createStackNavigator(
   {
     initialRouteName: 'MainTabNavigator',
     headerMode: 'none',
-    cardStyle: {backgroundColor: COLOR_LIGHT_GRAY},
+    cardStyle: {backgroundColor: '#F3F5F7'},
     navigationOptions: {
       gesturesEnabled: false,
     },
