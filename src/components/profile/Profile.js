@@ -7,7 +7,7 @@ import {messages} from 'src/utils/messages'
 import PersonalInfo from 'src/components/profile/PersonalInfo'
 import AbilityPopUp from 'src/components/common/popUps/AbilityPopUp'
 import VerifyPopUp from 'src/components/common/popUps/VerifyPopUp'
-import Feedbacks from 'src/components/profile/Feedbacks'
+import Feedbacks from 'src/components/profile/feedback/Feedbacks'
 
 const ThirdRoute = (onAddPress, onRemovePress) => (
   <PersonalInfo onAddPress={onAddPress} onRemovePress={onRemovePress}/>

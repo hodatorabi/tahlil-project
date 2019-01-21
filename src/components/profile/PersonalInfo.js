@@ -1,12 +1,12 @@
 import React from 'react'
 import {ScrollView, StyleSheet, View} from 'react-native'
-import PersonalInfoRow from 'src/components/profile/ProfileRow/PersonalInfoRow'
+import PersonalInfoRow from 'src/components/profile/profileRow/PersonalInfoRow'
 import {SCREEN_HEIGHT, SCREEN_WIDTH} from 'src/assets/styles/style'
 import {COLOR_BLUE_DEFAULT, COLOR_DEFAULT_GRAY, COLOR_WHITE,} from 'src/assets/styles/colors'
 import Label from 'src/components/common/Label'
 import CustomButton from 'src/components/common/Buttons/CustomButton'
 import ButtonPlus from 'src/components/common/Buttons/ButtonPlus'
-import AbilityRow from 'src/components/profile/ProfileRow/AbilityRow'
+import AbilityRow from 'src/components/profile/profileRow/AbilityRow'
 import {messages} from 'src/utils/messages'
 
 
