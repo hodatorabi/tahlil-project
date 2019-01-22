@@ -1,7 +1,7 @@
 import React from 'react'
 import {StyleSheet, Text, View} from 'react-native'
 import {SCREEN_WIDTH} from 'src/assets/styles/style'
-import {COLOR_DARK_BLUE} from 'src/assets/styles/colors'
+import {COLOR_BLACK} from 'src/assets/styles/colors'
 
 
 class PersonalInfoRow extends React.Component<Props, void> {
@@ -35,7 +35,7 @@ const style = StyleSheet.create({
     justifyContent: 'flex-end',
   },
   textStyle: {
-    color: COLOR_DARK_BLUE,
+    color: COLOR_BLACK,
     fontSize: 16,
     fontFamily: 'IRANSansMobile',
     textAlign: 'right',

@@ -4769,6 +4769,11 @@ react-native-safe-module@^1.1.0:
   resolved "https://registry.yarnpkg.com/react-native-screens/-/react-native-screens-1.0.0-alpha.19.tgz#ecf3c9023e169b7013266d40b9c5599f37667f6d"
   integrity sha512-+a7GdwzLWYWYVUJMg+XuyBoRFGD8GdGyBfebuTNBY+xwUZpTXCaK/GlLGL6EE3h0iBHZu83do7zViEailWRNyA==
 
+react-native-simple-radio-button@^2.7.3:
+  version "2.7.3"
+  resolved "https://registry.yarnpkg.com/react-native-simple-radio-button/-/react-native-simple-radio-button-2.7.3.tgz#c7227c0f963d6bbcfa245255d18a5a8b98fde41f"
+  integrity sha512-kiYRarFj7PXzV9fbQwMBiYwS4YnhrR4NZGT68atlFIoNFxZLrt5OMCDqXZqu6R6bUWKLndzPpO/nhXc6/OU1Mg==
+
 react-native-spinkit@^1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/react-native-spinkit/-/react-native-spinkit-1.1.1.tgz#3ae512f3978bc750b7c02639911e1710750d8539"

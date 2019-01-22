@@ -154,7 +154,6 @@ export const feedback1 = {
 export const feedback2 = {
   charityName: 'موسسه حکمت',
   rating: 2,
-  comment: 'متاسفانه توانمند‌های ایشان مطابق با پروفایل نبود و در نتیجه نتوانستیم استفاده‌ای از حضور ایشان بکنیم.',
 }
 
 export const feedback3 = {

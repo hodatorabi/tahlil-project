@@ -1,7 +1,7 @@
 import React from 'react'
 import {StyleSheet, View} from 'react-native'
 import {SCREEN_HEIGHT, SCREEN_WIDTH} from 'src/assets/styles/style'
-import {COLOR_DARK_BLUE} from 'src/assets/styles/colors'
+import {COLOR_BLACK, COLOR_DARK_BLUE} from 'src/assets/styles/colors'
 import Label from 'src/components/common/Label'
 import ButtonMinus from 'src/components/common/Buttons/ButtonMinus'
 
@@ -38,7 +38,7 @@ const style = StyleSheet.create({
     justifyContent: 'flex-end',
   },
   textStyle: {
-    color: COLOR_DARK_BLUE,
+    color: COLOR_BLACK,
     fontSize: 16,
     fontFamily: 'IRANSansMobile',
     textAlign: 'right',

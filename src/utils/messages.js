@@ -53,6 +53,8 @@ export const messages = {
   VERIFY: 'تایید',
   OK: 'باشه',
 
+  SEARCH: 'جستجو',
+
   FULL_NAME: 'نام و نام خانوادگی: ',
   CITY: 'شهر سکونت: ',
   PHONE_NUMBER: 'شماره تماس: ',
