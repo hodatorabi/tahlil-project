@@ -16,8 +16,8 @@ class SearchBar extends React.Component<Props, State> {
     super(props)
 
     this.radioProps = [
-      {label: messages.NON_CASH, value: 2},
-      {label: messages.CASH, value: 1},
+      {label: messages.NON_CASH, value: 1},
+      {label: messages.CASH, value: 2},
     ]
 
     this.onRadioSelect = this.onRadioSelect.bind(this)
@@ -35,9 +35,9 @@ class SearchBar extends React.Component<Props, State> {
 
   addFilter() {
     if (this.state.value === 1)
-      this.props.navigation.navigate('CashFilterPage')
-    else
       this.props.navigation.navigate('NonCashFilterPage')
+    else
+      this.props.navigation.navigate('CashFilterPage')
   }
 
   render() {
