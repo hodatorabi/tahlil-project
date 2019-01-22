@@ -11,7 +11,7 @@ class SearchPage extends React.Component<Props, State> {
     return (
       <View style={{justifyContent: 'flex-start', flex: 1, alignItems: 'center'}}>
         <CommonHeader title={messages.SEARCH} hasBack={true} onPress={() => this.props.navigation.goBack('Search')}/>
-        <SearchBar/>
+        <SearchBar navigation={this.props.navigation}/>
       </View>
     )
   }

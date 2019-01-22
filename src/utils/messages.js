@@ -54,6 +54,7 @@ export const messages = {
   OK: 'باشه',
 
   SEARCH: 'جستجو',
+  ADD_FILTER: 'اضافه کردن فیلتر',
 
   FULL_NAME: 'نام و نام خانوادگی: ',
   CITY: 'شهر سکونت: ',

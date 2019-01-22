@@ -4,6 +4,8 @@ import AuthNavigator from 'src/navigators/AuthNavigator'
 import MainTabNavigator from 'src/navigators/MainTabNavigator'
 import ProjectProfile from 'src/components/home/project/ProjectProfile'
 import SearchPage from 'src/components/home/search/SearchPage'
+import CashFilterPage from 'src/components/home/search/CashFilterPage'
+import NonCashFilterPage from 'src/components/home/search/NonCashFilterPage'
 
 
 const MainNavigator = createStackNavigator(
@@ -13,6 +15,8 @@ const MainNavigator = createStackNavigator(
     MainTabNavigator: {screen: MainTabNavigator},
     ProjectProfile: {screen: ProjectProfile},
     SearchPage: {screen: SearchPage},
+    CashFilterPage: {screen: CashFilterPage},
+    NonCashFilterPage: {screen: NonCashFilterPage},
   },
   {
     initialRouteName: 'MainTabNavigator',

@@ -1,6 +1,6 @@
 import {StyleSheet, Text, View} from 'react-native'
 import React from 'react'
-import {COLOR_DARK_BLUE} from 'src/assets/styles/colors'
+import {COLOR_BLACK} from 'src/assets/styles/colors'
 
 
 class Label extends React.PureComponent<Props> {
@@ -24,7 +24,7 @@ const style = StyleSheet.create({
   },
   labelTextStyle: {
     fontSize: 18,
-    color: COLOR_DARK_BLUE,
+    color: COLOR_BLACK,
     textAlign: 'center',
     fontFamily: 'IRANSansMobile',
   },

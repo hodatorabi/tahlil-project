@@ -16,21 +16,28 @@ class SearchBar extends React.Component<Props, State> {
     super(props)
 
     this.radioProps = [
-      {label: messages.NON_CASH, value: 1},
-      {label: messages.CASH, value: 2},
+      {label: messages.NON_CASH, value: 2},
+      {label: messages.CASH, value: 1},
     ]
 
     this.onRadioSelect = this.onRadioSelect.bind(this)
+    this.addFilter = this.addFilter.bind(this)
 
+  }
+
+  state = {
+    value: 1,
   }
 
   onRadioSelect(index) {
     this.setState({value: index})
   }
 
-
-  state = {
-    value: 1,
+  addFilter() {
+    if (this.state.value === 1)
+      this.props.navigation.navigate('CashFilterPage')
+    else
+      this.props.navigation.navigate('NonCashFilterPage')
   }
 
   render() {
@@ -69,7 +76,7 @@ class SearchBar extends React.Component<Props, State> {
 
         <View style={{flexDirection: 'row', marginTop: 30,}}>
           <CustomButton style={{marginRight: 30}} label={messages.SEARCH}/>
-          <CustomButtonWithBorder label={'اضافه کردن فیلتر'}/>
+          <CustomButtonWithBorder onPress={this.addFilter} label={messages.ADD_FILTER}/>
         </View>
 
       </View>
