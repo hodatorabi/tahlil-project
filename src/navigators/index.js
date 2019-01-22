@@ -19,7 +19,7 @@ const MainNavigator = createStackNavigator(
     NonCashFilterPage: {screen: NonCashFilterPage},
   },
   {
-    initialRouteName: 'MainTabNavigator',
+    initialRouteName: 'Launch',
     headerMode: 'none',
     cardStyle: {backgroundColor: '#F3F5F7'},
     navigationOptions: {
