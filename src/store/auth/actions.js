@@ -5,16 +5,16 @@ import Request from 'src/utils/request'
 
 
 const actions = {
-    logout: makeActionCreator(actionTypes.LOGOUT),
-    setToken: makeActionCreator(actionTypes.SET_TOKEN, 'token'),
-    login: ({username, password}) => {
-        return {
-            types: actionTypes.LOGIN,
-            shouldCallAPI: (state) => !state.auth.isLoggedIn,
-            callAPI: (state) => Request.post(state, Constants.loginUrl, {},
-                {username, password}, false)
-        }
-    },
+  logout: makeActionCreator(actionTypes.LOGOUT),
+  setToken: makeActionCreator(actionTypes.SET_TOKEN, 'token'),
+  login: ({username, password}) => {
+    return {
+      types: actionTypes.LOGIN,
+      shouldCallAPI: (state) => !state.auth.isLoggedIn,
+      callAPI: (state) => Request.post(state, Constants.loginUrl, {},
+        {username, password}, false)
+    }
+  },
 
 }
 

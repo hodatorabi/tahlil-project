@@ -7,11 +7,36 @@ import Spinner from 'react-native-spinkit'
 import {COLOR_BLUE_DEFAULT} from 'src/assets/styles/colors'
 import NavigationService from 'src/utils/navigationService'
 import {messages} from 'src/utils/messages'
+import {AsyncStorageGetItem} from '../../utils/asyncStorage'
+import Auth from '../../store/auth'
 
 class Launch extends React.Component<Props, State> {
 
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      loading: false
+    }
+  }
+
   componentDidMount() {
-    setTimeout(() => NavigationService.reset(['AuthNavigator']), 2000)
+    this.setState({loading: true}, () => {
+      AsyncStorageGetItem('jwtToken')
+        .then((token) => {
+          if (token == null || token === '') {
+            setTimeout(() => NavigationService.reset(['AuthNavigator']), 2000)
+          } else {
+            this.props.setToken(token)
+            setTimeout(() => NavigationService.reset(['MainTabNavigator']), 2000)
+          }
+        })
+        .catch(() => {
+            this.props.logout()
+            NavigationService.reset(['AuthNavigator'])
+          }
+        )
+    })
   }
 
   render() {
@@ -19,14 +44,14 @@ class Launch extends React.Component<Props, State> {
       <View style={style.launchContainer}>
         <Image source={SPLASH_LOGO} style={style.splashImageStyle}/>
         <Label text={messages.APP_DESCRIPTION}/>
-        <Spinner style={{position: 'absolute', bottom: 60}} isVisible={true} color={COLOR_BLUE_DEFAULT}
+        <Spinner style={{position: 'absolute', bottom: 60}} isVisible={this.state.loading} color={COLOR_BLUE_DEFAULT}
                  type={'Circle'}/>
       </View>
     )
   }
 }
 
-export default Launch
+export default Auth.providers.auth(Launch)
 
 const style = StyleSheet.create({
   launchContainer: {

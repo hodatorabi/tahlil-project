@@ -14,6 +14,7 @@ import Feedbacks from 'src/components/profile/feedback/Feedbacks'
 import Label from 'src/components/common/Label'
 import {DEFAULT_PROFILE_PIC, ICON_LOG_OUT} from 'src/assets/styles/icons'
 import NavigationService from 'src/utils/navigationService'
+import Auth from '../../store/auth'
 
 const ThirdRoute = (onAddPress, onRemovePress) => (
   <PersonalInfo onAddPress={onAddPress} onRemovePress={onRemovePress}/>
@@ -45,6 +46,7 @@ class Profile extends React.Component<Props, State> {
 
     this.onPressAddAbility = this.onPressAddAbility.bind(this)
     this.onPressRemoveAbility = this.onPressRemoveAbility.bind(this)
+    this.onLogout = this.onLogout.bind(this)
   }
 
   onPressAddAbility = () => {
@@ -56,6 +58,7 @@ class Profile extends React.Component<Props, State> {
   }
 
   onLogout = () => {
+    this.props.logout()
     NavigationService.reset(['AuthNavigator'])
   }
 
@@ -116,7 +119,7 @@ class Profile extends React.Component<Props, State> {
   }
 }
 
-export default Profile
+export default Auth.providers.auth(Profile)
 
 const style = StyleSheet.create({
   profileContainer: {
