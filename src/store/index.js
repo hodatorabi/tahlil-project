@@ -14,7 +14,7 @@ const composedEnhancers = compose(
     ...enhancers
 )
 
-export const store = createStore(
+export const Store = createStore(
     rootReducer,
     composedEnhancers,
 )

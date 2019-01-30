@@ -1,5 +1,8 @@
 import actionTypes from 'src/store/actionTypes'
 import {makeActionCreator} from '../../utils/redux'
+import {Constants} from '../../constants'
+import Request from 'src/utils/request'
+
 
 const actions = {
     logout: makeActionCreator(actionTypes.LOGOUT),
@@ -8,7 +11,7 @@ const actions = {
         return {
             types: actionTypes.LOGIN,
             shouldCallAPI: (state) => !state.auth.isLoggedIn,
-            callAPI: (state) => Request.post(state, Constants.otpLoginUrl, {},
+            callAPI: (state) => Request.post(state, Constants.loginUrl, {},
                 {username, password}, false)
         }
     },

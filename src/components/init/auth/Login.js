@@ -9,6 +9,7 @@ import CustomInput from 'src/components/common/CustomInput'
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view'
 import CustomButton from 'src/components/common/Buttons/CustomButton'
 import NavigationService from 'src/utils/navigationService'
+import Auth from '../../../store/auth'
 
 class Login extends React.Component<Props, State> {
 
@@ -37,7 +38,13 @@ class Login extends React.Component<Props, State> {
     if (this.state.username.length === 0 || this.state.password.length === 0) {
       this.setState({errorMessage: 'نام کاربری یا رمز عبور نمی‌توانند خالی باشند'})
     } else {
-      NavigationService.reset(['MainTabNavigator'])
+        this.props.login(this.state.username, this.state.password)
+            .then(() => {
+                NavigationService.reset(['MainTabNavigator'])
+            })
+            .catch((error) => {
+                console.log('login error', error)
+            })
     }
   }
 
@@ -73,7 +80,7 @@ class Login extends React.Component<Props, State> {
   }
 }
 
-export default Login
+export default Auth.providers.auth(Login)
 
 const style = StyleSheet.create({
   login: {flex: 1, justifyContent: 'flex-start', alignItems: 'center'},

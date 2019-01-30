@@ -2,6 +2,8 @@ import React, {Component} from 'react'
 import MainNavigator from 'src/navigators'
 import NavigationService from 'src/utils/navigationService'
 import {createAppContainer} from 'react-navigation'
+import {Provider} from 'react-redux'
+import {Store} from 'src/store'
 
 
 const AppContainer = createAppContainer(MainNavigator)
@@ -11,12 +13,13 @@ export default class Main extends Component<Props> {
 
   render() {
     return (
-      <AppContainer screenProps={{...this.props}}
-                    ref={navigatorRef => {
-                      NavigationService.setTopLevelNavigator(navigatorRef)
-                    }}
-      />
-
+        <Provider store={Store}>
+            <AppContainer screenProps={{...this.props}}
+                          ref={navigatorRef => {
+                              NavigationService.setTopLevelNavigator(navigatorRef)
+                          }}
+            />
+        </Provider>
     )
   }
 }

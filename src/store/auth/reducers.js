@@ -41,21 +41,10 @@ const token = (state = null, action) => {
     }
 }
 
-const user = (state = {}, action) => {
-    switch (action.type) {
-        case actionTypes.LOGIN.SUCCESS:
-            return action.response.data.user
-        case actionTypes.LOGOUT:
-            return {}
-        default:
-            return state
-    }
-}
 
 const reducers = combineReducers({
     isLoggedIn,
     token,
-    user,
 })
 
 export default reducers

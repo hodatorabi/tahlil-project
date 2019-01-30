@@ -1,5 +1,6 @@
 import axios from 'axios'
 import humps from 'humps'
+import {Constants} from '../constants'
 
 let request = (store, url, params, method, data, loginRequired, decamelizeRequest) => {
     const baseURL = Constants.serverUrl
