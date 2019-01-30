@@ -22,6 +22,13 @@ const actions = {
       callAPI: (state) => Request.get(state, Constants.profileUrl)
     }
   },
+  getAbilities: () => {
+    return {
+      types: actionTypes.GET_ABILITIES,
+      shouldCallAPI: (state) => state.auth.isLoggedIn,
+      callAPI: (state) => Request.get(state, Constants.abilitiesUrl)
+    }
+  }
 
 }
 

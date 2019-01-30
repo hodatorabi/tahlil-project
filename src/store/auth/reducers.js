@@ -1,6 +1,7 @@
 import actionTypes from '../actionTypes'
 import {combineReducers} from 'redux'
 import {AsyncStorageRemoveItem, AsyncStorageSetItem} from '../../utils/asyncStorage'
+import {listToDict} from '../../utils/dictionary'
 
 
 const isLoggedIn = (state = false, action) => {
@@ -52,10 +53,22 @@ const volunteer = (state = {}, action) => {
   }
 }
 
+const abilities = (state = {}, action) => {
+  switch (action.type) {
+    case actionTypes.GET_ABILITIES.SUCCESS:
+      return listToDict(action.response)
+    case actionTypes.LOGOUT:
+      return {}
+    default:
+      return state
+  }
+}
+
 const reducers = combineReducers({
   isLoggedIn,
   token,
   volunteer,
+  abilities
 })
 
 export default reducers

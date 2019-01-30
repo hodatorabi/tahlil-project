@@ -5,7 +5,8 @@ import {connect} from 'react-redux'
 const authProvider = connect(
   (state) => {
     return {
-      volunteer: state.auth.volunteer
+      volunteer: state.auth.volunteer,
+      abilities: state.auth.abilities,
     }
   }, (dispatch) => {
     return {
@@ -13,6 +14,7 @@ const authProvider = connect(
       login: (username, password) => dispatch(actions.login({username, password})),
       logout: () => dispatch(actions.logout()),
       getProfile: () => dispatch(actions.getProfile()),
+      getAbilities: () => dispatch(actions.getAbilities())
     }
   }
 )

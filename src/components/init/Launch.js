@@ -33,6 +33,7 @@ class Launch extends React.Component<Props, State> {
                 this.props.logout()
                 console.log('get profile error', error)
               })
+            this.props.getAbilities()
             setTimeout(() => NavigationService.reset(['MainTabNavigator']), 2000)
           }
         })

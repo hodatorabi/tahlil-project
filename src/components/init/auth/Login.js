@@ -42,6 +42,7 @@ class Login extends React.Component<Props, State> {
         .then(() => {
           NavigationService.reset(['MainTabNavigator'])
           this.props.getProfile()
+          this.props.getAbilities()
         })
         .catch((error) => {
           this.setState({errorMessage: 'رمز عبور یا نام کاربری غلط هستند.'})

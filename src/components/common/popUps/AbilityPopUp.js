@@ -3,11 +3,17 @@ import {Dialog, DialogButton, DialogContent, DialogTitle} from 'react-native-pop
 import {Picker, View} from 'react-native'
 import {COLOR_BLUE_DEFAULT, COLOR_DARK_GRAY, COLOR_WHITE} from 'src/assets/styles/colors'
 import {messages} from 'src/utils/messages'
+import Auth from '../../../store/auth'
+import {toArray} from '../../../utils/dictionary'
 
 
 class AbilityPopUp extends React.Component<Props, void> {
   state = {
-    selectedAbility: 'پرستاری',
+    selectedAbility: '',
+  }
+
+  componentDidMount(): void {
+    console.log(toArray(this.props.abilities))
   }
 
   render() {
@@ -55,10 +61,9 @@ class AbilityPopUp extends React.Component<Props, void> {
               style={{height: 100, width: '90%', borderWidth: 1, borderColor: COLOR_BLUE_DEFAULT}}
               onValueChange={(itemValue, itemIndex) => this.setState({selectedAbility: itemValue})}
               itemStyle={{fontFamily: 'IRANSansMobile', fontSize: 25}}>
-              <Picker.Item label=' پرستاری' value='پرستاری'/>
-              <Picker.Item label=' آموزش' value='آموزش'/>
-              <Picker.Item label=' دامپزشکی' value='دامپزشکی'/>
-              <Picker.Item label=' روحیه تیمی' value='روحیه تیمی'/>
+              {toArray(this.props.abilities).map((item, index) => (
+                <Picker.Item label={' ' + item[1]['name']} value={item[1]['id']}/>
+              ))}
             </Picker>
           </View>
         </DialogContent>
@@ -67,4 +72,4 @@ class AbilityPopUp extends React.Component<Props, void> {
   }
 }
 
-export default AbilityPopUp
+export default Auth.providers.auth(AbilityPopUp)

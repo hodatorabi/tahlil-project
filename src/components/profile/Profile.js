@@ -15,6 +15,7 @@ import Label from 'src/components/common/Label'
 import {DEFAULT_PROFILE_PIC, ICON_LOG_OUT} from 'src/assets/styles/icons'
 import NavigationService from 'src/utils/navigationService'
 import Auth from '../../store/auth'
+import {listToDict} from '../../utils/dictionary'
 
 const ThirdRoute = (onAddPress, onRemovePress) => (
   <PersonalInfo onAddPress={onAddPress} onRemovePress={onRemovePress}/>
