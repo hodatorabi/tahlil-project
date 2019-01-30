@@ -74,7 +74,7 @@ class Profile extends React.Component<Props, State> {
           </TouchableOpacity>
 
           <View style={{flexDirection: 'column', alignItems: 'flex-end'}}>
-            <Label text={'هدهد'} textStyle={{fontSize: 18, color: COLOR_BLACK}}/>
+            <Label text={this.props.volunteer.username} textStyle={{fontSize: 18, color: COLOR_BLACK}}/>
             <Label text={'عضویت از مهر ماه'}
                    textStyle={{fontSize: 14, color: COLOR_DARK_GRAY, textAlign: 'right'}}/>
           </View>

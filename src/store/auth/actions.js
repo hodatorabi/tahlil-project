@@ -15,6 +15,13 @@ const actions = {
         {username, password}, false)
     }
   },
+  getProfile: () => {
+    return {
+      types: actionTypes.GET_PROFILE,
+      shouldCallAPI: (state) => state.auth.isLoggedIn,
+      callAPI: (state) => Request.get(state, Constants.profileUrl)
+    }
+  },
 
 }
 

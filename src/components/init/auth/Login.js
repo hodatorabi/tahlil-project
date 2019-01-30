@@ -36,15 +36,18 @@ class Login extends React.Component<Props, State> {
 
   onLogin() {
     if (this.state.username.length === 0 || this.state.password.length === 0) {
-      this.setState({errorMessage: 'نام کاربری یا رمز عبور نمی‌توانند خالی باشند'})
+      this.setState({errorMessage: 'نام کاربری یا رمز عبور نمی‌توانند خالی باشند.'})
     } else {
-        this.props.login(this.state.username, this.state.password)
-            .then(() => {
-                NavigationService.reset(['MainTabNavigator'])
-            })
-            .catch((error) => {
-                console.log('login error', error)
-            })
+      this.props.login(this.state.username, this.state.password)
+        .then(() => {
+          NavigationService.reset(['MainTabNavigator'])
+          this.props.getProfile()
+        })
+        .catch((error) => {
+          this.setState({errorMessage: 'رمز عبور یا نام کاربری غلط هستند.'})
+          this.props.logout()
+          console.log('login error', error)
+        })
     }
   }
 

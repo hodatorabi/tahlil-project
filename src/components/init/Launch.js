@@ -28,6 +28,11 @@ class Launch extends React.Component<Props, State> {
             setTimeout(() => NavigationService.reset(['AuthNavigator']), 2000)
           } else {
             this.props.setToken(token)
+            this.props.getProfile()
+              .catch((error) => {
+                this.props.logout()
+                console.log('get profile error', error)
+              })
             setTimeout(() => NavigationService.reset(['MainTabNavigator']), 2000)
           }
         })

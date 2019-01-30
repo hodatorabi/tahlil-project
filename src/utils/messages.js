@@ -60,6 +60,10 @@ export const messages = {
   CITY: 'شهر سکونت: ',
   PHONE_NUMBER: 'شماره تماس: ',
   GENDER: 'جنسیت: ',
+  AGE: 'سن: ',
+
+  WOMAN: 'زن',
+  MAN: 'مرد',
 
   CHOOSE_ABILITY: 'توانمندی موردنظر خود را انتخاب کنید.',
   REMOVE_ABILITY: 'آیا از حذف این توانمندی مطمئنید؟',

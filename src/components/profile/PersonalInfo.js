@@ -8,6 +8,8 @@ import CustomButton from 'src/components/common/Buttons/CustomButton'
 import ButtonPlus from 'src/components/common/Buttons/ButtonPlus'
 import AbilityRow from 'src/components/profile/profileRow/AbilityRow'
 import {messages} from 'src/utils/messages'
+import Auth from '../../store/auth'
+import {toFarsiGender} from '../../utils/farsiUtils'
 
 
 class PersonalInfo extends React.Component<Props, State> {
@@ -28,10 +30,11 @@ class PersonalInfo extends React.Component<Props, State> {
                                    text={messages.PERSONAL_INFO}/>
                         </View>
 
-                        <PersonalInfoRow description={'هدی'} title={messages.FULL_NAME}/>
-                        <PersonalInfoRow description={'تهران'} title={messages.CITY}/>
-                        <PersonalInfoRow description={'09394222978'} title={messages.PHONE_NUMBER}/>
-                        <PersonalInfoRow description={'زن'} title={messages.GENDER}/>
+                        <PersonalInfoRow description={this.props.volunteer.name} title={messages.FULL_NAME}/>
+                        <PersonalInfoRow description={this.props.volunteer.city} title={messages.CITY}/>
+                        <PersonalInfoRow description={this.props.volunteer.phoneNumber} title={messages.PHONE_NUMBER}/>
+                        <PersonalInfoRow description={toFarsiGender(this.props.volunteer.gender)} title={messages.GENDER}/>
+                        <PersonalInfoRow description={this.props.volunteer.age} title={messages.AGE}/>
                     </View>
 
                     <View style={style.abilitiesContainer}>
@@ -49,7 +52,7 @@ class PersonalInfo extends React.Component<Props, State> {
     }
 }
 
-export default PersonalInfo
+export default Auth.providers.auth(PersonalInfo)
 
 const style = StyleSheet.create({
     scrollContainer: {paddingVertical: 0.02 * SCREEN_HEIGHT,},
