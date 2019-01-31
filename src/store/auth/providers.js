@@ -10,11 +10,12 @@ const authProvider = connect(
     }
   }, (dispatch) => {
     return {
-      setToken: (token: string) => dispatch(actions.setToken(token)),
+      setToken: (token) => dispatch(actions.setToken(token)),
       login: (username, password) => dispatch(actions.login({username, password})),
       logout: () => dispatch(actions.logout()),
       getProfile: () => dispatch(actions.getProfile()),
-      getAbilities: () => dispatch(actions.getAbilities())
+      getAbilities: () => dispatch(actions.getAbilities()),
+      addAbility: (id) => dispatch(actions.addAbility(id))
     }
   }
 )

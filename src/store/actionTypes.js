@@ -11,7 +11,8 @@ const actionTypes = {
   LOGOUT: 'LOGOUT',
   LOGIN: asyncActionTypeCreator('LOGIN'),
   GET_PROFILE: asyncActionTypeCreator('GET_PROFILE'),
-  GET_ABILITIES: asyncActionTypeCreator('GET_ABILITIES')
+  GET_ABILITIES: asyncActionTypeCreator('GET_ABILITIES'),
+  ADD_ABILITY: asyncActionTypeCreator('ADD_ABILITY'),
 }
 
 export default actionTypes

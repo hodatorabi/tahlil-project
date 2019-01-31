@@ -61,6 +61,8 @@ const Request = {
         request(store, url, params, 'post', data, loginRequired, decamelizeRequest),
     put: (store, url, params = {}, data = {}, loginRequired = true, decamelizeRequest = true) =>
         request(store, url, params, 'put', data, loginRequired, decamelizeRequest),
+    patch: (store, url, params = {}, data = {}, loginRequired = true, decamelizeRequest = true) =>
+      request(store, url, params, 'patch', data, loginRequired, decamelizeRequest),
     delete: (store, url, params = {}, data = {}, loginRequired = true, decamelizeRequest = true) =>
         request(store, url, params, 'delete', {}, loginRequired, decamelizeRequest),
 }

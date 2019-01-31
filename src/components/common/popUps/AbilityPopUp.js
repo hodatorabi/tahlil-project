@@ -43,7 +43,10 @@ class AbilityPopUp extends React.Component<Props, void> {
           />,
           <DialogButton
             text={messages.VERIFY}
-            onPress={this.props.onDismiss}
+            onPress={() => {
+              this.props.addAbility(this.state.selectedAbility)
+              this.props.onDismiss()
+            }}
             key="button-2"
             textStyle={{color: COLOR_BLUE_DEFAULT, fontFamily: 'IRANSansMobile_Bold'}}
           />,

@@ -28,7 +28,16 @@ const actions = {
       shouldCallAPI: (state) => state.auth.isLoggedIn,
       callAPI: (state) => Request.get(state, Constants.abilitiesUrl)
     }
-  }
+  },
+  addAbility: (id) => {
+    return {
+      types: actionTypes.ADD_ABILITY,
+      shouldCallAPI: (state) => state.auth.isLoggedIn,
+      callAPI: (state) => {
+        return Request.patch(state, Constants.profileUrl, {}, {abilities: [...state.auth.volunteer.abilities, id]})
+      }
+    }
+  },
 
 }
 
