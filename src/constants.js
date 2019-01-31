@@ -1,5 +1,5 @@
 export const Constants = {
-  serverUrl: 'http://10.0.2.2:8000',
+  serverUrl: 'https://torabica.herokuapp.com/',
 
   loginUrl: '/login/',
   volunteerJoinUrl: '/join/',
