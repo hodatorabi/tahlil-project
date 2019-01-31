@@ -5,11 +5,13 @@ import actions from './actions'
 const projectsProvider = connect(
   (state) => {
     return {
-      nonCashProjects: state.projects.nonCashProjects
+      nonCashProjects: state.projects.nonCashProjects,
+      cashProjects: state.projects.cashProjects
     }
   }, (dispatch) => {
     return {
-      getNonCashProjects: () => dispatch(actions.getNonCashProjects())
+      getNonCashProjects: () => dispatch(actions.getNonCashProjects()),
+      getCashProjects: () => dispatch(actions.getCashProjects())
     }
   }
 )

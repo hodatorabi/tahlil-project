@@ -23,8 +23,8 @@ class ProjectProfile extends React.Component<Props, void> {
     const project = this.props.navigation.getParam('project', null)
     const type = this.props.navigation.getParam('type', messages.NON_CASH)
     const projectPicture = this.props.navigation.getParam('projectPicture', null)
-    const neededAmount = '2000'
-    const fundedAmount = '30'
+    const neededAmount = type === messages.CASH ? project.targetAmount : 0
+    const fundedAmount = messages.CASH ? project.fundedAmount : 0
     return (
 
       <View style={style.projectPage}>

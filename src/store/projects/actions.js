@@ -11,6 +11,13 @@ const actions = {
       callAPI: (state) => Request.get(state, Constants.getNonCashProjects)
     }
   },
+  getCashProjects: () => {
+    return {
+      types: actionTypes.GET_ALL_CASH_PROJECTS,
+      shouldCallAPI: (state) => state.auth.isLoggedIn,
+      callAPI: (state) => Request.get(state, Constants.getCashProjects)
+    }
+  },
 
 }
 

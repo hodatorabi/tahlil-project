@@ -12,7 +12,7 @@ import {COLOR_BLUE_DEFAULT, COLOR_DARK_BLUE, COLOR_WHITE} from '../../assets/sty
 const FirstRoute = (projects, navigation) => (
   <ScrollView contentContainerStyle={{paddingTop: 20, alignItems: 'center'}}>
     {projects && projects.map((item, index) => (
-      <ProjectOverview projectPicture={project1.projectPicture} type={project1.projectType}
+      <ProjectOverview projectPicture={project1.projectPicture} type={messages.NON_CASH}
                        projectName={item.name}
                        charityName={item.charity.name}
                        projectStartDate={item.startDate}
@@ -30,8 +30,26 @@ const FirstRoute = (projects, navigation) => (
     ))}
   </ScrollView>
 )
-const SecondRoute = () => (
-  <View/>
+const SecondRoute = (projects, navigation) => (
+  <ScrollView contentContainerStyle={{paddingTop: 20, alignItems: 'center'}}>
+    {projects && projects.map((item, index) => (
+      <ProjectOverview projectPicture={project1.projectPicture} type={messages.CASH}
+                       projectName={item.name}
+                       charityName={item.charity.name}
+                       projectStartDate={item.startDate}
+                       projectEndDate={item.endDate}
+                       onPress={() => {
+                         navigation.navigate({
+                           routeName: 'ProjectProfile',
+                           params: {
+                             project: item,
+                             type: messages.CASH,
+                             projectPicture: project1.projectPicture
+                           },
+                         })
+                       }}/>
+    ))}
+  </ScrollView>
 )
 
 class Home extends React.Component<Props, State> {
@@ -52,7 +70,7 @@ class Home extends React.Component<Props, State> {
           navigationState={this.state}
           renderScene={SceneMap({
             first: () => FirstRoute(this.props.nonCashProjects, this.props.navigation),
-            second: SecondRoute,
+            second: () => SecondRoute(this.props.cashProjects, this.props.navigation),
           })}
           onIndexChange={index => this.setState({index})}
           initialLayout={{width: SCREEN_WIDTH}}
