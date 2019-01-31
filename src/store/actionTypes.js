@@ -15,6 +15,7 @@ const actionTypes = {
   ADD_ABILITY: asyncActionTypeCreator('ADD_ABILITY'),
   REMOVE_ABILITY: asyncActionTypeCreator('REMOVE_ABILITY'),
   GET_FEEDBACK: asyncActionTypeCreator('GET_FEEDBACK'),
+  GET_ALL_NON_CASH_PROJECTS: asyncActionTypeCreator('GET_ALL_NON_CASH_PROJECTS')
 }
 
 export default actionTypes
