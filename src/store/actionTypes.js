@@ -17,7 +17,8 @@ const actionTypes = {
   GET_FEEDBACK: asyncActionTypeCreator('GET_FEEDBACK'),
   GET_ALL_NON_CASH_PROJECTS: asyncActionTypeCreator('GET_ALL_NON_CASH_PROJECTS'),
   GET_ALL_CASH_PROJECTS: asyncActionTypeCreator('GET_ALL_CASH_PROJECTS'),
-  SEND_REQUEST_TO_CHARITY: asyncActionTypeCreator('SEND_REQUEST_TO_CHARITY')
+  SEND_REQUEST_TO_CHARITY: asyncActionTypeCreator('SEND_REQUEST_TO_CHARITY'),
+  GET_OUTGOING_REQUESTS: asyncActionTypeCreator('GET_OUTGOING_REQUESTS')
 }
 
 export default actionTypes

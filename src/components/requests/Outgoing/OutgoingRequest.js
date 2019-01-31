@@ -7,6 +7,7 @@ import format from 'string-format'
 import {ICON_ENVELOPE} from 'src/assets/styles/icons'
 import {messages} from 'src/utils/messages'
 import RequestStatus from 'src/components/common/RequestStatus'
+import {project2} from '../../../utils/sampleData'
 
 
 class OutgoingRequest extends React.Component<Props, void> {
@@ -14,19 +15,20 @@ class OutgoingRequest extends React.Component<Props, void> {
   render() {
     const request = this.props.request
     const project = request.project
+    const status = request.status === 0 ? messages.PENDING : (request.status === -1 ? messages.REJECTED : messages.ACCEPTED)
     return (
       <View style={style.containerStyle}>
-        <Image source={project.projectPicture} style={style.projectPictureStyle}/>
+        <Image source={project2.projectPicture} style={style.projectPictureStyle}/>
         <View style={style.bodyStyle}>
           <Label
             style={{width: '95%'}}
             textStyle={style.bodyTextStyle}
-            text={format(messages.YOUR_REQUEST_FOR_PROJECT, project.projectName, project.charityName)}/>
+            text={format(messages.YOUR_REQUEST_FOR_PROJECT, project.name, project.charity.name)}/>
           <View style={style.footerStyle}>
             <View style={style.buttonContainer}>
-              <RequestStatus status={request.status}/>
+              <RequestStatus status={status}/>
             </View>
-            {request.status === messages.REJECTED ?
+            {status === messages.REJECTED ?
               <TouchableOpacity onPress={this.props.onReasonPress} style={style.messagesButtonContainer}>
                 <Label text={messages.CHARITY_REASON} textStyle={{fontSize: 16, color: COLOR_BLUE_DEFAULT}}/>
                 <Image source={ICON_ENVELOPE} style={{width: 25, height: 25, marginLeft: 8}}

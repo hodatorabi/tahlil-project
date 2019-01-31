@@ -37,6 +37,7 @@ class Launch extends React.Component<Props, State> {
             this.props.getAbilities()
             this.props.getNonCashProjects()
             this.props.getCashProjects()
+            this.props.getOutgoingRequests()
             setTimeout(() => NavigationService.reset(['MainTabNavigator']), 2000)
           }
         })

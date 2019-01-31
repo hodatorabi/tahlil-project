@@ -25,6 +25,13 @@ const actions = {
       callAPI: (state) => Request.post(state, Constants.requestUrl + charityID + '/' + projectID + '/', {},
         {message},)
     }
+  },
+  getOutgoingRequests: () => {
+    return {
+      types: actionTypes.GET_OUTGOING_REQUESTS,
+      shouldCallAPI: (state) => state.auth.isLoggedIn,
+      callAPI: (state) => Request.get(state, Constants.outgoingRequestsUrl)
+    }
   }
 
 }

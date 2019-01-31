@@ -1,9 +1,9 @@
 import React from 'react'
 import {ScrollView, StyleSheet, View} from 'react-native'
 import OutgoingRequest from 'src/components/requests/Outgoing/OutgoingRequest'
-import {request4, request5} from 'src/utils/sampleData'
 import MessagePopUp from 'src/components/common/popUps/MessagePopUp'
 import {messages} from 'src/utils/messages'
+import Projects from '../../../store/projects'
 
 
 class OutgoingRequests extends React.Component<Props, void> {
@@ -19,16 +19,17 @@ class OutgoingRequests extends React.Component<Props, void> {
     reason: '',
   }
 
-  onReasonPress(request) {
-    this.setState({reason: request.reason, reasonPopUpVisible: true})
+  onReasonPress(reason) {
+    this.setState({reason: reason, reasonPopUpVisible: true})
   }
 
   render() {
     return (
       <View>
         <ScrollView contentContainerStyle={{paddingTop: 20, alignItems: 'center'}}>
-          <OutgoingRequest onReasonPress={() => this.onReasonPress(request4)} request={request4}/>
-          <OutgoingRequest onReasonPress={() => this.onReasonPress(request5)} request={request5}/>
+          {this.props.outgoingRequests.map((item, index) => (
+            <OutgoingRequest onReasonPress={() => this.onReasonPress(item.rejectionReason)} request={item}/>
+          ))}
         </ScrollView>
         <MessagePopUp visible={this.state.reasonPopUpVisible}
                       title={messages.CHARITY_REASON}
@@ -41,6 +42,6 @@ class OutgoingRequests extends React.Component<Props, void> {
   }
 }
 
-export default OutgoingRequests
+export default Projects.providers.projects(OutgoingRequests)
 
 const style = StyleSheet.create({})

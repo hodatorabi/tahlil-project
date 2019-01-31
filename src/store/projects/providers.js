@@ -6,13 +6,15 @@ const projectsProvider = connect(
   (state) => {
     return {
       nonCashProjects: state.projects.nonCashProjects,
-      cashProjects: state.projects.cashProjects
+      cashProjects: state.projects.cashProjects,
+      outgoingRequests: state.projects.outgoingRequests
     }
   }, (dispatch) => {
     return {
       getNonCashProjects: () => dispatch(actions.getNonCashProjects()),
       getCashProjects: () => dispatch(actions.getCashProjects()),
-      sendRequestToCharity: (charityID, projectID, message) => dispatch(actions.sendRequestToCharity(charityID, projectID, message))
+      sendRequestToCharity: (charityID, projectID, message) => dispatch(actions.sendRequestToCharity(charityID, projectID, message)),
+      getOutgoingRequests: () => dispatch(actions.getOutgoingRequests())
     }
   }
 )

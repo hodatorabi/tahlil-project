@@ -7,5 +7,6 @@ export const Constants = {
   getFeedBackUrl: '/my-feedbacks/',
   getNonCashProjects: '/non-cash-projects/',
   getCashProjects: '/cash-projects/',
-  requestUrl: '/request/'
+  requestUrl: '/request/',
+  outgoingRequestsUrl: '/requests/outgoing/'
 }
