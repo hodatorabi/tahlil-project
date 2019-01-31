@@ -60,6 +60,14 @@ const actions = {
       callAPI: (state) => Request.get(state, Constants.getFeedBackUrl)
     }
   },
+  volunteerJoin: (username, password, name, gender, age, phoneNumber, city) => {
+    return {
+      types: actionTypes.VOLUNTEER_JOIN,
+      shouldCallAPI: (state) => !state.auth.isLoggedIn,
+      callAPI: (state) => Request.post(state, Constants.volunteerJoinUrl, {},
+        {username, password, name, gender, age, phoneNumber, city}, false)
+    }
+  }
 
 }
 

@@ -1,14 +1,15 @@
 import React from 'react'
 import {Picker, StyleSheet, View} from 'react-native'
 import Label from 'src/components/common/Label'
-import {COLOR_BLUE_DEFAULT, COLOR_DARK, COLOR_DEFAULT_ORANGE, COLOR_MEDIUM_BLUE} from 'src/assets/styles/colors'
+import {COLOR_DEFAULT_ORANGE, COLOR_MEDIUM_BLUE} from 'src/assets/styles/colors'
 import {messages} from 'src/utils/messages'
 import {SCREEN_HEIGHT, SCREEN_WIDTH} from 'src/assets/styles/style'
 import CustomInput from 'src/components/common/CustomInput'
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view'
 import CustomButton from 'src/components/common/Buttons/CustomButton'
 import AgreementCheckBox from 'src/components/common/AgreementCheckBox'
-import {toArray} from '../../../utils/dictionary'
+import Auth from '../../../store/auth'
+import NavigationService from '../../../utils/navigationService'
 
 class VolunteerJoinForm extends React.Component<Props, State> {
 
@@ -20,14 +21,22 @@ class VolunteerJoinForm extends React.Component<Props, State> {
       confirmPass: '',
       errorMessage: ' ',
       checked: false,
-      gender: 'f'
+      name: '',
+      gender: 'f',
+      age: null,
+      phoneNumber: '',
+      city: ''
     }
 
     this.onPasswordChange = this.onPasswordChange.bind(this)
     this.onUsernameChange = this.onUsernameChange.bind(this)
     this.onConfirmPasswordChange = this.onConfirmPasswordChange.bind(this)
     this.onCheckBoxChange = this.onCheckBoxChange.bind(this)
-    this.onLogin = this.onLogin.bind(this)
+    this.onNameChange = this.onNameChange.bind(this)
+    this.onAgeChange = this.onAgeChange.bind(this)
+    this.onPhoneNumberChange = this.onPhoneNumberChange.bind(this)
+    this.onCityChange = this.onCityChange.bind(this)
+    this.onJoin = this.onJoin.bind(this)
   }
 
   onUsernameChange(value) {
@@ -42,13 +51,46 @@ class VolunteerJoinForm extends React.Component<Props, State> {
     this.setState({confirmPass: value})
   }
 
-  onLogin() {
+  onNameChange(value) {
+    this.setState({name: value})
+  }
+
+  onAgeChange(value) {
+    this.setState({age: value})
+  }
+
+  onPhoneNumberChange(value) {
+    this.setState({phoneNumber: value})
+  }
+
+  onCityChange(value) {
+    this.setState({city: value})
+  }
+
+  onJoin() {
     if (this.state.username.length === 0 || this.state.password.length === 0) {
       this.setState({errorMessage: 'نام کاربری یا رمز عبور نمی‌توانند خالی باشند'})
     } else if (this.state.password !== this.state.confirmPass) {
       this.setState({errorMessage: 'تکرار رمز مطابقت ندارد'})
     } else if (this.state.checked === false) {
       this.setState({errorMessage: 'برای عضویت در سامانه باید با قوانین موافقت کرده باشید'})
+    } else {
+      this.props.volunteerJoin(this.state.username, this.state.password, this.state.name, this.state.gender, this.state.age, this.state.phoneNumber, this.state.city)
+        .then((response) => {
+          this.props.login(this.state.username, this.state.password)
+            .then(() => {
+              this.props.getProfile()
+              this.props.getAbilities()
+              NavigationService.reset(['MainTabNavigator'])
+            })
+            .catch((error) => {
+              console.log(error)
+            })
+
+        })
+        .catch((error) => {
+          console.log('join error', error)
+        })
     }
   }
 
@@ -82,7 +124,7 @@ class VolunteerJoinForm extends React.Component<Props, State> {
                        secureTextEntry
                        label={messages.CONFIRM_PASS}/>
           <CustomInput onFocus={() => this.setState({errorMessage: ' '})}
-                       onChangeText={this.onConfirmPasswordChange}
+                       onChangeText={this.onNameChange}
                        customInputContainerStyle={{marginTop: 25}}
                        label={messages.NAME}/>
 
@@ -117,17 +159,17 @@ class VolunteerJoinForm extends React.Component<Props, State> {
           </View>
 
           <CustomInput onFocus={() => this.setState({errorMessage: ' '})}
-                       onChangeText={this.onConfirmPasswordChange}
+                       onChangeText={this.onAgeChange}
                        customInputContainerStyle={{marginTop: 25}}
                        label={messages.AGE_T}/>
 
           <CustomInput onFocus={() => this.setState({errorMessage: ' '})}
-                       onChangeText={this.onConfirmPasswordChange}
+                       onChangeText={this.onPhoneNumberChange}
                        customInputContainerStyle={{marginTop: 25}}
                        label={messages.PHONE_NUMBER_T}/>
 
           <CustomInput onFocus={() => this.setState({errorMessage: ' '})}
-                       onChangeText={this.onConfirmPasswordChange}
+                       onChangeText={this.onCityChange}
                        customInputContainerStyle={{marginTop: 25}}
                        label={messages.CITY_T}/>
 
@@ -137,7 +179,7 @@ class VolunteerJoinForm extends React.Component<Props, State> {
           <AgreementCheckBox style={{marginBottom: 0.06 * SCREEN_HEIGHT}} checked={this.state.checked}
                              onValueChange={this.onCheckBoxChange}/>
 
-          <CustomButton label={messages.SIGN_UP} onPress={this.onLogin}/>
+          <CustomButton label={messages.SIGN_UP} onPress={this.onJoin}/>
 
         </KeyboardAwareScrollView>
       </View>
@@ -145,7 +187,7 @@ class VolunteerJoinForm extends React.Component<Props, State> {
   }
 }
 
-export default VolunteerJoinForm
+export default Auth.providers.auth(VolunteerJoinForm)
 
 const style = StyleSheet.create({
   login: {

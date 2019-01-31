@@ -10,6 +10,7 @@ const actionTypes = {
   SET_TOKEN: 'SET_TOKEN',
   LOGOUT: 'LOGOUT',
   LOGIN: asyncActionTypeCreator('LOGIN'),
+  VOLUNTEER_JOIN: asyncActionTypeCreator('VOLUNTEER_JOIN'),
   GET_PROFILE: asyncActionTypeCreator('GET_PROFILE'),
   GET_ABILITIES: asyncActionTypeCreator('GET_ABILITIES'),
   ADD_ABILITY: asyncActionTypeCreator('ADD_ABILITY'),

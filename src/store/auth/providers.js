@@ -13,6 +13,7 @@ const authProvider = connect(
     return {
       setToken: (token) => dispatch(actions.setToken(token)),
       login: (username, password) => dispatch(actions.login({username, password})),
+      volunteerJoin: (username, password, name, gender, age, phoneNumber, city) => dispatch(actions.volunteerJoin(username, password, name, gender, age, phoneNumber, city)),
       logout: () => dispatch(actions.logout()),
       getProfile: () => dispatch(actions.getProfile()),
       getAbilities: () => dispatch(actions.getAbilities()),
