@@ -9,11 +9,12 @@ import {toArray} from '../../../utils/dictionary'
 
 class AbilityPopUp extends React.Component<Props, void> {
   state = {
-    selectedAbility: '',
+    selectedAbility: 0,
   }
 
   componentDidMount(): void {
     console.log(toArray(this.props.abilities))
+    this.setState({selectedAbility: toArray(this.props.abilities)[0][0]})
   }
 
   render() {
@@ -69,7 +70,7 @@ class AbilityPopUp extends React.Component<Props, void> {
               }}
               itemStyle={{fontFamily: 'IRANSansMobile', fontSize: 25}}>
               {toArray(this.props.abilities).map((item, index) => (
-              <Picker.Item label={' ' + item[1]['name']} value={item[0]}/>
+                <Picker.Item label={' ' + item[1]['name']} value={item[0]}/>
               ))}
             </Picker>
           </View>
