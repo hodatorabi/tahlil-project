@@ -18,6 +18,7 @@ class ProjectProfile extends React.Component<Props, void> {
 
   state = {
     messagePopUpVisible: false,
+    amountPopUpVisible: false
   }
 
   render() {
@@ -27,7 +28,6 @@ class ProjectProfile extends React.Component<Props, void> {
     const neededAmount = type === messages.CASH ? project.targetAmount : 0
     const fundedAmount = messages.CASH ? project.fundedAmount : 0
     return (
-
       <View style={style.projectPage}>
 
         <CommonHeader hasBack={true} onPress={this.props.navigation.goBack} title={project.name}/>
@@ -90,9 +90,25 @@ class ProjectProfile extends React.Component<Props, void> {
                         labelStyle={{fontSize: 20}}
                         onPress={type === messages.NON_CASH ? () => {
                           this.setState({messagePopUpVisible: true})
-                        } : null}/>
+                        } : () => {
+                          this.setState({amountPopUpVisible: true})
+                        }}/>
 
         </ScrollView>
+        <InputMessagePopUp visible={this.state.amountPopUpVisible}
+                           title={messages.PAY}
+                           text={messages.ENTER_PAY_AMOUNT}
+                           onSend={(amount) => {
+                             this.props.payProject(project.id, amount)
+                               .then(() => {
+                                 this.props.navigation.goBack()
+                               })
+                           }}
+                           onDismiss={() => {
+                             Keyboard.dismiss()
+                             this.setState({amountPopUpVisible: false})
+                           }}
+        />
         <InputMessagePopUp visible={this.state.messagePopUpVisible}
                            title={messages.SEND_REQUEST}
                            text={messages.REQUEST_MESSAGE}

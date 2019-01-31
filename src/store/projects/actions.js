@@ -56,6 +56,15 @@ const actions = {
         rejectionReason: reason
       })
     }
+  },
+  payProject: (projectID, amount) => {
+    return {
+      types: actionTypes.PAY_PROJECT,
+      shouldCallAPI: (state) => state.auth.isLoggedIn,
+      callAPI: (state) => Request.post(state, Constants.payProjectUrl + projectID + '/', {}, {
+        amount
+      })
+    }
   }
 
 }

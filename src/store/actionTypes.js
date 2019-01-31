@@ -21,7 +21,8 @@ const actionTypes = {
   GET_OUTGOING_REQUESTS: asyncActionTypeCreator('GET_OUTGOING_REQUESTS'),
   GET_INCOMING_REQUESTS: asyncActionTypeCreator('GET_INCOMING_REQUESTS'),
   ACCEPT_PROJECT_REQUEST: asyncActionTypeCreator('ACCEPT_PROJECT_REQUEST'),
-  REJECT_PROJECT_REQUEST: asyncActionTypeCreator('REJECT_PROJECT_REQUEST')
+  REJECT_PROJECT_REQUEST: asyncActionTypeCreator('REJECT_PROJECT_REQUEST'),
+  PAY_PROJECT: asyncActionTypeCreator('PAY_PROJECT')
 }
 
 export default actionTypes

@@ -10,5 +10,6 @@ export const Constants = {
   requestUrl: '/request/',
   outgoingRequestsUrl: '/requests/outgoing/',
   incomingRequestsUrl: '/requests/incoming/',
-  requestResponseUrl: '/requests/'
+  requestResponseUrl: '/requests/',
+  payProjectUrl: '/pay/'
 }

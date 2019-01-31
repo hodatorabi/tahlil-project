@@ -18,7 +18,8 @@ const projectsProvider = connect(
       getOutgoingRequests: () => dispatch(actions.getOutgoingRequests()),
       getIncomingRequests: () => dispatch(actions.getIncomingRequests()),
       acceptProjectRequest: (requestID) => dispatch(actions.acceptProjectRequest(requestID)),
-      rejectProjectRequest: (requestID, reason) => dispatch(actions.rejectProjectRequest(requestID, reason))
+      rejectProjectRequest: (requestID, reason) => dispatch(actions.rejectProjectRequest(requestID, reason)),
+      payProject: (requestId, amount) => dispatch(actions.payProject(requestId, amount))
     }
   }
 )

@@ -71,6 +71,7 @@ export const messages = {
   LOGOUT_MESSAGE: 'آیا می‌خواهید از حساب خود خارج شوید؟',
 
   REQUEST_MESSAGE: 'در صورتی که توضیحی دارید، در فیلد پایین وارد کنید.',
+  ENTER_PAY_AMOUNT: 'مبلغ مورد نظر خود را وارد کنید.',
   REJECT_REQUEST: 'رد درخواست',
   REJECT_REASON: 'در صورت تمایل، دلیل خود را برای رد درخواست وارد کنید.',
 }
