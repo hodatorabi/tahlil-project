@@ -1,31 +1,32 @@
 import React from 'react'
 import {StyleSheet, Text, View} from 'react-native'
 import {COLOR_BLACK, COLOR_BLUE_DEFAULT} from 'src/assets/styles/colors'
+import {abilityIDToName} from '../../../utils/farsiUtils'
+import Auth from '../../../store/auth'
 
 
 class ProjectInfoRow extends React.Component<Props, void> {
 
   render() {
-    const len = this.props.description.length
     return (
       <View>
         <View style={[style.containerStyle]}
         >
-          {len === 1 && <Text style={[style.textStyle, {
+          {!this.props.ability && <Text style={[style.textStyle, {
             color: COLOR_BLUE_DEFAULT,
             fontFamily: 'IRANSansMobile_Bold',
           }]}>{this.props.description}</Text>}
           <Text style={style.textStyle}>{this.props.title}</Text>
           <View style={style.bulletStyle}/>
         </View>
-        {len > 1 && <View style={{flexDirection: 'row', justifyContent: 'flex-end'}}>
+        {this.props.ability && <View style={{flexDirection: 'row', justifyContent: 'flex-end'}}>
           {
             this.props.description.map((i) => {
               return (
                 <Text style={[style.textStyle, {
                   color: COLOR_BLUE_DEFAULT,
                   fontFamily: 'IRANSansMobile_Bold',
-                }]}>{this.props.description[0] === i ? i : i + ' - '}</Text>
+                }]}>{this.props.description[0] === i ? abilityIDToName(i, this.props.abilities) : abilityIDToName(i, this.props.abilities) + ' - '}</Text>
               )
             })
           }
@@ -35,7 +36,7 @@ class ProjectInfoRow extends React.Component<Props, void> {
   }
 }
 
-export default ProjectInfoRow
+export default Auth.providers.auth(ProjectInfoRow)
 
 const style = StyleSheet.create({
   containerStyle: {

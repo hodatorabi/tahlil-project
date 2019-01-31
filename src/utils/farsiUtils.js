@@ -17,3 +17,7 @@ export const booleanToGender = (needMale, needFemale) => {
     return messages.MAN
   }
 }
+
+export const abilityIDToName = (id, abilites) => {
+  return abilites[id]['name']
+}

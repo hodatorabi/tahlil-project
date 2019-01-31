@@ -80,6 +80,7 @@ class ProjectProfile extends React.Component<Props, void> {
                             description={[booleanToGender(project.needMale, project.needFemale)]}/>
             <ProjectInfoRow title={messages.PROJECT_LOCATION} description={[project.city]}/>
             <ProjectInfoRow title={messages.VOLUNTEER_ABILITIES}
+                            ability={true}
                             description={project.abilities}/>
           </View>}
 
