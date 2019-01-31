@@ -1,13 +1,14 @@
 import React from 'react'
-import {StyleSheet, View} from 'react-native'
+import {Picker, StyleSheet, View} from 'react-native'
 import Label from 'src/components/common/Label'
-import {COLOR_DEFAULT_ORANGE} from 'src/assets/styles/colors'
+import {COLOR_BLUE_DEFAULT, COLOR_DARK, COLOR_DEFAULT_ORANGE, COLOR_MEDIUM_BLUE} from 'src/assets/styles/colors'
 import {messages} from 'src/utils/messages'
-import {SCREEN_HEIGHT} from 'src/assets/styles/style'
+import {SCREEN_HEIGHT, SCREEN_WIDTH} from 'src/assets/styles/style'
 import CustomInput from 'src/components/common/CustomInput'
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view'
 import CustomButton from 'src/components/common/Buttons/CustomButton'
 import AgreementCheckBox from 'src/components/common/AgreementCheckBox'
+import {toArray} from '../../../utils/dictionary'
 
 class VolunteerJoinForm extends React.Component<Props, State> {
 
@@ -19,6 +20,7 @@ class VolunteerJoinForm extends React.Component<Props, State> {
       confirmPass: '',
       errorMessage: ' ',
       checked: false,
+      gender: 'f'
     }
 
     this.onPasswordChange = this.onPasswordChange.bind(this)
@@ -79,6 +81,55 @@ class VolunteerJoinForm extends React.Component<Props, State> {
                        customInputContainerStyle={{marginTop: 25}}
                        secureTextEntry
                        label={messages.CONFIRM_PASS}/>
+          <CustomInput onFocus={() => this.setState({errorMessage: ' '})}
+                       onChangeText={this.onConfirmPasswordChange}
+                       customInputContainerStyle={{marginTop: 25}}
+                       label={messages.NAME}/>
+
+          <View style={{
+            width: .85 * SCREEN_WIDTH,
+            borderBottomColor: COLOR_MEDIUM_BLUE,
+            borderBottomWidth: 2,
+            marginTop: 25,
+            flexDirection: 'row',
+            justifyContent: 'flex-end',
+            paddingRight: 0.027 * SCREEN_WIDTH
+          }}>
+            <Picker
+              mode={'dropdown'}
+              selectedValue={this.state.gender}
+              style={{
+                width: 100,
+              }}
+              onValueChange={(itemValue, itemIndex) => {
+                this.setState({gender: itemValue})
+              }}
+              itemStyle={{fontFamily: 'IRANSansMobile', fontSize: 25}}>
+              <Picker.Item label={messages.WOMAN} value={'f'}/>
+              <Picker.Item label={messages.MAN} value={'m'}/>
+            </Picker>
+            <Label text={messages.GENDER} textStyle={{
+              color: COLOR_MEDIUM_BLUE,
+              fontSize: 18,
+              fontFamily: 'IRANSansMobile',
+              textAlign: 'right',
+            }}/>
+          </View>
+
+          <CustomInput onFocus={() => this.setState({errorMessage: ' '})}
+                       onChangeText={this.onConfirmPasswordChange}
+                       customInputContainerStyle={{marginTop: 25}}
+                       label={messages.AGE_T}/>
+
+          <CustomInput onFocus={() => this.setState({errorMessage: ' '})}
+                       onChangeText={this.onConfirmPasswordChange}
+                       customInputContainerStyle={{marginTop: 25}}
+                       label={messages.PHONE_NUMBER_T}/>
+
+          <CustomInput onFocus={() => this.setState({errorMessage: ' '})}
+                       onChangeText={this.onConfirmPasswordChange}
+                       customInputContainerStyle={{marginTop: 25}}
+                       label={messages.CITY_T}/>
 
           <Label style={{marginTop: 10, marginBottom: 0.03 * SCREEN_HEIGHT}} text={this.state.errorMessage}
                  textStyle={{color: COLOR_DEFAULT_ORANGE, fontSize: 16}}/>
@@ -106,5 +157,6 @@ const style = StyleSheet.create({
   loginForm: {
     justifyContent: 'center',
     alignItems: 'center',
+    paddingBottom: 50
   },
 })
