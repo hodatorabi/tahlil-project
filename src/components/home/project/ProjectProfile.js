@@ -96,7 +96,12 @@ class ProjectProfile extends React.Component<Props, void> {
         <InputMessagePopUp visible={this.state.messagePopUpVisible}
                            title={messages.SEND_REQUEST}
                            text={messages.REQUEST_MESSAGE}
-                           onSend={(message) => this.props.sendRequestToCharity(project.charity.id, project.id, message)}
+                           onSend={(message) => {
+                             this.props.sendRequestToCharity(project.charity.id, project.id, message)
+                               .then(() => {
+                                 this.props.getOutgoingRequests()
+                               })
+                           }}
                            onDismiss={() => {
                              Keyboard.dismiss()
                              this.setState({messagePopUpVisible: false})

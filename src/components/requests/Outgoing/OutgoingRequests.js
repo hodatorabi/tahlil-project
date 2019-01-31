@@ -1,5 +1,5 @@
 import React from 'react'
-import {ScrollView, StyleSheet, View} from 'react-native'
+import {RefreshControl, ScrollView, StyleSheet, View} from 'react-native'
 import OutgoingRequest from 'src/components/requests/Outgoing/OutgoingRequest'
 import MessagePopUp from 'src/components/common/popUps/MessagePopUp'
 import {messages} from 'src/utils/messages'
@@ -12,21 +12,35 @@ class OutgoingRequests extends React.Component<Props, void> {
     super(props)
 
     this.onReasonPress = this.onReasonPress.bind(this)
+    this.onRefresh = this.onRefresh.bind(this)
   }
 
   state = {
     reasonPopUpVisible: false,
     reason: '',
+    refreshing: false
   }
 
   onReasonPress(reason) {
     this.setState({reason: reason, reasonPopUpVisible: true})
   }
 
+  onRefresh() {
+    this.setState({refreshing: true})
+    this.props.getOutgoingRequests()
+      .then(() => this.setState({refreshing: false}))
+  }
+
   render() {
     return (
-      <View>
-        <ScrollView contentContainerStyle={{paddingTop: 20, alignItems: 'center'}}>
+      <View style={{flex: 1}}>
+        <ScrollView contentContainerStyle={{paddingTop: 20, alignItems: 'center'}}
+                    refreshControl={
+                      <RefreshControl
+                        refreshing={this.state.refreshing}
+                        onRefresh={this.onRefresh}
+                      />
+                    }>
           {this.props.outgoingRequests.map((item, index) => (
             <OutgoingRequest onReasonPress={() => this.onReasonPress(item.rejectionReason)} request={item}/>
           ))}
