@@ -49,11 +49,17 @@ const actions = {
             array.splice(i, 1)
           }
         }
-
         return Request.patch(state, Constants.profileUrl, {}, {abilities: array})
       }
     }
-  }
+  },
+  getFeedbacks: () => {
+    return {
+      types: actionTypes.GET_FEEDBACK,
+      shouldCallAPI: (state) => state.auth.isLoggedIn,
+      callAPI: (state) => Request.get(state, Constants.getFeedBackUrl)
+    }
+  },
 
 }
 

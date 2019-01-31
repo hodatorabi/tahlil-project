@@ -66,11 +66,24 @@ const abilities = (state = {}, action) => {
   }
 }
 
+const feedbacks = (state = [], action) => {
+  switch (action.type) {
+    case actionTypes.GET_FEEDBACK.SUCCESS:
+      return action.response
+    case actionTypes.LOGOUT:
+      return []
+    default:
+      return state
+
+  }
+}
+
 const reducers = combineReducers({
   isLoggedIn,
   token,
   volunteer,
-  abilities
+  abilities,
+  feedbacks
 })
 
 export default reducers

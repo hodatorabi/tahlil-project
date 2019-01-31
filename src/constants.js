@@ -3,5 +3,6 @@ export const Constants = {
 
   loginUrl: '/login/',
   profileUrl: '/profile/',
-  abilitiesUrl: '/abilities/'
+  abilitiesUrl: '/abilities/',
+  getFeedBackUrl: '/my-feedbacks/'
 }

@@ -16,7 +16,7 @@ class FeedbackItem extends React.Component<Props, State> {
         <View style={{flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 20}}>
           <RateItem rating={feedback.rating}/>
           <View style={{flexDirection: 'row', alignItems: 'center'}}>
-            <Label text={feedback.charityName} textStyle={{fontSize: 16, color: COLOR_BLACK}}
+            <Label text={feedback.charity.name} textStyle={{fontSize: 16, color: COLOR_BLACK}}
                    style={{marginRight: 10}}/>
             <Image source={CHARITY_PROFILE_PIC} style={{width: 45, height: 45, borderRadius: 22.5}}/>
           </View>

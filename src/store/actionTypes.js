@@ -13,7 +13,8 @@ const actionTypes = {
   GET_PROFILE: asyncActionTypeCreator('GET_PROFILE'),
   GET_ABILITIES: asyncActionTypeCreator('GET_ABILITIES'),
   ADD_ABILITY: asyncActionTypeCreator('ADD_ABILITY'),
-  REMOVE_ABILITY: asyncActionTypeCreator('REMOVE_ABILITY')
+  REMOVE_ABILITY: asyncActionTypeCreator('REMOVE_ABILITY'),
+  GET_FEEDBACK: asyncActionTypeCreator('GET_FEEDBACK'),
 }
 
 export default actionTypes
