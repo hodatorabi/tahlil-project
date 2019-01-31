@@ -19,6 +19,7 @@ import Label from 'src/components/common/Label'
 import {DEFAULT_PROFILE_PIC, ICON_LOG_OUT} from 'src/assets/styles/icons'
 import NavigationService from 'src/utils/navigationService'
 import Auth from '../../store/auth'
+import RateItem from './feedback/RateItem'
 
 const ThirdRoute = (onAddPress, onRemovePress) => (
   <PersonalInfo onAddPress={onAddPress} onRemovePress={onRemovePress}/>
@@ -80,8 +81,7 @@ class Profile extends React.Component<Props, State> {
 
           <View style={{flexDirection: 'column', alignItems: 'flex-end'}}>
             <Label text={this.props.volunteer.username} textStyle={{fontSize: 18, color: COLOR_BLACK}}/>
-            <Label text={'عضویت از مهر ماه'}
-                   textStyle={{fontSize: 14, color: COLOR_DARK_GRAY, textAlign: 'right'}}/>
+            <RateItem rating={this.props.volunteer.avgRating}/>
           </View>
 
           <Image source={DEFAULT_PROFILE_PIC} style={style.profileAvatar}/>
