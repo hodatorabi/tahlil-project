@@ -44,6 +44,7 @@ class AbilityPopUp extends React.Component<Props, void> {
           <DialogButton
             text={messages.VERIFY}
             onPress={() => {
+              console.log('ability', this.state.selectedAbility)
               this.props.addAbility(this.state.selectedAbility)
               this.props.onDismiss()
             }}
@@ -62,10 +63,13 @@ class AbilityPopUp extends React.Component<Props, void> {
               mode={'dropdown'}
               selectedValue={this.state.selectedAbility}
               style={{height: 100, width: '90%', borderWidth: 1, borderColor: COLOR_BLUE_DEFAULT}}
-              onValueChange={(itemValue, itemIndex) => this.setState({selectedAbility: itemValue})}
+              onValueChange={(itemValue, itemIndex) => {
+                this.setState({selectedAbility: itemValue})
+                console.log(itemValue)
+              }}
               itemStyle={{fontFamily: 'IRANSansMobile', fontSize: 25}}>
               {toArray(this.props.abilities).map((item, index) => (
-                <Picker.Item label={' ' + item[1]['name']} value={item[1]['id']}/>
+              <Picker.Item label={' ' + item[1]['name']} value={item[0]}/>
               ))}
             </Picker>
           </View>

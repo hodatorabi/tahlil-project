@@ -38,6 +38,22 @@ const actions = {
       }
     }
   },
+  removeAbility: (id) => {
+    return {
+      types: actionTypes.REMOVE_ABILITY,
+      shouldCallAPI: (state) => state.auth.isLoggedIn,
+      callAPI: (state) => {
+        let array = state.auth.volunteer.abilities
+        for (let i = 0; i < array.length; i++) {
+          if (array[i] === id) {
+            array.splice(i, 1)
+          }
+        }
+
+        return Request.patch(state, Constants.profileUrl, {}, {abilities: array})
+      }
+    }
+  }
 
 }
 

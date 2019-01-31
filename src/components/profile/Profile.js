@@ -2,7 +2,11 @@ import React from 'react'
 import {Image, StyleSheet, TouchableOpacity, View} from 'react-native'
 import {SCREEN_HEIGHT, SCREEN_WIDTH} from 'src/assets/styles/style'
 import {
-  COLOR_BLACK, COLOR_BLUE_DEFAULT, COLOR_DARK_BLUE, COLOR_DARK_GRAY, COLOR_DEFAULT_GRAY,
+  COLOR_BLACK,
+  COLOR_BLUE_DEFAULT,
+  COLOR_DARK_BLUE,
+  COLOR_DARK_GRAY,
+  COLOR_DEFAULT_GRAY,
   COLOR_WHITE,
 } from 'src/assets/styles/colors'
 import {SceneMap, TabBar, TabView} from 'react-native-tab-view'
@@ -15,7 +19,6 @@ import Label from 'src/components/common/Label'
 import {DEFAULT_PROFILE_PIC, ICON_LOG_OUT} from 'src/assets/styles/icons'
 import NavigationService from 'src/utils/navigationService'
 import Auth from '../../store/auth'
-import {listToDict} from '../../utils/dictionary'
 
 const ThirdRoute = (onAddPress, onRemovePress) => (
   <PersonalInfo onAddPress={onAddPress} onRemovePress={onRemovePress}/>
@@ -33,6 +36,7 @@ class Profile extends React.Component<Props, State> {
   state = {
     addAbilityPopUpVisible: false,
     removeAbilityPopUpVisible: false,
+    itemToRemove: '',
     logoutPopup: false,
     index: 2,
     routes: [
@@ -55,7 +59,7 @@ class Profile extends React.Component<Props, State> {
   }
   onPressRemoveAbility = (item) => {
     console.log(item)
-    this.setState({removeAbilityPopUpVisible: true})
+    this.setState({removeAbilityPopUpVisible: true, itemToRemove: item})
   }
 
   onLogout = () => {
@@ -109,7 +113,10 @@ class Profile extends React.Component<Props, State> {
                       onDismiss={() => this.setState({addAbilityPopUpVisible: false})}/>
         <VerifyPopUp visible={this.state.removeAbilityPopUpVisible}
                      verifyText={messages.REMOVE_ABILITY}
-                     onVerify={() => this.setState({removeAbilityPopUpVisible: false})}
+                     onVerify={() => {
+                       this.props.removeAbility(this.state.itemToRemove)
+                       this.setState({removeAbilityPopUpVisible: false})
+                     }}
                      onDismiss={() => this.setState({removeAbilityPopUpVisible: false})}/>
         <VerifyPopUp visible={this.state.logoutPopup}
                      verifyText={messages.LOGOUT_MESSAGE}

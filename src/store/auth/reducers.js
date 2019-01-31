@@ -46,6 +46,7 @@ const volunteer = (state = {}, action) => {
   switch (action.type) {
     case actionTypes.GET_PROFILE.SUCCESS:
     case actionTypes.ADD_ABILITY.SUCCESS:
+    case actionTypes.REMOVE_ABILITY.SUCCESS:
       return action.response
     case actionTypes.LOGOUT:
       return {}

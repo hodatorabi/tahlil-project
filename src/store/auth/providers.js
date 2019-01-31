@@ -15,7 +15,8 @@ const authProvider = connect(
       logout: () => dispatch(actions.logout()),
       getProfile: () => dispatch(actions.getProfile()),
       getAbilities: () => dispatch(actions.getAbilities()),
-      addAbility: (id) => dispatch(actions.addAbility(id))
+      addAbility: (id) => dispatch(actions.addAbility(id)),
+      removeAbility: (id) => dispatch(actions.removeAbility(id))
     }
   }
 )
