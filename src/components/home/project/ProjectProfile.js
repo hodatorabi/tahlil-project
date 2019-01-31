@@ -3,7 +3,6 @@ import {Image, Keyboard, ScrollView, StyleSheet, View} from 'react-native'
 import CommonHeader from 'src/components/common/CommonHeader'
 import {SCREEN_HEIGHT, SCREEN_WIDTH} from 'src/assets/styles/style'
 import {COLOR_BLACK, COLOR_BLUE_DEFAULT, COLOR_DARK_GRAY, COLOR_WHITE} from 'src/assets/styles/colors'
-import ProjectTypeTag from 'src/components/home/project/ProjectTypeTag'
 import Label from 'src/components/common/Label'
 import {messages} from 'src/utils/messages'
 import format from 'string-format'
@@ -11,6 +10,7 @@ import ProjectInfoRow from 'src/components/home/project/ProjectInfoRow'
 import CustomButton from 'src/components/common/Buttons/CustomButton'
 import ProgressBar from 'react-native-progress/Bar'
 import InputMessagePopUp from 'src/components/common/popUps/InputMessagePopUp'
+import {booleanToGender} from '../../../utils/farsiUtils'
 
 
 class ProjectProfile extends React.Component<Props, void> {
@@ -21,27 +21,28 @@ class ProjectProfile extends React.Component<Props, void> {
 
   render() {
     const project = this.props.navigation.getParam('project', null)
-    const neededAmount = project.info.neededAmount
-    const fundedAmount = project.info.fundedAmount
+    const type = this.props.navigation.getParam('type', messages.NON_CASH)
+    const projectPicture = this.props.navigation.getParam('projectPicture', null)
+    const neededAmount = '2000'
+    const fundedAmount = '30'
     return (
 
       <View style={style.projectPage}>
 
-        <CommonHeader hasBack={true} onPress={this.props.navigation.goBack} title={project.projectName}/>
+        <CommonHeader hasBack={true} onPress={this.props.navigation.goBack} title={project.name}/>
 
         <ScrollView contentContainerStyle={{paddingTop: 20, alignItems: 'center', paddingBottom: 20}}>
           <View style={style.projectTopContainer}>
-            <Image source={project.projectPicture} style={style.pictureStyle}/>
+            <Image source={projectPicture} style={style.pictureStyle}/>
             <View style={style.projectBasicInfoContainer}>
-              <View style={{flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between'}}>
-                <ProjectTypeTag type={project.projectType}/>
+              <View style={{flexDirection: 'row', alignItems: 'center', justifyContent: 'flex-end'}}>
                 <Label textStyle={{color: COLOR_BLUE_DEFAULT, fontFamily: 'IRANSansMobile_Bold', fontSize: 20}}
-                       text={project.projectName}/>
+                       text={project.name}/>
               </View>
               <Label style={{alignSelf: 'flex-end'}} textStyle={{color: COLOR_BLACK, fontSize: 18}}
-                     text={project.charityName}/>
+                     text={project.charity.name}/>
             </View>
-            {project.projectType === messages.CASH &&
+            {type === messages.CASH &&
             <View style={style.projectCompletionStyle}>
               <ProgressBar progress={1 - fundedAmount / neededAmount} width={0.8 * SCREEN_WIDTH} color={COLOR_WHITE}
                            borderColor={COLOR_BLUE_DEFAULT} unfilledColor={COLOR_BLUE_DEFAULT}/>
@@ -61,28 +62,29 @@ class ProjectProfile extends React.Component<Props, void> {
           </View>
 
           <View style={style.projectDescriptionStyle}>
-            <Label text={project.projectDescription}
+            <Label text={project.description}
                    style={{textAlign: 'right'}}
                    textStyle={{color: COLOR_BLACK, fontSize: 16, textAlign: 'right'}}/>
             <View style={style.dateContainer}>
-              <Label text={format(messages.CREATION_DATE, project.projectStartDate)}
+              <Label text={format(messages.CREATION_DATE, project.startDate)}
                      textStyle={{color: COLOR_DARK_GRAY, fontSize: 14}}/>
-              <Label text={format(messages.EXPIRATION_DATE, project.projectEndDate)}
+              <Label text={format(messages.EXPIRATION_DATE, project.endDate)}
                      textStyle={{color: COLOR_DARK_GRAY, fontSize: 14}}/>
             </View>
           </View>
 
-          {project.projectType === messages.NON_CASH &&
+          {type === messages.NON_CASH &&
           <View style={style.projectInfoContainer}>
-            <ProjectInfoRow title={messages.VOLUNTEER_AGE} description={[project.info.age]}/>
-            <ProjectInfoRow title={messages.VOLUNTEER_GENDER} description={[project.info.gender]}/>
-            <ProjectInfoRow title={messages.PROJECT_LOCATION} description={[project.info.location]}/>
+            <ProjectInfoRow title={messages.VOLUNTEER_AGE} description={[project.maxAge + ' تا ' + project.minAge]}/>
+            <ProjectInfoRow title={messages.VOLUNTEER_GENDER}
+                            description={[booleanToGender(project.needMale, project.needFemale)]}/>
+            <ProjectInfoRow title={messages.PROJECT_LOCATION} description={[project.city]}/>
             <ProjectInfoRow title={messages.VOLUNTEER_ABILITIES}
-                            description={project.info.abilities}/>
+                            description={project.abilities}/>
           </View>}
 
           <CustomButton style={{width: 0.8 * SCREEN_WIDTH, height: 50}}
-                        label={project.projectType === messages.NON_CASH ? messages.SEND_REQUEST : messages.PAY}
+                        label={type === messages.NON_CASH ? messages.SEND_REQUEST : messages.PAY}
                         labelStyle={{fontSize: 20}}
                         onPress={() => {
                           this.setState({messagePopUpVisible: true})

@@ -4,5 +4,6 @@ export const Constants = {
   loginUrl: '/login/',
   profileUrl: '/profile/',
   abilitiesUrl: '/abilities/',
-  getFeedBackUrl: '/my-feedbacks/'
+  getFeedBackUrl: '/my-feedbacks/',
+  getNonCashProjects: '/non-cash-projects/'
 }

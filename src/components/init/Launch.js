@@ -9,6 +9,7 @@ import NavigationService from 'src/utils/navigationService'
 import {messages} from 'src/utils/messages'
 import {AsyncStorageGetItem} from '../../utils/asyncStorage'
 import Auth from '../../store/auth'
+import Projects from '../../store/projects'
 
 class Launch extends React.Component<Props, State> {
 
@@ -34,6 +35,7 @@ class Launch extends React.Component<Props, State> {
                 console.log('get profile error', error)
               })
             this.props.getAbilities()
+            this.props.getNonCashProjects()
             setTimeout(() => NavigationService.reset(['MainTabNavigator']), 2000)
           }
         })
@@ -57,7 +59,7 @@ class Launch extends React.Component<Props, State> {
   }
 }
 
-export default Auth.providers.auth(Launch)
+export default Projects.providers.projects(Auth.providers.auth(Launch))
 
 const style = StyleSheet.create({
   launchContainer: {
