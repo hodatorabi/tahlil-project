@@ -21,15 +21,16 @@ class IncomingRequests extends React.Component<Props, void> {
     messagePopUpVisible: false,
     inputMessagePopUpVisible: false,
     message: '',
-    refreshing: false
+    refreshing: false,
+    requestId: ''
   }
 
   onMessagePress = (message) => {
     this.setState({message: message, messagePopUpVisible: true})
   }
 
-  onReject = () => {
-    this.setState({inputMessagePopUpVisible: true})
+  onReject = (request) => {
+    this.setState({inputMessagePopUpVisible: true, requestId: request.id})
   }
 
   onRefresh() {
@@ -49,7 +50,7 @@ class IncomingRequests extends React.Component<Props, void> {
                       />
                     }>
           {this.props.incomingRequests && this.props.incomingRequests.map((item, index) => (
-            <IncomingRequest onReject={this.onReject} request={item}
+            <IncomingRequest onReject={() => this.onReject(item)} request={item}
                              onMessagePress={() => this.onMessagePress(item.message)}
                              onAccept={() => {
                                this.props.acceptProjectRequest(item.id)
@@ -67,6 +68,12 @@ class IncomingRequests extends React.Component<Props, void> {
                       }}/>
         <InputMessagePopUp visible={this.state.inputMessagePopUpVisible} title={messages.REJECT_REQUEST}
                            text={messages.REJECT_REASON}
+                           onSend={(reason) => {
+                             this.props.rejectProjectRequest(this.state.requestId, reason)
+                               .then(() => {
+                                 this.props.getIncomingRequests()
+                               })
+                           }}
                            onDismiss={() => {
                              Keyboard.dismiss()
                              this.setState({inputMessagePopUpVisible: false})

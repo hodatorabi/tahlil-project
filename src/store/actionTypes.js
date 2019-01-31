@@ -20,7 +20,8 @@ const actionTypes = {
   SEND_REQUEST_TO_CHARITY: asyncActionTypeCreator('SEND_REQUEST_TO_CHARITY'),
   GET_OUTGOING_REQUESTS: asyncActionTypeCreator('GET_OUTGOING_REQUESTS'),
   GET_INCOMING_REQUESTS: asyncActionTypeCreator('GET_INCOMING_REQUESTS'),
-  ACCEPT_PROJECT_REQUEST: asyncActionTypeCreator('ACCEPT_PROJECT_REQUEST')
+  ACCEPT_PROJECT_REQUEST: asyncActionTypeCreator('ACCEPT_PROJECT_REQUEST'),
+  REJECT_PROJECT_REQUEST: asyncActionTypeCreator('REJECT_PROJECT_REQUEST')
 }
 
 export default actionTypes

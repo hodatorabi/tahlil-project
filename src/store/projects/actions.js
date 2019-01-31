@@ -46,6 +46,16 @@ const actions = {
       shouldCallAPI: (state) => state.auth.isLoggedIn,
       callAPI: (state) => Request.patch(state, Constants.requestResponseUrl + requestID + '/', {}, {accepted: true})
     }
+  },
+  rejectProjectRequest: (requestID, reason) => {
+    return {
+      types: actionTypes.REJECT_PROJECT_REQUEST,
+      shouldCallAPI: (state) => state.auth.isLoggedIn,
+      callAPI: (state) => Request.patch(state, Constants.requestResponseUrl + requestID + '/', {}, {
+        accepted: false,
+        rejectionReason: reason
+      })
+    }
   }
 
 }
