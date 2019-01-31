@@ -39,6 +39,13 @@ const actions = {
       shouldCallAPI: (state) => state.auth.isLoggedIn,
       callAPI: (state) => Request.get(state, Constants.incomingRequestsUrl)
     }
+  },
+  acceptProjectRequest: (requestID) => {
+    return {
+      types: actionTypes.ACCEPT_PROJECT_REQUEST,
+      shouldCallAPI: (state) => state.auth.isLoggedIn,
+      callAPI: (state) => Request.patch(state, Constants.requestResponseUrl + requestID + '/', {}, {accepted: true})
+    }
   }
 
 }

@@ -16,7 +16,8 @@ const projectsProvider = connect(
       getCashProjects: () => dispatch(actions.getCashProjects()),
       sendRequestToCharity: (charityID, projectID, message) => dispatch(actions.sendRequestToCharity(charityID, projectID, message)),
       getOutgoingRequests: () => dispatch(actions.getOutgoingRequests()),
-      getIncomingRequests: () => dispatch(actions.getIncomingRequests())
+      getIncomingRequests: () => dispatch(actions.getIncomingRequests()),
+      acceptProjectRequest: (requestID) => dispatch(actions.acceptProjectRequest(requestID))
     }
   }
 )

@@ -9,5 +9,6 @@ export const Constants = {
   getCashProjects: '/cash-projects/',
   requestUrl: '/request/',
   outgoingRequestsUrl: '/requests/outgoing/',
-  incomingRequestsUrl: '/requests/incoming/'
+  incomingRequestsUrl: '/requests/incoming/',
+  requestResponseUrl: '/requests/'
 }

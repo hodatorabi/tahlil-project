@@ -1,5 +1,5 @@
 import React from 'react'
-import {Keyboard, ScrollView, StyleSheet, View} from 'react-native'
+import {Keyboard, RefreshControl, ScrollView, StyleSheet, View} from 'react-native'
 import IncomingRequest from 'src/components/requests/Incoming/IncomingRequest'
 import MessagePopUp from 'src/components/common/popUps/MessagePopUp'
 import InputMessagePopUp from 'src/components/common/popUps/InputMessagePopUp'
@@ -14,12 +14,14 @@ class IncomingRequests extends React.Component<Props, void> {
 
     this.onMessagePress = this.onMessagePress.bind(this)
     this.onReject = this.onReject.bind(this)
+    this.onRefresh = this.onRefresh.bind(this)
   }
 
   state = {
     messagePopUpVisible: false,
     inputMessagePopUpVisible: false,
     message: '',
+    refreshing: false
   }
 
   onMessagePress = (message) => {
@@ -30,13 +32,31 @@ class IncomingRequests extends React.Component<Props, void> {
     this.setState({inputMessagePopUpVisible: true})
   }
 
+  onRefresh() {
+    this.setState({refreshing: true})
+    this.props.getIncomingRequests()
+      .then(() => this.setState({refreshing: false}))
+  }
+
   render() {
     return (
       <View style={{flex: 1}}>
-        <ScrollView contentContainerStyle={{paddingTop: 20, alignItems: 'center'}}>
-          {this.props.incomingRequests.map((item, index) => (
+        <ScrollView contentContainerStyle={{paddingTop: 20, alignItems: 'center'}}
+                    refreshControl={
+                      <RefreshControl
+                        refreshing={this.state.refreshing}
+                        onRefresh={this.onRefresh}
+                      />
+                    }>
+          {this.props.incomingRequests && this.props.incomingRequests.map((item, index) => (
             <IncomingRequest onReject={this.onReject} request={item}
-                             onMessagePress={() => this.onMessagePress(item.message)}/>
+                             onMessagePress={() => this.onMessagePress(item.message)}
+                             onAccept={() => {
+                               this.props.acceptProjectRequest(item.id)
+                                 .then(() => {
+                                   this.props.getIncomingRequests()
+                                 })
+                             }}/>
           ))}
         </ScrollView>
         <MessagePopUp visible={this.state.messagePopUpVisible}
