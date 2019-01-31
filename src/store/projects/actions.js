@@ -32,6 +32,13 @@ const actions = {
       shouldCallAPI: (state) => state.auth.isLoggedIn,
       callAPI: (state) => Request.get(state, Constants.outgoingRequestsUrl)
     }
+  },
+  getIncomingRequests: () => {
+    return {
+      types: actionTypes.GET_INCOMING_REQUESTS,
+      shouldCallAPI: (state) => state.auth.isLoggedIn,
+      callAPI: (state) => Request.get(state, Constants.incomingRequestsUrl)
+    }
   }
 
 }

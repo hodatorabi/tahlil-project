@@ -8,5 +8,6 @@ export const Constants = {
   getNonCashProjects: '/non-cash-projects/',
   getCashProjects: '/cash-projects/',
   requestUrl: '/request/',
-  outgoingRequestsUrl: '/requests/outgoing/'
+  outgoingRequestsUrl: '/requests/outgoing/',
+  incomingRequestsUrl: '/requests/incoming/'
 }

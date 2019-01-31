@@ -1,10 +1,10 @@
 import React from 'react'
 import {Keyboard, ScrollView, StyleSheet, View} from 'react-native'
 import IncomingRequest from 'src/components/requests/Incoming/IncomingRequest'
-import {request1, request2, request3} from 'src/utils/sampleData'
 import MessagePopUp from 'src/components/common/popUps/MessagePopUp'
 import InputMessagePopUp from 'src/components/common/popUps/InputMessagePopUp'
 import {messages} from 'src/utils/messages'
+import Projects from '../../../store/projects'
 
 
 class IncomingRequests extends React.Component<Props, void> {
@@ -22,8 +22,8 @@ class IncomingRequests extends React.Component<Props, void> {
     message: '',
   }
 
-  onMessagePress = (request) => {
-    this.setState({message: request.message, messagePopUpVisible: true})
+  onMessagePress = (message) => {
+    this.setState({message: message, messagePopUpVisible: true})
   }
 
   onReject = () => {
@@ -32,14 +32,12 @@ class IncomingRequests extends React.Component<Props, void> {
 
   render() {
     return (
-      <View>
+      <View style={{flex: 1}}>
         <ScrollView contentContainerStyle={{paddingTop: 20, alignItems: 'center'}}>
-          <IncomingRequest onReject={this.onReject} onMessagePress={() => this.onMessagePress(request1)}
-                           project={request1.project}/>
-          <IncomingRequest onReject={this.onReject} onMessagePress={() => this.onMessagePress(request2)}
-                           project={request2.project}/>
-          <IncomingRequest onReject={this.onReject} onMessagePress={() => this.onMessagePress(request3)}
-                           project={request3.project}/>
+          {this.props.incomingRequests.map((item, index) => (
+            <IncomingRequest onReject={this.onReject} request={item}
+                             onMessagePress={() => this.onMessagePress(item.message)}/>
+          ))}
         </ScrollView>
         <MessagePopUp visible={this.state.messagePopUpVisible}
                       title={messages.CHARITY_MESSAGE}
@@ -58,6 +56,6 @@ class IncomingRequests extends React.Component<Props, void> {
   }
 }
 
-export default IncomingRequests
+export default Projects.providers.projects(IncomingRequests)
 
 const style = StyleSheet.create({})

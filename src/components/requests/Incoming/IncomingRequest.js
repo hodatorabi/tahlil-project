@@ -8,22 +8,23 @@ import {ICON_ENVELOPE} from 'src/assets/styles/icons'
 import ButtonAccept from 'src/components/common/Buttons/ButtonAccept'
 import ButtonReject from 'src/components/common/Buttons/ButtonReject'
 import {messages} from 'src/utils/messages'
+import {project6} from '../../../utils/sampleData'
 
 
 class IncomingRequest extends React.Component<Props, void> {
   render() {
-    const project = this.props.project
+    const request = this.props.request
     return (
       <View style={style.containerStyle}>
-        <Image source={project.projectPicture} style={style.projectPictureStyle}/>
+        <Image source={project6.projectPicture} style={style.projectPictureStyle}/>
         <View style={style.bodyStyle}>
           <Label
             style={{width: '95%'}}
             textStyle={style.bodyTextStyle}
-            text={format(messages.CHARITY_NEEDS_HELP, project.charityName, project.projectName)}/>
+            text={format(messages.CHARITY_NEEDS_HELP, request.charity.name, request.project.name)}/>
           <View style={style.footerStyle}>
             <View style={style.buttonContainer}>
-              <ButtonAccept style={{marginRight: 20}}/>
+              <ButtonAccept onPress={this.props.onAccept} style={{marginRight: 20}}/>
               <ButtonReject onPress={this.props.onReject}/>
             </View>
             <TouchableOpacity onPress={this.props.onMessagePress} style={style.messagesButtonContainer}>

@@ -34,10 +34,22 @@ const outgoingRequests = (state = [], action) => {
   }
 }
 
+const incomingRequests = (state = [], action) => {
+  switch (action.type) {
+    case actionTypes.GET_INCOMING_REQUESTS.SUCCESS:
+      return action.response
+    case actionTypes.LOGOUT:
+      return []
+    default:
+      return state
+  }
+}
+
 const reducers = combineReducers({
   nonCashProjects,
   cashProjects,
-  outgoingRequests
+  outgoingRequests,
+  incomingRequests
 })
 
 export default reducers
