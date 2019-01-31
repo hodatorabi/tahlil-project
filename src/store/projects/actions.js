@@ -18,6 +18,14 @@ const actions = {
       callAPI: (state) => Request.get(state, Constants.getCashProjects)
     }
   },
+  sendRequestToCharity: (charityID, projectID, message) => {
+    return {
+      types: actionTypes.SEND_REQUEST_TO_CHARITY,
+      shouldCallAPI: (state) => state.auth.isLoggedIn,
+      callAPI: (state) => Request.post(state, Constants.requestUrl + charityID + '/' + projectID + '/', {},
+        {message},)
+    }
+  }
 
 }
 

@@ -11,6 +11,7 @@ import CustomButton from 'src/components/common/Buttons/CustomButton'
 import ProgressBar from 'react-native-progress/Bar'
 import InputMessagePopUp from 'src/components/common/popUps/InputMessagePopUp'
 import {booleanToGender} from '../../../utils/farsiUtils'
+import Projects from '../../../store/projects'
 
 
 class ProjectProfile extends React.Component<Props, void> {
@@ -87,14 +88,15 @@ class ProjectProfile extends React.Component<Props, void> {
           <CustomButton style={{width: 0.8 * SCREEN_WIDTH, height: 50}}
                         label={type === messages.NON_CASH ? messages.SEND_REQUEST : messages.PAY}
                         labelStyle={{fontSize: 20}}
-                        onPress={() => {
+                        onPress={type === messages.NON_CASH ? () => {
                           this.setState({messagePopUpVisible: true})
-                        }}/>
+                        } : null}/>
 
         </ScrollView>
         <InputMessagePopUp visible={this.state.messagePopUpVisible}
                            title={messages.SEND_REQUEST}
                            text={messages.REQUEST_MESSAGE}
+                           onSend={(message) => this.props.sendRequestToCharity(project.charity.id, project.id, message)}
                            onDismiss={() => {
                              Keyboard.dismiss()
                              this.setState({messagePopUpVisible: false})
@@ -104,7 +106,7 @@ class ProjectProfile extends React.Component<Props, void> {
   }
 }
 
-export default ProjectProfile
+export default Projects.providers.projects(ProjectProfile)
 
 const style = StyleSheet.create({
   projectPage: {

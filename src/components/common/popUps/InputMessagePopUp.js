@@ -7,6 +7,21 @@ import {TextInput} from 'react-native'
 
 
 class InputMessagePopUp extends React.Component<Props, void> {
+
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      message: ''
+    }
+
+    this.onChangeText = this.onChangeText.bind(this)
+  }
+
+  onChangeText(value) {
+    this.setState({message: value})
+  }
+
   render() {
     return (
       <Dialog
@@ -34,7 +49,10 @@ class InputMessagePopUp extends React.Component<Props, void> {
           />,
           <DialogButton
             text={messages.SEND}
-            onPress={this.props.onDismiss}
+            onPress={() => {
+              this.props.onSend(this.state.message)
+              this.props.onDismiss()
+            }}
             key="button-2"
             textStyle={{color: COLOR_BLUE_DEFAULT, fontFamily: 'IRANSansMobile_Bold'}}
           />,
@@ -49,6 +67,7 @@ class InputMessagePopUp extends React.Component<Props, void> {
                  textStyle={{fontSize: 16, color: COLOR_BLACK}}
                  text={this.props.text}/>
           <TextInput multiline={true}
+                     onChangeText={(text) => this.onChangeText(text)}
                      style={{
                        backgroundColor: COLOR_WHITE,
                        height: 100,

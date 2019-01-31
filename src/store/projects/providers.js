@@ -11,7 +11,8 @@ const projectsProvider = connect(
   }, (dispatch) => {
     return {
       getNonCashProjects: () => dispatch(actions.getNonCashProjects()),
-      getCashProjects: () => dispatch(actions.getCashProjects())
+      getCashProjects: () => dispatch(actions.getCashProjects()),
+      sendRequestToCharity: (charityID, projectID, message) => dispatch(actions.sendRequestToCharity(charityID, projectID, message))
     }
   }
 )

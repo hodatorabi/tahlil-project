@@ -6,5 +6,6 @@ export const Constants = {
   abilitiesUrl: '/abilities/',
   getFeedBackUrl: '/my-feedbacks/',
   getNonCashProjects: '/non-cash-projects/',
-  getCashProjects: '/cash-projects/'
+  getCashProjects: '/cash-projects/',
+  requestUrl: '/request/'
 }
