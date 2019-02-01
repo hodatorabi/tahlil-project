@@ -4,6 +4,8 @@ import {SCREEN_HEIGHT, SCREEN_WIDTH} from 'src/assets/styles/style'
 import {COLOR_BLUE_DEFAULT} from 'src/assets/styles/colors'
 import Label from 'src/components/common/Label'
 import ButtonPlus from 'src/components/common/Buttons/ButtonPlus'
+import {toTime} from 'src/utils/farsiUtils'
+import ButtonAccept from 'src/components/common/Buttons/ButtonAccept'
 
 
 class TimeSlotItem extends React.Component<Props, State> {
@@ -12,12 +14,14 @@ class TimeSlotItem extends React.Component<Props, State> {
     return (
       <View style={{marginHorizontal: 8}}>
         <View style={style.timeSlotContainer}>
-          <Label text={this.props.time} textStyle={style.timeTextStyle}/>
+          <Label text={toTime(this.props.slot.time)} textStyle={style.timeTextStyle}/>
           <Label style={{
             marginTop: 10,
-          }} text={this.props.isAvailable ? 'آزاد' : (this.props.upcomingProject ? this.props.upcomingProject : '')}/>
+          }}
+                 text={this.props.slot.isAvailable ? 'آزاد' : (this.props.slot.upcomingProject ? this.props.slot.upcomingProject : '')}/>
         </View>
-        <ButtonPlus containerStyle={style.buttonContainerStyle} style={style.buttonStyle}/>
+        {this.props.slot.isAvailable ? <ButtonAccept style={style.buttonContainerStyle}/> :
+          <ButtonPlus containerStyle={style.buttonContainerStyle} style={style.buttonStyle}/>}
       </View>
     )
   }

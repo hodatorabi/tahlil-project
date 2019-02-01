@@ -16,6 +16,7 @@ import {DEFAULT_PROFILE_PIC, ICON_LOG_OUT} from 'src/assets/styles/icons'
 import NavigationService from 'src/utils/navigationService'
 import Auth from '../../store/auth'
 import RateItem from './feedback/RateItem'
+import Schedule from 'src/components/profile/schedule/Schedule'
 
 const ThirdRoute = (onAddPress, onRemovePress) => (
   <PersonalInfo onAddPress={onAddPress} onRemovePress={onRemovePress}/>
@@ -25,7 +26,7 @@ const SecondRoute = () => (
 )
 
 const FirstRoute = () => (
-  <View/>
+  <Schedule/>
 )
 
 class Profile extends React.Component<Props, State> {

@@ -81,7 +81,11 @@ const feedbacks = (state = [], action) => {
 const volunteerTimeSlots = (state = [], action) => {
   switch (action.type) {
     case actionTypes.GET_VOLUNTEER_TIME_SLOTS.SUCCESS:
-      return action.response
+      let array = action.response
+      array.sort((a, b) => {
+        return a.id - b.id
+      })
+      return array
     case actionTypes.LOGOUT:
       return []
     default:
@@ -96,7 +100,7 @@ const reducers = combineReducers({
   volunteer,
   abilities,
   feedbacks,
-  volunteerTimeSlots
+  volunteerTimeSlots,
 })
 
 export default reducers

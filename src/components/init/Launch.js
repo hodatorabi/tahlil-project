@@ -17,7 +17,7 @@ class Launch extends React.Component<Props, State> {
     super(props)
 
     this.state = {
-      loading: false
+      loading: false,
     }
   }
 
@@ -39,13 +39,14 @@ class Launch extends React.Component<Props, State> {
             this.props.getCashProjects()
             this.props.getOutgoingRequests()
             this.props.getIncomingRequests()
+            this.props.getVolunteerTimeSlots()
             setTimeout(() => NavigationService.reset(['MainTabNavigator']), 2000)
           }
         })
         .catch(() => {
             this.props.logout()
             NavigationService.reset(['AuthNavigator'])
-          }
+          },
         )
     })
   }
