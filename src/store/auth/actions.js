@@ -12,21 +12,21 @@ const actions = {
       types: actionTypes.LOGIN,
       shouldCallAPI: (state) => !state.auth.isLoggedIn,
       callAPI: (state) => Request.post(state, Constants.loginUrl, {},
-        {username, password}, false)
+        {username, password}, false),
     }
   },
   getProfile: () => {
     return {
       types: actionTypes.GET_PROFILE,
       shouldCallAPI: (state) => state.auth.isLoggedIn,
-      callAPI: (state) => Request.get(state, Constants.profileUrl)
+      callAPI: (state) => Request.get(state, Constants.profileUrl),
     }
   },
   getAbilities: () => {
     return {
       types: actionTypes.GET_ABILITIES,
       shouldCallAPI: (state) => state.auth.isLoggedIn,
-      callAPI: (state) => Request.get(state, Constants.abilitiesUrl)
+      callAPI: (state) => Request.get(state, Constants.abilitiesUrl),
     }
   },
   addAbility: (id) => {
@@ -35,7 +35,7 @@ const actions = {
       shouldCallAPI: (state) => state.auth.isLoggedIn,
       callAPI: (state) => {
         return Request.patch(state, Constants.profileUrl, {}, {abilities: [...state.auth.volunteer.abilities, id]})
-      }
+      },
     }
   },
   removeAbility: (id) => {
@@ -50,14 +50,14 @@ const actions = {
           }
         }
         return Request.patch(state, Constants.profileUrl, {}, {abilities: array})
-      }
+      },
     }
   },
   getFeedbacks: () => {
     return {
       types: actionTypes.GET_FEEDBACK,
       shouldCallAPI: (state) => state.auth.isLoggedIn,
-      callAPI: (state) => Request.get(state, Constants.getFeedBackUrl)
+      callAPI: (state) => Request.get(state, Constants.getFeedBackUrl),
     }
   },
   volunteerJoin: (username, password, name, gender, age, phoneNumber, city) => {
@@ -65,9 +65,17 @@ const actions = {
       types: actionTypes.VOLUNTEER_JOIN,
       shouldCallAPI: (state) => !state.auth.isLoggedIn,
       callAPI: (state) => Request.post(state, Constants.volunteerJoinUrl, {},
-        {username, password, name, gender, age, phoneNumber, city}, false)
+        {username, password, name, gender, age, phoneNumber, city}, false),
     }
-  }
+  },
+  getVolunteerTimeSlots: () => {
+    return {
+      types: actionTypes.GET_VOLUNTEER_TIME_SLOTS,
+      shouldCallAPI: (state) => state.auth.isLoggedIn,
+      callAPI: (state) => Request.get(state, Constants.volunteerTimeSlots),
+    }
+  },
+
 
 }
 

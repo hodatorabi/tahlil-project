@@ -8,11 +8,6 @@ import ButtonPlus from 'src/components/common/Buttons/ButtonPlus'
 
 class TimeSlotItem extends React.Component<Props, State> {
 
-  state = {
-    addAbilityPopUpVisible: false,
-    removeAbilityPopUpVisible: false,
-  }
-
   render() {
     return (
       <View style={{marginHorizontal: 8}}>

@@ -43,7 +43,7 @@ class PersonalInfo extends React.Component<Props, State> {
               <Label textStyle={{color: COLOR_BLUE_DEFAULT, fontSize: 20}}
                      text={messages.ABILITIES}/>
             </View>
-            {this.props.volunteer.abilities.map((item, index) => (
+            {this.props.volunteer.abilities && this.props.volunteer.abilities.map((item, index) => (
               <AbilityRow onPress={() => this.props.onRemovePress(item)} title={this.props.abilities[item]['name']}/>
             ))}
           </View>

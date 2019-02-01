@@ -23,7 +23,8 @@ const actionTypes = {
   GET_INCOMING_REQUESTS: asyncActionTypeCreator('GET_INCOMING_REQUESTS'),
   ACCEPT_PROJECT_REQUEST: asyncActionTypeCreator('ACCEPT_PROJECT_REQUEST'),
   REJECT_PROJECT_REQUEST: asyncActionTypeCreator('REJECT_PROJECT_REQUEST'),
-  PAY_PROJECT: asyncActionTypeCreator('PAY_PROJECT')
+  PAY_PROJECT: asyncActionTypeCreator('PAY_PROJECT'),
+  GET_VOLUNTEER_TIME_SLOTS: asyncActionTypeCreator(('GET_VOLUNTEER_TIME_SLOTS')),
 }
 
 export default actionTypes

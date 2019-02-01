@@ -2,11 +2,7 @@ import React from 'react'
 import {Image, StyleSheet, TouchableOpacity, View} from 'react-native'
 import {SCREEN_HEIGHT, SCREEN_WIDTH} from 'src/assets/styles/style'
 import {
-  COLOR_BLACK,
-  COLOR_BLUE_DEFAULT,
-  COLOR_DARK_BLUE,
-  COLOR_DARK_GRAY,
-  COLOR_DEFAULT_GRAY,
+  COLOR_BLACK, COLOR_BLUE_DEFAULT, COLOR_DARK_BLUE, COLOR_DEFAULT_GRAY,
   COLOR_WHITE,
 } from 'src/assets/styles/colors'
 import {SceneMap, TabBar, TabView} from 'react-native-tab-view'
@@ -53,6 +49,15 @@ class Profile extends React.Component<Props, State> {
     this.onPressAddAbility = this.onPressAddAbility.bind(this)
     this.onPressRemoveAbility = this.onPressRemoveAbility.bind(this)
     this.onLogout = this.onLogout.bind(this)
+  }
+
+  componentDidMount() {
+    this.willFocusSubscription = this.props.navigation.addListener(
+      'willFocus',
+      payload => {
+        this.props.getVolunteerTimeSlots()
+      },
+    )
   }
 
   onPressAddAbility = () => {

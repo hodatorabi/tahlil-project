@@ -78,12 +78,25 @@ const feedbacks = (state = [], action) => {
   }
 }
 
+const volunteerTimeSlots = (state = [], action) => {
+  switch (action.type) {
+    case actionTypes.GET_VOLUNTEER_TIME_SLOTS.SUCCESS:
+      return action.response
+    case actionTypes.LOGOUT:
+      return []
+    default:
+      return state
+
+  }
+}
+
 const reducers = combineReducers({
   isLoggedIn,
   token,
   volunteer,
   abilities,
-  feedbacks
+  feedbacks,
+  volunteerTimeSlots
 })
 
 export default reducers

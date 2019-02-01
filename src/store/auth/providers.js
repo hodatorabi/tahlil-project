@@ -7,7 +7,8 @@ const authProvider = connect(
     return {
       volunteer: state.auth.volunteer,
       abilities: state.auth.abilities,
-      feedbacks: state.auth.feedbacks
+      feedbacks: state.auth.feedbacks,
+      volunteerTimeSlots: state.auth.volunteerTimeSlots,
     }
   }, (dispatch) => {
     return {
@@ -19,9 +20,10 @@ const authProvider = connect(
       getAbilities: () => dispatch(actions.getAbilities()),
       addAbility: (id) => dispatch(actions.addAbility(id)),
       removeAbility: (id) => dispatch(actions.removeAbility(id)),
-      getFeedbacks: () => dispatch(actions.getFeedbacks())
+      getFeedbacks: () => dispatch(actions.getFeedbacks()),
+      getVolunteerTimeSlots: () => dispatch(actions.getVolunteerTimeSlots()),
     }
-  }
+  },
 )
 
 const providers = {

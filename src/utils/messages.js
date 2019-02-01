@@ -79,4 +79,17 @@ export const messages = {
   ENTER_PAY_AMOUNT: 'مبلغ مورد نظر خود را وارد کنید.',
   REJECT_REQUEST: 'رد درخواست',
   REJECT_REASON: 'در صورت تمایل، دلیل خود را برای رد درخواست وارد کنید.',
+
+  SAT: 'شنبه',
+  SUN: 'یک‌شنبه',
+  MON: 'دوشنبه',
+  TUE: 'سه‌شنبه',
+  WED: 'چهارشنبه',
+  THU: 'پنج‌شنبه',
+  FRI: 'جمعه',
+
+  MORNING: 'صبح',
+  NOON: 'ظهر',
+  AFTERNOON: 'عصر',
+  NIGHT: 'شب',
 }
