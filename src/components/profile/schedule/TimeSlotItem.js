@@ -20,7 +20,9 @@ class TimeSlotItem extends React.Component<Props, State> {
           }}
                  text={this.props.slot.isAvailable ? 'آزاد' : (this.props.slot.upcomingProject ? this.props.slot.upcomingProject : '')}/>
         </View>
-        {this.props.slot.isAvailable ? <ButtonAccept style={style.buttonContainerStyle}/> :
+        {this.props.slot.isAvailable ?
+          <ButtonAccept onPress={this.props.slot.upcomingProject == null ? this.props.onRemovePress : null}
+                        style={style.buttonContainerStyle}/> :
           <ButtonPlus onPress={this.props.onAddPress}
                       containerStyle={style.buttonContainerStyle} style={style.buttonStyle}/>}
       </View>

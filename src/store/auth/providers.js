@@ -23,6 +23,7 @@ const authProvider = connect(
       getFeedbacks: () => dispatch(actions.getFeedbacks()),
       getVolunteerTimeSlots: () => dispatch(actions.getVolunteerTimeSlots()),
       addAvailableSlot: (id) => dispatch(actions.addAvailableSlot(id)),
+      removeAvailableSlot: (id) => dispatch(actions.removeAvailableSlot(id)),
     }
   },
 )

@@ -82,6 +82,13 @@ const actions = {
       callAPI: (state) => Request.put(state, Constants.volunteerTimeSlots + slotId + '/', {}, {isAvailable: true}),
     }
   },
+  removeAvailableSlot: (slotId) => {
+    return {
+      types: actionTypes.REMOVE_AVAILABLE_SLOT,
+      shouldCallAPI: (state) => state.auth.isLoggedIn,
+      callAPI: (state) => Request.put(state, Constants.volunteerTimeSlots + slotId + '/', {}, {isAvailable: false}),
+    }
+  },
 
 
 }
