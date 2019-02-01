@@ -75,6 +75,13 @@ const actions = {
       callAPI: (state) => Request.get(state, Constants.volunteerTimeSlots),
     }
   },
+  addAvailableSlot: (slotId) => {
+    return {
+      types: actionTypes.ADD_AVAILABLE_SLOT,
+      shouldCallAPI: (state) => state.auth.isLoggedIn,
+      callAPI: (state) => Request.put(state, Constants.volunteerTimeSlots + slotId + '/', {}, {isAvailable: true}),
+    }
+  },
 
 
 }

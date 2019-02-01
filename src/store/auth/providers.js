@@ -22,6 +22,7 @@ const authProvider = connect(
       removeAbility: (id) => dispatch(actions.removeAbility(id)),
       getFeedbacks: () => dispatch(actions.getFeedbacks()),
       getVolunteerTimeSlots: () => dispatch(actions.getVolunteerTimeSlots()),
+      addAvailableSlot: (id) => dispatch(actions.addAvailableSlot(id)),
     }
   },
 )

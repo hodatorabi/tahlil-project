@@ -21,7 +21,8 @@ class TimeSlotItem extends React.Component<Props, State> {
                  text={this.props.slot.isAvailable ? 'آزاد' : (this.props.slot.upcomingProject ? this.props.slot.upcomingProject : '')}/>
         </View>
         {this.props.slot.isAvailable ? <ButtonAccept style={style.buttonContainerStyle}/> :
-          <ButtonPlus containerStyle={style.buttonContainerStyle} style={style.buttonStyle}/>}
+          <ButtonPlus onPress={this.props.onAddPress}
+                      containerStyle={style.buttonContainerStyle} style={style.buttonStyle}/>}
       </View>
     )
   }

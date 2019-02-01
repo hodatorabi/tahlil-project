@@ -25,6 +25,7 @@ const actionTypes = {
   REJECT_PROJECT_REQUEST: asyncActionTypeCreator('REJECT_PROJECT_REQUEST'),
   PAY_PROJECT: asyncActionTypeCreator('PAY_PROJECT'),
   GET_VOLUNTEER_TIME_SLOTS: asyncActionTypeCreator(('GET_VOLUNTEER_TIME_SLOTS')),
+  ADD_AVAILABLE_SLOT: asyncActionTypeCreator('ADD_AVAILABLE_SLOT'),
 }
 
 export default actionTypes

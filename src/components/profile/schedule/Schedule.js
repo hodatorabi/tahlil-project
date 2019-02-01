@@ -11,6 +11,19 @@ const weekDay = [5, 6, 0, 1, 2, 3, 4]
 
 class Schedule extends React.Component<Props, State> {
 
+  constructor(props) {
+    super(props)
+
+    this.onAddSlot = this.onAddSlot.bind(this)
+  }
+
+  onAddSlot = (id) => {
+    this.props.addAvailableSlot(id)
+      .then(() => {
+        this.props.getVolunteerTimeSlots()
+      })
+  }
+
   render() {
     return (
       <View style={{flex: 1}}>
@@ -21,10 +34,14 @@ class Schedule extends React.Component<Props, State> {
                      textStyle={style.textStyle}/>
               <ScrollView showsHorizontalScrollIndicator={false} contentContainerStyle={style.scrollStyle}
                           horizontal={true}>
-                <TimeSlotItem slot={this.props.volunteerTimeSlots[4 * index]}/>
-                <TimeSlotItem slot={this.props.volunteerTimeSlots[4 * index + 1]}/>
-                <TimeSlotItem slot={this.props.volunteerTimeSlots[4 * index + 2]}/>
-                <TimeSlotItem slot={this.props.volunteerTimeSlots[4 * index + 3]}/>
+                <TimeSlotItem onAddPress={() => this.onAddSlot(this.props.volunteerTimeSlots[4 * index]['id'])}
+                              slot={this.props.volunteerTimeSlots[4 * index]}/>
+                <TimeSlotItem onAddPress={() => this.onAddSlot(this.props.volunteerTimeSlots[4 * index + 1]['id'])}
+                              slot={this.props.volunteerTimeSlots[4 * index + 1]}/>
+                <TimeSlotItem onAddPress={() => this.onAddSlot(this.props.volunteerTimeSlots[4 * index + 2]['id'])}
+                              slot={this.props.volunteerTimeSlots[4 * index + 2]}/>
+                <TimeSlotItem onAddPress={() => this.onAddSlot(this.props.volunteerTimeSlots[4 * index + 3]['id'])}
+                              slot={this.props.volunteerTimeSlots[4 * index + 3]}/>
               </ScrollView>
             </View>
           ))}
