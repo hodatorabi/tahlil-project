@@ -8,6 +8,7 @@ import CashFilterPage from 'src/components/home/search/CashFilterPage'
 import NonCashFilterPage from 'src/components/home/search/NonCashFilterPage'
 import CharityMainTabNavigator from './CharityMainTabNavigator'
 import CharityProjectProfile from 'src/components/charity/home/project/CharityProjectProfile'
+import VolunteerSearchPage from 'src/components/charity/home/search/VolunteerSearchPage'
 
 
 const MainNavigator = createStackNavigator(
@@ -20,7 +21,8 @@ const MainNavigator = createStackNavigator(
     CashFilterPage: {screen: CashFilterPage},
     NonCashFilterPage: {screen: NonCashFilterPage},
     CharityMainTabNavigator: {screen: CharityMainTabNavigator},
-    CharityProjectProfile: {screen: CharityProjectProfile}
+    CharityProjectProfile: {screen: CharityProjectProfile},
+    VolunteerSearchPage: {screen: VolunteerSearchPage}
   },
   {
     initialRouteName: 'Launch',

@@ -12,7 +12,8 @@ const projectsProvider = connect(
       charityOutgoingRequests: state.projects.charityOutgoingRequests,
       charityIncomingRequests: state.projects.charityIncomingRequests,
       charityNonCashProjects: state.projects.charityNonCashProjects,
-      charityCashProjects: state.projects.charityCashProjects
+      charityCashProjects: state.projects.charityCashProjects,
+      volunteers: state.projects.volunteers
     }
   }, (dispatch) => {
     return {
@@ -30,7 +31,8 @@ const projectsProvider = connect(
       acceptVolunteerRequest: (requestID) => dispatch(actions.acceptVolunteerRequest(requestID)),
       rejectVolunteerRequest: (requestID, reason) => dispatch(actions.rejectVolunteerRequest(requestID, reason)),
       getCharityNonCashProjects: () => dispatch(actions.getCharityNonCashProjects()),
-      getCharityCashProjects: () => dispatch(actions.getCharityCashProjects())
+      getCharityCashProjects: () => dispatch(actions.getCharityCashProjects()),
+      getAllVolunteers: () => dispatch(actions.getAllVolunteers())
     }
   }
 )

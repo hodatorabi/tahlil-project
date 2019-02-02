@@ -17,6 +17,7 @@ class CharityHomeHeader extends React.PureComponent<Props> {
         </TouchableOpacity>
         <Image source={LOGO_HEADER} style={style.headerLogo}/>
         <TouchableOpacity
+          onPress={() => this.props.navigation.navigate('VolunteerSearchPage')}
           style={style.iconContainer}>
           <Image source={ICON_EXPLORE} tintColor={COLOR_BLUE_DEFAULT} style={{width: 30, resizeMode: 'contain'}}/>
         </TouchableOpacity>

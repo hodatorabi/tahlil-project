@@ -1,5 +1,5 @@
 import React from 'react'
-import {Image, ScrollView, StyleSheet, View} from 'react-native'
+import {Image, ScrollView, StyleSheet, TouchableOpacity, View} from 'react-native'
 import CommonHeader from 'src/components/common/CommonHeader'
 import {SCREEN_HEIGHT, SCREEN_WIDTH} from 'src/assets/styles/style'
 import {COLOR_BLACK, COLOR_BLUE_DEFAULT, COLOR_DARK_GRAY, COLOR_WHITE} from 'src/assets/styles/colors'
@@ -34,8 +34,10 @@ class CharityProjectProfile extends React.Component<Props, void> {
                 <Label textStyle={{color: COLOR_BLUE_DEFAULT, fontFamily: 'IRANSansMobile_Bold', fontSize: 20}}
                        text={project.name}/>
               </View>
-              <Label style={{alignSelf: 'flex-end'}} textStyle={{color: COLOR_BLACK, fontSize: 18}}
-                     text={project.charity.name}/>
+              <TouchableOpacity>
+                <Label style={{alignSelf: 'flex-end'}} textStyle={{color: COLOR_BLACK, fontSize: 18}}
+                       text={messages.VOLUNTEERS}/>
+              </TouchableOpacity>
             </View>
             {type === messages.CASH &&
             <View style={style.projectCompletionStyle}>

@@ -111,6 +111,13 @@ const actions = {
       callAPI: (state) => Request.get(state, Constants.charityBaseUrl + Constants.getCashProjects)
     }
   },
+  getAllVolunteers: () => {
+    return {
+      types: actionTypes.GET_ALL_VOLUNTEERS,
+      shouldCallAPI: (state) => state.auth.isLoggedIn,
+      callAPI: (state) => Request.get(state, Constants.charityBaseUrl + Constants.getVolunteersUrl)
+    }
+  }
 
 }
 

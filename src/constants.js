@@ -15,4 +15,5 @@ export const Constants = {
   requestResponseUrl: '/requests/',
   payProjectUrl: '/pay/',
   volunteerTimeSlots: '/time-slots/',
+  getVolunteersUrl: '/volunteers/'
 }

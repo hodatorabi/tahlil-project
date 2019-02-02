@@ -60,6 +60,7 @@ class Login extends React.Component<Props, State> {
               .catch((error) => console.log('out', error))
             this.props.getCharityNonCashProjects()
             this.props.getCharityCashProjects()
+            this.props.getAllVolunteers()
             NavigationService.reset(['CharityMainTabNavigator'])
           }
         })
