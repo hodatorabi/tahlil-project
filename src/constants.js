@@ -1,5 +1,6 @@
 export const Constants = {
   serverUrl: 'https://torabica.herokuapp.com/',
+  charityBaseUrl: '/charity',
 
   loginUrl: '/login/',
   volunteerJoinUrl: '/join/',

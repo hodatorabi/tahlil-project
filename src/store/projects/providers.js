@@ -8,7 +8,8 @@ const projectsProvider = connect(
       nonCashProjects: state.projects.nonCashProjects,
       cashProjects: state.projects.cashProjects,
       outgoingRequests: state.projects.outgoingRequests,
-      incomingRequests: state.projects.incomingRequests
+      incomingRequests: state.projects.incomingRequests,
+      charityOutgoingRequests: state.projects.charityOutgoingRequests
     }
   }, (dispatch) => {
     return {
@@ -19,7 +20,9 @@ const projectsProvider = connect(
       getIncomingRequests: () => dispatch(actions.getIncomingRequests()),
       acceptProjectRequest: (requestID) => dispatch(actions.acceptProjectRequest(requestID)),
       rejectProjectRequest: (requestID, reason) => dispatch(actions.rejectProjectRequest(requestID, reason)),
-      payProject: (requestId, amount) => dispatch(actions.payProject(requestId, amount))
+      payProject: (requestId, amount) => dispatch(actions.payProject(requestId, amount)),
+
+      getCharityOutgoingRequests: () => dispatch(actions.getCharityOutgoingRequests()),
     }
   }
 )

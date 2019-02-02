@@ -65,7 +65,15 @@ const actions = {
         amount
       })
     }
-  }
+  },
+
+  getCharityOutgoingRequests: () => {
+    return {
+      types: actionTypes.GET_CHARITY_OUTGOING_REQUESTS,
+      shouldCallAPI: (state) => state.auth.isLoggedIn,
+      callAPI: (state) => Request.get(state, Constants.charityBaseUrl + Constants.outgoingRequestsUrl)
+    }
+  },
 
 }
 

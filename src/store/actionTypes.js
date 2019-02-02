@@ -28,6 +28,9 @@ const actionTypes = {
   GET_VOLUNTEER_TIME_SLOTS: asyncActionTypeCreator(('GET_VOLUNTEER_TIME_SLOTS')),
   ADD_AVAILABLE_SLOT: asyncActionTypeCreator('ADD_AVAILABLE_SLOT'),
   REMOVE_AVAILABLE_SLOT: asyncActionTypeCreator('REMOVE_AVAILABLE_SLOT'),
+
+  GET_CHARITY_OUTGOING_REQUESTS: asyncActionTypeCreator('GET_CHARITY_OUTGOING_REQUESTS'),
+
 }
 
 export default actionTypes
