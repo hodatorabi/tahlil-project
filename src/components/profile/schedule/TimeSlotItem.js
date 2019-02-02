@@ -1,7 +1,7 @@
 import React from 'react'
 import {StyleSheet, View} from 'react-native'
 import {SCREEN_HEIGHT, SCREEN_WIDTH} from 'src/assets/styles/style'
-import {COLOR_BLUE_DEFAULT} from 'src/assets/styles/colors'
+import {COLOR_BLUE_DEFAULT, COLOR_GRAY} from 'src/assets/styles/colors'
 import Label from 'src/components/common/Label'
 import ButtonPlus from 'src/components/common/Buttons/ButtonPlus'
 import {toTime} from 'src/utils/farsiUtils'
@@ -39,7 +39,8 @@ const style = StyleSheet.create({
     borderRadius: 10,
     alignItems: 'center',
     paddingVertical: 5,
-    elevation: 1,
+    borderColor: COLOR_GRAY,
+    borderWidth: 1
   },
   timeTextStyle: {
     fontSize: 22, color: COLOR_BLUE_DEFAULT, fontFamily: 'IRANSansMobile_Bold',
