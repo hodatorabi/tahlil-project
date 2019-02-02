@@ -31,7 +31,25 @@ const FirstRoute = (projects, navigation) => (
   </ScrollView>
 )
 const SecondRoute = (projects, navigation) => (
-  <View/>
+  <ScrollView contentContainerStyle={{paddingTop: 20, alignItems: 'center'}}>
+    {projects && projects.map((item, index) => (
+      <ProjectOverview projectPicture={project1.projectPicture} type={messages.CASH}
+                       projectName={item.name}
+                       charityName={item.charity.name}
+                       projectStartDate={item.startDate}
+                       projectEndDate={item.endDate}
+                       onPress={() => {
+                         navigation.navigate({
+                           routeName: 'ProjectProfile',
+                           params: {
+                             project: item,
+                             type: messages.CASH,
+                             projectPicture: project1.projectPicture
+                           },
+                         })
+                       }}/>
+    ))}
+  </ScrollView>
 )
 
 class CharityHome extends React.Component<Props, State> {
@@ -56,7 +74,7 @@ class CharityHome extends React.Component<Props, State> {
           navigationState={this.state}
           renderScene={SceneMap({
             first: () => FirstRoute(this.props.charityNonCashProjects, this.props.navigation),
-            second: () => SecondRoute(this.props.navigation),
+            second: () => SecondRoute(this.props.charityCashProjects, this.props.navigation),
           })}
           onIndexChange={index => this.setState({index})}
           initialLayout={{width: SCREEN_WIDTH}}
