@@ -60,6 +60,9 @@ export const messages = {
   SEND_REQUEST: 'ارسال درخواست',
   PAY: 'پرداخت وجه',
 
+  SEND_REQUEST_TO_VOLUNTEER: 'درخواست همکاری',
+
+
   NEEDED_AMOUNT: 'مبلغ درخواستی: ',
   FUNDED_AMOUNT: 'مبلغ تامین شده: ',
 
@@ -96,6 +99,7 @@ export const messages = {
   ENTER_PAY_AMOUNT: 'مبلغ مورد نظر خود را وارد کنید.',
   REJECT_REQUEST: 'رد درخواست',
   REJECT_REASON: 'در صورت تمایل، دلیل خود را برای رد درخواست وارد کنید.',
+  CHOOSE_PROJECT: 'پروژه مدنظر برای همکاری را انتخاب کنید',
 
   SAT: 'شنبه',
   SUN: 'یک‌شنبه',

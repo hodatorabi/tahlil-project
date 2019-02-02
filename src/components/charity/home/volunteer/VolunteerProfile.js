@@ -1,5 +1,5 @@
 import React from 'react'
-import {Image, StyleSheet, View} from 'react-native'
+import {Image, StyleSheet, View, ToastAndroid} from 'react-native'
 import {SCREEN_HEIGHT, SCREEN_WIDTH} from 'src/assets/styles/style'
 import {
   COLOR_BLACK,
@@ -15,9 +15,11 @@ import {DEFAULT_PROFILE_PIC} from 'src/assets/styles/icons'
 import RateItem from 'src/components/profile/feedback/RateItem'
 import CommonHeader from 'src/components/common/CommonHeader'
 import VolunteerPersonalInfo from 'src/components/charity/home/volunteer/VolunteerPersonalInfo'
+import CharityRequestPopup from 'src/components/common/popUps/CharityRequestPopup'
+import Projects from 'src/store/projects'
 
-const ThirdRoute = (volunteer) => (
-  <VolunteerPersonalInfo person={volunteer}/>
+const ThirdRoute = (volunteer, onPressButton) => (
+  <VolunteerPersonalInfo person={volunteer} onPressButton={onPressButton}/>
 )
 const SecondRoute = () => (
   <View/>
@@ -26,6 +28,7 @@ const SecondRoute = () => (
 class VolunteerProfile extends React.Component<Props, State> {
 
   state = {
+    popupVisible: false,
     index: 2,
     routes: [
       {key: 'second', title: messages.FEEDBACK},
@@ -36,6 +39,11 @@ class VolunteerProfile extends React.Component<Props, State> {
   constructor(props) {
     super(props)
 
+    this.onPressButton = this.onPressButton.bind(this)
+  }
+
+  onPressButton = () => {
+    this.setState({popupVisible: true})
   }
 
 
@@ -56,7 +64,7 @@ class VolunteerProfile extends React.Component<Props, State> {
           navigationState={this.state}
           renderScene={SceneMap({
             second: SecondRoute,
-            third: () => ThirdRoute(volunteer),
+            third: () => ThirdRoute(volunteer, this.onPressButton),
           })}
           onIndexChange={index => this.setState({index})}
           initialLayout={{width: SCREEN_WIDTH}}
@@ -74,12 +82,23 @@ class VolunteerProfile extends React.Component<Props, State> {
             />
           }
         />
+        <CharityRequestPopup visible={this.state.popupVisible} onDismiss={() => this.setState({popupVisible: false})}
+                             onSend={(message, projectId) => {
+                               this.props.sendRequestToVolunteer(projectId, volunteer.id, message)
+                                 .then(() => {
+                                   this.props.getCharityOutgoingRequests()
+                                 })
+                                 .catch((error) => {
+                                   console.log('err send request volunteer', error)
+                                   ToastAndroid.show('امکان ارسال این درخواست نیست.', ToastAndroid.SHORT)
+                                 })
+                             }}/>
       </View>
     )
   }
 }
 
-export default VolunteerProfile
+export default Projects.providers.projects(VolunteerProfile)
 
 const style = StyleSheet.create({
   profileContainer: {

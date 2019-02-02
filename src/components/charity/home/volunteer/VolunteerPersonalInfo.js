@@ -8,6 +8,7 @@ import AbilityRow from 'src/components/profile/profileRow/AbilityRow'
 import {messages} from 'src/utils/messages'
 import {toFarsiGender} from 'src/utils/farsiUtils'
 import Auth from 'src/store/auth'
+import CustomButton from 'src/components/common/Buttons/CustomButton'
 
 
 class VolunteerPersonalInfo extends React.Component<Props, State> {
@@ -38,6 +39,12 @@ class VolunteerPersonalInfo extends React.Component<Props, State> {
               <AbilityRow noButton={true} title={this.props.abilities[item]['name']}/>
             ))}
           </View>
+
+          <CustomButton style={{width: 0.8 * SCREEN_WIDTH, height: 50, marginTop: 30}}
+                        onPress={this.props.onPressButton}
+                        label={messages.SEND_REQUEST_TO_VOLUNTEER}
+                        labelStyle={{fontSize: 20}}
+          />
         </ScrollView>
       </View>
     )
@@ -47,7 +54,7 @@ class VolunteerPersonalInfo extends React.Component<Props, State> {
 export default Auth.providers.auth(VolunteerPersonalInfo)
 
 const style = StyleSheet.create({
-  scrollContainer: {paddingVertical: 0.02 * SCREEN_HEIGHT,},
+  scrollContainer: {paddingVertical: 0.02 * SCREEN_HEIGHT, alignItems: 'center',},
   personalInfoContainer: {
     width: SCREEN_WIDTH,
     backgroundColor: COLOR_WHITE,

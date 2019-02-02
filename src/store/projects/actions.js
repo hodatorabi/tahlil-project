@@ -117,6 +117,14 @@ const actions = {
       shouldCallAPI: (state) => state.auth.isLoggedIn,
       callAPI: (state) => Request.get(state, Constants.charityBaseUrl + Constants.getVolunteersUrl)
     }
+  },
+  sendRequestToVolunteer: (projectId, volunteerId, message) => {
+    return {
+      types: actionTypes.SEND_REQUEST_TO_VOLUNTEER,
+      shouldCallAPI: (state) => state.auth.isLoggedIn,
+      callAPI: (state) => Request.post(state, Constants.charityBaseUrl + Constants.getNonCashProjects + projectId + '/' + 'request/' + volunteerId + '/', {},
+        {message},)
+    }
   }
 
 }
