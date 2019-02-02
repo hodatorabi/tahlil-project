@@ -30,7 +30,7 @@ class OutgoingRequest extends React.Component<Props, void> {
             </View>
             {status === messages.REJECTED ?
               <TouchableOpacity onPress={this.props.onReasonPress} style={style.messagesButtonContainer}>
-                <Label text={messages.CHARITY_REASON} textStyle={{fontSize: 16, color: COLOR_BLUE_DEFAULT}}/>
+                <Label text={messages.VOLUNTEER_REASON} textStyle={{fontSize: 16, color: COLOR_BLUE_DEFAULT}}/>
                 <Image source={ICON_ENVELOPE} style={{width: 25, height: 25, marginLeft: 8}}
                        tintColor={COLOR_BLUE_DEFAULT}/>
               </TouchableOpacity> : <View style={style.messagesButtonContainer}/>}

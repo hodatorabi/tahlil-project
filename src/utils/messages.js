@@ -32,6 +32,7 @@ export const messages = {
   YOUR_REQUEST_FOR_PROJECT: 'درخواست شما برای پروژه {} خیریه {} فرستاده شد.',
   YOUR_REQUEST_TO_VOLUNTEER: 'درخواست شما برای نیکوکار {} بابت پروژه {} فرستاده شد.',
   CHARITY_REASON: 'دلایل موسسه',
+  VOLUNTEER_REASON: 'دلایل نیکوکار',
   REJECTED: 'رد شده',
   PENDING: 'در دست بررسی',
   ACCEPTED: 'قبول شده',
