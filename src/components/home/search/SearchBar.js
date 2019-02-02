@@ -43,7 +43,7 @@ class SearchBar extends React.Component<Props, State> {
   render() {
     return (
       <View style={style.container}>
-        <TextInput style={style.searchBar} autoFocus={true}/>
+        <TextInput style={style.searchBar} autoFocus={false}/>
         <RadioForm
           formHorizontal={true}
           initial={0}

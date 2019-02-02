@@ -1,5 +1,5 @@
 import React from 'react'
-import {Image, StyleSheet, View} from 'react-native'
+import {Image, StyleSheet, View, TouchableOpacity} from 'react-native'
 import {SCREEN_HEIGHT, SCREEN_WIDTH} from 'src/assets/styles/style'
 import {COLOR_BLACK, COLOR_WHITE} from 'src/assets/styles/colors'
 import Label from 'src/components/common/Label'
@@ -12,7 +12,7 @@ class VolunteerOverview extends React.Component<Props, State> {
   render() {
     const volunteer = this.props.volunteer
     return (
-      <View style={style.overviewContainer}>
+      <TouchableOpacity onPress={this.props.onPress} style={style.overviewContainer}>
         <View style={{flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center'}}>
           <RateItem rating={volunteer.avgRating}/>
           <View style={{flexDirection: 'row', alignItems: 'center'}}>
@@ -23,7 +23,7 @@ class VolunteerOverview extends React.Component<Props, State> {
                    style={{width: 45, height: 45, borderRadius: 22.5}}/>
           </View>
         </View>
-      </View>
+      </TouchableOpacity>
     )
   }
 }

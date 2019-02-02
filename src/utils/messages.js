@@ -55,6 +55,7 @@ export const messages = {
   VOLUNTEER_ABILITIES: 'توانمندی‌های مورد نیاز: ',
   NUMBER_OF_VOLUNTEERS: 'تعداد داوطلبین',
   VOLUNTEERS: 'داوطلبین',
+  VOLUNTEER_PROFILE: 'پروفایل داوطلب',
 
   SEND_REQUEST: 'ارسال درخواست',
   PAY: 'پرداخت وجه',

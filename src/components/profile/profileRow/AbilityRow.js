@@ -12,7 +12,7 @@ class AbilityRow extends React.Component<Props, void> {
     return (
       <View style={[style.containerStyle]}
       >
-        <ButtonMinus onPress={this.props.onPress}/>
+        {this.props.noButton ? <View/> : <ButtonMinus onPress={this.props.onPress}/>}
         <Label textStyle={style.textStyle} text={this.props.title}/>
       </View>
     )

@@ -18,7 +18,12 @@ class VolunteerSearchPage extends React.Component<Props, State> {
         <SearchBar/>
         <ScrollView contentContainerStyle={{paddingTop: 0.02 * SCREEN_HEIGHT}}>
           {this.props.volunteers.length > 0 ? this.props.volunteers.map((item, index) => (
-            <VolunteerOverview volunteer={item}/>
+            <VolunteerOverview volunteer={item} onPress={() => this.props.navigation.navigate({
+              routeName: 'VolunteerProfile',
+              params: {
+                volunteer: item,
+              },
+            })}/>
           )) : <Label text={'NO VOLUNTEERS'}/>}
         </ScrollView>
       </View>
