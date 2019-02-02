@@ -25,7 +25,8 @@ const projectsProvider = connect(
 
       getCharityOutgoingRequests: () => dispatch(actions.getCharityOutgoingRequests()),
       getCharityIncomingRequests: () => dispatch(actions.getCharityIncomingRequests()),
-      acceptVolunteerRequest: (requestID) => dispatch(actions.acceptVolunteerRequest(requestID))
+      acceptVolunteerRequest: (requestID) => dispatch(actions.acceptVolunteerRequest(requestID)),
+      rejectVolunteerRequest: (requestID, reason) => dispatch(actions.rejectVolunteerRequest(requestID, reason)),
     }
   }
 )

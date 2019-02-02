@@ -88,6 +88,16 @@ const actions = {
       callAPI: (state) => Request.patch(state, Constants.charityBaseUrl + Constants.requestResponseUrl + requestID + '/', {}, {accepted: true})
     }
   },
+  rejectVolunteerRequest: (requestID, reason) => {
+    return {
+      types: actionTypes.REJECT_VOLUNTEER_REQUEST,
+      shouldCallAPI: (state) => state.auth.isLoggedIn,
+      callAPI: (state) => Request.patch(state, Constants.charityBaseUrl + Constants.requestResponseUrl + requestID + '/', {}, {
+        accepted: false, rejectionReason: reason
+      })
+    }
+  },
+
 
 }
 

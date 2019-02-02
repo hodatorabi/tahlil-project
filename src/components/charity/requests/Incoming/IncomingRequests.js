@@ -72,7 +72,7 @@ class IncomingRequests extends React.Component<Props, void> {
         <InputMessagePopUp visible={this.state.inputMessagePopUpVisible} title={messages.REJECT_REQUEST}
                            text={messages.REJECT_REASON}
                            onSend={(reason) => {
-                             this.props.rejectProjectRequest(this.state.requestId, reason)
+                             this.props.rejectVolunteerRequest(this.state.requestId, reason)
                                .then(() => {
                                  this.props.getCharityIncomingRequests()
                                })
