@@ -72,6 +72,11 @@ export const messages = {
   GENDER: 'جنسیت: ',
   AGE: 'سن: ',
 
+  CHARITY_NAME_T: 'نام موسسه: ',
+  ADDRESS: 'آدرس: ',
+  OTHER_INFO: 'سوابق و اطلاعات دیگر',
+
+
   WOMAN: 'زن',
   MAN: 'مرد',
 

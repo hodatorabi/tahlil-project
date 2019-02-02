@@ -16,10 +16,11 @@ import {CHARITY_PROFILE_PIC, ICON_LOG_OUT} from 'src/assets/styles/icons'
 import NavigationService from 'src/utils/navigationService'
 import RateItem from 'src/components/profile/feedback/RateItem'
 import Auth from 'src/store/auth'
+import CharityPersonalInfo from 'src/components/charity/profile/PersonalInfo/CharityPersonalInfo'
 
 
 const ThirdRoute = () => (
-  <View/>
+  <CharityPersonalInfo/>
 )
 const SecondRoute = () => (
   <View/>
@@ -62,10 +63,6 @@ class CharityProfile extends React.Component<Props, State> {
           </View>
 
           <Image source={CHARITY_PROFILE_PIC} style={style.profileAvatar}/>
-        </View>
-        <View style={style.descriptionContainer}>
-          <Label text={this.props.charity.description} textStyle={{fontSize: 14, textAlign: 'right', lineHeight: 25}}
-                 style={{alignSelf: 'flex-end'}}/>
         </View>
         <TabView
           navigationState={this.state}
@@ -113,11 +110,6 @@ const style = StyleSheet.create({
     backgroundColor: COLOR_WHITE,
     flexDirection: 'row',
     justifyContent: 'flex-end',
-  },
-  descriptionContainer: {
-    paddingBottom: 20,
-    paddingHorizontal: 20,
-    backgroundColor: COLOR_WHITE,
     borderBottomColor: COLOR_DEFAULT_GRAY,
     borderBottomWidth: 0.5,
   },
