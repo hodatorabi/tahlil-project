@@ -74,6 +74,20 @@ const actions = {
       callAPI: (state) => Request.get(state, Constants.charityBaseUrl + Constants.outgoingRequestsUrl)
     }
   },
+  getCharityIncomingRequests: () => {
+    return {
+      types: actionTypes.GET_CHARITY_INCOMING_REQUESTS,
+      shouldCallAPI: (state) => state.auth.isLoggedIn,
+      callAPI: (state) => Request.get(state, Constants.charityBaseUrl + Constants.incomingRequestsUrl)
+    }
+  },
+  acceptVolunteerRequest: (requestID) => {
+    return {
+      types: actionTypes.ACCEPT_VOLUNTEER_REQUEST,
+      shouldCallAPI: (state) => state.auth.isLoggedIn,
+      callAPI: (state) => Request.patch(state, Constants.charityBaseUrl + Constants.requestResponseUrl + requestID + '/', {}, {accepted: true})
+    }
+  },
 
 }
 

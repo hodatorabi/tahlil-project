@@ -21,14 +21,14 @@ class IncomingRequest extends React.Component<Props, void> {
           <Label
             style={{width: '95%'}}
             textStyle={style.bodyTextStyle}
-            text={format(messages.CHARITY_NEEDS_HELP, request.charity.name, request.project.name)}/>
+            text={format(messages.VOLUNTEER_OFFER_HELP, request.volunteer.name, request.project.name)}/>
           <View style={style.footerStyle}>
             <View style={style.buttonContainer}>
               <ButtonAccept onPress={this.props.onAccept} style={{marginRight: 20}}/>
               <ButtonReject onPress={this.props.onReject}/>
             </View>
             <TouchableOpacity onPress={this.props.onMessagePress} style={style.messagesButtonContainer}>
-              <Label text={messages.CHARITY_MESSAGE} textStyle={{fontSize: 16, color: COLOR_BLUE_DEFAULT}}/>
+              <Label text={messages.VOLUNTEER_MESSAGE} textStyle={{fontSize: 16, color: COLOR_BLUE_DEFAULT}}/>
               <Image source={ICON_ENVELOPE} style={{width: 25, height: 25, marginLeft: 8}}
                      tintColor={COLOR_BLUE_DEFAULT}/>
             </TouchableOpacity>

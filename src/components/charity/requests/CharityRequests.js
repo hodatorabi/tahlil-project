@@ -8,7 +8,7 @@ import IncomingRequests from './Incoming/IncomingRequests'
 import OutgoingRequests from './Outgoing/OutgoingRequests'
 
 const FirstRoute = (navigation) => (
-  <View/>
+  <IncomingRequests navigation={navigation}/>
 )
 const SecondRoute = (navigation) => (
   <OutgoingRequests navigation={navigation}/>

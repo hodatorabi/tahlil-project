@@ -50,6 +50,7 @@ class Launch extends React.Component<Props, State> {
                     setTimeout(() => NavigationService.reset(['MainTabNavigator']), 2000)
                   } else {
                     this.props.getCharityOutgoingRequests()
+                    this.props.getCharityIncomingRequests()
                     setTimeout(() => NavigationService.reset(['CharityMainTabNavigator']), 2000)
                   }
                 }
