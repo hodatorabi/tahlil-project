@@ -57,7 +57,6 @@ const CharityMainTabNavigator = createBottomTabNavigator({
             <Image
               source={ICON_PROJECT_STATUS}
               style={iconStyle}
-              testID="ProjectNavigator"
             />
           )
         case 'CharityHomeNavigator':
@@ -65,7 +64,6 @@ const CharityMainTabNavigator = createBottomTabNavigator({
             <Image
               source={ICON_SEARCH}
               style={iconStyle}
-              testID="HomeNavigator"
             />
           )
         case 'CharityProfileNavigator':
@@ -73,7 +71,6 @@ const CharityMainTabNavigator = createBottomTabNavigator({
             <Image
               source={ICON_PROFILE}
               style={iconStyle}
-              testID="ProfileNavigator"
             />
           )
         default:

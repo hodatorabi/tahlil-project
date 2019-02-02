@@ -40,10 +40,14 @@ export const messages = {
   ACCEPTED: 'قبول شده',
   CASH: 'نقدی',
   NON_CASH: 'غیرنقدی',
+  MY_CASH_PROJECTS: 'پروژه‌های نقدی من',
+  MY_NON_CASH_PROJECTS: 'پروژه‌های غیر‌نقدی من',
   MY_PROJECTS: 'پروژه‌های من',
   SHOW: 'مشاهده',
   EXPIRATION_DATE: 'تاریخ انقضا: {}',
   CREATION_DATE: 'تاریخ ایجاد درخواست: {}',
+
+  CREATE_NEW_PROJECT: 'ایجاد پروژه',
 
   VOLUNTEER_AGE: 'محدوده سنی مورد نیاز: ',
   VOLUNTEER_GENDER: 'جنسیت متقاضیان: ',

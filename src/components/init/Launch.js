@@ -49,12 +49,14 @@ class Launch extends React.Component<Props, State> {
                     this.props.getVolunteerTimeSlots()
                     setTimeout(() => NavigationService.reset(['MainTabNavigator']), 2000)
                   } else {
+                    this.props.getAbilities()
                     this.props.getCharityProfile()
                       .catch((error) => console.log('charity profile', error))
                     this.props.getCharityOutgoingRequests()
                       .catch((error) => console.log('charity outgoing', error))
                     this.props.getCharityIncomingRequests()
                       .catch((error) => console.log('charity in', error))
+                    this.props.getCharityNonCashProjects()
                     setTimeout(() => NavigationService.reset(['CharityMainTabNavigator']), 2000)
                   }
                 }

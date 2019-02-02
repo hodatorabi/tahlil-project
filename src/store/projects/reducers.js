@@ -67,13 +67,26 @@ const charityIncomingRequests = (state = [], action) => {
   }
 }
 
+const charityNonCashProjects = (state = [], action) => {
+  switch (action.type) {
+    case actionTypes.GET_CHARITY_NON_CASH_PROJECTS.SUCCESS:
+      return action.response
+    case actionTypes.LOGOUT:
+      return []
+    default:
+      return state
+  }
+}
+
+
 const reducers = combineReducers({
   nonCashProjects,
   cashProjects,
   outgoingRequests,
   incomingRequests,
   charityOutgoingRequests,
-  charityIncomingRequests
+  charityIncomingRequests,
+  charityNonCashProjects
 })
 
 export default reducers

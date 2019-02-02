@@ -97,7 +97,13 @@ const actions = {
       })
     }
   },
-
+  getCharityNonCashProjects: () => {
+    return {
+      types: actionTypes.GET_CHARITY_NON_CASH_PROJECTS,
+      shouldCallAPI: (state) => state.auth.isLoggedIn,
+      callAPI: (state) => Request.get(state, Constants.charityBaseUrl + Constants.getNonCashProjects)
+    }
+  },
 
 }
 

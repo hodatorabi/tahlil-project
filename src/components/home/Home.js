@@ -62,15 +62,6 @@ class Home extends React.Component<Props, State> {
     ],
   }
 
-  componentDidMount() {
-    this.willFocusSubscription = this.props.navigation.addListener(
-      'willFocus',
-      payload => {
-        this.props.getCashProjects()
-        this.props.getNonCashProjects()
-      }
-    )
-  }
 
   render() {
     return (
