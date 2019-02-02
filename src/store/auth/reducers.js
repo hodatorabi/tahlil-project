@@ -132,6 +132,18 @@ const charity = (state = {}, action) => {
   }
 }
 
+const charityFeedbacks = (state = [], action) => {
+  switch (action.type) {
+    case actionTypes.GET_CHARITY_FEEDBACK.SUCCESS:
+      return action.response
+    case actionTypes.LOGOUT:
+      return []
+    default:
+      return state
+
+  }
+}
+
 const reducers = combineReducers({
   isLoggedIn,
   token,
@@ -141,6 +153,7 @@ const reducers = combineReducers({
   feedbacks,
   volunteerTimeSlots,
   charity,
+  charityFeedbacks
 })
 
 export default reducers

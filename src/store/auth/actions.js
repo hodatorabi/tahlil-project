@@ -97,7 +97,14 @@ const actions = {
       shouldCallAPI: (state) => state.auth.isLoggedIn,
       callAPI: (state) => Request.get(state, Constants.charityBaseUrl),
     }
-  }
+  },
+  getCharityFeedbacks: () => {
+    return {
+      types: actionTypes.GET_CHARITY_FEEDBACK,
+      shouldCallAPI: (state) => state.auth.isLoggedIn,
+      callAPI: (state) => Request.get(state, Constants.charityBaseUrl + Constants.getFeedBackUrl),
+    }
+  },
 
 
 }

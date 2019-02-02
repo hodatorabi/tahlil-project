@@ -3,7 +3,7 @@ import {Image, StyleSheet, View} from 'react-native'
 import {SCREEN_HEIGHT, SCREEN_WIDTH} from 'src/assets/styles/style'
 import {COLOR_BLACK, COLOR_WHITE} from 'src/assets/styles/colors'
 import Label from 'src/components/common/Label'
-import {CHARITY_PROFILE_PIC} from 'src/assets/styles/icons'
+import {CHARITY_PROFILE_PIC, DEFAULT_PROFILE_PIC} from 'src/assets/styles/icons'
 import RateItem from 'src/components/profile/feedback/RateItem'
 
 
@@ -16,9 +16,11 @@ class FeedbackItem extends React.Component<Props, State> {
         <View style={{flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 20}}>
           <RateItem rating={feedback.rating}/>
           <View style={{flexDirection: 'row', alignItems: 'center'}}>
-            <Label text={feedback.charity.name} textStyle={{fontSize: 16, color: COLOR_BLACK}}
+            <Label text={this.props.charity ? feedback.volunteer.name : 'خیریه ' + feedback.charity.name}
+                   textStyle={{fontSize: 16, color: COLOR_BLACK}}
                    style={{marginRight: 10}}/>
-            <Image source={CHARITY_PROFILE_PIC} style={{width: 45, height: 45, borderRadius: 22.5}}/>
+            <Image source={this.props.charity ? DEFAULT_PROFILE_PIC : CHARITY_PROFILE_PIC}
+                   style={{width: 45, height: 45, borderRadius: 22.5}}/>
           </View>
         </View>
         {feedback.comment &&

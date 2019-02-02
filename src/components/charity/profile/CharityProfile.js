@@ -16,14 +16,15 @@ import {CHARITY_PROFILE_PIC, ICON_LOG_OUT} from 'src/assets/styles/icons'
 import NavigationService from 'src/utils/navigationService'
 import RateItem from 'src/components/profile/feedback/RateItem'
 import Auth from 'src/store/auth'
-import CharityPersonalInfo from 'src/components/charity/profile/PersonalInfo/CharityPersonalInfo'
+import CharityPersonalInfo from 'src/components/charity/profile/personalInfo/CharityPersonalInfo'
+import CharityFeedbacks from 'src/components/charity/profile/feedback/CharityFeedbacks'
 
 
 const ThirdRoute = () => (
   <CharityPersonalInfo/>
 )
 const SecondRoute = () => (
-  <View/>
+  <CharityFeedbacks/>
 )
 
 
