@@ -91,6 +91,14 @@ const actions = {
     }
   },
 
+  getCharityProfile: () => {
+    return {
+      types: actionTypes.GET_CHARITY_PROFILE,
+      shouldCallAPI: (state) => state.auth.isLoggedIn,
+      callAPI: (state) => Request.get(state, Constants.charityBaseUrl),
+    }
+  }
+
 
 }
 

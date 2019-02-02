@@ -10,6 +10,8 @@ const authProvider = connect(
       abilities: state.auth.abilities,
       feedbacks: state.auth.feedbacks,
       volunteerTimeSlots: state.auth.volunteerTimeSlots,
+
+      charity: state.auth.charity,
     }
   }, (dispatch) => {
     return {
@@ -26,6 +28,8 @@ const authProvider = connect(
       getVolunteerTimeSlots: () => dispatch(actions.getVolunteerTimeSlots()),
       addAvailableSlot: (id) => dispatch(actions.addAvailableSlot(id)),
       removeAvailableSlot: (id) => dispatch(actions.removeAvailableSlot(id)),
+
+      getCharityProfile: () => dispatch(actions.getCharityProfile()),
     }
   },
 )

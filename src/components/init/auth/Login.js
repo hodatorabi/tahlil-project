@@ -51,7 +51,12 @@ class Login extends React.Component<Props, State> {
             this.props.getIncomingRequests()
             this.props.getVolunteerTimeSlots()
           } else {
+            this.props.getCharityProfile()
+              .catch((error) => console.log('charity profile', error))
+            this.props.getCharityIncomingRequests()
+              .catch((error) => console.log('get incoming', error))
             this.props.getCharityOutgoingRequests()
+              .catch((error) => console.log('out', error))
             NavigationService.reset(['CharityMainTabNavigator'])
           }
         })
