@@ -9,7 +9,7 @@ import format from 'string-format'
 import {messages} from 'src/utils/messages'
 
 
-class ProjectOverview extends React.Component<Props, void> {
+class CharityProjectOverview extends React.Component<Props, void> {
 
   render() {
     return (
@@ -23,7 +23,7 @@ class ProjectOverview extends React.Component<Props, void> {
                      text={this.props.projectName}/>
             </View>
             <Label style={{alignSelf: 'flex-end'}} textStyle={{color: COLOR_BLACK, fontSize: 18}}
-                   text={'خیریه ' + this.props.charityName}/>
+                   text={messages.NUMBER_OF_VOLUNTEERS}/>
           </View>
           <View style={style.bottomBodyStyle}>
             <CustomButton label={messages.SHOW} onPress={this.props.onPress}/>
@@ -40,7 +40,7 @@ class ProjectOverview extends React.Component<Props, void> {
   }
 }
 
-export default ProjectOverview
+export default CharityProjectOverview
 
 const style = StyleSheet.create({
   containerStyle: {

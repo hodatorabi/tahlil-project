@@ -7,47 +7,47 @@ import {SCREEN_WIDTH} from 'src/assets/styles/style'
 import Projects from 'src/store/projects'
 import {messages} from 'src/utils/messages'
 import {project1} from 'src/utils/sampleData'
-import ProjectOverview from 'src/components/home/project/ProjectOverview'
+import CharityProjectOverview from 'src/components/charity/home/project/CharityProjectOverview'
 
 const FirstRoute = (projects, navigation) => (
   <ScrollView contentContainerStyle={{paddingTop: 20, alignItems: 'center'}}>
     {projects && projects.map((item, index) => (
-      <ProjectOverview projectPicture={project1.projectPicture} type={messages.NON_CASH}
-                       projectName={item.name}
-                       charityName={item.charity.name}
-                       projectStartDate={item.startDate}
-                       projectEndDate={item.endDate}
-                       onPress={() => {
-                         navigation.navigate({
-                           routeName: 'ProjectProfile',
-                           params: {
-                             project: item,
-                             type: messages.NON_CASH,
-                             projectPicture: project1.projectPicture
-                           },
-                         })
-                       }}/>
+      <CharityProjectOverview projectPicture={project1.projectPicture} type={messages.NON_CASH}
+                              projectName={item.name}
+                              charityName={item.charity.name}
+                              projectStartDate={item.startDate}
+                              projectEndDate={item.endDate}
+                              onPress={() => {
+                                navigation.navigate({
+                                  routeName: 'CharityProjectProfile',
+                                  params: {
+                                    project: item,
+                                    type: messages.NON_CASH,
+                                    projectPicture: project1.projectPicture
+                                  },
+                                })
+                              }}/>
     ))}
   </ScrollView>
 )
 const SecondRoute = (projects, navigation) => (
   <ScrollView contentContainerStyle={{paddingTop: 20, alignItems: 'center'}}>
     {projects && projects.map((item, index) => (
-      <ProjectOverview projectPicture={project1.projectPicture} type={messages.CASH}
-                       projectName={item.name}
-                       charityName={item.charity.name}
-                       projectStartDate={item.startDate}
-                       projectEndDate={item.endDate}
-                       onPress={() => {
-                         navigation.navigate({
-                           routeName: 'ProjectProfile',
-                           params: {
-                             project: item,
-                             type: messages.CASH,
-                             projectPicture: project1.projectPicture
-                           },
-                         })
-                       }}/>
+      <CharityProjectOverview projectPicture={project1.projectPicture} type={messages.CASH}
+                              projectName={item.name}
+                              charityName={item.charity.name}
+                              projectStartDate={item.startDate}
+                              projectEndDate={item.endDate}
+                              onPress={() => {
+                                navigation.navigate({
+                                  routeName: 'CharityProjectProfile',
+                                  params: {
+                                    project: item,
+                                    type: messages.CASH,
+                                    projectPicture: project1.projectPicture
+                                  },
+                                })
+                              }}/>
     ))}
   </ScrollView>
 )
