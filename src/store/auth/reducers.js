@@ -42,6 +42,33 @@ const token = (state = null, action) => {
   }
 }
 
+const isVolunteer = (state = null, action) => {
+  let isVolunteer = null
+  switch (action.type) {
+    case actionTypes.LOGIN.SUCCESS:
+      console.log('action.response.isVolunteer', action.response.isVolunteer)
+      isVolunteer = action.response.isVolunteer ? 'true' : 'false'
+      AsyncStorageSetItem('isVolunteer', isVolunteer)
+        .catch((error) => {
+          console.log('set error', error)
+        })
+      return action.response.isVolunteer
+    case actionTypes.SET_IS_VOLUNTEER:
+      isVolunteer = action.isVolunteer
+      AsyncStorageSetItem('isVolunteer', isVolunteer)
+        .catch((error) => {
+        })
+      return isVolunteer === 'true'
+    case actionTypes.LOGOUT:
+      AsyncStorageRemoveItem('isVolunteer')
+        .catch((error) => {
+        })
+      return null
+    default:
+      return state
+  }
+}
+
 const volunteer = (state = {}, action) => {
   switch (action.type) {
     case actionTypes.GET_PROFILE.SUCCESS:
@@ -97,6 +124,7 @@ const volunteerTimeSlots = (state = [], action) => {
 const reducers = combineReducers({
   isLoggedIn,
   token,
+  isVolunteer,
   volunteer,
   abilities,
   feedbacks,

@@ -8,6 +8,7 @@ let asyncActionTypeCreator = (actionType) => {
 
 const actionTypes = {
   SET_TOKEN: 'SET_TOKEN',
+  SET_IS_VOLUNTEER: 'SET_IS_VOLUNTEER',
   LOGOUT: 'LOGOUT',
   LOGIN: asyncActionTypeCreator('LOGIN'),
   VOLUNTEER_JOIN: asyncActionTypeCreator('VOLUNTEER_JOIN'),

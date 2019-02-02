@@ -7,6 +7,7 @@ import Request from 'src/utils/request'
 const actions = {
   logout: makeActionCreator(actionTypes.LOGOUT),
   setToken: makeActionCreator(actionTypes.SET_TOKEN, 'token'),
+  setIsVolunteer: makeActionCreator(actionTypes.SET_IS_VOLUNTEER, 'isVolunteer'),
   login: ({username, password}) => {
     return {
       types: actionTypes.LOGIN,

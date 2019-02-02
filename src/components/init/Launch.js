@@ -28,19 +28,31 @@ class Launch extends React.Component<Props, State> {
           if (token == null || token === '') {
             setTimeout(() => NavigationService.reset(['AuthNavigator']), 2000)
           } else {
-            this.props.setToken(token)
-            this.props.getProfile()
-              .catch((error) => {
-                this.props.logout()
-                console.log('get profile error', error)
+            AsyncStorageGetItem('isVolunteer')
+              .then((isVolunteer) => {
+                if (isVolunteer == null || isVolunteer === '') {
+                  setTimeout(() => NavigationService.reset(['AuthNavigator']), 2000)
+                } else {
+                  this.props.setToken(token)
+                  this.props.setIsVolunteer(isVolunteer)
+                  if (this.props.isVolunteer) {
+                    this.props.getProfile()
+                      .catch((error) => {
+                        this.props.logout()
+                        console.log('get profile error', error)
+                      })
+                    this.props.getAbilities()
+                    this.props.getNonCashProjects()
+                    this.props.getCashProjects()
+                    this.props.getOutgoingRequests()
+                    this.props.getIncomingRequests()
+                    this.props.getVolunteerTimeSlots()
+                    setTimeout(() => NavigationService.reset(['MainTabNavigator']), 2000)
+                  } else {
+                    setTimeout(() => NavigationService.reset(['CharityMainTabNavigator']), 2000)
+                  }
+                }
               })
-            this.props.getAbilities()
-            this.props.getNonCashProjects()
-            this.props.getCashProjects()
-            this.props.getOutgoingRequests()
-            this.props.getIncomingRequests()
-            this.props.getVolunteerTimeSlots()
-            setTimeout(() => NavigationService.reset(['MainTabNavigator']), 2000)
           }
         })
         .catch(() => {

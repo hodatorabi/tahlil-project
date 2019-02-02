@@ -10,6 +10,7 @@ import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view'
 import CustomButton from 'src/components/common/Buttons/CustomButton'
 import NavigationService from 'src/utils/navigationService'
 import Auth from '../../../store/auth'
+import Projects from '../../../store/projects'
 
 class Login extends React.Component<Props, State> {
 
@@ -40,9 +41,18 @@ class Login extends React.Component<Props, State> {
     } else {
       this.props.login(this.state.username, this.state.password)
         .then(() => {
-          NavigationService.reset(['MainTabNavigator'])
-          this.props.getProfile()
-          this.props.getAbilities()
+          if (this.props.isVolunteer) {
+            NavigationService.reset(['MainTabNavigator'])
+            this.props.getProfile()
+            this.props.getAbilities()
+            this.props.getNonCashProjects()
+            this.props.getCashProjects()
+            this.props.getOutgoingRequests()
+            this.props.getIncomingRequests()
+            this.props.getVolunteerTimeSlots()
+          } else {
+            NavigationService.reset(['CharityMainTabNavigator'])
+          }
         })
         .catch((error) => {
           this.setState({errorMessage: 'رمز عبور یا نام کاربری غلط هستند.'})
@@ -84,7 +94,7 @@ class Login extends React.Component<Props, State> {
   }
 }
 
-export default Auth.providers.auth(Login)
+export default Projects.providers.projects(Auth.providers.auth(Login))
 
 const style = StyleSheet.create({
   login: {flex: 1, justifyContent: 'flex-start', alignItems: 'center'},

@@ -6,6 +6,7 @@ const authProvider = connect(
   (state) => {
     return {
       volunteer: state.auth.volunteer,
+      isVolunteer: state.auth.isVolunteer,
       abilities: state.auth.abilities,
       feedbacks: state.auth.feedbacks,
       volunteerTimeSlots: state.auth.volunteerTimeSlots,
@@ -13,6 +14,7 @@ const authProvider = connect(
   }, (dispatch) => {
     return {
       setToken: (token) => dispatch(actions.setToken(token)),
+      setIsVolunteer: (isVolunteer) => dispatch(actions.setIsVolunteer(isVolunteer)),
       login: (username, password) => dispatch(actions.login({username, password})),
       volunteerJoin: (username, password, name, gender, age, phoneNumber, city) => dispatch(actions.volunteerJoin(username, password, name, gender, age, phoneNumber, city)),
       logout: () => dispatch(actions.logout()),
