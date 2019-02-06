@@ -24,7 +24,7 @@ class CharityPersonalInfo extends React.Component<Props, State> {
             <View style={style.labelStyle}>
               <CustomButton label={messages.EDIT}/>
               <Label textStyle={{color: COLOR_BLUE_DEFAULT, fontSize: 20}}
-                     text={messages.PERSONAL_INFO}/>
+                     text={messages.CHARITY_INFO}/>
             </View>
 
             <PersonalInfoRow description={this.props.charity.name} title={messages.CHARITY_NAME_T}/>
