@@ -125,6 +125,14 @@ const actions = {
       callAPI: (state) => Request.post(state, Constants.charityBaseUrl + Constants.getNonCashProjects + projectId + '/' + 'request/' + volunteerId + '/', {},
         {message},)
     }
+  },
+  sendFeedbackToVolunteer: (volunteerId, message, rating) => {
+    return {
+      types: actionTypes.SEND_FEEDBACK_TO_VOLUNTEER,
+      shouldCallAPI: (state) => state.auth.isLoggedIn,
+      callAPI: (state) => Request.post(state, Constants.charityBaseUrl + Constants.sendFeedbackUrl + volunteerId + '/', {},
+        {comment: message, rating: rating},)
+    }
   }
 
 }

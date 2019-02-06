@@ -33,7 +33,8 @@ const projectsProvider = connect(
       getCharityNonCashProjects: () => dispatch(actions.getCharityNonCashProjects()),
       getCharityCashProjects: () => dispatch(actions.getCharityCashProjects()),
       getAllVolunteers: () => dispatch(actions.getAllVolunteers()),
-      sendRequestToVolunteer: (projectId, volunteerId, message) => dispatch(actions.sendRequestToVolunteer(projectId, volunteerId, message))
+      sendRequestToVolunteer: (projectId, volunteerId, message) => dispatch(actions.sendRequestToVolunteer(projectId, volunteerId, message)),
+      sendFeedbackToVolunteer: (volunteerId, message, rating) => dispatch(actions.sendFeedbackToVolunteer(volunteerId, message, rating))
     }
   }
 )

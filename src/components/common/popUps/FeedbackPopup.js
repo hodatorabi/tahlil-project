@@ -58,7 +58,7 @@ class FeedbackPopup extends React.Component<Props, void> {
           <DialogButton
             text={messages.SEND}
             onPress={() => {
-              this.props.onSend(this.state.message, this.state.selectedProject)
+              this.props.onSend(this.state.message, this.state.rating)
               this.props.onDismiss()
             }}
             key="button-2"

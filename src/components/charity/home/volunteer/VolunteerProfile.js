@@ -110,7 +110,17 @@ class VolunteerProfile extends React.Component<Props, State> {
                                    ToastAndroid.show('امکان ارسال این درخواست نیست.', ToastAndroid.SHORT)
                                  })
                              }}/>
-        <FeedbackPopup visible={this.state.ratePopupVisible} onDismiss={() => this.setState({ratePopupVisible: false})}/>
+        <FeedbackPopup visible={this.state.ratePopupVisible} onDismiss={() => this.setState({ratePopupVisible: false})}
+                       onSend={(message, rating) => {
+                         this.props.sendFeedbackToVolunteer(volunteer.id, message, rating)
+                           .then(() => {
+                             this.props.navigation.goBack()
+                           })
+                           .catch((error) => {
+                             console.log('err send request volunteer', error)
+                             ToastAndroid.show('بازخورد شما برای این نیکوکار قبلا قرستاده شده', ToastAndroid.SHORT)
+                           })
+                       }}/>
       </View>
     )
   }

@@ -15,5 +15,6 @@ export const Constants = {
   requestResponseUrl: '/requests/',
   payProjectUrl: '/pay/',
   volunteerTimeSlots: '/time-slots/',
-  getVolunteersUrl: '/volunteers/'
+  getVolunteersUrl: '/volunteers/',
+  sendFeedbackUrl: '/send-feedback/'
 }

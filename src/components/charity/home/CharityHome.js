@@ -1,5 +1,5 @@
 import React from 'react'
-import {ScrollView, StyleSheet, View} from 'react-native'
+import {RefreshControl, ScrollView, StyleSheet, ToastAndroid, View} from 'react-native'
 import {SceneMap, TabBar, TabView} from 'react-native-tab-view'
 import CharityHomeHeader from 'src/components/charity/home/CharityHomeHeader'
 import {COLOR_BLUE_DEFAULT, COLOR_DARK_BLUE, COLOR_WHITE} from 'src/assets/styles/colors'
@@ -9,8 +9,14 @@ import {messages} from 'src/utils/messages'
 import {project1} from 'src/utils/sampleData'
 import CharityProjectOverview from 'src/components/charity/home/project/CharityProjectOverview'
 
-const FirstRoute = (projects, navigation) => (
-  <ScrollView contentContainerStyle={{paddingTop: 20, alignItems: 'center'}}>
+const FirstRoute = (projects, navigation, refreshing, onRefresh) => (
+  <ScrollView contentContainerStyle={{paddingTop: 20, alignItems: 'center'}}
+              refreshControl={
+                <RefreshControl
+                  refreshing={refreshing}
+                  onRefresh={onRefresh}
+                />
+              }>
     {projects && projects.map((item, index) => (
       <CharityProjectOverview projectPicture={project1.projectPicture} type={messages.NON_CASH}
                               projectName={item.name}
@@ -31,8 +37,14 @@ const FirstRoute = (projects, navigation) => (
     ))}
   </ScrollView>
 )
-const SecondRoute = (projects, navigation) => (
-  <ScrollView contentContainerStyle={{paddingTop: 20, alignItems: 'center'}}>
+const SecondRoute = (projects, navigation, refreshing, onRefresh) => (
+  <ScrollView contentContainerStyle={{paddingTop: 20, alignItems: 'center'}}
+              refreshControl={
+                <RefreshControl
+                  refreshing={refreshing}
+                  onRefresh={onRefresh}
+                />
+              }>
     {projects && projects.map((item, index) => (
       <CharityProjectOverview projectPicture={project1.projectPicture} type={messages.CASH}
                               projectName={item.name}
@@ -57,6 +69,8 @@ const SecondRoute = (projects, navigation) => (
 class CharityHome extends React.Component<Props, State> {
 
   state = {
+    refreshing: false,
+    cashRefreshing: false,
     index: 0,
     routes: [
       {key: 'first', title: messages.MY_NON_CASH_PROJECTS},
@@ -64,8 +78,29 @@ class CharityHome extends React.Component<Props, State> {
     ],
   }
 
+  constructor(props) {
+    super(props)
+
+    this.onRefresh = this.onRefresh.bind(this)
+    this.onCashRefresh = this.onCashRefresh.bind(this)
+  }
+
   componentDidMount(): void {
     console.log(this.props.charityNonCashProjects)
+  }
+
+  onRefresh = () => {
+    this.setState({refreshing: true})
+    this.props.getCharityNonCashProjects()
+      .then(() => this.setState({refreshing: false}))
+  }
+
+  onCashRefresh = () => {
+    this.setState({cashRefreshing: true})
+    this.props.getCharityCashProjects()
+      .then(() => {
+        this.setState({cashRefreshing: false})
+      })
   }
 
   render() {
@@ -75,8 +110,8 @@ class CharityHome extends React.Component<Props, State> {
         <TabView
           navigationState={this.state}
           renderScene={SceneMap({
-            first: () => FirstRoute(this.props.charityNonCashProjects, this.props.navigation),
-            second: () => SecondRoute(this.props.charityCashProjects, this.props.navigation),
+            first: () => FirstRoute(this.props.charityNonCashProjects, this.props.navigation, this.state.refreshing, this.onRefresh),
+            second: () => SecondRoute(this.props.charityCashProjects, this.props.navigation, this.state.cashRefreshing, this.onCashRefresh),
           })}
           onIndexChange={index => this.setState({index})}
           initialLayout={{width: SCREEN_WIDTH}}
