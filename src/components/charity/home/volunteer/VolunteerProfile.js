@@ -1,5 +1,5 @@
 import React from 'react'
-import {Image, StyleSheet, View, ToastAndroid} from 'react-native'
+import {Image, StyleSheet, View, ToastAndroid, ScrollView, RefreshControl} from 'react-native'
 import {SCREEN_HEIGHT, SCREEN_WIDTH} from 'src/assets/styles/style'
 import {
   COLOR_BLACK,
@@ -17,12 +17,19 @@ import CommonHeader from 'src/components/common/CommonHeader'
 import VolunteerPersonalInfo from 'src/components/charity/home/volunteer/VolunteerPersonalInfo'
 import CharityRequestPopup from 'src/components/common/popUps/CharityRequestPopup'
 import Projects from 'src/store/projects'
+import FeedbackItem from 'src/components/profile/feedback/FeedbackItem'
 
 const ThirdRoute = (volunteer, onPressButton) => (
   <VolunteerPersonalInfo person={volunteer} onPressButton={onPressButton}/>
 )
-const SecondRoute = () => (
-  <View/>
+const SecondRoute = (volunteer) => (
+    <View style={{flex: 1}}>
+        <ScrollView contentContainerStyle={{paddingTop: 0.02 * SCREEN_HEIGHT}}>
+            {volunteer.receivedFeedback.length > 0 ? volunteer.receivedFeedback.map((item, index) => (
+                <FeedbackItem charity={false} feedback={item}/>
+            )) : <Label text={'NO FEEDBACK'}/>}
+        </ScrollView>
+    </View>
 )
 
 class VolunteerProfile extends React.Component<Props, State> {
@@ -63,7 +70,7 @@ class VolunteerProfile extends React.Component<Props, State> {
         <TabView
           navigationState={this.state}
           renderScene={SceneMap({
-            second: SecondRoute,
+            second: () => SecondRoute(volunteer),
             third: () => ThirdRoute(volunteer, this.onPressButton),
           })}
           onIndexChange={index => this.setState({index})}
