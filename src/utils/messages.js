@@ -57,6 +57,7 @@ export const messages = {
   VOLUNTEERS: 'داوطلبین',
   VOLUNTEER_PROFILE: 'پروفایل داوطلب',
 
+  SEND_FEEDBACK: 'ارسال بازخورد',
   SEND_REQUEST: 'ارسال درخواست',
   PAY: 'پرداخت وجه',
 

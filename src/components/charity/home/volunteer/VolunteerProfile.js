@@ -19,8 +19,8 @@ import CharityRequestPopup from 'src/components/common/popUps/CharityRequestPopu
 import Projects from 'src/store/projects'
 import FeedbackItem from 'src/components/profile/feedback/FeedbackItem'
 
-const ThirdRoute = (volunteer, onPressButton) => (
-  <VolunteerPersonalInfo person={volunteer} onPressButton={onPressButton}/>
+const ThirdRoute = (volunteer, onPressButton, canRate, onPressSendFeedback) => (
+  <VolunteerPersonalInfo person={volunteer} onPressButton={onPressButton} canRate={canRate} onPressSendFeedback={onPressSendFeedback}/>
 )
 const SecondRoute = (volunteer) => (
     <View style={{flex: 1}}>
@@ -36,6 +36,7 @@ class VolunteerProfile extends React.Component<Props, State> {
 
   state = {
     popupVisible: false,
+    ratePopupVisible: false,
     index: 2,
     routes: [
       {key: 'second', title: messages.FEEDBACK},
@@ -47,15 +48,22 @@ class VolunteerProfile extends React.Component<Props, State> {
     super(props)
 
     this.onPressButton = this.onPressButton.bind(this)
+    this.onPressSendFeedback = this.onPressSendFeedback.bind(this)
+
   }
 
   onPressButton = () => {
     this.setState({popupVisible: true})
   }
 
+  onPressSendFeedback = () => {
+    this.setState({ratePopupVisible: true})
+  }
+
 
   render() {
     const volunteer = this.props.navigation.getParam('volunteer', null)
+    const canRate = this.props.navigation.getParam('canRate', false)
     return (
       <View style={{flex: 1, justifyContent: 'flex-start'}}>
         <CommonHeader title={messages.VOLUNTEER_PROFILE} hasBack={true} onPress={() => this.props.navigation.goBack()}/>
@@ -71,7 +79,7 @@ class VolunteerProfile extends React.Component<Props, State> {
           navigationState={this.state}
           renderScene={SceneMap({
             second: () => SecondRoute(volunteer),
-            third: () => ThirdRoute(volunteer, this.onPressButton),
+            third: () => ThirdRoute(volunteer, this.onPressButton, canRate, this.onPressSendFeedback),
           })}
           onIndexChange={index => this.setState({index})}
           initialLayout={{width: SCREEN_WIDTH}}

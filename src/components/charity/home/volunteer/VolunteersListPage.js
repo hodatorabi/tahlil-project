@@ -21,6 +21,7 @@ class VolunteersListPage extends React.Component<Props, State> {
               routeName: 'VolunteerProfile',
               params: {
                 volunteer: item,
+                canRate: true
               },
             })}/>
           )) : <Label text={'NO VOLUNTEERS'}/>}
