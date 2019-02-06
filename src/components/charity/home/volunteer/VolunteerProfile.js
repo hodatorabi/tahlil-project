@@ -18,18 +18,20 @@ import VolunteerPersonalInfo from 'src/components/charity/home/volunteer/Volunte
 import CharityRequestPopup from 'src/components/common/popUps/CharityRequestPopup'
 import Projects from 'src/store/projects'
 import FeedbackItem from 'src/components/profile/feedback/FeedbackItem'
+import FeedbackPopup from 'src/components/common/popUps/FeedbackPopup'
 
 const ThirdRoute = (volunteer, onPressButton, canRate, onPressSendFeedback) => (
-  <VolunteerPersonalInfo person={volunteer} onPressButton={onPressButton} canRate={canRate} onPressSendFeedback={onPressSendFeedback}/>
+  <VolunteerPersonalInfo person={volunteer} onPressButton={onPressButton} canRate={canRate}
+                         onPressSendFeedback={onPressSendFeedback}/>
 )
 const SecondRoute = (volunteer) => (
-    <View style={{flex: 1}}>
-        <ScrollView contentContainerStyle={{paddingTop: 0.02 * SCREEN_HEIGHT}}>
-            {volunteer.receivedFeedback.length > 0 ? volunteer.receivedFeedback.map((item, index) => (
-                <FeedbackItem charity={false} feedback={item}/>
-            )) : <Label text={'NO FEEDBACK'}/>}
-        </ScrollView>
-    </View>
+  <View style={{flex: 1}}>
+    <ScrollView contentContainerStyle={{paddingTop: 0.02 * SCREEN_HEIGHT}}>
+      {volunteer.receivedFeedback.length > 0 ? volunteer.receivedFeedback.map((item, index) => (
+        <FeedbackItem charity={false} feedback={item}/>
+      )) : <Label text={'NO FEEDBACK'}/>}
+    </ScrollView>
+  </View>
 )
 
 class VolunteerProfile extends React.Component<Props, State> {
@@ -108,6 +110,7 @@ class VolunteerProfile extends React.Component<Props, State> {
                                    ToastAndroid.show('امکان ارسال این درخواست نیست.', ToastAndroid.SHORT)
                                  })
                              }}/>
+        <FeedbackPopup visible={this.state.ratePopupVisible} onDismiss={() => this.setState({ratePopupVisible: false})}/>
       </View>
     )
   }

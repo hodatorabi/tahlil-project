@@ -100,7 +100,10 @@ export const messages = {
   ENTER_PAY_AMOUNT: 'مبلغ مورد نظر خود را وارد کنید.',
   REJECT_REQUEST: 'رد درخواست',
   REJECT_REASON: 'در صورت تمایل، دلیل خود را برای رد درخواست وارد کنید.',
-  CHOOSE_PROJECT: 'پروژه مدنظر برای همکاری را انتخاب کنید',
+  CHOOSE_PROJECT: 'پروژه مدنظر برای همکاری را انتخاب کنید.',
+
+  CLICK_ON_RATING: 'روی امتیاز مورد نظر خود کلیک کنید.',
+  ENTER_FEEDBACK: 'نظر خود را وارد کنید.',
 
   SAT: 'شنبه',
   SUN: 'یک‌شنبه',
