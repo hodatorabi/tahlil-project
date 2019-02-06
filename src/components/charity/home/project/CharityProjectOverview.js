@@ -23,7 +23,7 @@ class CharityProjectOverview extends React.Component<Props, void> {
                      text={this.props.projectName}/>
             </View>
             <Label style={{alignSelf: 'flex-end'}} textStyle={{color: COLOR_BLACK, fontSize: 18}}
-                   text={messages.NUMBER_OF_VOLUNTEERS}/>
+                   text={messages.NUMBER_OF_VOLUNTEERS + this.props.numberOfVolunteers}/>
           </View>
           <View style={style.bottomBodyStyle}>
             <CustomButton label={messages.SHOW} onPress={this.props.onPress}/>

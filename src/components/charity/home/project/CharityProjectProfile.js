@@ -10,6 +10,7 @@ import ProjectInfoRow from 'src/components/home/project/ProjectInfoRow'
 import ProgressBar from 'react-native-progress/Bar'
 import {booleanToGender} from 'src/utils/farsiUtils'
 import Projects from 'src/store/projects'
+import {project1} from 'src/utils/sampleData'
 
 
 class CharityProjectProfile extends React.Component<Props, void> {
@@ -34,7 +35,12 @@ class CharityProjectProfile extends React.Component<Props, void> {
                 <Label textStyle={{color: COLOR_BLUE_DEFAULT, fontFamily: 'IRANSansMobile_Bold', fontSize: 20}}
                        text={project.name}/>
               </View>
-              <TouchableOpacity>
+              <TouchableOpacity onPress={() => this.props.navigation.navigate({
+                routeName: 'VolunteersListPage',
+                params: {
+                  volunteers: project.volunteers,
+                },
+              })}>
                 <Label style={{alignSelf: 'flex-end'}} textStyle={{color: COLOR_BLACK, fontSize: 18}}
                        text={messages.VOLUNTEERS}/>
               </TouchableOpacity>
@@ -97,6 +103,7 @@ const style = StyleSheet.create({
   projectTopContainer: {
     backgroundColor: COLOR_WHITE,
     width: SCREEN_WIDTH,
+    paddingBottom: 20
   },
   pictureStyle: {
     height: 0.3 * SCREEN_HEIGHT,

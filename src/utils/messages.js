@@ -53,7 +53,7 @@ export const messages = {
   VOLUNTEER_GENDER: 'جنسیت متقاضیان: ',
   PROJECT_LOCATION: 'موقعیت مکانی: ',
   VOLUNTEER_ABILITIES: 'توانمندی‌های مورد نیاز: ',
-  NUMBER_OF_VOLUNTEERS: 'تعداد داوطلبین',
+  NUMBER_OF_VOLUNTEERS: 'تعداد داوطلبین: ',
   VOLUNTEERS: 'داوطلبین',
   VOLUNTEER_PROFILE: 'پروفایل داوطلب',
 

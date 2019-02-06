@@ -17,6 +17,7 @@ const FirstRoute = (projects, navigation) => (
                               charityName={item.charity.name}
                               projectStartDate={item.startDate}
                               projectEndDate={item.endDate}
+                              numberOfVolunteers={item.volunteers.length}
                               onPress={() => {
                                 navigation.navigate({
                                   routeName: 'CharityProjectProfile',
@@ -38,6 +39,7 @@ const SecondRoute = (projects, navigation) => (
                               charityName={item.charity.name}
                               projectStartDate={item.startDate}
                               projectEndDate={item.endDate}
+                              numberOfVolunteers={item.volunteers.length}
                               onPress={() => {
                                 navigation.navigate({
                                   routeName: 'CharityProjectProfile',
