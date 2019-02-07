@@ -22,6 +22,7 @@ class ProjectProfile extends React.Component<Props, void> {
   }
 
   render() {
+    const canRate = this.props.navigation.getParam('canRate', false)
     const project = this.props.navigation.getParam('project', null)
     const type = this.props.navigation.getParam('type', messages.NON_CASH)
     const projectPicture = this.props.navigation.getParam('projectPicture', null)
@@ -85,14 +86,14 @@ class ProjectProfile extends React.Component<Props, void> {
                             description={project.abilities}/>
           </View>}
 
-          <CustomButton style={{width: 0.8 * SCREEN_WIDTH, height: 50}}
+          {!canRate ? <CustomButton style={{width: 0.8 * SCREEN_WIDTH, height: 50}}
                         label={type === messages.NON_CASH ? messages.SEND_REQUEST : messages.PAY}
                         labelStyle={{fontSize: 20}}
                         onPress={type === messages.NON_CASH ? () => {
                           this.setState({messagePopUpVisible: true})
                         } : () => {
                           this.setState({amountPopUpVisible: true})
-                        }}/>
+                        }}/> : null}
 
         </ScrollView>
         <InputMessagePopUp visible={this.state.amountPopUpVisible}
