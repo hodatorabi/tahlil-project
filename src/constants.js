@@ -16,5 +16,10 @@ export const Constants = {
   payProjectUrl: '/pay/',
   volunteerTimeSlots: '/time-slots/',
   getVolunteersUrl: '/volunteers/',
-  sendFeedbackUrl: '/send-feedback/'
+  sendFeedbackUrl: '/send-feedback/',
+
+  myNonCashProjectsUrl: '/my-non-cash-projects/',
+  myCashProjectsUrl: '/my-cash-projects/',
+  charityProfileUrl: '/charity-profile/'
+
 }

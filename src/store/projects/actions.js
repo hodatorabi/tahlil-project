@@ -133,6 +133,13 @@ const actions = {
       callAPI: (state) => Request.post(state, Constants.charityBaseUrl + Constants.sendFeedbackUrl + volunteerId + '/', {},
         {comment: message, rating: rating},)
     }
+  },
+  getVolunteerNonCashProjects: () => {
+    return {
+      types: actionTypes.GET_VOLUNTEER_NON_CASH_PROJECTS,
+      shouldCallAPI: (state) => state.auth.isLoggedIn,
+      callAPI: (state) => Request.get(state, Constants.myNonCashProjectsUrl)
+    }
   }
 
 }

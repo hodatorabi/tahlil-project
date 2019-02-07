@@ -11,6 +11,7 @@ import CharityProjectProfile from 'src/components/charity/home/project/CharityPr
 import VolunteerSearchPage from 'src/components/charity/home/search/VolunteerSearchPage'
 import VolunteerProfile from 'src/components/charity/home/volunteer/VolunteerProfile'
 import VolunteersListPage from 'src/components/charity/home/volunteer/VolunteersListPage'
+import VolunteerProjectsPage from 'src/components/home/project/VolunteerProjectsPage'
 
 
 const MainNavigator = createStackNavigator(
@@ -26,7 +27,8 @@ const MainNavigator = createStackNavigator(
     CharityProjectProfile: {screen: CharityProjectProfile},
     VolunteerSearchPage: {screen: VolunteerSearchPage},
     VolunteerProfile: {screen: VolunteerProfile},
-    VolunteersListPage: {screen: VolunteersListPage}
+    VolunteersListPage: {screen: VolunteersListPage},
+    VolunteerProjectsPage: {screen: VolunteerProjectsPage}
   },
   {
     initialRouteName: 'Launch',
