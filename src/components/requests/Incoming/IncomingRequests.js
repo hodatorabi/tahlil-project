@@ -66,6 +66,7 @@ class IncomingRequests extends React.Component<Props, void> {
                       onDismiss={() => {
                         this.setState({messagePopUpVisible: false})
                       }}/>
+        {this.state.inputMessagePopUpVisible &&
         <InputMessagePopUp visible={this.state.inputMessagePopUpVisible} title={messages.REJECT_REQUEST}
                            text={messages.REJECT_REASON}
                            onSend={(reason) => {
@@ -77,7 +78,7 @@ class IncomingRequests extends React.Component<Props, void> {
                            onDismiss={() => {
                              Keyboard.dismiss()
                              this.setState({inputMessagePopUpVisible: false})
-                           }}/>
+                           }}/>}
       </View>
     )
   }
