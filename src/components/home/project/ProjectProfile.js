@@ -23,8 +23,15 @@ class ProjectProfile extends React.Component<Props, void> {
 
   render() {
     const canRate = this.props.navigation.getParam('canRate', false)
-    const project = this.props.navigation.getParam('project', null)
+    const projectId = this.props.navigation.getParam('projectId', null)
     const type = this.props.navigation.getParam('type', messages.NON_CASH)
+    let project
+    if (type === messages.NON_CASH) {
+      project = this.props.nonCashProjects[projectId]
+    } else {
+      console.log('fuck', projectId, this.props.cashProjects, this.props.cashProjects[projectId])
+      project = this.props.cashProjects[projectId]
+    }
     const projectPicture = this.props.navigation.getParam('projectPicture', null)
     const neededAmount = type === messages.CASH ? project.targetAmount : 0
     const fundedAmount = messages.CASH ? project.fundedAmount : 0
@@ -102,7 +109,7 @@ class ProjectProfile extends React.Component<Props, void> {
                            onSend={(amount) => {
                              this.props.payProject(project.id, amount)
                                .then(() => {
-                                 this.props.navigation.goBack()
+                                 this.props.getCashProjects()
                                })
                            }}
                            onDismiss={() => {

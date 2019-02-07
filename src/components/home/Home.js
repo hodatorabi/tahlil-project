@@ -26,7 +26,7 @@ const FirstRoute = (projects, navigation, onRefresh) => (
                          navigation.navigate({
                            routeName: 'ProjectProfile',
                            params: {
-                             project: item,
+                             projectId: index,
                              type: messages.NON_CASH,
                              projectPicture: project1.projectPicture
                            },
@@ -52,7 +52,7 @@ const SecondRoute = (projects, navigation, onRefresh) => (
                          navigation.navigate({
                            routeName: 'ProjectProfile',
                            params: {
-                             project: item,
+                             projectId: index,
                              type: messages.CASH,
                              projectPicture: project1.projectPicture
                            },

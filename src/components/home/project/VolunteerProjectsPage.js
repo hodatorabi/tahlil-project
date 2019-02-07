@@ -23,7 +23,7 @@ const FirstRoute = (projects, navigation, loading) => (
                            navigation.navigate({
                              routeName: 'ProjectProfile',
                              params: {
-                               project: item,
+                               projectId: index,
                                type: messages.NON_CASH,
                                projectPicture: project1.projectPicture,
                                canRate: true
@@ -41,7 +41,7 @@ const FirstRoute = (projects, navigation, loading) => (
 const SecondRoute = (projects, navigation, loading) => (
   !loading ? <ScrollView contentContainerStyle={{paddingTop: 20, alignItems: 'center'}}>
       {projects && projects.map((item, index) => (
-        <ProjectOverview projectPicture={project1.projectPicture} type={messages.NON_CASH}
+        <ProjectOverview projectPicture={project1.projectPicture} type={messages.CASH}
                          projectName={item.name}
                          charityName={item.charity.name}
                          projectStartDate={item.startDate}
@@ -50,8 +50,8 @@ const SecondRoute = (projects, navigation, loading) => (
                            navigation.navigate({
                              routeName: 'ProjectProfile',
                              params: {
-                               project: item,
-                               type: messages.NON_CASH,
+                               projectId: index,
+                               type: messages.CASH,
                                projectPicture: project1.projectPicture,
                                canRate: true
                              },
