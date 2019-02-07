@@ -2,7 +2,7 @@ import React from 'react'
 import {Image, Keyboard, ScrollView, StyleSheet, View} from 'react-native'
 import CommonHeader from 'src/components/common/CommonHeader'
 import {SCREEN_HEIGHT, SCREEN_WIDTH} from 'src/assets/styles/style'
-import {COLOR_BLACK, COLOR_BLUE_DEFAULT, COLOR_DARK_GRAY, COLOR_WHITE} from 'src/assets/styles/colors'
+import {COLOR_BLACK, COLOR_BLUE_DEFAULT, COLOR_DARK_GRAY, COLOR_LIGHT_GRAY, COLOR_WHITE} from 'src/assets/styles/colors'
 import Label from 'src/components/common/Label'
 import {messages} from 'src/utils/messages'
 import format from 'string-format'
@@ -46,8 +46,8 @@ class ProjectProfile extends React.Component<Props, void> {
             </View>
             {type === messages.CASH &&
             <View style={style.projectCompletionStyle}>
-              <ProgressBar progress={1 - fundedAmount / neededAmount} width={0.8 * SCREEN_WIDTH} color={COLOR_WHITE}
-                           borderColor={COLOR_BLUE_DEFAULT} unfilledColor={COLOR_BLUE_DEFAULT}/>
+              <ProgressBar progress={1 - fundedAmount / neededAmount} width={0.8 * SCREEN_WIDTH} color={COLOR_LIGHT_GRAY}
+                           borderColor={COLOR_WHITE} unfilledColor={COLOR_BLUE_DEFAULT}/>
               <View style={style.projectBudgetInfo}>
                 <View style={{flexDirection: 'row'}}>
                   <Label textStyle={{color: COLOR_BLUE_DEFAULT, fontFamily: 'IRANSansMobile_Bold'}}
@@ -139,6 +139,7 @@ const style = StyleSheet.create({
   projectTopContainer: {
     backgroundColor: COLOR_WHITE,
     width: SCREEN_WIDTH,
+    paddingBottom: 20
   },
   pictureStyle: {
     height: 0.3 * SCREEN_HEIGHT,

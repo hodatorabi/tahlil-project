@@ -111,6 +111,17 @@ const volunteerNonCashProjects = (state = [], action) => {
   }
 }
 
+const volunteerCashProjects = (state = [], action) => {
+  switch (action.type) {
+    case actionTypes.GET_VOLUNTEER_CASH_PROJECTS.SUCCESS:
+      return action.response
+    case actionTypes.LOGOUT:
+      return []
+    default:
+      return state
+  }
+}
+
 
 const reducers = combineReducers({
   nonCashProjects,
@@ -122,7 +133,8 @@ const reducers = combineReducers({
   charityNonCashProjects,
   charityCashProjects,
   volunteers,
-  volunteerNonCashProjects
+  volunteerNonCashProjects,
+  volunteerCashProjects
 })
 
 export default reducers

@@ -140,6 +140,13 @@ const actions = {
       shouldCallAPI: (state) => state.auth.isLoggedIn,
       callAPI: (state) => Request.get(state, Constants.myNonCashProjectsUrl)
     }
+  },
+  getVolunteerCashProjects: () => {
+    return {
+      types: actionTypes.GET_VOLUNTEER_CASH_PROJECTS,
+      shouldCallAPI: (state) => state.auth.isLoggedIn,
+      callAPI: (state) => Request.get(state, Constants.myCashProjectsUrl)
+    }
   }
 
 }

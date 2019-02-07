@@ -5,7 +5,6 @@ import {COLOR_BLUE_DEFAULT, COLOR_DARK_BLUE, COLOR_WHITE} from 'src/assets/style
 import {messages} from 'src/utils/messages'
 import {SCREEN_HEIGHT, SCREEN_WIDTH} from 'src/assets/styles/style'
 import {SceneMap, TabBar, TabView} from 'react-native-tab-view'
-import Label from 'src/components/common/Label'
 import {project1} from 'src/utils/sampleData'
 import Spinner from 'react-native-spinkit'
 import ProjectOverview from 'src/components/home/project/ProjectOverview'
@@ -40,7 +39,30 @@ const FirstRoute = (projects, navigation, loading) => (
 
 )
 const SecondRoute = (projects, navigation, loading) => (
-  loading ? <Label text={'loading'}/> : <View/>
+  !loading ? <ScrollView contentContainerStyle={{paddingTop: 20, alignItems: 'center'}}>
+      {projects && projects.map((item, index) => (
+        <ProjectOverview projectPicture={project1.projectPicture} type={messages.NON_CASH}
+                         projectName={item.name}
+                         charityName={item.charity.name}
+                         projectStartDate={item.startDate}
+                         projectEndDate={item.endDate}
+                         onPress={() => {
+                           navigation.navigate({
+                             routeName: 'ProjectProfile',
+                             params: {
+                               project: item,
+                               type: messages.NON_CASH,
+                               projectPicture: project1.projectPicture,
+                               canRate: true
+                             },
+                           })
+                         }}/>
+      ))}
+    </ScrollView> :
+    <View style={{justifyContent: 'center', width: SCREEN_WIDTH, height: SCREEN_HEIGHT / 2, alignSelf: 'center'}}>
+      <Spinner style={{alignSelf: 'center'}} isVisible={loading} color={COLOR_BLUE_DEFAULT}
+               type={'Circle'}/>
+    </View>
 )
 
 class VolunteerProjectsPage extends React.Component<Props, State> {
@@ -58,7 +80,10 @@ class VolunteerProjectsPage extends React.Component<Props, State> {
     this.setState({loading: true}, () => {
       this.props.getVolunteerNonCashProjects()
         .then(() => {
-          this.setState({loading: false})
+          this.props.getVolunteerCashProjects()
+            .then(() => {
+              this.setState({loading: false})
+            })
         })
     })
   }
@@ -72,7 +97,7 @@ class VolunteerProjectsPage extends React.Component<Props, State> {
           navigationState={this.state}
           renderScene={SceneMap({
             first: () => FirstRoute(this.props.volunteerNonCashProjects, this.props.navigation, this.state.loading),
-            second: () => SecondRoute(this.props.cashProjects, this.props.navigation, this.state.loading),
+            second: () => SecondRoute(this.props.volunteerCashProjects, this.props.navigation, this.state.loading),
           })}
           onIndexChange={index => this.setState({index})}
           initialLayout={{width: SCREEN_WIDTH}}

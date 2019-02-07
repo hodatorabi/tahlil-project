@@ -1,5 +1,5 @@
 import React from 'react'
-import {ScrollView, StyleSheet, View} from 'react-native'
+import {RefreshControl, ScrollView, StyleSheet, View} from 'react-native'
 import ProjectOverview from 'src/components/home/project/ProjectOverview'
 import HomeHeader from 'src/components/home/HomeHeader'
 import {project1} from 'src/utils/sampleData'
@@ -9,8 +9,13 @@ import {SceneMap, TabBar, TabView} from 'react-native-tab-view'
 import {SCREEN_WIDTH} from '../../assets/styles/style'
 import {COLOR_BLUE_DEFAULT, COLOR_DARK_BLUE, COLOR_WHITE} from '../../assets/styles/colors'
 
-const FirstRoute = (projects, navigation) => (
-  <ScrollView contentContainerStyle={{paddingTop: 20, alignItems: 'center'}}>
+const FirstRoute = (projects, navigation, onRefresh) => (
+  <ScrollView contentContainerStyle={{paddingTop: 20, alignItems: 'center'}}
+              refreshControl={
+                <RefreshControl
+                  onRefresh={onRefresh}
+                />
+              }>
     {projects && projects.map((item, index) => (
       <ProjectOverview projectPicture={project1.projectPicture} type={messages.NON_CASH}
                        projectName={item.name}
@@ -30,8 +35,13 @@ const FirstRoute = (projects, navigation) => (
     ))}
   </ScrollView>
 )
-const SecondRoute = (projects, navigation) => (
-  <ScrollView contentContainerStyle={{paddingTop: 20, alignItems: 'center'}}>
+const SecondRoute = (projects, navigation, onRefresh) => (
+  <ScrollView contentContainerStyle={{paddingTop: 20, alignItems: 'center'}}
+              refreshControl={
+                <RefreshControl
+                  onRefresh={onRefresh}
+                />
+              }>
     {projects && projects.map((item, index) => (
       <ProjectOverview projectPicture={project1.projectPicture} type={messages.CASH}
                        projectName={item.name}
@@ -62,6 +72,11 @@ class Home extends React.Component<Props, State> {
     ],
   }
 
+  onRefresh = () => {
+    this.props.getNonCashProjects()
+    this.props.getCashProjects()
+  }
+
 
   render() {
     return (
@@ -70,8 +85,8 @@ class Home extends React.Component<Props, State> {
         <TabView
           navigationState={this.state}
           renderScene={SceneMap({
-            first: () => FirstRoute(this.props.nonCashProjects, this.props.navigation),
-            second: () => SecondRoute(this.props.cashProjects, this.props.navigation),
+            first: () => FirstRoute(this.props.nonCashProjects, this.props.navigation, this.onRefresh),
+            second: () => SecondRoute(this.props.cashProjects, this.props.navigation, this.onRefresh),
           })}
           onIndexChange={index => this.setState({index})}
           initialLayout={{width: SCREEN_WIDTH}}
