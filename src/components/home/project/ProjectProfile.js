@@ -25,12 +25,6 @@ class ProjectProfile extends React.Component<Props, void> {
 
   constructor(props) {
     super(props)
-
-    this.onSendFeedback = this.onSendFeedback.bind(this)
-  }
-
-  onSendFeedback = () => {
-
   }
 
   render() {
