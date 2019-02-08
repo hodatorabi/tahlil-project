@@ -33,7 +33,7 @@ const FirstRoute = (projects, navigation, loading) => (
       ))}
     </ScrollView> :
     <View style={{justifyContent: 'center', width: SCREEN_WIDTH, height: SCREEN_HEIGHT / 2, alignSelf: 'center'}}>
-      <Spinner style={{alignSelf: 'center'}} isVisible={loading} color={COLOR_BLUE_DEFAULT}
+      <Spinner style={{alignSelf: 'center'}} isVisible={true} color={COLOR_BLUE_DEFAULT}
                type={'Circle'}/>
     </View>
 
@@ -60,7 +60,7 @@ const SecondRoute = (projects, navigation, loading) => (
       ))}
     </ScrollView> :
     <View style={{justifyContent: 'center', width: SCREEN_WIDTH, height: SCREEN_HEIGHT / 2, alignSelf: 'center'}}>
-      <Spinner style={{alignSelf: 'center'}} isVisible={loading} color={COLOR_BLUE_DEFAULT}
+      <Spinner style={{alignSelf: 'center'}} isVisible={true} color={COLOR_BLUE_DEFAULT}
                type={'Circle'}/>
     </View>
 )

@@ -1,5 +1,5 @@
 import React from 'react'
-import {Image, Keyboard, ScrollView, StyleSheet, View} from 'react-native'
+import {Image, Keyboard, ScrollView, StyleSheet, ToastAndroid, View} from 'react-native'
 import CommonHeader from 'src/components/common/CommonHeader'
 import {SCREEN_HEIGHT, SCREEN_WIDTH} from 'src/assets/styles/style'
 import {COLOR_BLACK, COLOR_BLUE_DEFAULT, COLOR_DARK_GRAY, COLOR_LIGHT_GRAY, COLOR_WHITE} from 'src/assets/styles/colors'
@@ -12,13 +12,25 @@ import ProgressBar from 'react-native-progress/Bar'
 import InputMessagePopUp from 'src/components/common/popUps/InputMessagePopUp'
 import {booleanToGender} from '../../../utils/farsiUtils'
 import Projects from '../../../store/projects'
+import FeedbackPopup from 'src/components/common/popUps/FeedbackPopup'
 
 
 class ProjectProfile extends React.Component<Props, void> {
 
   state = {
     messagePopUpVisible: false,
-    amountPopUpVisible: false
+    amountPopUpVisible: false,
+    ratePopupVisible: false,
+  }
+
+  constructor(props) {
+    super(props)
+
+    this.onSendFeedback = this.onSendFeedback.bind(this)
+  }
+
+  onSendFeedback = () => {
+
   }
 
   render() {
@@ -29,7 +41,6 @@ class ProjectProfile extends React.Component<Props, void> {
     if (type === messages.NON_CASH) {
       project = this.props.nonCashProjects[projectId]
     } else {
-      console.log('fuck', projectId, this.props.cashProjects, this.props.cashProjects[projectId])
       project = this.props.cashProjects[projectId]
     }
     const projectPicture = this.props.navigation.getParam('projectPicture', null)
@@ -49,11 +60,12 @@ class ProjectProfile extends React.Component<Props, void> {
                        text={project.name}/>
               </View>
               <Label style={{alignSelf: 'flex-end'}} textStyle={{color: COLOR_BLACK, fontSize: 18}}
-                     text={project.charity.name}/>
+                     text={'خیریه ' + project.charity.name}/>
             </View>
             {type === messages.CASH &&
             <View style={style.projectCompletionStyle}>
-              <ProgressBar progress={1 - fundedAmount / neededAmount} width={0.8 * SCREEN_WIDTH} color={COLOR_LIGHT_GRAY}
+              <ProgressBar progress={1 - fundedAmount / neededAmount} width={0.8 * SCREEN_WIDTH}
+                           color={COLOR_LIGHT_GRAY}
                            borderColor={COLOR_WHITE} unfilledColor={COLOR_BLUE_DEFAULT}/>
               <View style={style.projectBudgetInfo}>
                 <View style={{flexDirection: 'row'}}>
@@ -93,17 +105,19 @@ class ProjectProfile extends React.Component<Props, void> {
                             description={project.abilities}/>
           </View>}
 
-          {!canRate ? <CustomButton style={{width: 0.8 * SCREEN_WIDTH, height: 50}}
-                        label={type === messages.NON_CASH ? messages.SEND_REQUEST : messages.PAY}
+          <CustomButton style={{width: 0.8 * SCREEN_WIDTH, height: 50}}
+                        label={!canRate ? (type === messages.NON_CASH ? messages.SEND_REQUEST : messages.PAY) : messages.SEND_FEEDBACK}
                         labelStyle={{fontSize: 20}}
-                        onPress={type === messages.NON_CASH ? () => {
+                        onPress={!canRate ? (type === messages.NON_CASH ? () => {
                           this.setState({messagePopUpVisible: true})
                         } : () => {
                           this.setState({amountPopUpVisible: true})
-                        }}/> : null}
+                        }) : () => {
+                          this.setState({ratePopupVisible: true})
+                        }}/>
 
         </ScrollView>
-        <InputMessagePopUp visible={this.state.amountPopUpVisible}
+        {this.state.amountPopUpVisible && <InputMessagePopUp visible={this.state.amountPopUpVisible}
                            title={messages.PAY}
                            text={messages.ENTER_PAY_AMOUNT}
                            onSend={(amount) => {
@@ -116,8 +130,8 @@ class ProjectProfile extends React.Component<Props, void> {
                              Keyboard.dismiss()
                              this.setState({amountPopUpVisible: false})
                            }}
-        />
-        <InputMessagePopUp visible={this.state.messagePopUpVisible}
+        />}
+        {this.state.messagePopUpVisible && <InputMessagePopUp visible={this.state.messagePopUpVisible}
                            title={messages.SEND_REQUEST}
                            text={messages.REQUEST_MESSAGE}
                            onSend={(message) => {
@@ -129,7 +143,15 @@ class ProjectProfile extends React.Component<Props, void> {
                            onDismiss={() => {
                              Keyboard.dismiss()
                              this.setState({messagePopUpVisible: false})
-                           }}/>
+                           }}/>}
+        {this.state.ratePopupVisible && <FeedbackPopup visible={this.state.ratePopupVisible} onDismiss={() => this.setState({ratePopupVisible: false})}
+                       onSend={(message, rating) => {
+                         this.props.sendFeedbackToCharity(project.charity.id, message, rating)
+                           .catch((error) => {
+                             console.log('err send feedback for charity', error)
+                             ToastAndroid.show('بازخورد شما برای این خیریه قبلا قرستاده شده', ToastAndroid.SHORT)
+                           })
+                       }}/>}
       </View>
     )
   }
@@ -146,7 +168,7 @@ const style = StyleSheet.create({
   projectTopContainer: {
     backgroundColor: COLOR_WHITE,
     width: SCREEN_WIDTH,
-    paddingBottom: 20
+    paddingBottom: 20,
   },
   pictureStyle: {
     height: 0.3 * SCREEN_HEIGHT,
