@@ -31,9 +31,6 @@ const SecondRoute = () => (
 class CharityProfile extends React.Component<Props, State> {
 
   state = {
-    addAbilityPopUpVisible: false,
-    removeAbilityPopUpVisible: false,
-    itemToRemove: '',
     logoutPopup: false,
     index: 2,
     routes: [

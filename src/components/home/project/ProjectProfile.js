@@ -1,5 +1,5 @@
 import React from 'react'
-import {Image, Keyboard, ScrollView, StyleSheet, ToastAndroid, View} from 'react-native'
+import {Image, Keyboard, ScrollView, StyleSheet, ToastAndroid, TouchableOpacity, View} from 'react-native'
 import CommonHeader from 'src/components/common/CommonHeader'
 import {SCREEN_HEIGHT, SCREEN_WIDTH} from 'src/assets/styles/style'
 import {COLOR_BLACK, COLOR_BLUE_DEFAULT, COLOR_DARK_GRAY, COLOR_LIGHT_GRAY, COLOR_WHITE} from 'src/assets/styles/colors'
@@ -25,6 +25,24 @@ class ProjectProfile extends React.Component<Props, void> {
 
   constructor(props) {
     super(props)
+
+    this.onPressCharity = this.onPressCharity.bind(this)
+  }
+
+  onPressCharity = (id) => {
+    this.props.showCharityProfile(id)
+      .then((response) => {
+        console.log(response)
+        this.props.navigation.navigate({
+          routeName: 'CharityProfile',
+          params: {
+            charity: response,
+          },
+        })
+      })
+      .catch((error) => {
+        ToastAndroid.show('خطایی رخ داد.', ToastAndroid.SHORT)
+      })
   }
 
   render() {
@@ -53,8 +71,10 @@ class ProjectProfile extends React.Component<Props, void> {
                 <Label textStyle={{color: COLOR_BLUE_DEFAULT, fontFamily: 'IRANSansMobile_Bold', fontSize: 20}}
                        text={project.name}/>
               </View>
-              <Label style={{alignSelf: 'flex-end'}} textStyle={{color: COLOR_BLACK, fontSize: 18}}
-                     text={'خیریه ' + project.charity.name}/>
+              <TouchableOpacity onPress={() => this.onPressCharity(project.charity.id)}>
+                <Label style={{alignSelf: 'flex-end'}} textStyle={{color: COLOR_BLACK, fontSize: 18}}
+                       text={'خیریه ' + project.charity.name}/>
+              </TouchableOpacity>
             </View>
             {type === messages.CASH &&
             <View style={style.projectCompletionStyle}>
@@ -112,33 +132,34 @@ class ProjectProfile extends React.Component<Props, void> {
 
         </ScrollView>
         {this.state.amountPopUpVisible && <InputMessagePopUp visible={this.state.amountPopUpVisible}
-                           title={messages.PAY}
-                           text={messages.ENTER_PAY_AMOUNT}
-                           onSend={(amount) => {
-                             this.props.payProject(project.id, amount)
-                               .then(() => {
-                                 this.props.getCashProjects()
-                               })
-                           }}
-                           onDismiss={() => {
-                             Keyboard.dismiss()
-                             this.setState({amountPopUpVisible: false})
-                           }}
+                                                             title={messages.PAY}
+                                                             text={messages.ENTER_PAY_AMOUNT}
+                                                             onSend={(amount) => {
+                                                               this.props.payProject(project.id, amount)
+                                                                 .then(() => {
+                                                                   this.props.getCashProjects()
+                                                                 })
+                                                             }}
+                                                             onDismiss={() => {
+                                                               Keyboard.dismiss()
+                                                               this.setState({amountPopUpVisible: false})
+                                                             }}
         />}
         {this.state.messagePopUpVisible && <InputMessagePopUp visible={this.state.messagePopUpVisible}
-                           title={messages.SEND_REQUEST}
-                           text={messages.REQUEST_MESSAGE}
-                           onSend={(message) => {
-                             this.props.sendRequestToCharity(project.charity.id, project.id, message)
-                               .then(() => {
-                                 this.props.getOutgoingRequests()
-                               })
-                           }}
-                           onDismiss={() => {
-                             Keyboard.dismiss()
-                             this.setState({messagePopUpVisible: false})
-                           }}/>}
-        {this.state.ratePopupVisible && <FeedbackPopup visible={this.state.ratePopupVisible} onDismiss={() => this.setState({ratePopupVisible: false})}
+                                                              title={messages.SEND_REQUEST}
+                                                              text={messages.REQUEST_MESSAGE}
+                                                              onSend={(message) => {
+                                                                this.props.sendRequestToCharity(project.charity.id, project.id, message)
+                                                                  .then(() => {
+                                                                    this.props.getOutgoingRequests()
+                                                                  })
+                                                              }}
+                                                              onDismiss={() => {
+                                                                Keyboard.dismiss()
+                                                                this.setState({messagePopUpVisible: false})
+                                                              }}/>}
+        {this.state.ratePopupVisible &&
+        <FeedbackPopup visible={this.state.ratePopupVisible} onDismiss={() => this.setState({ratePopupVisible: false})}
                        onSend={(message, rating) => {
                          this.props.sendFeedbackToCharity(project.charity.id, message, rating)
                            .catch((error) => {

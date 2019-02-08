@@ -28,6 +28,7 @@ const projectsProvider = connect(
       rejectProjectRequest: (requestID, reason) => dispatch(actions.rejectProjectRequest(requestID, reason)),
       payProject: (requestId, amount) => dispatch(actions.payProject(requestId, amount)),
       sendFeedbackToCharity: (charityId, message, rating) => dispatch(actions.sendFeedbackToCharity(charityId, message, rating)),
+      showCharityProfile: (charityId) => dispatch(actions.showCharityProfile(charityId)),
 
       getCharityOutgoingRequests: () => dispatch(actions.getCharityOutgoingRequests()),
       getCharityIncomingRequests: () => dispatch(actions.getCharityIncomingRequests()),

@@ -156,6 +156,13 @@ const actions = {
         {comment: message, rating: rating},)
     }
   },
+  showCharityProfile: (charityId) => {
+    return {
+      types: actionTypes.SHOW_CHARITY_PROFILE,
+      shouldCallAPI: (state) => state.auth.isLoggedIn,
+      callAPI: (state) => Request.get(state, Constants.charityProfileUrl + charityId + '/')
+    }
+  }
 
 }
 
