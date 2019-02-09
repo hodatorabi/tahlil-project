@@ -42,6 +42,8 @@ const projectsProvider = connect(
       getVolunteerNonCashProjects: () => dispatch(actions.getVolunteerNonCashProjects()),
       getVolunteerCashProjects: () => dispatch(actions.getVolunteerCashProjects()),
 
+      createNonCashProject: (startDate, endDate, name, description, needMale, needFemale, minAge, maxAge, city, abilities) => dispatch(actions.createNonCashProject(startDate, endDate, name, description, needMale, needFemale, minAge, maxAge, city, abilities)),
+
     }
   },
 )

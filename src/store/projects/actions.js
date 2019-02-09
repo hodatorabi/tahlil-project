@@ -8,14 +8,14 @@ const actions = {
     return {
       types: actionTypes.GET_ALL_NON_CASH_PROJECTS,
       shouldCallAPI: (state) => state.auth.isLoggedIn,
-      callAPI: (state) => Request.get(state, Constants.getNonCashProjects)
+      callAPI: (state) => Request.get(state, Constants.getNonCashProjects),
     }
   },
   getCashProjects: () => {
     return {
       types: actionTypes.GET_ALL_CASH_PROJECTS,
       shouldCallAPI: (state) => state.auth.isLoggedIn,
-      callAPI: (state) => Request.get(state, Constants.getCashProjects)
+      callAPI: (state) => Request.get(state, Constants.getCashProjects),
     }
   },
   sendRequestToCharity: (charityID, projectID, message) => {
@@ -23,28 +23,28 @@ const actions = {
       types: actionTypes.SEND_REQUEST_TO_CHARITY,
       shouldCallAPI: (state) => state.auth.isLoggedIn,
       callAPI: (state) => Request.post(state, Constants.requestUrl + charityID + '/' + projectID + '/', {},
-        {message},)
+        {message},),
     }
   },
   getOutgoingRequests: () => {
     return {
       types: actionTypes.GET_OUTGOING_REQUESTS,
       shouldCallAPI: (state) => state.auth.isLoggedIn,
-      callAPI: (state) => Request.get(state, Constants.outgoingRequestsUrl)
+      callAPI: (state) => Request.get(state, Constants.outgoingRequestsUrl),
     }
   },
   getIncomingRequests: () => {
     return {
       types: actionTypes.GET_INCOMING_REQUESTS,
       shouldCallAPI: (state) => state.auth.isLoggedIn,
-      callAPI: (state) => Request.get(state, Constants.incomingRequestsUrl)
+      callAPI: (state) => Request.get(state, Constants.incomingRequestsUrl),
     }
   },
   acceptProjectRequest: (requestID) => {
     return {
       types: actionTypes.ACCEPT_PROJECT_REQUEST,
       shouldCallAPI: (state) => state.auth.isLoggedIn,
-      callAPI: (state) => Request.patch(state, Constants.requestResponseUrl + requestID + '/', {}, {accepted: true})
+      callAPI: (state) => Request.patch(state, Constants.requestResponseUrl + requestID + '/', {}, {accepted: true}),
     }
   },
   rejectProjectRequest: (requestID, reason) => {
@@ -53,8 +53,8 @@ const actions = {
       shouldCallAPI: (state) => state.auth.isLoggedIn,
       callAPI: (state) => Request.patch(state, Constants.requestResponseUrl + requestID + '/', {}, {
         accepted: false,
-        rejectionReason: reason
-      })
+        rejectionReason: reason,
+      }),
     }
   },
   payProject: (projectID, amount) => {
@@ -62,8 +62,8 @@ const actions = {
       types: actionTypes.PAY_PROJECT,
       shouldCallAPI: (state) => state.auth.isLoggedIn,
       callAPI: (state) => Request.post(state, Constants.payProjectUrl + projectID + '/', {}, {
-        amount
-      })
+        amount,
+      }),
     }
   },
 
@@ -71,21 +71,21 @@ const actions = {
     return {
       types: actionTypes.GET_CHARITY_OUTGOING_REQUESTS,
       shouldCallAPI: (state) => state.auth.isLoggedIn,
-      callAPI: (state) => Request.get(state, Constants.charityBaseUrl + Constants.outgoingRequestsUrl)
+      callAPI: (state) => Request.get(state, Constants.charityBaseUrl + Constants.outgoingRequestsUrl),
     }
   },
   getCharityIncomingRequests: () => {
     return {
       types: actionTypes.GET_CHARITY_INCOMING_REQUESTS,
       shouldCallAPI: (state) => state.auth.isLoggedIn,
-      callAPI: (state) => Request.get(state, Constants.charityBaseUrl + Constants.incomingRequestsUrl)
+      callAPI: (state) => Request.get(state, Constants.charityBaseUrl + Constants.incomingRequestsUrl),
     }
   },
   acceptVolunteerRequest: (requestID) => {
     return {
       types: actionTypes.ACCEPT_VOLUNTEER_REQUEST,
       shouldCallAPI: (state) => state.auth.isLoggedIn,
-      callAPI: (state) => Request.patch(state, Constants.charityBaseUrl + Constants.requestResponseUrl + requestID + '/', {}, {accepted: true})
+      callAPI: (state) => Request.patch(state, Constants.charityBaseUrl + Constants.requestResponseUrl + requestID + '/', {}, {accepted: true}),
     }
   },
   rejectVolunteerRequest: (requestID, reason) => {
@@ -93,29 +93,29 @@ const actions = {
       types: actionTypes.REJECT_VOLUNTEER_REQUEST,
       shouldCallAPI: (state) => state.auth.isLoggedIn,
       callAPI: (state) => Request.patch(state, Constants.charityBaseUrl + Constants.requestResponseUrl + requestID + '/', {}, {
-        accepted: false, rejectionReason: reason
-      })
+        accepted: false, rejectionReason: reason,
+      }),
     }
   },
   getCharityNonCashProjects: () => {
     return {
       types: actionTypes.GET_CHARITY_NON_CASH_PROJECTS,
       shouldCallAPI: (state) => state.auth.isLoggedIn,
-      callAPI: (state) => Request.get(state, Constants.charityBaseUrl + Constants.getNonCashProjects)
+      callAPI: (state) => Request.get(state, Constants.charityBaseUrl + Constants.getNonCashProjects),
     }
   },
   getCharityCashProjects: () => {
     return {
       types: actionTypes.GET_CHARITY_CASH_PROJECTS,
       shouldCallAPI: (state) => state.auth.isLoggedIn,
-      callAPI: (state) => Request.get(state, Constants.charityBaseUrl + Constants.getCashProjects)
+      callAPI: (state) => Request.get(state, Constants.charityBaseUrl + Constants.getCashProjects),
     }
   },
   getAllVolunteers: () => {
     return {
       types: actionTypes.GET_ALL_VOLUNTEERS,
       shouldCallAPI: (state) => state.auth.isLoggedIn,
-      callAPI: (state) => Request.get(state, Constants.charityBaseUrl + Constants.getVolunteersUrl)
+      callAPI: (state) => Request.get(state, Constants.charityBaseUrl + Constants.getVolunteersUrl),
     }
   },
   sendRequestToVolunteer: (projectId, volunteerId, message) => {
@@ -123,7 +123,7 @@ const actions = {
       types: actionTypes.SEND_REQUEST_TO_VOLUNTEER,
       shouldCallAPI: (state) => state.auth.isLoggedIn,
       callAPI: (state) => Request.post(state, Constants.charityBaseUrl + Constants.getNonCashProjects + projectId + '/' + 'request/' + volunteerId + '/', {},
-        {message},)
+        {message},),
     }
   },
   sendFeedbackToVolunteer: (volunteerId, message, rating) => {
@@ -131,21 +131,21 @@ const actions = {
       types: actionTypes.SEND_FEEDBACK_TO_VOLUNTEER,
       shouldCallAPI: (state) => state.auth.isLoggedIn,
       callAPI: (state) => Request.post(state, Constants.charityBaseUrl + Constants.sendFeedbackUrl + volunteerId + '/', {},
-        {comment: message, rating: rating},)
+        {comment: message, rating: rating},),
     }
   },
   getVolunteerNonCashProjects: () => {
     return {
       types: actionTypes.GET_VOLUNTEER_NON_CASH_PROJECTS,
       shouldCallAPI: (state) => state.auth.isLoggedIn,
-      callAPI: (state) => Request.get(state, Constants.myNonCashProjectsUrl)
+      callAPI: (state) => Request.get(state, Constants.myNonCashProjectsUrl),
     }
   },
   getVolunteerCashProjects: () => {
     return {
       types: actionTypes.GET_VOLUNTEER_CASH_PROJECTS,
       shouldCallAPI: (state) => state.auth.isLoggedIn,
-      callAPI: (state) => Request.get(state, Constants.myCashProjectsUrl)
+      callAPI: (state) => Request.get(state, Constants.myCashProjectsUrl),
     }
   },
   sendFeedbackToCharity: (charityId, message, rating) => {
@@ -153,16 +153,25 @@ const actions = {
       types: actionTypes.SEND_FEEDBACK_TO_CHARITY,
       shouldCallAPI: (state) => state.auth.isLoggedIn,
       callAPI: (state) => Request.post(state, Constants.giveFeedbackUrl + charityId + '/', {},
-        {comment: message, rating: rating},)
+        {comment: message, rating: rating},),
     }
   },
   showCharityProfile: (charityId) => {
     return {
       types: actionTypes.SHOW_CHARITY_PROFILE,
       shouldCallAPI: (state) => state.auth.isLoggedIn,
-      callAPI: (state) => Request.get(state, Constants.charityProfileUrl + charityId + '/')
+      callAPI: (state) => Request.get(state, Constants.charityProfileUrl + charityId + '/'),
     }
-  }
+  },
+  createNonCashProject: (startDate, endDate, name, description, needMale, needFemale, minAge, maxAge, city, abilities) => {
+    console.log(startDate, endDate, name, description, needMale, needFemale, minAge, maxAge, city, abilities)
+    return {
+      types: actionTypes.CREATE_NON_CASH_PROJECT,
+      shouldCallAPI: (state) => state.auth.isLoggedIn,
+      callAPI: (state) => Request.post(state, Constants.charityBaseUrl + Constants.createProject, {},
+        {startDate, endDate, name, description, needMale, needFemale, minAge, maxAge, city, abilities}),
+    }
+  },
 
 }
 

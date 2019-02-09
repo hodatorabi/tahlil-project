@@ -21,5 +21,7 @@ export const PROJECT_SAMPLE_PIC6 = require('src/assets/images/projectSamplePhoto
 export const PROJECT_SAMPLE_PIC7 = require('src/assets/images/projectSamplePhoto7.jpg')
 export const CHARITY_PROFILE_PIC = require('src/assets/images/charityProfilePic.png')
 export const ICON_LOG_OUT = require('src/assets/images/logout.png')
+export const ICON_CALENDAR = require('src/assets/images/calendar.png')
+
 export const ICON_EDIT_PROFILE = require('src/assets/images/editProfile.png')
 export const LOADING_MOTION = require('src/assets/motions/loading')

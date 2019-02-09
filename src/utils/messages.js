@@ -44,7 +44,7 @@ export const messages = {
   MY_NON_CASH_PROJECTS: 'پروژه‌های غیر‌نقدی من',
   MY_PROJECTS: 'پروژه‌های من',
   SHOW: 'مشاهده',
-  EXPIRATION_DATE: 'تاریخ انقضا: {}',
+  EXPIRATION_DATE: 'تاریخ پایان: {}',
   CREATION_DATE: 'تاریخ ایجاد درخواست: {}',
 
   CREATE_NEW_PROJECT: 'ایجاد پروژه',
@@ -60,6 +60,7 @@ export const messages = {
   VOLUNTEER_PROFILE: 'پروفایل داوطلب',
   PROJECT_NAME: 'نام پروژه: ',
   PROJECT_DESCRIPTION: 'توضیحات پروژه: ',
+  PROJECT_END: 'تاریخ پایان: ',
 
   SEND_FEEDBACK: 'ارسال بازخورد',
   SEND_REQUEST: 'ارسال درخواست',
@@ -77,6 +78,7 @@ export const messages = {
   SEND: 'ارسال',
   VERIFY: 'تایید',
   OK: 'باشه',
+  CONTINUE: 'ادامه',
 
   SEARCH: 'جستجو',
   ADD_FILTER: 'اضافه کردن فیلتر',
