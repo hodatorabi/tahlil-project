@@ -8,7 +8,7 @@ class ButtonPlus extends React.Component<Props, void> {
   render() {
     return (
       <TouchableOpacity onPress={this.props.onPress} style={this.props.containerStyle}>
-        <Image source={ICON_PLUS} style={[{width: 30, height: 30}, this.props.style]}/>
+        <Image tintColor={this.props.tintColor} source={ICON_PLUS} style={[{width: 30, height: 30}, this.props.style]}/>
       </TouchableOpacity>
     )
   }

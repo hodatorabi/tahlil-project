@@ -2,13 +2,7 @@ import React from 'react'
 import {Image, ScrollView, StyleSheet, TouchableOpacity, View} from 'react-native'
 import CommonHeader from 'src/components/common/CommonHeader'
 import {SCREEN_HEIGHT, SCREEN_WIDTH} from 'src/assets/styles/style'
-import {
-  COLOR_BLACK,
-  COLOR_BLUE_DEFAULT, COLOR_BLUE_TRANSPARENT,
-  COLOR_DARK_GRAY, COLOR_LIGHT_GRAY,
-  COLOR_MEDIUM_BLUE, COLOR_ORANGE,
-  COLOR_WHITE
-} from 'src/assets/styles/colors'
+import {COLOR_BLACK, COLOR_BLUE_DEFAULT, COLOR_DARK_GRAY, COLOR_LIGHT_GRAY, COLOR_WHITE} from 'src/assets/styles/colors'
 import Label from 'src/components/common/Label'
 import {messages} from 'src/utils/messages'
 import format from 'string-format'

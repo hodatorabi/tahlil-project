@@ -1,7 +1,7 @@
 import React from 'react'
 import {Keyboard, StyleSheet, Text, View} from 'react-native'
 import {commonHeaderHeight, SCREEN_WIDTH} from 'src/assets/styles/style'
-import {COLOR_DARK_BLUE, COLOR_WHITE} from 'src/assets/styles/colors'
+import {COLOR_DARK_BLUE, COLOR_GRAY, COLOR_WHITE} from 'src/assets/styles/colors'
 import Back from 'src/components/common/Back'
 
 
@@ -30,6 +30,8 @@ const style = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: COLOR_WHITE,
+    borderBottomWidth: 0.5,
+    borderBottomColor: COLOR_GRAY,
   },
   commonHeaderTitle: {
     fontSize: 15,

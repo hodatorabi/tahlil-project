@@ -48,6 +48,8 @@ export const messages = {
   CREATION_DATE: 'تاریخ ایجاد درخواست: {}',
 
   CREATE_NEW_PROJECT: 'ایجاد پروژه',
+  CREATE_NON_CASH: 'ایجاد پروژه غیرنقدی',
+  CREATE_CASH: 'ایجاد پروژه نقدی',
 
   VOLUNTEER_AGE: 'محدوده سنی مورد نیاز: ',
   VOLUNTEER_GENDER: 'جنسیت متقاضیان: ',
@@ -56,6 +58,8 @@ export const messages = {
   NUMBER_OF_VOLUNTEERS: 'تعداد داوطلبین: ',
   VOLUNTEERS: 'داوطلبین',
   VOLUNTEER_PROFILE: 'پروفایل داوطلب',
+  PROJECT_NAME: 'نام پروژه: ',
+  PROJECT_DESCRIPTION: 'توضیحات پروژه: ',
 
   SEND_FEEDBACK: 'ارسال بازخورد',
   SEND_REQUEST: 'ارسال درخواست',
