@@ -12,7 +12,7 @@ class CharityHomeHeader extends React.PureComponent<Props> {
     return (
       <View style={[style.headerWithLogo, this.props.style]}>
         <TouchableOpacity
-          style={style.myProjectsLabelContainer}>
+          style={style.myProjectsLabelContainer} onPress={this.props.onPressNewProject}>
           <Label text={messages.CREATE_NEW_PROJECT} textStyle={{fontSize: 16, color: COLOR_BLUE_DEFAULT}}/>
         </TouchableOpacity>
         <Image source={LOGO_HEADER} style={style.headerLogo}/>

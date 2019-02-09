@@ -1,5 +1,5 @@
 import React from 'react'
-import {RefreshControl, ScrollView, StyleSheet, ToastAndroid, View} from 'react-native'
+import {RefreshControl, ScrollView, StyleSheet, View} from 'react-native'
 import {SceneMap, TabBar, TabView} from 'react-native-tab-view'
 import CharityHomeHeader from 'src/components/charity/home/CharityHomeHeader'
 import {COLOR_BLUE_DEFAULT, COLOR_DARK_BLUE, COLOR_WHITE} from 'src/assets/styles/colors'
@@ -8,6 +8,7 @@ import Projects from 'src/store/projects'
 import {messages} from 'src/utils/messages'
 import {project1} from 'src/utils/sampleData'
 import CharityProjectOverview from 'src/components/charity/home/project/CharityProjectOverview'
+import ProjectTypePopup from 'src/components/common/popUps/ProjectTypePopup'
 
 const FirstRoute = (projects, navigation, refreshing, onRefresh) => (
   <ScrollView contentContainerStyle={{paddingTop: 20, alignItems: 'center'}}
@@ -30,7 +31,7 @@ const FirstRoute = (projects, navigation, refreshing, onRefresh) => (
                                   params: {
                                     project: item,
                                     type: messages.NON_CASH,
-                                    projectPicture: project1.projectPicture
+                                    projectPicture: project1.projectPicture,
                                   },
                                 })
                               }}/>
@@ -58,7 +59,7 @@ const SecondRoute = (projects, navigation, refreshing, onRefresh) => (
                                   params: {
                                     project: item,
                                     type: messages.CASH,
-                                    projectPicture: project1.projectPicture
+                                    projectPicture: project1.projectPicture,
                                   },
                                 })
                               }}/>
@@ -71,6 +72,7 @@ class CharityHome extends React.Component<Props, State> {
   state = {
     refreshing: false,
     cashRefreshing: false,
+    newProjectPopupVisible: false,
     index: 0,
     routes: [
       {key: 'first', title: messages.MY_NON_CASH_PROJECTS},
@@ -83,6 +85,7 @@ class CharityHome extends React.Component<Props, State> {
 
     this.onRefresh = this.onRefresh.bind(this)
     this.onCashRefresh = this.onCashRefresh.bind(this)
+    this.navigateToNewProject = this.navigateToNewProject.bind(this)
   }
 
   componentDidMount(): void {
@@ -103,10 +106,21 @@ class CharityHome extends React.Component<Props, State> {
       })
   }
 
+  navigateToNewProject(type) {
+    if (type === 0) {
+      this.setState({newProjectPopupVisible: false})
+      this.props.navigation.navigate('NewNonCashProject')
+    } else if (type === 1) {
+      this.setState({newProjectPopupVisible: false})
+      this.props.navigation.navigate('NewCashProject')
+    }
+  }
+
   render() {
     return (
       <View style={{justifyContent: 'flex-start', flex: 1}}>
-        <CharityHomeHeader navigation={this.props.navigation}/>
+        <CharityHomeHeader onPressNewProject={() => this.setState({newProjectPopupVisible: true})}
+                           navigation={this.props.navigation}/>
         <TabView
           navigationState={this.state}
           renderScene={SceneMap({
@@ -124,6 +138,9 @@ class CharityHome extends React.Component<Props, State> {
             />
           }
         />
+        <ProjectTypePopup visible={this.state.newProjectPopupVisible} verifyText={'نوع پروژه موردنظر را انتخاب کنید'}
+                          onDismiss={() => this.setState({newProjectPopupVisible: false})}
+                          onVerify={(type) => this.navigateToNewProject(type)}/>
       </View>
     )
   }

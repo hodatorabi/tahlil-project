@@ -13,6 +13,8 @@ import VolunteerProfile from 'src/components/charity/home/volunteer/VolunteerPro
 import VolunteersListPage from 'src/components/charity/home/volunteer/VolunteersListPage'
 import VolunteerProjectsPage from 'src/components/home/project/VolunteerProjectsPage'
 import CharityProfile from 'src/components/home/charity/CharityProfile'
+import NewNonCashProject from 'src/components/charity/home/project/newProject/NewNonCashProject'
+import NewCashProject from 'src/components/charity/home/project/newProject/NewCashProject'
 
 
 const MainNavigator = createStackNavigator(
@@ -31,6 +33,8 @@ const MainNavigator = createStackNavigator(
     VolunteersListPage: {screen: VolunteersListPage},
     VolunteerProjectsPage: {screen: VolunteerProjectsPage},
     CharityProfile: {screen: CharityProfile},
+    NewNonCashProject: {screen: NewNonCashProject},
+    NewCashProject: {screen: NewCashProject},
   },
   {
     initialRouteName: 'Launch',
