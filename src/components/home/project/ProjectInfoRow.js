@@ -19,14 +19,15 @@ class ProjectInfoRow extends React.Component<Props, void> {
           <Text style={style.textStyle}>{this.props.title}</Text>
           <View style={style.bulletStyle}/>
         </View>
-        {this.props.ability && <View style={{flexDirection: 'row', justifyContent: 'flex-end'}}>
+        {this.props.ability &&
+        <View style={{flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'flex-end'}}>
           {
             this.props.description.map((i) => {
               return (
                 <Text style={[style.textStyle, {
                   color: COLOR_BLUE_DEFAULT,
                   fontFamily: 'IRANSansMobile_Bold',
-                }]}>{this.props.description[0] === i ? abilityIDToName(i, this.props.abilities) : abilityIDToName(i, this.props.abilities) + ' - '}</Text>
+                }]}>{abilityIDToName(i, this.props.abilities)}</Text>
               )
             })
           }
