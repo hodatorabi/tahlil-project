@@ -5,7 +5,7 @@ import Label from 'src/components/common/Label'
 import TimeSlotItem from 'src/components/profile/schedule/TimeSlotItem'
 import {toWeekDay} from 'src/utils/farsiUtils'
 import {COLOR_DARK_BLUE, COLOR_WHITE} from 'src/assets/styles/colors'
-import {SCREEN_HEIGHT} from 'src/assets/styles/style'
+import {SCREEN_HEIGHT, SCREEN_WIDTH} from 'src/assets/styles/style'
 
 const weekDay = [5, 6, 0, 1, 2, 3, 4]
 
@@ -16,6 +16,10 @@ class Schedule extends React.Component<Props, State> {
 
     this.onAddSlot = this.onAddSlot.bind(this)
     this.onRemoveSlot = this.onRemoveSlot.bind(this)
+  }
+
+  componentDidMount() {
+    console.log(this.props.volunteerTimeSlots)
   }
 
   onAddSlot = (id) => {
@@ -34,7 +38,7 @@ class Schedule extends React.Component<Props, State> {
 
   render() {
     return (
-      <View style={{flex: 1}}>
+      <View style={{flex: 1, alignItems: 'center'}}>
         <ScrollView contentContainerStyle={{paddingTop: 0.02 * SCREEN_HEIGHT}}>
           {weekDay.map((item, index) => (
             <View style={style.container}>
@@ -68,16 +72,20 @@ export default Auth.providers.auth(Schedule)
 const style = StyleSheet.create({
   container: {
     backgroundColor: COLOR_WHITE,
-    height: 0.33 * SCREEN_HEIGHT,
     paddingVertical: 10,
+    borderRadius: 15,
+    marginBottom: 15,
+    width: 0.95 * SCREEN_WIDTH,
+    alignItems: 'center',
   },
   textStyle: {
-    fontSize: 30,
+    fontSize: 25,
     color: COLOR_DARK_BLUE,
     fontFamily: 'IRANSansMobile_Bold',
   },
   textContainerStyle: {
     alignSelf: 'flex-end', marginRight: 30,
+    marginBottom: 10,
   },
   scrollStyle: {
     alignItems: 'center',

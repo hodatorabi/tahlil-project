@@ -1,11 +1,13 @@
 import React from 'react'
 import {StyleSheet, View} from 'react-native'
 import {SCREEN_HEIGHT, SCREEN_WIDTH} from 'src/assets/styles/style'
-import {COLOR_BLUE_DEFAULT, COLOR_GRAY} from 'src/assets/styles/colors'
+import {
+  COLOR_BLACK, COLOR_BLUE_DEFAULT, COLOR_BLUE_TRANSPARENT, COLOR_DARK, COLOR_DEFAULT_ORANGE, COLOR_MEDIUM_BLUE,
+  COLOR_ORANGE_TRANSPARENT, COLOR_WHITE,
+} from 'src/assets/styles/colors'
 import Label from 'src/components/common/Label'
-import ButtonPlus from 'src/components/common/Buttons/ButtonPlus'
 import {toTime} from 'src/utils/farsiUtils'
-import ButtonAccept from 'src/components/common/Buttons/ButtonAccept'
+import AvailabilityButton from 'src/components/common/Buttons/AvailabilityButton'
 
 
 class TimeSlotItem extends React.Component<Props, State> {
@@ -13,18 +15,27 @@ class TimeSlotItem extends React.Component<Props, State> {
   render() {
     return (
       <View style={{marginHorizontal: 8}}>
-        <View style={style.timeSlotContainer}>
-          <Label text={toTime(this.props.slot.time)} textStyle={style.timeTextStyle}/>
-          <Label style={{
-            marginTop: 10,
-          }}
-                 text={this.props.slot.isAvailable ? 'آزاد' : (this.props.slot.upcomingProject ? this.props.slot.upcomingProject : '')}/>
+        <View style={[style.timeSlotContainer, {
+          backgroundColor: this.props.slot.isAvailable ? (this.props.slot.upcomingProject == null ? COLOR_BLUE_TRANSPARENT : COLOR_ORANGE_TRANSPARENT) : COLOR_WHITE,
+          borderColor: this.props.slot.isAvailable ? (this.props.slot.upcomingProject == null ? COLOR_BLUE_DEFAULT : COLOR_DEFAULT_ORANGE) : COLOR_MEDIUM_BLUE,
+        }]}>
+          <View style={{
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            width: '85%',
+          }}>
+            <AvailabilityButton
+              onPress={this.props.slot.isAvailable ? (this.props.slot.upcomingProject == null ? this.props.onRemovePress : null) : this.props.onAddPress}
+              color={this.props.slot.isAvailable ? (this.props.slot.upcomingProject == null ? COLOR_BLUE_DEFAULT : COLOR_DEFAULT_ORANGE) : COLOR_MEDIUM_BLUE}/>
+
+            <Label text={toTime(this.props.slot.time)}
+                   textStyle={[style.timeTextStyle, {color: this.props.slot.isAvailable ? (this.props.slot.upcomingProject == null ? COLOR_BLUE_DEFAULT : COLOR_DEFAULT_ORANGE) : COLOR_MEDIUM_BLUE,}]}/>
+          </View>
+          <Label style={{marginTop: 10,}}
+                 textStyle={{fontSize: 12, color: COLOR_DARK, fontFamily: 'IRANSansMobile_Bold'}}
+                 text={!this.props.slot.isAvailable ? '' : (this.props.slot.upcomingProject ? this.props.slot.upcomingProject.name : '')}/>
         </View>
-        {this.props.slot.isAvailable ?
-          <ButtonAccept onPress={this.props.slot.upcomingProject == null ? this.props.onRemovePress : null}
-                        style={style.buttonContainerStyle}/> :
-          <ButtonPlus onPress={this.props.onAddPress}
-                      containerStyle={style.buttonContainerStyle} style={style.buttonStyle}/>}
       </View>
     )
   }
@@ -35,15 +46,16 @@ export default TimeSlotItem
 const style = StyleSheet.create({
   timeSlotContainer: {
     width: 0.31 * SCREEN_WIDTH,
-    height: 0.18 * SCREEN_HEIGHT,
+    height: 0.12 * SCREEN_HEIGHT,
     borderRadius: 10,
     alignItems: 'center',
-    paddingVertical: 5,
-    borderColor: COLOR_GRAY,
-    borderWidth: 1
+    paddingTop: 5,
+    paddingBottom: 10,
+    borderWidth: 1,
   },
   timeTextStyle: {
-    fontSize: 22, color: COLOR_BLUE_DEFAULT, fontFamily: 'IRANSansMobile_Bold',
+    fontSize: 18, color: COLOR_BLACK, fontFamily: 'IRANSansMobile_Bold',
+    textAlign: 'right',
   },
   buttonContainerStyle: {
     position: 'absolute',
