@@ -85,6 +85,7 @@ export const messages = {
 
   CHARITY_NAME_T: 'نام موسسه: ',
   ADDRESS: 'آدرس: ',
+  ADDRESS_T: 'آدرس',
   OTHER_INFO: 'سوابق و اطلاعات دیگر',
   CHARITY_INFO: 'مشخصات موسسه',
 

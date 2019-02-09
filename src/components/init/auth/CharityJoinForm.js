@@ -8,6 +8,10 @@ import CustomInput from 'src/components/common/CustomInput'
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view'
 import CustomButton from 'src/components/common/Buttons/CustomButton'
 import AgreementCheckBox from 'src/components/common/AgreementCheckBox'
+import Auth from 'src/store/auth'
+import NavigationService from 'src/utils/navigationService'
+import CharityMainTabNavigator from 'src/navigators/CharityMainTabNavigator'
+import Projects from 'src/store/projects'
 
 class CharityJoinForm extends React.Component<Props, State> {
 
@@ -18,6 +22,9 @@ class CharityJoinForm extends React.Component<Props, State> {
       password: '',
       confirmPass: '',
       charityName: '',
+      charityPhoneNumber: '',
+      charityAddress: '',
+      charityOtherInfo: '',
       errorMessage: ' ',
       checked: false,
     }
@@ -26,6 +33,9 @@ class CharityJoinForm extends React.Component<Props, State> {
     this.onUsernameChange = this.onUsernameChange.bind(this)
     this.onConfirmPasswordChange = this.onConfirmPasswordChange.bind(this)
     this.onCharityNameChange = this.onCharityNameChange.bind(this)
+    this.onCharityPhoneNumberChange = this.onCharityPhoneNumberChange.bind(this)
+    this.onCharityAddressChange = this.onCharityAddressChange.bind(this)
+    this.onCharityOtherInfoChange = this.onCharityOtherInfoChange.bind(this)
     this.onCheckBoxChange = this.onCheckBoxChange.bind(this)
     this.onLogin = this.onLogin.bind(this)
   }
@@ -46,6 +56,18 @@ class CharityJoinForm extends React.Component<Props, State> {
     this.setState({charityName: value})
   }
 
+  onCharityPhoneNumberChange(value) {
+    this.setState({charityPhoneNumber: value})
+  }
+
+  onCharityAddressChange(value) {
+    this.setState({charityAddress: value})
+  }
+
+  onCharityOtherInfoChange(value) {
+    this.setState({charityOtherInfo: value})
+  }
+
   onCheckBoxChange() {
     this.setState((prevState) => ({
       checked: !prevState.checked,
@@ -59,6 +81,25 @@ class CharityJoinForm extends React.Component<Props, State> {
       this.setState({errorMessage: 'تکرار رمز مطابقت ندارد'})
     } else if (this.state.checked === false) {
       this.setState({errorMessage: 'برای عضویت در سامانه باید با قوانین موافقت کرده باشید'})
+    } else {
+      this.props.charityJoin(this.state.username, this.state.password, this.state.charityName, this.state.charityPhoneNumber, this.state.charityAddress, this.state.charityOtherInfo)
+        .then((response) => {
+          this.props.login(this.state.username, this.state.password)
+            .then(() => {
+              this.props.getCharityProfile()
+              this.props.getAbilities()
+              this.props.getAllVolunteers()
+                .then(() => NavigationService.reset(['CharityMainTabNavigator']))
+            })
+            .catch((error) => {
+              console.log(error)
+            })
+
+        })
+        .catch((error) => {
+          this.setState({errorMessage: 'امکان ثبت‌نام با این مشخصات نیست.'})
+          console.log('join error', error)
+        })
     }
   }
 
@@ -91,6 +132,21 @@ class CharityJoinForm extends React.Component<Props, State> {
                        customInputContainerStyle={{marginTop: 25}}
                        label={messages.CHARITY_NAME}/>
 
+          <CustomInput onFocus={() => this.setState({errorMessage: ' '})}
+                       onChangeText={this.onCharityPhoneNumberChange}
+                       customInputContainerStyle={{marginTop: 25}}
+                       label={messages.PHONE_NUMBER_T}/>
+
+          <CustomInput onFocus={() => this.setState({errorMessage: ' '})}
+                       onChangeText={this.onCharityAddressChange}
+                       customInputContainerStyle={{marginTop: 25}}
+                       label={messages.ADDRESS_T}/>
+
+          <CustomInput onFocus={() => this.setState({errorMessage: ' '})}
+                       onChangeText={this.onCharityOtherInfoChange}
+                       customInputContainerStyle={{marginTop: 25}}
+                       label={messages.OTHER_INFO}/>
+
           <Label style={{marginTop: 10, marginBottom: 0.03 * SCREEN_HEIGHT}} text={this.state.errorMessage}
                  textStyle={{color: COLOR_DEFAULT_ORANGE, fontSize: 16}}/>
 
@@ -105,7 +161,7 @@ class CharityJoinForm extends React.Component<Props, State> {
   }
 }
 
-export default CharityJoinForm
+export default Projects.providers.projects(Auth.providers.auth(CharityJoinForm))
 
 const style = StyleSheet.create({
   login: {
@@ -117,5 +173,6 @@ const style = StyleSheet.create({
   loginForm: {
     justifyContent: 'center',
     alignItems: 'center',
+    paddingBottom: 50,
   },
 })

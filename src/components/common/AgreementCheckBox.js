@@ -5,6 +5,8 @@ import Label from 'src/components/common/Label'
 import {messages} from 'src/utils/messages'
 import {COLOR_BLUE_DEFAULT} from 'src/assets/styles/colors'
 
+const fontRatio = 411 / 18
+
 
 class AgreementCheckBox extends React.Component<Props, void> {
 
@@ -13,8 +15,8 @@ class AgreementCheckBox extends React.Component<Props, void> {
       <View
         style={[style.agreementContainer, this.props.style]}
       >
-        <Label text={messages.AGREEMENT_STATEMENT}/>
-        <Label textStyle={{color: COLOR_BLUE_DEFAULT}} text={messages.RULES}/>
+        <Label text={messages.AGREEMENT_STATEMENT} textStyle={{fontSize: SCREEN_WIDTH / fontRatio}}/>
+        <Label textStyle={{color: COLOR_BLUE_DEFAULT, fontSize: SCREEN_WIDTH / fontRatio}} text={messages.RULES}/>
         <CheckBox
           value={this.props.checked}
           onValueChange={() => this.props.onValueChange()}
@@ -28,6 +30,6 @@ export default AgreementCheckBox
 
 const style = StyleSheet.create({
   agreementContainer: {
-    flexDirection: 'row', alignItems: 'center', width: 0.8 * SCREEN_WIDTH,
+    flexDirection: 'row', alignItems: 'center', justifyContent: 'center',
   },
 })

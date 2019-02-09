@@ -105,7 +105,14 @@ const actions = {
       callAPI: (state) => Request.get(state, Constants.charityBaseUrl + Constants.getFeedBackUrl),
     }
   },
-
+  charityJoin: (username, password, name, phoneNumber, address, description) => {
+    return {
+      types: actionTypes.CHARITY_JOIN,
+      shouldCallAPI: (state) => !state.auth.isLoggedIn,
+      callAPI: (state) => Request.post(state, Constants.charityBaseUrl + Constants.volunteerJoinUrl, {},
+        {username, password, name, phoneNumber, address, description}, false),
+    }
+  },
 
 }
 

@@ -10,6 +10,7 @@ import CustomButton from 'src/components/common/Buttons/CustomButton'
 import AgreementCheckBox from 'src/components/common/AgreementCheckBox'
 import Auth from '../../../store/auth'
 import NavigationService from '../../../utils/navigationService'
+import Projects from 'src/store/projects'
 
 class VolunteerJoinForm extends React.Component<Props, State> {
 
@@ -25,7 +26,7 @@ class VolunteerJoinForm extends React.Component<Props, State> {
       gender: 'f',
       age: null,
       phoneNumber: '',
-      city: ''
+      city: '',
     }
 
     this.onPasswordChange = this.onPasswordChange.bind(this)
@@ -81,7 +82,12 @@ class VolunteerJoinForm extends React.Component<Props, State> {
             .then(() => {
               this.props.getProfile()
               this.props.getAbilities()
-              NavigationService.reset(['MainTabNavigator'])
+              this.props.getVolunteerTimeSlots()
+              this.props.getCashProjects()
+              this.props.getNonCashProjects()
+              this.props.getOutgoingRequests()
+              this.props.getIncomingRequests()
+                .then(() => NavigationService.reset(['MainTabNavigator']))
             })
             .catch((error) => {
               console.log(error)
@@ -89,6 +95,7 @@ class VolunteerJoinForm extends React.Component<Props, State> {
 
         })
         .catch((error) => {
+          this.setState({errorMessage: 'امکان ثبت‌نام با این مشخصات نیست.'})
           console.log('join error', error)
         })
     }
@@ -135,7 +142,7 @@ class VolunteerJoinForm extends React.Component<Props, State> {
             marginTop: 25,
             flexDirection: 'row',
             justifyContent: 'flex-end',
-            paddingRight: 0.027 * SCREEN_WIDTH
+            paddingRight: 0.027 * SCREEN_WIDTH,
           }}>
             <Picker
               mode={'dropdown'}
@@ -187,7 +194,7 @@ class VolunteerJoinForm extends React.Component<Props, State> {
   }
 }
 
-export default Auth.providers.auth(VolunteerJoinForm)
+export default Projects.providers.projects(Auth.providers.auth(VolunteerJoinForm))
 
 const style = StyleSheet.create({
   login: {
@@ -199,6 +206,6 @@ const style = StyleSheet.create({
   loginForm: {
     justifyContent: 'center',
     alignItems: 'center',
-    paddingBottom: 50
+    paddingBottom: 50,
   },
 })

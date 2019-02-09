@@ -30,6 +30,7 @@ const authProvider = connect(
       addAvailableSlot: (id) => dispatch(actions.addAvailableSlot(id)),
       removeAvailableSlot: (id) => dispatch(actions.removeAvailableSlot(id)),
 
+      charityJoin: (username, password, name, phoneNumber, address, description) => dispatch(actions.charityJoin(username, password, name, phoneNumber, address, description)),
       getCharityProfile: () => dispatch(actions.getCharityProfile()),
       getCharityFeedbacks: () => dispatch(actions.getCharityFeedbacks())
     }
