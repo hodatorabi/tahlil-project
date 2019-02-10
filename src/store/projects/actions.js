@@ -179,6 +179,13 @@ const actions = {
       callAPI: (state) => Request.post(state, Constants.charityBaseUrl + Constants.getNonCashProjects + projectId + Constants.volunteerTimeSlots + 'create/', {}, item),
     }
   },
+  getProjectTimeSlots: (projectId) => {
+    return {
+      types: actionTypes.GET_PROJECT_TIME_SLOTS,
+      shouldCallAPI: (state) => state.auth.isLoggedIn,
+      callAPI: (state) => Request.get(state, Constants.charityBaseUrl + Constants.getNonCashProjects + projectId + Constants.volunteerTimeSlots),
+    }
+  },
 
 }
 

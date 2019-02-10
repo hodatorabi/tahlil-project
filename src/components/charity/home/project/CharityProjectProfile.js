@@ -14,6 +14,16 @@ import Projects from 'src/store/projects'
 
 class CharityProjectProfile extends React.Component<Props, void> {
 
+  state = {
+    timeSlots: [],
+  }
+
+  componentDidMount() {
+    const projectId = this.props.navigation.getParam('project', null).id
+    this.props.getProjectTimeSlots(projectId)
+      .then((response) => this.setState({timeSlots: response}))
+  }
+
 
   render() {
     const project = this.props.navigation.getParam('project', null)
@@ -46,7 +56,8 @@ class CharityProjectProfile extends React.Component<Props, void> {
             </View>
             {type === messages.CASH &&
             <View style={style.projectCompletionStyle}>
-              <ProgressBar progress={1 - fundedAmount / neededAmount} width={0.8 * SCREEN_WIDTH} color={COLOR_LIGHT_GRAY}
+              <ProgressBar progress={1 - fundedAmount / neededAmount} width={0.8 * SCREEN_WIDTH}
+                           color={COLOR_LIGHT_GRAY}
                            borderColor={COLOR_WHITE} unfilledColor={COLOR_DARK_GRAY}/>
               <View style={style.projectBudgetInfo}>
                 <View style={{flexDirection: 'row'}}>
@@ -84,6 +95,9 @@ class CharityProjectProfile extends React.Component<Props, void> {
             <ProjectInfoRow title={messages.VOLUNTEER_ABILITIES}
                             ability={true}
                             description={project.abilities}/>
+            <ProjectInfoRow title={messages.TIME_SCHEDULE}
+                            timeSlot={true}
+                            description={this.state.timeSlots}/>
           </View>}
         </ScrollView>
       </View>
@@ -102,7 +116,7 @@ const style = StyleSheet.create({
   projectTopContainer: {
     backgroundColor: COLOR_WHITE,
     width: SCREEN_WIDTH,
-    paddingBottom: 20
+    paddingBottom: 20,
   },
   pictureStyle: {
     height: 0.3 * SCREEN_HEIGHT,
