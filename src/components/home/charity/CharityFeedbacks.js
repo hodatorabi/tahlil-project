@@ -19,12 +19,11 @@ class CharityFeedbacks extends React.Component<Props, State> {
     const charity = this.props.charity
     return (
       <View style={{flex: 1}}>
-        {/*<ScrollView contentContainerStyle={{paddingTop: 0.02 * SCREEN_HEIGHT}}>*/}
-          {/*{charity.receivedFeedback.length > 0 ? charity.receivedFeedback.map((item, index) => (*/}
-            {/*<FeedbackItem charity={true} feedback={item}/>*/}
-          {/*)) : <Label text={'NO FEEDBACK'}/>}*/}
-        {/*</ScrollView>*/}
-        <Label text={'UNDER MAINTENANCE'}/>
+        <ScrollView contentContainerStyle={{paddingTop: 0.02 * SCREEN_HEIGHT}}>
+          {charity.receivedFeedback.length > 0 ? charity.receivedFeedback.map((item, index) => (
+            <FeedbackItem charity={true} feedback={item}/>
+          )) : <Label text={'NO FEEDBACK'}/>}
+        </ScrollView>
       </View>
     )
   }
