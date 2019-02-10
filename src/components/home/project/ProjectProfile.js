@@ -21,6 +21,7 @@ class ProjectProfile extends React.Component<Props, void> {
     messagePopUpVisible: false,
     amountPopUpVisible: false,
     ratePopupVisible: false,
+    projectTimeSlots: [],
   }
 
   constructor(props) {
@@ -50,10 +51,12 @@ class ProjectProfile extends React.Component<Props, void> {
     const projectId = this.props.navigation.getParam('projectId', null)
     const type = this.props.navigation.getParam('type', messages.NON_CASH)
     let project
-    if (type === messages.NON_CASH) {
+    if (type === messages.NON_CASH && !canRate) {
       project = this.props.nonCashProjects[projectId]
-    } else {
+    } else if (type === messages.CASH && !canRate) {
       project = this.props.cashProjects[projectId]
+    } else if (canRate) {
+      project = this.props.navigation.getParam('project', null)
     }
     const projectPicture = this.props.navigation.getParam('projectPicture', null)
     const neededAmount = type === messages.CASH ? project.targetAmount : 0
@@ -117,6 +120,9 @@ class ProjectProfile extends React.Component<Props, void> {
             <ProjectInfoRow title={messages.VOLUNTEER_ABILITIES}
                             ability={true}
                             description={project.abilities}/>
+            {!canRate && <ProjectInfoRow title={messages.TIME_SCHEDULE}
+                            timeSlot={true}
+                            description={project.timeSlots}/>}
           </View>}
 
           <CustomButton style={{width: 0.8 * SCREEN_WIDTH, height: 50}}

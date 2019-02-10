@@ -23,10 +23,10 @@ const FirstRoute = (projects, navigation, loading) => (
                            navigation.navigate({
                              routeName: 'ProjectProfile',
                              params: {
-                               projectId: index,
+                               project: item,
                                type: messages.NON_CASH,
                                projectPicture: project1.projectPicture,
-                               canRate: true
+                               canRate: true,
                              },
                            })
                          }}/>
@@ -50,10 +50,10 @@ const SecondRoute = (projects, navigation, loading) => (
                            navigation.navigate({
                              routeName: 'ProjectProfile',
                              params: {
-                               projectId: index,
+                               project: item,
                                type: messages.CASH,
                                projectPicture: project1.projectPicture,
-                               canRate: true
+                               canRate: true,
                              },
                            })
                          }}/>
