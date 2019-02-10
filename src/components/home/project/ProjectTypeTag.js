@@ -46,7 +46,7 @@ export default ProjectTypeTag
 const styles = StyleSheet.create({
   statusContainer: {
     height: 35,
-    borderRadius: 17.5,
+    borderRadius: 10,
     paddingHorizontal: 15,
     justifyContent: 'center',
     alignItems: 'center',

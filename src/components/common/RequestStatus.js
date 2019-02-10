@@ -53,7 +53,7 @@ export default RequestStatus
 const styles = StyleSheet.create({
   statusContainer: {
     height: 40,
-    borderRadius: 20,
+    borderRadius: 15,
     paddingHorizontal: 15,
     justifyContent: 'center',
     alignItems: 'center',
