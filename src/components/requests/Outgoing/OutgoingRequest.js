@@ -4,10 +4,9 @@ import {SCREEN_HEIGHT, SCREEN_WIDTH} from 'src/assets/styles/style'
 import {COLOR_BLACK, COLOR_BLUE_DEFAULT, COLOR_WHITE,} from 'src/assets/styles/colors'
 import Label from 'src/components/common/Label'
 import format from 'string-format'
-import {ICON_ENVELOPE} from 'src/assets/styles/icons'
+import {ICON_ENVELOPE, projectSamplePics} from 'src/assets/styles/icons'
 import {messages} from 'src/utils/messages'
 import RequestStatus from 'src/components/common/RequestStatus'
-import {project2} from '../../../utils/sampleData'
 
 
 class OutgoingRequest extends React.Component<Props, void> {
@@ -15,10 +14,11 @@ class OutgoingRequest extends React.Component<Props, void> {
   render() {
     const request = this.props.request
     const project = request.project
+    const projectPic = projectSamplePics[project.id % 11]
     const status = request.status === 0 ? messages.PENDING : (request.status === -1 ? messages.REJECTED : messages.ACCEPTED)
     return (
       <View style={style.containerStyle}>
-        <Image source={project2.projectPicture} style={style.projectPictureStyle}/>
+        <Image source={projectPic} style={style.projectPictureStyle}/>
         <View style={style.bodyStyle}>
           <Label
             style={{width: '95%'}}

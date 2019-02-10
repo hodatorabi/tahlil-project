@@ -4,19 +4,19 @@ import {SCREEN_HEIGHT, SCREEN_WIDTH} from 'src/assets/styles/style'
 import {COLOR_BLACK, COLOR_BLUE_DEFAULT, COLOR_WHITE,} from 'src/assets/styles/colors'
 import Label from 'src/components/common/Label'
 import format from 'string-format'
-import {ICON_ENVELOPE} from 'src/assets/styles/icons'
+import {ICON_ENVELOPE, projectSamplePics} from 'src/assets/styles/icons'
 import ButtonAccept from 'src/components/common/Buttons/ButtonAccept'
 import ButtonReject from 'src/components/common/Buttons/ButtonReject'
 import {messages} from 'src/utils/messages'
-import {project6} from '../../../utils/sampleData'
 
 
 class IncomingRequest extends React.Component<Props, void> {
   render() {
     const request = this.props.request
+    const projectPic = projectSamplePics[request.project.id % 11]
     return (
       <View style={style.containerStyle}>
-        <Image source={project6.projectPicture} style={style.projectPictureStyle}/>
+        <Image source={projectPic} style={style.projectPictureStyle}/>
         <View style={style.bodyStyle}>
           <Label
             style={{width: '95%'}}

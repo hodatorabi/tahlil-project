@@ -6,9 +6,9 @@ import {COLOR_BLUE_DEFAULT, COLOR_DARK_BLUE, COLOR_WHITE} from 'src/assets/style
 import {SCREEN_WIDTH} from 'src/assets/styles/style'
 import Projects from 'src/store/projects'
 import {messages} from 'src/utils/messages'
-import {project1} from 'src/utils/sampleData'
 import CharityProjectOverview from 'src/components/charity/home/project/CharityProjectOverview'
 import ProjectTypePopup from 'src/components/common/popUps/ProjectTypePopup'
+import {projectSamplePics} from 'src/assets/styles/icons'
 
 const FirstRoute = (projects, navigation, refreshing, onRefresh) => (
   <ScrollView contentContainerStyle={{paddingTop: 20, alignItems: 'center'}}
@@ -19,7 +19,7 @@ const FirstRoute = (projects, navigation, refreshing, onRefresh) => (
                 />
               }>
     {projects && projects.map((item, index) => (
-      <CharityProjectOverview projectPicture={project1.projectPicture} type={messages.NON_CASH}
+      <CharityProjectOverview projectPicture={projectSamplePics[item.id % 11]} type={messages.NON_CASH}
                               projectName={item.name}
                               charityName={item.charity.name}
                               projectStartDate={item.startDate}
@@ -31,7 +31,7 @@ const FirstRoute = (projects, navigation, refreshing, onRefresh) => (
                                   params: {
                                     project: item,
                                     type: messages.NON_CASH,
-                                    projectPicture: project1.projectPicture,
+                                    projectPicture: projectSamplePics[item.id % 11],
                                   },
                                 })
                               }}/>
@@ -47,7 +47,7 @@ const SecondRoute = (projects, navigation, refreshing, onRefresh) => (
                 />
               }>
     {projects && projects.map((item, index) => (
-      <CharityProjectOverview projectPicture={project1.projectPicture} type={messages.CASH}
+      <CharityProjectOverview projectPicture={projectSamplePics[item.id % 11]} type={messages.CASH}
                               projectName={item.name}
                               charityName={item.charity.name}
                               projectStartDate={item.startDate}
@@ -59,7 +59,7 @@ const SecondRoute = (projects, navigation, refreshing, onRefresh) => (
                                   params: {
                                     project: item,
                                     type: messages.CASH,
-                                    projectPicture: project1.projectPicture,
+                                    projectPicture: projectSamplePics[item.id % 11],
                                   },
                                 })
                               }}/>

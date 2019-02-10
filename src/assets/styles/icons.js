@@ -19,9 +19,16 @@ export const PROJECT_SAMPLE_PIC4 = require('src/assets/images/projectSamplePhoto
 export const PROJECT_SAMPLE_PIC5 = require('src/assets/images/projectSamplePhoto5.jpg')
 export const PROJECT_SAMPLE_PIC6 = require('src/assets/images/projectSamplePhoto6.jpg')
 export const PROJECT_SAMPLE_PIC7 = require('src/assets/images/projectSamplePhoto7.jpg')
+export const PROJECT_SAMPLE_PIC8 = require('src/assets/images/projectSamplePhoto8.jpg')
+export const PROJECT_SAMPLE_PIC9 = require('src/assets/images/projectSamplePhoto9.jpg')
+export const PROJECT_SAMPLE_PIC10 = require('src/assets/images/projectSamplePhoto10.jpg')
+export const PROJECT_SAMPLE_PIC11 = require('src/assets/images/projectSamplePhoto11.jpg')
+
 export const CHARITY_PROFILE_PIC = require('src/assets/images/charityProfilePic.png')
 export const ICON_LOG_OUT = require('src/assets/images/logout.png')
 export const ICON_CALENDAR = require('src/assets/images/calendar.png')
+
+export const projectSamplePics = [PROJECT_SAMPLE_PIC1, PROJECT_SAMPLE_PIC2, PROJECT_SAMPLE_PIC3, PROJECT_SAMPLE_PIC4, PROJECT_SAMPLE_PIC5, PROJECT_SAMPLE_PIC6, PROJECT_SAMPLE_PIC7, PROJECT_SAMPLE_PIC8, PROJECT_SAMPLE_PIC9, PROJECT_SAMPLE_PIC10, PROJECT_SAMPLE_PIC11]
 
 export const ICON_EDIT_PROFILE = require('src/assets/images/editProfile.png')
 export const LOADING_MOTION = require('src/assets/motions/loading')

@@ -5,16 +5,16 @@ import {COLOR_BLUE_DEFAULT, COLOR_DARK_BLUE, COLOR_WHITE} from 'src/assets/style
 import {messages} from 'src/utils/messages'
 import {SCREEN_HEIGHT, SCREEN_WIDTH} from 'src/assets/styles/style'
 import {SceneMap, TabBar, TabView} from 'react-native-tab-view'
-import {project1} from 'src/utils/sampleData'
 import Spinner from 'react-native-spinkit'
 import ProjectOverview from 'src/components/home/project/ProjectOverview'
 import CommonHeader from 'src/components/common/CommonHeader'
+import {projectSamplePics} from 'src/assets/styles/icons'
 
 
 const FirstRoute = (projects, navigation, loading) => (
   !loading ? <ScrollView contentContainerStyle={{paddingTop: 20, alignItems: 'center'}}>
       {projects && projects.map((item, index) => (
-        <ProjectOverview projectPicture={project1.projectPicture} type={messages.NON_CASH}
+        <ProjectOverview projectPicture={projectSamplePics[item.id % 11]} type={messages.NON_CASH}
                          projectName={item.name}
                          charityName={item.charity.name}
                          projectStartDate={item.startDate}
@@ -25,7 +25,7 @@ const FirstRoute = (projects, navigation, loading) => (
                              params: {
                                project: item,
                                type: messages.NON_CASH,
-                               projectPicture: project1.projectPicture,
+                               projectPicture: projectSamplePics[item.id % 11],
                                canRate: true,
                              },
                            })
@@ -41,7 +41,7 @@ const FirstRoute = (projects, navigation, loading) => (
 const SecondRoute = (projects, navigation, loading) => (
   !loading ? <ScrollView contentContainerStyle={{paddingTop: 20, alignItems: 'center'}}>
       {projects && projects.map((item, index) => (
-        <ProjectOverview projectPicture={project1.projectPicture} type={messages.CASH}
+        <ProjectOverview projectPicture={projectSamplePics[item.id % 11]} type={messages.CASH}
                          projectName={item.name}
                          charityName={item.charity.name}
                          projectStartDate={item.startDate}
@@ -52,7 +52,7 @@ const SecondRoute = (projects, navigation, loading) => (
                              params: {
                                project: item,
                                type: messages.CASH,
-                               projectPicture: project1.projectPicture,
+                               projectPicture: projectSamplePics[item.id % 11],
                                canRate: true,
                              },
                            })
