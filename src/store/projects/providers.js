@@ -43,7 +43,7 @@ const projectsProvider = connect(
       getVolunteerCashProjects: () => dispatch(actions.getVolunteerCashProjects()),
 
       createNonCashProject: (startDate, endDate, name, description, needMale, needFemale, minAge, maxAge, city, abilities) => dispatch(actions.createNonCashProject(startDate, endDate, name, description, needMale, needFemale, minAge, maxAge, city, abilities)),
-
+      createProjectTimeSlot: (item, projectId) => dispatch(actions.createProjectTimeSlot(item, projectId)),
     }
   },
 )

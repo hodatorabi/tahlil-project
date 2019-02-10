@@ -109,10 +109,10 @@ class CharityHome extends React.Component<Props, State> {
   navigateToNewProject(type) {
     if (type === 0) {
       this.setState({newProjectPopupVisible: false})
-      this.props.navigation.navigate('NewNonCashProject')
+      this.props.navigation.navigate({routeName: 'NewNonCashProject', key: 'CreateNonCash'})
     } else if (type === 1) {
       this.setState({newProjectPopupVisible: false})
-      this.props.navigation.navigate('NewCashProject')
+      this.props.navigation.navigate('NewNonCashProjectTimeSlots')
     }
   }
 

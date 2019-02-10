@@ -112,7 +112,9 @@ class NewNonCashProject extends React.Component<Props, void> {
   onSubmit() {
     this.props.createNonCashProject(this.state.startDate, this.state.date, this.state.name, this.state.description, this.state.needMale, this.state.needFemale, this.state.minAge, this.state.maxAge, this.state.city, this.state.selectedAbilities)
       .then((res) => {
-        this.props.navigation.navigate('')
+        this.props.navigation.navigate({
+          routeName: 'NewNonCashProjectTimeSlots', params: {projectId: res.id},
+        })
       })
       .catch((error) => {
         console.log(error)

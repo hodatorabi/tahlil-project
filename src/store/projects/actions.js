@@ -172,6 +172,13 @@ const actions = {
         {startDate, endDate, name, description, needMale, needFemale, minAge, maxAge, city, abilities}),
     }
   },
+  createProjectTimeSlot: (item, projectId) => {
+    return {
+      types: actionTypes.CREATE_PROJECT_TIME_SLOT,
+      shouldCallAPI: (state) => state.auth.isLoggedIn,
+      callAPI: (state) => Request.post(state, Constants.charityBaseUrl + Constants.getNonCashProjects + projectId + Constants.volunteerTimeSlots + 'create/', {}, item),
+    }
+  },
 
 }
 
