@@ -4,7 +4,6 @@ import PersonalInfoRow from 'src/components/profile/profileRow/PersonalInfoRow'
 import {SCREEN_HEIGHT, SCREEN_WIDTH} from 'src/assets/styles/style'
 import {COLOR_BLUE_DEFAULT, COLOR_DEFAULT_GRAY, COLOR_WHITE,} from 'src/assets/styles/colors'
 import Label from 'src/components/common/Label'
-import CustomButton from 'src/components/common/Buttons/CustomButton'
 import {messages} from 'src/utils/messages'
 import Auth from 'src/store/auth'
 
@@ -22,7 +21,6 @@ class CharityPersonalInfo extends React.Component<Props, State> {
         <ScrollView contentContainerStyle={style.scrollContainer}>
           <View style={style.personalInfoContainer}>
             <View style={style.labelStyle}>
-              <CustomButton label={messages.EDIT}/>
               <Label textStyle={{color: COLOR_BLUE_DEFAULT, fontSize: 20}}
                      text={messages.CHARITY_INFO}/>
             </View>
@@ -69,7 +67,7 @@ const style = StyleSheet.create({
   labelStyle: {
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'space-between',
+    justifyContent: 'flex-end',
     width: SCREEN_WIDTH,
     paddingHorizontal: 0.03 * SCREEN_WIDTH,
     paddingVertical: 0.02 * SCREEN_HEIGHT,
@@ -82,6 +80,6 @@ const style = StyleSheet.create({
     paddingVertical: 0.02 * SCREEN_HEIGHT,
     borderBottomColor: COLOR_DEFAULT_GRAY,
     borderBottomWidth: 1,
-    alignItems: 'flex-end'
-  }
+    alignItems: 'flex-end',
+  },
 })

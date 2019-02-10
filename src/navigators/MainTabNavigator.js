@@ -8,7 +8,7 @@ import {COLOR_BLUE_DEFAULT, COLOR_DARK_GRAY, COLOR_MEDIUM_TURQUOISE, COLOR_WHITE
 import {ICON_PROFILE, ICON_PROJECT_STATUS, ICON_SEARCH} from 'src/assets/styles/icons'
 import Profile from 'src/components/profile/Profile'
 
-const iconSize = 30
+const iconSize = 35
 const iconContainerSize = 40
 const bulletSize = 16
 
@@ -56,7 +56,7 @@ const MainTabNavigator = createBottomTabNavigator({
           return (
             <Image
               source={ICON_PROJECT_STATUS}
-              style={iconStyle}
+              style={[iconStyle]}
               testID="ProjectNavigator"
             />
           )
@@ -72,7 +72,7 @@ const MainTabNavigator = createBottomTabNavigator({
           return (
             <Image
               source={ICON_PROFILE}
-              style={iconStyle}
+              style={[iconStyle, {width: 32, height: 32}]}
               testID="ProfileNavigator"
             />
           )

@@ -3,12 +3,12 @@ import {Image, StyleSheet,} from 'react-native'
 import {createBottomTabNavigator} from 'react-navigation'
 import {SCREEN_WIDTH} from 'src/assets/styles/style'
 import {COLOR_BLUE_DEFAULT, COLOR_DARK_GRAY, COLOR_MEDIUM_TURQUOISE, COLOR_WHITE,} from 'src/assets/styles/colors'
-import {ICON_PROFILE, ICON_PROJECT_STATUS, ICON_SEARCH} from 'src/assets/styles/icons'
+import {ICON_CHARITY, ICON_PROJECT_STATUS, ICON_SEARCH} from 'src/assets/styles/icons'
 import CharityProfile from '../components/charity/profile/CharityProfile'
 import CharityHome from '../components/charity/home/CharityHome'
 import CharityRequests from '../components/charity/requests/CharityRequests'
 
-const iconSize = 30
+const iconSize = 35
 const iconContainerSize = 40
 const bulletSize = 16
 
@@ -56,7 +56,7 @@ const CharityMainTabNavigator = createBottomTabNavigator({
           return (
             <Image
               source={ICON_PROJECT_STATUS}
-              style={iconStyle}
+              style={[iconStyle]}
             />
           )
         case 'CharityHomeNavigator':
@@ -69,7 +69,7 @@ const CharityMainTabNavigator = createBottomTabNavigator({
         case 'CharityProfileNavigator':
           return (
             <Image
-              source={ICON_PROFILE}
+              source={ICON_CHARITY}
               style={iconStyle}
             />
           )

@@ -24,8 +24,7 @@ class PersonalInfo extends React.Component<Props, State> {
       <View style={{flex: 1}}>
         <ScrollView contentContainerStyle={style.scrollContainer}>
           <View style={style.personalInfoContainer}>
-            <View style={style.labelStyle}>
-              <CustomButton label={messages.EDIT}/>
+            <View style={[style.labelStyle, {justifyContent: 'flex-end'}]}>
               <Label textStyle={{color: COLOR_BLUE_DEFAULT, fontSize: 20}}
                      text={messages.PERSONAL_INFO}/>
             </View>
