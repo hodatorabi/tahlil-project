@@ -45,6 +45,7 @@ const projectsProvider = connect(
       createNonCashProject: (startDate, endDate, name, description, needMale, needFemale, minAge, maxAge, city, abilities) => dispatch(actions.createNonCashProject(startDate, endDate, name, description, needMale, needFemale, minAge, maxAge, city, abilities)),
       createProjectTimeSlot: (item, projectId) => dispatch(actions.createProjectTimeSlot(item, projectId)),
       getProjectTimeSlots: (projectId) => dispatch(actions.getProjectTimeSlots(projectId)),
+      createCashProject: (startDate, endDate, name, description, targetAmount) => dispatch(actions.createCashProject(startDate, endDate, name, description, targetAmount)),
     }
   },
 )

@@ -164,11 +164,10 @@ const actions = {
     }
   },
   createNonCashProject: (startDate, endDate, name, description, needMale, needFemale, minAge, maxAge, city, abilities) => {
-    console.log(startDate, endDate, name, description, needMale, needFemale, minAge, maxAge, city, abilities)
     return {
       types: actionTypes.CREATE_NON_CASH_PROJECT,
       shouldCallAPI: (state) => state.auth.isLoggedIn,
-      callAPI: (state) => Request.post(state, Constants.charityBaseUrl + Constants.createProject, {},
+      callAPI: (state) => Request.post(state, Constants.charityBaseUrl + Constants.createNonCashProject, {},
         {startDate, endDate, name, description, needMale, needFemale, minAge, maxAge, city, abilities}),
     }
   },
@@ -184,6 +183,14 @@ const actions = {
       types: actionTypes.GET_PROJECT_TIME_SLOTS,
       shouldCallAPI: (state) => state.auth.isLoggedIn,
       callAPI: (state) => Request.get(state, Constants.charityBaseUrl + Constants.getNonCashProjects + projectId + Constants.volunteerTimeSlots),
+    }
+  },
+  createCashProject: (startDate, endDate, name, description, targetAmount) => {
+    return {
+      types: actionTypes.CREATE_NON_CASH_PROJECT,
+      shouldCallAPI: (state) => state.auth.isLoggedIn,
+      callAPI: (state) => Request.post(state, Constants.charityBaseUrl + Constants.createCashProject, {},
+        {startDate, endDate, name, description, targetAmount}),
     }
   },
 

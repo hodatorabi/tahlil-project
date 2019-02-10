@@ -18,7 +18,8 @@ export const Constants = {
   getVolunteersUrl: '/volunteers/',
   sendFeedbackUrl: '/send-feedback/',
   giveFeedbackUrl: 'give-feedback/',
-  createProject: '/non-cash-projects/create/',
+  createNonCashProject: '/non-cash-projects/create/',
+  createCashProject: '/cash-projects/create/',
 
   myNonCashProjectsUrl: '/my-non-cash-projects/',
   myCashProjectsUrl: '/my-cash-projects/',
