@@ -49,6 +49,7 @@ const projectsProvider = connect(
       createProjectTimeSlot: (item, projectId) => dispatch(actions.createProjectTimeSlot(item, projectId)),
       getProjectTimeSlots: (projectId) => dispatch(actions.getProjectTimeSlots(projectId)),
       createCashProject: (startDate, endDate, name, description, targetAmount) => dispatch(actions.createCashProject(startDate, endDate, name, description, targetAmount)),
+      searchVolunteers: (filters) => dispatch(actions.searchVolunteers(filters)),
     }
   },
 )

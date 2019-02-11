@@ -207,6 +207,13 @@ const actions = {
       callAPI: (state) => Request.get(state, Constants.getCashProjects, filters),
     }
   },
+  searchVolunteers: (filters) => {
+    return {
+      types: actionTypes.SEARCH_VOLUNTEERS,
+      shouldCallAPI: (state) => state.auth.isLoggedIn,
+      callAPI: (state) => Request.get(state, Constants.charityBaseUrl + Constants.getVolunteersUrl, filters),
+    }
+  },
 }
 
 export default actions

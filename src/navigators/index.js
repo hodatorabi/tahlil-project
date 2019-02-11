@@ -16,6 +16,7 @@ import CharityProfile from 'src/components/home/charity/CharityProfile'
 import NewNonCashProject from 'src/components/charity/home/project/newProject/NewNonCashProject'
 import NewCashProject from 'src/components/charity/home/project/newProject/NewCashProject'
 import NewNonCashProjectTimeSlots from 'src/components/charity/home/project/newProject/NewNonCashProjectTimeSlots'
+import VolunteerFilterPage from 'src/components/charity/home/search/VolunteerFilterPage'
 
 
 const MainNavigator = createStackNavigator(
@@ -37,6 +38,7 @@ const MainNavigator = createStackNavigator(
     NewNonCashProject: {screen: NewNonCashProject},
     NewCashProject: {screen: NewCashProject},
     NewNonCashProjectTimeSlots: {screen: NewNonCashProjectTimeSlots},
+    VolunteerFilterPage: {screen: VolunteerFilterPage},
   },
   {
     initialRouteName: 'Launch',
