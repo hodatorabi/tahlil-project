@@ -195,9 +195,16 @@ const actions = {
   },
   searchNonCashProjects: (filters) => {
     return {
-      types: actionTypes.CREATE_NON_CASH_PROJECT,
+      types: actionTypes.SEARCH_NON_CASH_PROJECTS,
       shouldCallAPI: (state) => state.auth.isLoggedIn,
       callAPI: (state) => Request.get(state, Constants.getNonCashProjects, filters),
+    }
+  },
+  searchCashProjects: (filters) => {
+    return {
+      types: actionTypes.SEARCH_CASH_PROJECTS,
+      shouldCallAPI: (state) => state.auth.isLoggedIn,
+      callAPI: (state) => Request.get(state, Constants.getCashProjects, filters),
     }
   },
 }

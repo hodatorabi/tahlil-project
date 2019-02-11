@@ -39,7 +39,7 @@ class SearchBar extends React.Component<Props, State> {
     if (this.state.value === 1)
       this.props.navigation.navigate('NonCashFilterPage', {returnToRoute: this.props.navigation.state})
     else
-      this.props.navigation.navigate('CashFilterPage')
+      this.props.navigation.navigate('CashFilterPage', {returnToRoute: this.props.navigation.state})
   }
 
   onNameChange(text) {

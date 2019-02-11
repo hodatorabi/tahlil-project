@@ -116,9 +116,11 @@ class NonCashFilterPage extends React.Component<Props, State> {
             <Label textStyle={{fontSize: 16}} style={{alignSelf: 'flex-end', marginBottom: 5}}
                    text={messages.VOLUNTEER_AGE}/>
             <View style={{flexDirection: 'row', alignItems: 'center'}}>
-              <TextInput style={[style.itemTextStyle, {width: 40}]} onChangeText={(text) => this.onMaxAgeChange(text)}/>
+              <TextInput keyboardType={'number-pad'} style={[style.itemTextStyle, {width: 40}]}
+                         onChangeText={(text) => this.onMaxAgeChange(text)}/>
               <Label text={' تا '}/>
-              <TextInput style={[style.itemTextStyle, {width: 40}]} onChangeText={(text) => this.onMinAgeChange(text)}/>
+              <TextInput keyboardType={'number-pad'} style={[style.itemTextStyle, {width: 40}]}
+                         onChangeText={(text) => this.onMinAgeChange(text)}/>
               <Label text={'از '}/>
             </View>
           </View>
