@@ -2,7 +2,7 @@ import React from 'react'
 import {StyleSheet, TextInput, View} from 'react-native'
 import {SCREEN_WIDTH} from 'src/assets/styles/style'
 import {
-  COLOR_BLACK, COLOR_BLUE_DEFAULT, COLOR_BLUE_TRANSPARENT, COLOR_DARK_GRAY, COLOR_DEFAULT_GRAY,
+  COLOR_BLACK, COLOR_BLUE_DEFAULT, COLOR_DARK_GRAY, COLOR_DEFAULT_GRAY, COLOR_GRAY,
   COLOR_WHITE,
 } from 'src/assets/styles/colors'
 import RadioForm, {RadioButton, RadioButtonInput, RadioButtonLabel} from 'react-native-simple-radio-button'
@@ -22,11 +22,13 @@ class SearchBar extends React.Component<Props, State> {
 
     this.onRadioSelect = this.onRadioSelect.bind(this)
     this.addFilter = this.addFilter.bind(this)
+    this.onNameChange = this.onNameChange.bind(this)
 
   }
 
   state = {
     value: 1,
+    name: null,
   }
 
   onRadioSelect(index) {
@@ -35,15 +37,20 @@ class SearchBar extends React.Component<Props, State> {
 
   addFilter() {
     if (this.state.value === 1)
-      this.props.navigation.navigate('NonCashFilterPage')
+      this.props.navigation.navigate('NonCashFilterPage', {returnToRoute: this.props.navigation.state})
     else
       this.props.navigation.navigate('CashFilterPage')
   }
 
+  onNameChange(text) {
+    this.setState({name: text})
+  }
+
+
   render() {
     return (
       <View style={style.container}>
-        <TextInput style={style.searchBar} autoFocus={false}/>
+        <TextInput style={style.searchBar} autoFocus={false} onChangeText={(text) => this.onNameChange(text)}/>
         <RadioForm
           formHorizontal={true}
           initial={0}
@@ -75,7 +82,8 @@ class SearchBar extends React.Component<Props, State> {
         </RadioForm>
 
         <View style={{flexDirection: 'row', marginTop: 30,}}>
-          <CustomButton style={{marginRight: 30}} label={messages.SEARCH}/>
+          <CustomButton style={{marginRight: 30}} label={messages.SEARCH}
+                        onPress={() => this.props.onSearch(this.state.name, this.state.value)}/>
           <CustomButtonWithBorder onPress={this.addFilter} label={messages.ADD_FILTER}/>
         </View>
 
@@ -99,7 +107,7 @@ const style = StyleSheet.create({
   searchBar: {
     width: 0.8 * SCREEN_WIDTH,
     height: 40,
-    backgroundColor: COLOR_BLUE_TRANSPARENT,
+    backgroundColor: COLOR_GRAY,
     fontSize: 14,
     fontFamily: 'IRANSansMobile',
     textAlign: 'right',

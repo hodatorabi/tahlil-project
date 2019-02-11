@@ -30,6 +30,7 @@ const actionTypes = {
   REMOVE_AVAILABLE_SLOT: asyncActionTypeCreator('REMOVE_AVAILABLE_SLOT'),
   SEND_FEEDBACK_TO_CHARITY: asyncActionTypeCreator('SEND_FEEDBACK_TO_CHARITY'),
   SHOW_CHARITY_PROFILE: asyncActionTypeCreator('SHOW_CHARITY_PROFILE'),
+  SEARCH_NON_CASH_PROJECTS: asyncActionTypeCreator('SEARCH_NON_CASH_PROJECTS'),
 
   CHARITY_JOIN: asyncActionTypeCreator('VOLUNTEER_JOIN'),
   GET_CHARITY_PROFILE: asyncActionTypeCreator('GET_CHARITY_PROFILE'),

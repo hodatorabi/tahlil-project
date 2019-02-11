@@ -113,14 +113,14 @@ class ProjectProfile extends React.Component<Props, void> {
 
           {type === messages.NON_CASH &&
           <View style={style.projectInfoContainer}>
-            <ProjectInfoRow title={messages.VOLUNTEER_AGE} description={[project.maxAge + ' تا ' + project.minAge]}/>
+            <ProjectInfoRow title={messages.VOLUNTEER_AGE} description={[project.minAge + ' تا ' + project.maxAge]}/>
             <ProjectInfoRow title={messages.VOLUNTEER_GENDER}
                             description={[booleanToGender(project.needMale, project.needFemale)]}/>
             <ProjectInfoRow title={messages.PROJECT_LOCATION} description={[project.city]}/>
             <ProjectInfoRow title={messages.VOLUNTEER_ABILITIES}
                             ability={true}
                             description={project.abilities}/>
-            {!canRate && <ProjectInfoRow title={messages.TIME_SCHEDULE}
+            {!canRate && <ProjectInfoRow title={messages.TIME_SCHEDULE + ':'}
                             timeSlot={true}
                             description={project.timeSlots}/>}
           </View>}

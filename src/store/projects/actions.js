@@ -193,7 +193,13 @@ const actions = {
         {startDate, endDate, name, description, targetAmount}),
     }
   },
-
+  searchNonCashProjects: (filters) => {
+    return {
+      types: actionTypes.CREATE_NON_CASH_PROJECT,
+      shouldCallAPI: (state) => state.auth.isLoggedIn,
+      callAPI: (state) => Request.get(state, Constants.getNonCashProjects, filters),
+    }
+  },
 }
 
 export default actions

@@ -62,6 +62,7 @@ export const messages = {
   PROJECT_DESCRIPTION: 'توضیحات پروژه: ',
   PROJECT_END: 'تاریخ پایان: ',
   PROJECT_TIMETABLE: 'برنامه زمانی پروژه',
+  NEEDED_ABILITY: 'توانمندی موردنیاز',
 
   SEND_FEEDBACK: 'ارسال بازخورد',
   SEND_REQUEST: 'ارسال درخواست',
