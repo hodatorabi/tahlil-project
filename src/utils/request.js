@@ -9,6 +9,7 @@ let request = (store, url, params, method, data, loginRequired, decamelizeReques
     if (loginRequired) {
         headers = {...headers, 'Authorization': 'JWT ' + store.auth.token}
     }
+    params = humps.decamelizeKeys(params)
     let request = {
         url,
         method,

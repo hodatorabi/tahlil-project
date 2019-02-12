@@ -29,8 +29,8 @@ class NonCashFilterPage extends React.Component<Props, State> {
     selectedGender: 0,
     minAge: null,
     maxAge: null,
-    needMale: true,
-    needFemale: true,
+    needMale: null,
+    needFemale: null,
     city: null,
     selectedAbility: -1,
     selectedDay: -1,
@@ -38,13 +38,21 @@ class NonCashFilterPage extends React.Component<Props, State> {
     filters: {},
   }
 
+  clean(obj) {
+    for (let propName in obj) {
+      if (obj[propName] === null || obj[propName] === undefined) {
+        delete obj[propName]
+      }
+    }
+  }
+
   genderUtil() {
     if (this.state.selectedGender === 0) {
       this.setState({needFemale: true, needMale: true})
     } else if (this.state.selectedGender === 1) {
-      this.setState({needFemale: true, needMale: false})
+      this.setState({needFemale: true})
     } else if (this.state.selectedGender === 2) {
-      this.setState({needFemale: false, needMale: true})
+      this.setState({needMale: true})
     }
   }
 
@@ -64,8 +72,8 @@ class NonCashFilterPage extends React.Component<Props, State> {
     let weekday = this.state.selectedDay === -1 ? null : this.state.selectedDay
     let time = this.state.selectedTime === -1 ? null : this.state.selectedTime
     let ability = this.state.selectedAbility === -1 ? null : this.state.selectedAbility
-    let needMale = this.state.needMale === true ? 1 : 0
-    let needFemale = this.state.needFemale === true ? 1 : 0
+    let needMale = this.state.needMale === true ? 'true' : (this.state.needMale === false ? 'false' : null)
+    let needFemale = this.state.needFemale === true ? 'true' : (this.state.needFemale === false ? 'false' : null)
     const filters = {
       minAge: this.state.minAge,
       maxAge: this.state.maxAge,
@@ -76,6 +84,7 @@ class NonCashFilterPage extends React.Component<Props, State> {
       weekday: weekday,
       time: time,
     }
+    this.clean(filters)
     const {routeName, key} = this.props.navigation.getParam('returnToRoute')
     this.setState({filters: filters}, () => this.props.navigation.navigate({
       routeName,

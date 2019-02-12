@@ -22,12 +22,14 @@ class SearchPage extends React.Component<Props, State> {
 
   onSearch(name, filters, type, cashFilters) {
     if (type === 1) {
-      filters['name'] = name
+      if (name != null && name !== '')
+        filters['name'] = name
       console.log('on search', filters)
       this.props.searchNonCashProjects(filters)
         .then((response) => this.setState({projects: this.props.searchResultsProjects, type: messages.NON_CASH}))
     } else if (type === 2) {
-      cashFilters['name'] = name
+      if (name != null && name !== '')
+        cashFilters['name'] = name
       console.log('cash')
       this.props.searchCashProjects(cashFilters)
         .then((response) => this.setState({projects: this.props.searchResultsProjects, type: messages.CASH}))

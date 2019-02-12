@@ -47,20 +47,32 @@ class VolunteerFilterPage extends React.Component<Props, State> {
     this.setState({city: text})
   }
 
+  clean(obj) {
+    for (let propName in obj) {
+      if (obj[propName] === null || obj[propName] === undefined) {
+        delete obj[propName]
+      }
+    }
+  }
+
   onSubmitFilters() {
     let weekday = this.state.selectedDay === -1 ? null : this.state.selectedDay
     let time = this.state.selectedTime === -1 ? null : this.state.selectedTime
     let ability = this.state.selectedAbility === -1 ? null : this.state.selectedAbility
     let gender = this.state.selectedGender === 0 ? null : (this.state.selectedGender === 1 ? 'f' : 'm')
+
     const filters = {
-      minAge: parseInt(this.state.minAge),
-      maxAge: parseInt(this.state.maxAge),
+      minAge: this.state.minAge,
+      maxAge: this.state.maxAge,
       gender: gender,
       city: this.state.city,
       ability: ability,
       weekday: weekday,
       time: time,
     }
+
+    this.clean(filters)
+
     const {routeName, key} = this.props.navigation.getParam('returnToRoute')
     this.setState({filters: filters}, () => this.props.navigation.navigate({
       routeName,

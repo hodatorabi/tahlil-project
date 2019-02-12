@@ -21,12 +21,21 @@ class CashFilterPage extends React.Component<Props, State> {
     filters: {},
   }
 
-  onSubmitFilters() {
+  clean(obj) {
+    for (let propName in obj) {
+      if (obj[propName] === null || obj[propName] === undefined) {
+        delete obj[propName]
+      }
+    }
+  }
 
+  onSubmitFilters() {
     const filters = {
       minTarget: this.state.minTarget,
       maxTarget: this.state.maxTarget,
     }
+    this.clean(filters)
+
     const {routeName, key} = this.props.navigation.getParam('returnToRoute')
     this.setState({filters: filters}, () => this.props.navigation.navigate({
       routeName,
