@@ -123,9 +123,9 @@ class ProjectProfile extends React.Component<Props, void> {
             <ProjectInfoRow title={messages.VOLUNTEER_ABILITIES}
                             ability={true}
                             description={project.abilities}/>
-            {!canRate && <ProjectInfoRow title={messages.TIME_SCHEDULE + ':'}
-                                         timeSlot={true}
-                                         description={project.timeSlots}/>}
+            <ProjectInfoRow title={messages.TIME_SCHEDULE + ':'}
+                            timeSlot={true}
+                            description={project.timeSlots}/>
           </View>}
 
           <CustomButton style={{width: 0.8 * SCREEN_WIDTH, height: 50}}
