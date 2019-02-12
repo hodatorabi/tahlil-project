@@ -19,14 +19,18 @@ class ProjectOverview extends React.Component<Props, void> {
           <View style={style.topBodyStyle}>
             <View style={{flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between'}}>
               <ProjectTypeTag type={this.props.type}/>
-              <Label textStyle={{color: COLOR_BLUE_DEFAULT, fontFamily: 'IRANSansMobile_Bold', fontSize: 20}}
-                     text={this.props.projectName}/>
+              <View style={{alignItems: 'flex-end'}}>
+                <Label textStyle={style.projectNameLabelTextStyle}
+                       multiLine={true}
+                       style={style.projectNameLabelStyle}
+                       text={this.props.projectName}/>
+                <Label style={{alignSelf: 'flex-end'}} textStyle={{color: COLOR_BLACK, fontSize: 16}}
+                       text={'خیریه ' + this.props.charityName}/>
+              </View>
             </View>
-            <Label style={{alignSelf: 'flex-end'}} textStyle={{color: COLOR_BLACK, fontSize: 18}}
-                   text={'خیریه ' + this.props.charityName}/>
           </View>
           <View style={style.bottomBodyStyle}>
-            <CustomButton label={messages.SHOW} onPress={this.props.onPress}/>
+            <CustomButton label={messages.SHOW} onPress={this.props.onPress} style={{alignSelf: 'flex-end'}}/>
             <View style={style.dateContainer}>
               <Label text={format(messages.CREATION_DATE, this.props.projectStartDate)}
                      textStyle={{color: COLOR_DARK_GRAY, fontSize: 14}}/>
@@ -44,12 +48,12 @@ export default ProjectOverview
 
 const style = StyleSheet.create({
   containerStyle: {
-    height: SCREEN_HEIGHT * 0.35,
     width: SCREEN_WIDTH * 0.92,
     borderRadius: 20,
     backgroundColor: COLOR_WHITE,
     alignSelf: 'center',
     marginBottom: 0.02 * SCREEN_HEIGHT,
+    paddingBottom: 15,
     elevation: 1,
   },
   projectPictureStyle: {
@@ -60,25 +64,36 @@ const style = StyleSheet.create({
   },
   bodyStyle: {
     width: '100%',
-    height: 0.18 * SCREEN_HEIGHT,
     paddingHorizontal: 10,
-    marginTop: 10,
+    marginTop: 5,
     alignItems: 'center',
   },
   topBodyStyle: {
     width: '100%',
-    height: '50%',
   },
   bottomBodyStyle: {
     flexDirection: 'row',
     width: '100%',
     alignItems: 'center',
     justifyContent: 'space-between',
+    marginTop: 5
   },
   dateContainer: {
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'flex-end',
   },
+  projectNameLabelStyle: {
+    width: 0.52 * SCREEN_WIDTH,
+    alignSelf: 'flex-end',
+    textAlign: 'right',
+    alignItems: 'flex-end'
+  },
+  projectNameLabelTextStyle: {
+    color: COLOR_BLUE_DEFAULT,
+    fontFamily: 'IRANSansMobile_Bold',
+    fontSize: 18,
+    textAlign: 'right'
+  }
 
 })

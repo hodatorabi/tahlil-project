@@ -8,7 +8,7 @@ class Label extends React.PureComponent<Props> {
   render() {
     return (
       <View style={[style.labelContainer, this.props.style]}>
-        <Text style={[style.labelTextStyle, this.props.textStyle]}>{this.props.text}</Text>
+        <Text multiLine={this.props.multiLine} style={[style.labelTextStyle, this.props.textStyle]}>{this.props.text}</Text>
       </View>
     )
   }

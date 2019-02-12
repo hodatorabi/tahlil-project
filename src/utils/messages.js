@@ -45,7 +45,7 @@ export const messages = {
   MY_PROJECTS: 'پروژه‌های من',
   SHOW: 'مشاهده',
   EXPIRATION_DATE: 'تاریخ پایان: {}',
-  CREATION_DATE: 'تاریخ ایجاد درخواست: {}',
+  CREATION_DATE: 'تاریخ ایجاد: {}',
 
   CREATE_NEW_PROJECT: 'ایجاد پروژه',
   CREATE_NON_CASH: 'ایجاد پروژه غیرنقدی',
