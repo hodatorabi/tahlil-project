@@ -17,8 +17,8 @@ import Projects from 'src/store/projects'
 import FeedbackItem from 'src/components/profile/feedback/FeedbackItem'
 import FeedbackPopup from 'src/components/common/popUps/FeedbackPopup'
 
-const ThirdRoute = (volunteer, onPressButton, canRate, onPressSendFeedback) => (
-  <VolunteerPersonalInfo person={volunteer} onPressButton={onPressButton} canRate={canRate}
+const ThirdRoute = (volunteer, onPressButton, canRate, onPressSendFeedback, fromRequest) => (
+  <VolunteerPersonalInfo person={volunteer} onPressButton={onPressButton} canRate={canRate} fromRequest={fromRequest}
                          onPressSendFeedback={onPressSendFeedback}/>
 )
 const SecondRoute = (volunteer) => (
@@ -63,6 +63,7 @@ class VolunteerProfile extends React.Component<Props, State> {
   render() {
     const volunteer = this.props.navigation.getParam('volunteer', null)
     const canRate = this.props.navigation.getParam('canRate', false)
+    const fromRequest = this.props.navigation.getParam('fromRequest', false)
     return (
       <View style={{flex: 1, justifyContent: 'flex-start'}}>
         <CommonHeader title={messages.VOLUNTEER_PROFILE} hasBack={true} onPress={() => this.props.navigation.goBack()}/>
@@ -78,7 +79,7 @@ class VolunteerProfile extends React.Component<Props, State> {
           navigationState={this.state}
           renderScene={SceneMap({
             second: () => SecondRoute(volunteer),
-            third: () => ThirdRoute(volunteer, this.onPressButton, canRate, this.onPressSendFeedback),
+            third: () => ThirdRoute(volunteer, this.onPressButton, canRate, this.onPressSendFeedback, fromRequest),
           })}
           onIndexChange={index => this.setState({index})}
           initialLayout={{width: SCREEN_WIDTH}}

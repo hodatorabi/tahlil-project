@@ -18,7 +18,7 @@ class OutgoingRequests extends React.Component<Props, void> {
   state = {
     reasonPopUpVisible: false,
     reason: '',
-    refreshing: false
+    refreshing: false,
   }
 
   onReasonPress(reason) {
@@ -42,7 +42,8 @@ class OutgoingRequests extends React.Component<Props, void> {
                       />
                     }>
           {this.props.charityOutgoingRequests.map((item, index) => (
-            <OutgoingRequest onReasonPress={() => this.onReasonPress(item.rejectionReason)} request={item}/>
+            <OutgoingRequest navigation={this.props.navigation}
+                             onReasonPress={() => this.onReasonPress(item.rejectionReason)} request={item}/>
           ))}
         </ScrollView>
         <MessagePopUp visible={this.state.reasonPopUpVisible}

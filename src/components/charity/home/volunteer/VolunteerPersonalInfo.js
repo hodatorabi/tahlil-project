@@ -40,11 +40,11 @@ class VolunteerPersonalInfo extends React.Component<Props, State> {
             ))}
           </View>
 
-          <CustomButton style={{width: 0.8 * SCREEN_WIDTH, height: 50, marginTop: 30}}
-                        onPress={!this.props.canRate ? this.props.onPressButton : this.props.onPressSendFeedback}
-                        label={!this.props.canRate ? messages.SEND_REQUEST_TO_VOLUNTEER : messages.SEND_FEEDBACK}
-                        labelStyle={{fontSize: 20}}
-          />
+          {!this.props.fromRequest && <CustomButton style={{width: 0.8 * SCREEN_WIDTH, height: 50, marginTop: 30}}
+                                                    onPress={!this.props.canRate ? this.props.onPressButton : this.props.onPressSendFeedback}
+                                                    label={!this.props.canRate ? messages.SEND_REQUEST_TO_VOLUNTEER : messages.SEND_FEEDBACK}
+                                                    labelStyle={{fontSize: 20}}
+          />}
         </ScrollView>
       </View>
     )

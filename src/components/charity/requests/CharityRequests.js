@@ -29,8 +29,8 @@ export default class CharityRequests extends React.Component {
         <TabView
           navigationState={this.state}
           renderScene={SceneMap({
-            first: (navigation) => FirstRoute(navigation),
-            second: (navigation) => SecondRoute(navigation),
+            first: () => FirstRoute(this.props.navigation),
+            second: () => SecondRoute(this.props.navigation),
           })}
           onIndexChange={index => this.setState({index})}
           initialLayout={{width: SCREEN_WIDTH}}

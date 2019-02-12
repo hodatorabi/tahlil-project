@@ -1,9 +1,8 @@
 import React from 'react'
-import {Image, StyleSheet, TouchableOpacity, View} from 'react-native'
+import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native'
 import {SCREEN_HEIGHT, SCREEN_WIDTH} from 'src/assets/styles/style'
 import {COLOR_BLACK, COLOR_BLUE_DEFAULT, COLOR_WHITE,} from 'src/assets/styles/colors'
 import Label from 'src/components/common/Label'
-import format from 'string-format'
 import {ICON_ENVELOPE, projectSamplePics} from 'src/assets/styles/icons'
 import {messages} from 'src/utils/messages'
 import RequestStatus from 'src/components/common/RequestStatus'
@@ -20,10 +19,30 @@ class OutgoingRequest extends React.Component<Props, void> {
       <View style={style.containerStyle}>
         <Image source={projectPic} style={style.projectPictureStyle}/>
         <View style={style.bodyStyle}>
-          <Label
-            style={{width: '95%'}}
-            textStyle={style.bodyTextStyle}
-            text={format(messages.YOUR_REQUEST_TO_VOLUNTEER, request.volunteer.name, project.name)}/>
+          <View style={style.msgContainerStyle}>
+            <Text style={style.bodyTextStyle}>
+              {'درخواست شما برای نیکوکار '}
+              <Text style={[style.bodyTextStyle, {color: COLOR_BLUE_DEFAULT}]}
+                    onPress={() => this.props.navigation.navigate({
+                      routeName: 'VolunteerProfile',
+                      params: {
+                        volunteer: request.volunteer,
+                        fromRequest: true,
+                      },
+                    })}>
+                {request.volunteer.name}
+                <Text style={[style.bodyTextStyle]}>
+                  {' برای پروژه '}
+                  <Text style={[style.bodyTextStyle, {color: COLOR_BLUE_DEFAULT}]}>
+                    {request.project.name}
+                    <Text style={[style.bodyTextStyle]}>
+                      {' فرستاده شد.'}
+                    </Text>
+                  </Text>
+                </Text>
+              </Text>
+            </Text>
+          </View>
           <View style={style.footerStyle}>
             <View style={style.buttonContainer}>
               <RequestStatus status={status}/>
@@ -69,6 +88,8 @@ const style = StyleSheet.create({
     textAlign: 'right',
     fontSize: 18,
     color: COLOR_BLACK,
+    fontFamily: 'IRANSansMobile',
+    lineHeight: 30,
   },
   footerStyle: {
     flexDirection: 'row',
@@ -86,6 +107,10 @@ const style = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'flex-end',
+  },
+  msgContainerStyle: {
+    justifyContent: 'center',
+    alignSelf: 'flex-end',
   },
 
 })
