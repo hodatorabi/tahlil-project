@@ -32,8 +32,8 @@ class TimeSlotItem extends React.Component<Props, State> {
             <Label text={toTime(this.props.slot.time)}
                    textStyle={[style.timeTextStyle, {color: this.props.slot.isAvailable ? (this.props.slot.upcomingProject == null ? COLOR_BLUE_DEFAULT : COLOR_DEFAULT_ORANGE) : COLOR_MEDIUM_BLUE,}]}/>
           </View>
-          <Label style={{marginTop: 10,}}
-                 textStyle={{fontSize: 12, color: COLOR_DARK, fontFamily: 'IRANSansMobile_Bold'}}
+          <Label style={{marginTop: 2,}}
+                 textStyle={{fontSize: 12, color: COLOR_DARK, fontFamily: 'IRANSansMobile_Bold', lineHeight: 20}}
                  text={!this.props.slot.isAvailable ? '' : (this.props.slot.upcomingProject ? this.props.slot.upcomingProject.name : '')}/>
         </View>
       </View>

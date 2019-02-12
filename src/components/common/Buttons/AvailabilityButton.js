@@ -16,9 +16,9 @@ class AvailabilityButton extends React.Component<Props, void> {
         justifyContent: 'center',
       }} onPress={this.props.onPress}>
         <View style={{
-          width: 15,
-          height: 15,
-          borderRadius: 7.5,
+          width: 14,
+          height: 14,
+          borderRadius: 7,
           backgroundColor: this.props.color,
         }}/>
       </TouchableOpacity>
