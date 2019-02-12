@@ -22,7 +22,7 @@ class IncomingRequests extends React.Component<Props, void> {
     inputMessagePopUpVisible: false,
     message: '',
     refreshing: false,
-    requestId: ''
+    requestId: '',
   }
 
   onMessagePress = (message) => {
@@ -51,6 +51,7 @@ class IncomingRequests extends React.Component<Props, void> {
                     }>
           {this.props.incomingRequests && this.props.incomingRequests.map((item, index) => (
             <IncomingRequest onReject={() => this.onReject(item)} request={item}
+                             navigation={this.props.navigation}
                              onMessagePress={() => this.onMessagePress(item.message)}
                              onAccept={() => {
                                this.props.acceptProjectRequest(item.id)

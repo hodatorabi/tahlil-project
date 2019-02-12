@@ -49,18 +49,20 @@ class ProjectProfile extends React.Component<Props, void> {
   render() {
     const canRate = this.props.navigation.getParam('canRate', false)
     const fromSearch = this.props.navigation.getParam('fromSearch', false)
+    const fromRequest = this.props.navigation.getParam('fromRequest', false)
     const projectId = this.props.navigation.getParam('projectId', null)
     const type = this.props.navigation.getParam('type', messages.NON_CASH)
-    let project
-    if (type === messages.NON_CASH && !canRate && !fromSearch) {
-      project = this.props.nonCashProjects[projectId]
-    } else if (type === messages.CASH && !canRate && !fromSearch) {
-      project = this.props.cashProjects[projectId]
-    } else if (canRate && !fromSearch) {
-      project = this.props.navigation.getParam('project', null)
-    } else if (fromSearch) {
-      project = this.props.searchResultsProjects[projectId]
+    let project = this.props.navigation.getParam('project', null)
+    if (project === null) {
+      if (type === messages.NON_CASH && !canRate && !fromSearch) {
+        project = this.props.nonCashProjects[projectId]
+      } else if (type === messages.CASH && !canRate && !fromSearch) {
+        project = this.props.cashProjects[projectId]
+      } else if (fromSearch) {
+        project = this.props.searchResultsProjects[projectId]
+      }
     }
+
     const projectPicture = this.props.navigation.getParam('projectPicture', null)
     const neededAmount = type === messages.CASH ? project.targetAmount : 0
     const fundedAmount = messages.CASH ? project.fundedAmount : 0
@@ -123,21 +125,21 @@ class ProjectProfile extends React.Component<Props, void> {
             <ProjectInfoRow title={messages.VOLUNTEER_ABILITIES}
                             ability={true}
                             description={project.abilities}/>
-            <ProjectInfoRow title={messages.TIME_SCHEDULE + ':'}
-                            timeSlot={true}
-                            description={project.timeSlots}/>
+            {!fromRequest && <ProjectInfoRow title={messages.TIME_SCHEDULE + ':'}
+                                            timeSlot={true}
+                                            description={project.timeSlots}/>}
           </View>}
 
-          <CustomButton style={{width: 0.8 * SCREEN_WIDTH, height: 50}}
-                        label={!canRate ? (type === messages.NON_CASH ? messages.SEND_REQUEST : messages.PAY) : messages.SEND_FEEDBACK}
-                        labelStyle={{fontSize: 20}}
-                        onPress={!canRate ? (type === messages.NON_CASH ? () => {
-                          this.setState({messagePopUpVisible: true})
-                        } : () => {
-                          this.setState({amountPopUpVisible: true})
-                        }) : () => {
-                          this.setState({ratePopupVisible: true})
-                        }}/>
+          {!fromRequest && <CustomButton style={{width: 0.8 * SCREEN_WIDTH, height: 50}}
+                                         label={!canRate ? (type === messages.NON_CASH ? messages.SEND_REQUEST : messages.PAY) : messages.SEND_FEEDBACK}
+                                         labelStyle={{fontSize: 20}}
+                                         onPress={!canRate ? (type === messages.NON_CASH ? () => {
+                                           this.setState({messagePopUpVisible: true})
+                                         } : () => {
+                                           this.setState({amountPopUpVisible: true})
+                                         }) : () => {
+                                           this.setState({ratePopupVisible: true})
+                                         }}/>}
 
         </ScrollView>
         {this.state.amountPopUpVisible && <InputMessagePopUp visible={this.state.amountPopUpVisible}

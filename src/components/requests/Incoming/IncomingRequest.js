@@ -1,9 +1,8 @@
 import React from 'react'
-import {Image, StyleSheet, TouchableOpacity, View} from 'react-native'
+import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native'
 import {SCREEN_HEIGHT, SCREEN_WIDTH} from 'src/assets/styles/style'
 import {COLOR_BLACK, COLOR_BLUE_DEFAULT, COLOR_WHITE,} from 'src/assets/styles/colors'
 import Label from 'src/components/common/Label'
-import format from 'string-format'
 import {ICON_ENVELOPE, projectSamplePics} from 'src/assets/styles/icons'
 import ButtonAccept from 'src/components/common/Buttons/ButtonAccept'
 import ButtonReject from 'src/components/common/Buttons/ButtonReject'
@@ -18,10 +17,31 @@ class IncomingRequest extends React.Component<Props, void> {
       <View style={style.containerStyle}>
         <Image source={projectPic} style={style.projectPictureStyle}/>
         <View style={style.bodyStyle}>
-          <Label
-            style={{width: '95%'}}
-            textStyle={style.bodyTextStyle}
-            text={format(messages.CHARITY_NEEDS_HELP, request.charity.name, request.project.name)}/>
+          <View style={style.msgContainerStyle}>
+            <Text style={[style.bodyTextStyle, {color: COLOR_BLUE_DEFAULT}]}>
+              {'خیریه ' + request.charity.name}
+              <Text style={[style.bodyTextStyle]}>
+                {' برای پروژه '}
+                <Text style={[style.bodyTextStyle, {color: COLOR_BLUE_DEFAULT}]}
+                      onPress={() => {
+                        this.props.navigation.navigate({
+                          routeName: 'ProjectProfile',
+                          params: {
+                            project: request.project,
+                            type: messages.NON_CASH,
+                            projectPicture: projectSamplePics[request.project.id % 11],
+                            fromRequest: true,
+                          },
+                        })
+                      }}>
+                  {request.project.name}
+                  <Text style={[style.bodyTextStyle]}>
+                    {' به کمک شما نیاز دارد.'}
+                  </Text>
+                </Text>
+              </Text>
+            </Text>
+          </View>
           <View style={style.footerStyle}>
             <View style={style.buttonContainer}>
               <ButtonAccept onPress={this.props.onAccept} style={{marginRight: 20}}/>
@@ -67,6 +87,8 @@ const style = StyleSheet.create({
     textAlign: 'right',
     fontSize: 18,
     color: COLOR_BLACK,
+    fontFamily: 'IRANSansMobile',
+    lineHeight: 30,
   },
   footerStyle: {
     flexDirection: 'row',
@@ -84,6 +106,10 @@ const style = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'flex-end',
+  },
+  msgContainerStyle: {
+    justifyContent: 'center',
+    alignSelf: 'flex-end',
   },
 
 })
