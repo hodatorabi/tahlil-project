@@ -43,13 +43,13 @@ export default IncomingRequest
 
 const style = StyleSheet.create({
   containerStyle: {
-    height: SCREEN_HEIGHT * 0.35,
     width: SCREEN_WIDTH * 0.92,
     borderRadius: 20,
     backgroundColor: COLOR_WHITE,
     alignSelf: 'center',
     marginBottom: 0.02 * SCREEN_HEIGHT,
     elevation: 1,
+    paddingBottom: 15,
   },
   projectPictureStyle: {
     height: SCREEN_HEIGHT * 0.17,
@@ -59,7 +59,6 @@ const style = StyleSheet.create({
   },
   bodyStyle: {
     width: '100%',
-    height: 0.18 * SCREEN_HEIGHT,
     paddingHorizontal: 10,
     marginTop: 10,
     alignItems: 'center',
@@ -72,23 +71,19 @@ const style = StyleSheet.create({
   footerStyle: {
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'flex-end',
+    justifyContent: 'space-between',
     width: '100%',
-    position: 'absolute',
-    bottom: 30,
     paddingHorizontal: '5%',
+    marginTop: 10,
   },
   buttonContainer: {
     flexDirection: 'row',
     justifyContent: 'flex-start',
-    width: '50%',
   },
   messagesButtonContainer: {
     flexDirection: 'row',
-    width: '50%',
     alignItems: 'center',
     justifyContent: 'flex-end',
-
   },
 
 })

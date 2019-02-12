@@ -8,7 +8,8 @@ class Label extends React.PureComponent<Props> {
   render() {
     return (
       <View style={[style.labelContainer, this.props.style]}>
-        <Text multiLine={this.props.multiLine} style={[style.labelTextStyle, this.props.textStyle]}>{this.props.text}</Text>
+        <Text multiLine={this.props.multiLine}
+              style={[style.labelTextStyle, this.props.textStyle]}>{this.props.text}</Text>
       </View>
     )
   }
@@ -27,6 +28,7 @@ const style = StyleSheet.create({
     color: COLOR_BLACK,
     textAlign: 'center',
     fontFamily: 'IRANSansMobile',
+    lineHeight: 30,
   },
 
 })
