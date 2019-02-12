@@ -104,7 +104,7 @@ class ProjectProfile extends React.Component<Props, void> {
 
           <View style={style.projectDescriptionStyle}>
             <Label text={project.description}
-                   style={{textAlign: 'right'}}
+                   style={{textAlign: 'right', alignItems: 'flex-end'}}
                    textStyle={{color: COLOR_BLACK, fontSize: 16, textAlign: 'right'}}/>
             <View style={style.dateContainer}>
               <Label text={format(messages.CREATION_DATE, project.startDate)}
@@ -200,7 +200,6 @@ const style = StyleSheet.create({
   },
   projectBasicInfoContainer: {
     width: SCREEN_WIDTH,
-    height: 0.1 * SCREEN_HEIGHT - 5,
     paddingHorizontal: 25,
     marginTop: 10,
   },
