@@ -73,7 +73,7 @@ class NewNonCashProjectTimeSlots extends React.Component<Props, State> {
               <Picker
                 mode={'dropdown'}
                 selectedValue={this.state.selectedTime}
-                style={{height: 50, width: 150}}
+                style={{height: 50, width: 100}}
                 onValueChange={(itemValue, itemIndex) => {
                   this.setState({selectedTime: itemValue})
                 }}
@@ -85,7 +85,7 @@ class NewNonCashProjectTimeSlots extends React.Component<Props, State> {
               <Picker
                 mode={'dropdown'}
                 selectedValue={this.state.selectedDay}
-                style={{height: 50, width: 150}}
+                style={{height: 50, width: 100}}
                 onValueChange={(itemValue, itemIndex) => {
                   this.setState({selectedDay: itemValue})
                 }}
