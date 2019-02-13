@@ -111,6 +111,7 @@ const style = StyleSheet.create({
   msgContainerStyle: {
     justifyContent: 'center',
     alignSelf: 'flex-end',
+    paddingHorizontal: 0.03 * SCREEN_WIDTH
   },
 
 })
