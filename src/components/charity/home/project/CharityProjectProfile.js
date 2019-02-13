@@ -44,14 +44,19 @@ class CharityProjectProfile extends React.Component<Props, void> {
                 <Label textStyle={{color: COLOR_BLUE_DEFAULT, fontFamily: 'IRANSansMobile_Bold', fontSize: 20}}
                        text={project.name}/>
               </View>
-              <TouchableOpacity onPress={() => this.props.navigation.navigate({
+              <TouchableOpacity onPress={type === messages.NON_CASH ? () => this.props.navigation.navigate({
                 routeName: 'VolunteersListPage',
                 params: {
                   volunteers: project.volunteers,
                 },
+              }) : () => this.props.navigation.navigate({
+                routeName: 'VolunteerTransactionsPage',
+                params: {
+                  transactions: project.transactions
+                }
               })}>
                 <Label style={{alignSelf: 'flex-end'}} textStyle={{color: COLOR_BLACK, fontSize: 18}}
-                       text={messages.VOLUNTEERS}/>
+                       text={type === messages.CASH ? messages.TRANSACTIONS : messages.VOLUNTEERS}/>
               </TouchableOpacity>
             </View>
             {type === messages.CASH &&

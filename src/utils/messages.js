@@ -68,6 +68,7 @@ export const messages = {
   SEND_FEEDBACK: 'ارسال بازخورد',
   SEND_REQUEST: 'ارسال درخواست',
   PAY: 'پرداخت وجه',
+  TRANSACTIONS: 'تراکنش‌ها',
 
   SEND_REQUEST_TO_VOLUNTEER: 'درخواست همکاری',
 

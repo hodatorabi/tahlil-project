@@ -25,7 +25,7 @@ class CharityProjectOverview extends React.Component<Props, void> {
                        style={style.projectNameLabelStyle}
                        text={this.props.projectName}/>
                 <Label style={{alignSelf: 'flex-end'}} textStyle={{color: COLOR_BLACK, fontSize: 16}}
-                       text={messages.NUMBER_OF_VOLUNTEERS + this.props.numberOfVolunteers}/>
+                       text={this.props.type === messages.NON_CASH ? messages.NUMBER_OF_VOLUNTEERS + this.props.numberOfVolunteers : 'تعداد پرداخت‌ها: ' + this.props.numberOfVolunteers}/>
               </View>
             </View>
           </View>

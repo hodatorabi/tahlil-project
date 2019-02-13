@@ -52,7 +52,7 @@ const SecondRoute = (projects, navigation, refreshing, onRefresh) => (
                               charityName={item.charity.name}
                               projectStartDate={item.startDate}
                               projectEndDate={item.endDate}
-                              numberOfVolunteers={item.volunteers.length}
+                              numberOfVolunteers={item.transactions.length}
                               onPress={() => {
                                 navigation.navigate({
                                   routeName: 'CharityProjectProfile',
